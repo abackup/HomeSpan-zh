@@ -1,25 +1,38 @@
 # Welcome!
-#欢迎！
+# 欢迎！
 
 Welcome to HomeSpan - a robust and extremely easy-to-use Arduino library for creating your own [ESP32-based](https://www.espressif.com/en/products/modules/esp32) HomeKit devices entirely within the [Arduino IDE](https://www.arduino.cc).
 
-欢迎使用 HomeSpan - 一个强大且非常易于使用的 Arduino 库，用于创建您自己的基于ESP32(https://www.espressif.com/en/products/modules/esp32) 的HomeKit 设备，完全使用Arduino IDE（https://www.arduino.cc）。
+欢迎使用HomeSpan-一个强大且非常易于使用的Arduino库，完全使用Arduino IDE（https://www.arduino.cc）创建您自己的基于ESP32(https://www.espressif.com/en/products/modules/esp32) 的HomeKit设备。
 
 HomeSpan provides a microcontroller-focused implementation of [Apple's HomeKit Accessory Protocol Specification Release R2 (HAP-R2)](https://developer.apple.com/homekit/specification/) designed specifically for the Espressif ESP32 microcontroller running within the Arduino IDE.  HomeSpan pairs directly to HomeKit via your home WiFi network without the need for any external bridges or components.  With HomeSpan you can use the full power of the ESP32's I/O functionality to create custom control software and/or hardware to automatically operate external devices from the Home App on your iPhone, iPad, or Mac, or with Siri.
 
+HomeSpan 供了一个以微控制器为中心的实现[Apple 的 HomeKit附件协议规范版本R2 (HAP-R2)](https://developer.apple.com/homekit/specification/)，专为在Arduino IDE中运行的 Espressif ESP32微控制器而设计. HomeSpan无需任何外部网桥或组件仅需通过您的家庭WiFi网络直接与HomeKit配对。借助HomeSpan，您可以使用ESP32的I/O的全部功能来创建自定义控制软件或硬件，以通过iPhone、iPad或Mac上的Home App或使用Siri自动操作外部设备。
+
 HomeSpan is fully compatible with both Versions 1 and 2 of the [Arduino-ESP32 Board Manager](https://github.com/espressif/arduino-esp32).  Under Version 1, HomeSpan can be run only on the original ESP32.  Under Version 2, HomeSpan can be run on the original ESP32 as well as Espressif's ESP32-S2 and ESP32-C3 chips.
 
+HomeSpan 与版本1和版本2完全兼容[Arduino-ESP32 Board Manager](https://github.com/espressif/arduino-esp32) 。在版本1下，HomeSpan只能在原始ESP32上运行。在版本2下，HomeSpan 可以在原始ESP32以及Espressif的ESP32-S2和ESP32-C3芯片上运行。
+
 ### HomeSpan Highlights
+### HomeSpan强调
 
 * Provides a natural, intuitive, and **very** easy-to-use framework
+* 提供自然、直观且**非常**易于使用的框架
 * Utilizes a unique *Service-Centric* approach to creating HomeKit devices
+* 利用独特的*以服务为中心*的方法来创建 HomeKit 设备
 * Takes full advantage of the widely-popular Arduino IDE
+* 充分利用广受欢迎的 Arduino IDE
 * 100% HAP-R2 compliance
+* 100% 符合HAP-R2协议
 * 38 integrated HomeKit Services
+* 38个集成的HomeKit服务
 * Operates in either Accessory or Bridge mode
+* 在附件或桥接模式下运行
 * Supports pairing with Setup Codes or QR Codes
+* 支持与设置码或二维码配对
 
 ### For the HomeSpan Developer
+### 写予HomeSpan开发者
 
 * Extensive use of the Arduino Serial Monitor
   * Real-time, easy-to-understand diagnostics
