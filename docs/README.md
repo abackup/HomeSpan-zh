@@ -7,11 +7,11 @@ Welcome to HomeSpan - a robust and extremely easy-to-use Arduino library for cre
 
 HomeSpan provides a microcontroller-focused implementation of [Apple's HomeKit Accessory Protocol Specification Release R2 (HAP-R2)](https://developer.apple.com/homekit/specification/) designed specifically for the Espressif ESP32 microcontroller running within the Arduino IDE.  HomeSpan pairs directly to HomeKit via your home WiFi network without the need for any external bridges or components.  With HomeSpan you can use the full power of the ESP32's I/O functionality to create custom control software and/or hardware to automatically operate external devices from the Home App on your iPhone, iPad, or Mac, or with Siri.
 
-HomeSpan 供了一个以微控制器为中心的实现[Apple 的 HomeKit附件协议规范版本R2 (HAP-R2)](https://developer.apple.com/homekit/specification/)，专为在Arduino IDE中运行的 Espressif ESP32微控制器而设计. HomeSpan无需任何外部网桥或组件仅需通过您的家庭WiFi网络直接与HomeKit配对。借助HomeSpan，您可以使用ESP32的I/O的全部功能来创建自定义控制软件或硬件，以通过iPhone、iPad或Mac上的Home App或使用Siri自动操作外部设备。
+HomeSpan 供了一个以微控制器为中心符合[Apple 的 HomeKit附件协议规范版本R2 (HAP-R2)](https://developer.apple.com/homekit/specification/)协议的实现，专为在Arduino IDE中运行的Espressif ESP32微控制器而设计. HomeSpan无需任何外部网桥或组件，仅需通过您的家庭WiFi网络直接与HomeKit配对。借助HomeSpan，您可以使用ESP32的I/O的全部功能来创建自定义控制软件或硬件，以通过iPhone、iPad或Mac上的Home App或使用Siri自动操作外部设备。
 
 HomeSpan is fully compatible with both Versions 1 and 2 of the [Arduino-ESP32 Board Manager](https://github.com/espressif/arduino-esp32).  Under Version 1, HomeSpan can be run only on the original ESP32.  Under Version 2, HomeSpan can be run on the original ESP32 as well as Espressif's ESP32-S2 and ESP32-C3 chips.
 
-HomeSpan 与版本1和版本2完全兼容[Arduino-ESP32 Board Manager](https://github.com/espressif/arduino-esp32) 。在版本1下，HomeSpan只能在原始ESP32上运行。在版本2下，HomeSpan 可以在原始ESP32以及Espressif的ESP32-S2和ESP32-C3芯片上运行。
+HomeSpan与[Arduino-ESP32 Board Manager](https://github.com/espressif/arduino-esp32)版本1和版本2完全兼容 。在版本1下，HomeSpan只能在ESP32上运行；在版本2下，HomeSpan 可以在ESP32以及Espressif的ESP32-S2和ESP32-C3芯片上运行。
 
 ### HomeSpan Highlights
 ### HomeSpan强调
@@ -19,13 +19,13 @@ HomeSpan 与版本1和版本2完全兼容[Arduino-ESP32 Board Manager](https://g
 * Provides a natural, intuitive, and **very** easy-to-use framework
 * 提供自然、直观且**非常**易于使用的框架
 * Utilizes a unique *Service-Centric* approach to creating HomeKit devices
-* 利用独特的*以服务为中心*的方法来创建 HomeKit 设备
+* 利用独特的*以服务为中心*的方法来创建HomeKit设备
 * Takes full advantage of the widely-popular Arduino IDE
-* 充分利用广受欢迎的 Arduino IDE
+* 充分利用广受欢迎的Arduino IDE
 * 100% HAP-R2 compliance
-* 100% 符合HAP-R2协议
+* 100%符合HAP-R2协议
 * 38 integrated HomeKit Services
-* 38个集成的HomeKit服务
+* 集成38个HomeKit服务
 * Operates in either Accessory or Bridge mode
 * 在附件或桥接模式下运行
 * Supports pairing with Setup Codes or QR Codes
@@ -35,31 +35,55 @@ HomeSpan 与版本1和版本2完全兼容[Arduino-ESP32 Board Manager](https://g
 ### 写予HomeSpan开发者
 
 * Extensive use of the Arduino Serial Monitor
+* 广泛使用 Arduino 串行监视器
   * Real-time, easy-to-understand diagnostics
+  * 实时，易于理解的诊断
   * Complete transparency to every underlying HomeKit action, data request, and data response
+  * 对每个底层 HomeKit 操作、数据请求和数据响应完全透明
   * Command-line interface with a variety of info, debugging, and configuration commands
+  * 带有各种信息、调试和配置命令的命令行界面
 * Built-in database validation to ensure your configuration meets all HAP requirements
+* 内置数据库验证，确保您的配置满足所有 HAP 要求
 * Dedicated classes that utilize the ESP32's 16-channel PWM peripheral for easy control of:
+* 利用ESP32的16通道PWM外设轻松控制的专用类：
   * LED Brightness
+  * LED 亮度
   * Servo Motors
+  * 伺服电机
 * Integrated Push Button functionality supporting single, double, and long presses 
+* 集成按钮功能，支持单、双和长按
 * Integrated access to the ESP32's on-chip Remote Control peripheral for easy generation of IR and RF signals
+* 集成访问ESP32的片上远程控制外设，轻松生成IR和RF信号
 * Dedicated classes to control one- and two-wire addressable RGB and RGBW LEDs and LED strips
+* 用于控制单线和两线可寻址RGB、RGBW LED和LED灯条的专用类
 * Integrated Web Log for user-defined log messages
+* 用于用户定义日志消息的集成Web日志
 * Extensively-commented Tutorial Sketches taking you from the very basics of HomeSpan through advanced HomeKit topics
+* 广泛评论的教程草图，带您从HomeSpan的基础知识到高级HomeKit主题
 * Additional examples and projects showcasing real-world implementations of HomeSpan
+* 展示 HomeSpan 实际实现的其他示例和项目
 * A complete set of documentation explaining every aspect of the HomeSpan API
+* 一套解释HomeSpan API的各个方面的完整文档
 
 ### For the HomeSpan End-User
+### 写予HomeSpan终端用户
 
 * Embedded WiFi Access Point and Web Interface to allow end-users (non-developers) to:
+* 嵌入式 WiFi 接入点和 Web 界面允许最终用户（非开发人员）：
   * Set up Homespan with their own home WiFi Credentials
+  * 使用自己的家庭 WiFi 凭据设置 Homespan
   * Create their own HomeKit Pairing Setup Code
+  * 创建自己的 HomeKit 配对设置代码
 * Status LED and Control Button to allow end-users to:
+* 状态 LED 和控制按钮允许最终用户：
   * Force-unpair the device from HomeKit
+  * 强制解除设备与 HomeKit 的配对
   * Perform a Factory Reset
+  * 执行出厂重置
   * Launch the WiFi Access Point
+  * 启动 WiFi 接入点
 * A standalone, detailed End-User Guide
+* 一个独立的、详细的最终用户指南
 
 ## ❗Latest Update - HomeSpan 1.5.1 (4/17/2022)
 
