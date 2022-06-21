@@ -9,7 +9,7 @@ Welcome to HomeSpan - a robust and extremely easy-to-use Arduino library for cre
 
 HomeSpan provides a microcontroller-focused implementation of [Apple's HomeKit Accessory Protocol Specification Release R2 (HAP-R2)](https://developer.apple.com/homekit/specification/) designed specifically for the Espressif ESP32 microcontroller running within the Arduino IDE.  HomeSpan pairs directly to HomeKit via your home WiFi network without the need for any external bridges or components.  With HomeSpan you can use the full power of the ESP32's I/O functionality to create custom control software and/or hardware to automatically operate external devices from the Home App on your iPhone, iPad, or Mac, or with Siri.
 
-HomeSpan 供了一个以微控制器为中心符合[Apple 的 HomeKit附件协议规范版本R2 (HAP-R2)](https://developer.apple.com/homekit/specification/)协议的实现，专为在Arduino IDE中运行的Espressif ESP32微控制器而设计. HomeSpan无需任何外部网桥或组件，仅需通过您的家庭WiFi网络直接与HomeKit配对。借助HomeSpan，您可以使用ESP32的I/O的全部功能来创建自定义控制软件或硬件，以通过iPhone、iPad或Mac上的Home App或使用Siri自动操作外部设备。
+HomeSpan 供了一个以微控制器为中心符合[Apple 的 HomeKit附件协议规范版本R2 (HAP-R2)](https://developer.apple.com/homekit/specification/)协议的实现，专为在Arduino IDE中运行的Espressif ESP32微控制器而设计. HomeSpan无需任何外部网桥或组件，仅需通过您的家庭WiFi网络直接与HomeKit配对。借助HomeSpan，您可以使用ESP32 I/O的全部功能来创建自定义控制软件或硬件，以通过iPhone、iPad或Mac上的Home App或使用Siri自动操作外部设备。
 
 HomeSpan is fully compatible with both Versions 1 and 2 of the [Arduino-ESP32 Board Manager](https://github.com/espressif/arduino-esp32).  Under Version 1, HomeSpan can be run only on the original ESP32.  Under Version 2, HomeSpan can be run on the original ESP32 as well as Espressif's ESP32-S2 and ESP32-C3 chips.
 
