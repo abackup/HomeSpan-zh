@@ -128,18 +128,24 @@ See [Releases](https://github.com/HomeSpan/HomeSpan/releases) for details on all
 # HomeSpan资源
 
 HomeSpan includes the following documentation:
+
 HomeSpan 包括以下文档：
 
 * [Getting Started with HomeSpan] - setting up the software and the hardware needed to develop HomeSpan devices
 * [HomeSpan入门](https://github.com/abackup/HomeSpan-zh/blob/master/docs/GettingStarted.md) -设置开发HomeSpan设备所需的软件和硬件
+* 
 * [HomeSpan API Overview] - an overview of the HomeSpan API, including a step-by-step guide to developing your first HomeSpan Sketch
 * [HomeSpan API 概述](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Overview.md) - HomeSpan API 概述，包括开发您的第一个 API 的分步指南 HomeSpan草图
+* 
 * [HomeSpan Tutorials] - a guide to HomeSpan's tutorial-sketches
 * [HomeSpan 教程](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Tutorials.md) - HomeSpan 教程草图指南
+* 
 * [HomeSpan Services and Characteristics] - a list of all HAP Services and Characterstics supported by HomeSpan
 * [HomeSpan 服务和特性](https://github.com/abackup/HomeSpan-zh/blob/master/docs/ServiceList.md) - HomeSpan 支持的所有 HAP 服务和特性的列表
+* 
 * [HomeSpan Accessory Categories] - a list of all HAP Accessory Categories defined by HomeSpan
 * [HomeSpan Accessory Categories](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Categories.md) - HomeSpan 定义的所有 HAP Accessory Categories 的列表
+* 
 * [HomeSpan Command-Line Interface (CLI)] - configure a HomeSpan device's WiFi Credentials, modify its HomeKit Setup Code, monitor and update its status, and access detailed, real-time device diagnostics from the Arduino IDE Serial Monitor
 * [HomeSpan 命令行界面 (CLI)](https://github.com/abackup/HomeSpan-zh/blob/master/docs/CLI.md) - 配置 HomeSpan 设备的 WiFi 凭据，修改其 HomeKit 设置代码，监控 并更新其状态，并从 Arduino IDE 串行监视器访问详细的实时设备诊断
 * [HomeSpan User Guide] - turnkey instructions on how to configure an already-programmed HomeSpan device's WiFi Credentials, modify its HomeKit Setup Code, and pair the device to HomeKit.  No computer needed!
@@ -161,9 +167,7 @@ HomeSpan 包括以下文档：
 * [HomeSpan Message Logging](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Logging.md) - how to generate log messages for display on the Arduino Serial Monitor as well as optionally posted to an integrated Web Log page
 * [HomeSpan 消息记录](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Logging.md) - 如何生成日志消息以显示在 Arduino 串行监视器上以及可选地发布到 集成的 Web 日志页面
 * [HomeSpan Projects] - real-world applications of the HomeSpan Library
-* 105 / 5,000
-翻译结果
-[HomeSpan Projects](https://github.com/topics/homespan) - HomeSpan 库的实际应用
+* [HomeSpan Projects](https://github.com/topics/homespan) - HomeSpan 库的实际应用
 * [HomeSpan FAQ] - answers to frequently-asked questions
 * [HomeSpan FAQ](https://github.com/abackup/HomeSpan-zh/blob/master/docs/FAQ.md) - 常见问题解答
 
