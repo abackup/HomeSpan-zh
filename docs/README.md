@@ -3,7 +3,7 @@
 
 个人复制翻译的[HomeSpan](https://github.com/HomeSpan/HomeSpan)，喜欢的请去原地址查看。
 
-<font color=LightSeaGreen>Welcome to HomeSpan - a robust and extremely easy-to-use Arduino library for creating your own [ESP32-based](https://www.espressif.com/en/products/modules/esp32) HomeKit devices entirely within the [Arduino IDE](https://www.arduino.cc).
+Welcome to HomeSpan - a robust and extremely easy-to-use Arduino library for creating your own [ESP32-based](https://www.espressif.com/en/products/modules/esp32) HomeKit devices entirely within the [Arduino IDE](https://www.arduino.cc).
 
 欢迎使用HomeSpan-一个强大且非常易于使用的Arduino库，完全使用Arduino IDE（https://www.arduino.cc） 创建您自己的基于ESP32 (https://www.espressif.com/en/products/modules/esp32) 的HomeKit设备。
 
