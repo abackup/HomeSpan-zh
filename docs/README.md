@@ -88,12 +88,18 @@ HomeSpan与[Arduino-ESP32 Board Manager](https://github.com/espressif/arduino-es
 * 一个独立的、详细的最终用户指南
 
 ## ❗Latest Update - HomeSpan 1.5.1 (4/17/2022)
+## ❗最新更新-HomeSpan 1.5.1 (4/17/2022)
 
 * **New Web Logging functionality**
+* **新的网络日志功能**
   * HomeSpan can now host a Web Log page for message logging
+  * HomeSpan 现在可以托管用于消息记录的Web日志页面
   * New WEBLOG() macro makes is easy to create user-defined log messages
+  * 新的 WEBLOG() 宏使创建用户定义的日志消息变得容易
   * Provides for the optional use of an NTP Time Server to set the device clock so all messages can be properly timestamped
+  * 提供可选使用 NTP 时间服务器来设置设备时钟，以便所有消息都可以正确加时间戳
   * See [HomeSpan Message Logging](https://github.com/HomeSpan/HomeSpan/blob/master/docs/Logging.md) for full details
+  * 有关完整详细信息，请参阅 [HomeSpan 消息记录](https://github.com/HomeSpan/HomeSpan/blob/master/docs/Logging.md)
 
 * **New *printf*-style formatting for LOG() macros**
   * Adds variadic forms of the LOG0(), LOG1(), and LOG2() macros so they can be used in the same manner as a standard C printf function
@@ -119,26 +125,47 @@ HomeSpan与[Arduino-ESP32 Board Manager](https://github.com/espressif/arduino-es
 See [Releases](https://github.com/HomeSpan/HomeSpan/releases) for details on all changes and bug fixes included in this update.
 
 # HomeSpan Resources
+# HomeSpan资源
 
 HomeSpan includes the following documentation:
+HomeSpan 包括以下文档：
 
-* [Getting Started with HomeSpan](https://github.com/abackup/HomeSpan-zh/blob/master/docs/GettingStarted.md) - setting up the software and the hardware needed to develop HomeSpan devices
-* [HomeSpan API Overview](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Overview.md) - an overview of the HomeSpan API, including a step-by-step guide to developing your first HomeSpan Sketch
-* [HomeSpan Tutorials](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Tutorials.md) - a guide to HomeSpan's tutorial-sketches
-* [HomeSpan Services and Characteristics](https://github.com/abackup/HomeSpan-zh/blob/master/docs/ServiceList.md) - a list of all HAP Services and Characterstics supported by HomeSpan
-* [HomeSpan Accessory Categories](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Categories.md) - a list of all HAP Accessory Categories defined by HomeSpan
-* [HomeSpan Command-Line Interface (CLI)](https://github.com/abackup/HomeSpan-zh/blob/master/docs/CLI.md) - configure a HomeSpan device's WiFi Credentials, modify its HomeKit Setup Code, monitor and update its status, and access detailed, real-time device diagnostics from the Arduino IDE Serial Monitor
-* [HomeSpan User Guide](https://github.com/abackup/HomeSpan-zh/blob/master/docs/UserGuide.md) - turnkey instructions on how to configure an already-programmed HomeSpan device's WiFi Credentials, modify its HomeKit Setup Code, and pair the device to HomeKit.  No computer needed!
-* [HomeSpan API Reference](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Reference.md) - a complete guide to the HomeSpan Library API
-* [HomeSpan QR Codes](https://github.com/abackup/HomeSpan-zh/blob/master/docs/QRCodes.md) - create and use QR Codes for pairing HomeSpan devices
-* [HomeSpan OTA](https://github.com/abackup/HomeSpan-zh/blob/master/docs/OTA.md) - update your sketches Over-the-Air directly from the Arduino IDE without a serial connection
-* [HomeSpan PWM](https://github.com/abackup/HomeSpan-zh/blob/master/docs/PWM.md) - integrated control of standard LEDs and Servo Motors using the ESP32's on-chip PWM peripheral
-* [HomeSpan RFControl](https://github.com/abackup/HomeSpan-zh/blob/master/docs/RMT.md) - easy generation of RF and IR Remote Control signals using the ESP32's on-chip RMT peripheral
-* [HomeSpan Pixels](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Pixels.md) - integrated control of addressable one- and two-wire RGB and RGBW LEDs and LED strips
-* [HomeSpan Television Services](https://github.com/abackup/HomeSpan-zh/blob/master/docs/TVServices.md) - how to use HomeKit's undocumented Television Services and Characteristics
+* [Getting Started with HomeSpan] - setting up the software and the hardware needed to develop HomeSpan devices
+* [HomeSpan入门](https://github.com/abackup/HomeSpan-zh/blob/master/docs/GettingStarted.md) -设置开发HomeSpan设备所需的软件和硬件
+* [HomeSpan API Overview] - an overview of the HomeSpan API, including a step-by-step guide to developing your first HomeSpan Sketch
+* [HomeSpan API 概述](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Overview.md) - HomeSpan API 概述，包括开发您的第一个 API 的分步指南 HomeSpan草图
+* [HomeSpan Tutorials] - a guide to HomeSpan's tutorial-sketches
+* [HomeSpan 教程](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Tutorials.md) - HomeSpan 教程草图指南
+* [HomeSpan Services and Characteristics] - a list of all HAP Services and Characterstics supported by HomeSpan
+* [HomeSpan 服务和特性](https://github.com/abackup/HomeSpan-zh/blob/master/docs/ServiceList.md) - HomeSpan 支持的所有 HAP 服务和特性的列表
+* [HomeSpan Accessory Categories] - a list of all HAP Accessory Categories defined by HomeSpan
+* [HomeSpan Accessory Categories](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Categories.md) - HomeSpan 定义的所有 HAP Accessory Categories 的列表
+* [HomeSpan Command-Line Interface (CLI)] - configure a HomeSpan device's WiFi Credentials, modify its HomeKit Setup Code, monitor and update its status, and access detailed, real-time device diagnostics from the Arduino IDE Serial Monitor
+* [HomeSpan 命令行界面 (CLI)](https://github.com/abackup/HomeSpan-zh/blob/master/docs/CLI.md) - 配置 HomeSpan 设备的 WiFi 凭据，修改其 HomeKit 设置代码，监控 并更新其状态，并从 Arduino IDE 串行监视器访问详细的实时设备诊断
+* [HomeSpan User Guide] - turnkey instructions on how to configure an already-programmed HomeSpan device's WiFi Credentials, modify its HomeKit Setup Code, and pair the device to HomeKit.  No computer needed!
+* [HomeSpan 用户指南](https://github.com/abackup/HomeSpan-zh/blob/master/docs/UserGuide.md) - 关于如何配置已经编程的 HomeSpan 设备的 WiFi 凭据、修改其 HomeKit 设置的统包说明 编码，并将设备与 HomeKit 配对。 无需电脑！
+* [HomeSpan API Reference] - a complete guide to the HomeSpan Library API
+* [HomeSpan API 参考](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Reference.md) - HomeSpan 库 API 完整指南
+* [HomeSpan QR Codes] - create and use QR Codes for pairing HomeSpan devices
+* [HomeSpan 二维码](https://github.com/abackup/HomeSpan-zh/blob/master/docs/QRCodes.md) - 创建和使用二维码来配对 HomeSpan 设备
+* [HomeSpan OTA] - update your sketches Over-the-Air directly from the Arduino IDE without a serial connection
+* [HomeSpan OTA](https://github.com/abackup/HomeSpan-zh/blob/master/docs/OTA.md) - 直接从 Arduino IDE 无线更新您的草图，无需串行连接
+* [HomeSpan PWM] - integrated control of standard LEDs and Servo Motors using the ESP32's on-chip PWM peripheral
+* [HomeSpan PWM](https://github.com/abackup/HomeSpan-zh/blob/master/docs/PWM.md) - 使用 ESP32 的片上 PWM 外设集成控制标准 LED 和伺服电机
+* [HomeSpan RFControl] - easy generation of RF and IR Remote Control signals using the ESP32's on-chip RMT peripheral
+* [HomeSpan RFControl](https://github.com/abackup/HomeSpan-zh/blob/master/docs/RMT.md) - 使用 ESP32 的片上 RMT 外设轻松生成 RF 和 IR 远程控制信号
+* [HomeSpan Pixels] - integrated control of addressable one- and two-wire RGB and RGBW LEDs and LED strips
+* [HomeSpan Pixels](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Pixels.md) - 可寻址的单线和两线 RGB 和 RGBW LED 和 LED 灯条的集成控制
+* [HomeSpan Television Services] - how to use HomeKit's undocumented Television Services and Characteristics
+* [HomeSpan 电视服务](https://github.com/abackup/HomeSpan-zh/blob/master/docs/TVServices.md) - 如何使用 HomeKit 的无证电视服务和特性
 * [HomeSpan Message Logging](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Logging.md) - how to generate log messages for display on the Arduino Serial Monitor as well as optionally posted to an integrated Web Log page
-* [HomeSpan Projects](https://github.com/topics/homespan) - real-world applications of the HomeSpan Library
-* [HomeSpan FAQ](https://github.com/abackup/HomeSpan-zh/blob/master/docs/FAQ.md) - answers to frequently-asked questions
+* [HomeSpan 消息记录](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Logging.md) - 如何生成日志消息以显示在 Arduino 串行监视器上以及可选地发布到 集成的 Web 日志页面
+* [HomeSpan Projects] - real-world applications of the HomeSpan Library
+* 105 / 5,000
+翻译结果
+[HomeSpan Projects](https://github.com/topics/homespan) - HomeSpan 库的实际应用
+* [HomeSpan FAQ] - answers to frequently-asked questions
+* [HomeSpan FAQ](https://github.com/abackup/HomeSpan-zh/blob/master/docs/FAQ.md) - 常见问题解答
 
 Note that all documentation is version-controlled and tied to each branch.  The *master* branch generally points to the latest release.  The *dev* branch, when available, will contain code under active development.
 
