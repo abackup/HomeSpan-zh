@@ -8,12 +8,14 @@ This page provides step-by-step instructions for acquiring and setting up all th
 #### 第 1 步：安装 Arduino IDE
 
 Since HomeSpan is a library designed for Arduino's Integrated Development Environment, the first step is to download and install the latest version of this IDE from the [Arduino Software page](https://www.arduino.cc/en/software).  If you have experience with programming Arduino sketches, you'll find Homespan's use of the standard Arduino setup() and loop() functions, as well as the ever-present *\*.ino* file, very familiar.  If you've never programmed an Arduino, you may want to begin by first reviewing [Arduino's Guide to the IDE](https://www.arduino.cc/en/Guide/Environment) (and maybe try out a few Arduino examples) before proceeding to program with HomeSpan.
+
 由于 HomeSpan 是为 Arduino 的集成开发环境设计的库，因此第一步是从 [Arduino 软件页面](https://www.arduino.cc/en/software) 下载并安装此 IDE 的最新版本。 如果您有 Arduino 草图编程经验，您会发现 Homespan 对标准 Arduino setup() 和 loop() 函数的使用，以及一直存在的 *\*.ino* 文件，非常熟悉。 如果您从未编写过 Arduino，您可能希望首先查看 [Arduino 的 IDE 指南](https://www.arduino.cc/en/Guide/Environment)（并可能尝试一些 Arduino 示例 ) 在继续使用 HomeSpan 进行编程之前。
 
 #### Step 2: Install the Arduino-ESP32 Core
 #### 第 2 步：安装 Arduino-ESP32 内核
 
 The Arduino IDE comes with built-in compilers and support for a variety of Arduino boards, such as the Arduino Uno and Arduino Nano.  However, the IDE does not natively support programming for the ESP32.  Fortunately, the IDE allows you to download and install *cores* for other micro-controllers, including the ESP32, so  they can be programming from within the Arduino environment.  See the [Espressif Arduino-ESP32 GitHub page](https://github.com/espressif/arduino-esp32#arduino-core-for-esp32-wifi-chip) for complete instructions on how to install the Arduino-ESP32 core into the Arduino IDE using the [Arduino IDE Board Manager](https://github.com/espressif/arduino-esp32/blob/master/docs/arduino-ide/boards_manager.md).
+
 Arduino IDE 带有内置编译器，并支持各种 Arduino 板，例如 Arduino Uno 和 Arduino Nano。 但是，IDE 本身并不支持对 ESP32 进行编程。 幸运的是，IDE 允许您为其他微控制器（包括 ESP32）下载和安装 *cores*，因此它们可以在 Arduino 环境中进行编程。 有关如何将 Arduino-ESP32 内核安装到 使用 [Arduino IDE Board Manager]（https://github.com/espressif/arduino-esp32/blob/master/docs/arduino-ide/boards_manager.md）的 Arduino IDE。
 
 #### Step 3: Install HomeSpan
