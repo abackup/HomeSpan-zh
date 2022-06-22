@@ -144,10 +144,10 @@ HomeSpan 包括以下文档：
 * [HomeSpan 服务和特性](https://github.com/abackup/HomeSpan-zh/blob/master/docs/ServiceList.md) - HomeSpan 支持的所有 HAP 服务和特性的列表
 
 * [HomeSpan Accessory Categories] - a list of all HAP Accessory Categories defined by HomeSpan
-* [HomeSpan Accessory Categories](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Categories.md) - HomeSpan 定义的所有 HAP Accessory Categories 的列表
+* [HomeSpan 配件类别](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Categories.md) - HomeSpan 定义的所有 HAP 配件类别的列表
 
 * [HomeSpan Command-Line Interface (CLI)] - configure a HomeSpan device's WiFi Credentials, modify its HomeKit Setup Code, monitor and update its status, and access detailed, real-time device diagnostics from the Arduino IDE Serial Monitor
-* [HomeSpan 命令行界面 (CLI)](https://github.com/abackup/HomeSpan-zh/blob/master/docs/CLI.md) - 配置 HomeSpan 设备的 WiFi 凭据，修改其 HomeKit 设置代码，监控 并更新其状态，并从 Arduino IDE 串行监视器访问详细的实时设备诊断
+* [HomeSpan 命令行界面 (CLI)](https://github.com/abackup/HomeSpan-zh/blob/master/docs/CLI.md) - 配置 HomeSpan 设备的 WiFi 凭据，修改其 HomeKit 设置代码，监控并更新其状态，并从 Arduino IDE 串行监视器访问详细的实时设备诊断
 
 * [HomeSpan User Guide] - turnkey instructions on how to configure an already-programmed HomeSpan device's WiFi Credentials, modify its HomeKit Setup Code, and pair the device to HomeKit.  No computer needed!
 * [HomeSpan 用户指南](https://github.com/abackup/HomeSpan-zh/blob/master/docs/UserGuide.md) - 关于如何配置已经编程的 HomeSpan 设备的 WiFi 凭据、修改其 HomeKit 设置的统包说明 编码，并将设备与 HomeKit 配对。 无需电脑！
@@ -165,10 +165,10 @@ HomeSpan 包括以下文档：
 * [HomeSpan PWM](https://github.com/abackup/HomeSpan-zh/blob/master/docs/PWM.md) - 使用 ESP32 的片上 PWM 外设集成控制标准 LED 和伺服电机
 
 * [HomeSpan RFControl] - easy generation of RF and IR Remote Control signals using the ESP32's on-chip RMT peripheral
-* [HomeSpan RFControl](https://github.com/abackup/HomeSpan-zh/blob/master/docs/RMT.md) - 使用 ESP32 的片上 RMT 外设轻松生成 RF 和 IR 远程控制信号
+* [HomeSpan 射频控制](https://github.com/abackup/HomeSpan-zh/blob/master/docs/RMT.md) - 使用 ESP32 的片上 RMT 外设轻松生成 RF 和 IR 远程控制信号
 
 * [HomeSpan Pixels] - integrated control of addressable one- and two-wire RGB and RGBW LEDs and LED strips
-* [HomeSpan Pixels](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Pixels.md) - 可寻址的单线和两线 RGB 和 RGBW LED 和 LED 灯条的集成控制
+* [HomeSpan 灯条](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Pixels.md) - 可寻址的单线和两线 RGB 和 RGBW LED 和 LED 灯条的集成控制
 
 * [HomeSpan Television Services] - how to use HomeKit's undocumented Television Services and Characteristics
 * [HomeSpan 电视服务](https://github.com/abackup/HomeSpan-zh/blob/master/docs/TVServices.md) - 如何使用 HomeKit 的无证电视服务和特性
@@ -177,7 +177,7 @@ HomeSpan 包括以下文档：
 * [HomeSpan 消息记录](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Logging.md) - 如何生成日志消息以显示在 Arduino 串行监视器上以及可选地发布到 集成的 Web 日志页面
 
 * [HomeSpan Projects] - real-world applications of the HomeSpan Library
-* [HomeSpan Projects](https://github.com/topics/homespan) - HomeSpan 库的实际应用
+* [HomeSpan 项目](https://github.com/topics/homespan) - HomeSpan 库的实际应用
 
 * [HomeSpan FAQ] - answers to frequently-asked questions
 * [HomeSpan FAQ](https://github.com/abackup/HomeSpan-zh/blob/master/docs/FAQ.md) - 常见问题解答
