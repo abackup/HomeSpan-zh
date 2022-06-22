@@ -143,6 +143,7 @@ For access to even more advanced features, check out the [HomeSpan PWM](https://
 Finally, disconnect your HomeSpan device from the computer and power it directly from a wall adapter.  After all, HomeSpan devices are designed to run on a standalone basis connected to real-world applicances like lights, fans, door locks, and window shades.  See the [HomeSpan User Guide](UserGuide.md) for end-user instructions on how to operate and configure a standlone HomeSpan device's WiFi Credentials and HomeKit Setup Code *without the need to connect the device to a computer*.
 
 最后，断开 HomeSpan 设备与计算机的连接，并直接从墙上适配器为其供电。 毕竟，HomeSpan 设备旨在独立运行，连接到现实世界的设备，如灯、风扇、门锁和窗帘。 有关如何操作和配置独立 HomeSpan 设备的 WiFi 凭据和 HomeKit 设置代码*无需将设备连接到计算机*的最终用户说明，请参阅 [HomeSpan 用户指南](UserGuide.md)。
+
 ---
 
 [↩️](README.md) Back to the Welcome page
