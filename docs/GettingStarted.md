@@ -1,17 +1,10 @@
-# Getting Started with HomeSpan
-# HomeSpan 入门
+# HomeSpan入门
 
-This page provides step-by-step instructions for acquiring and setting up all the software and hardware needed to develop HomeSpan devices.  Those with Arduino and/or ESP32 experience may find they can skip some of the steps.
+本页提供了获取和设置开发HomeSpan设备所需的所有软件和硬件的分步说明。 那些有Arduino或ESP32经验的人可能会发现他们可以跳过一些步骤。
 
-本页提供了获取和设置开发 HomeSpan 设备所需的所有软件和硬件的分步说明。 那些有 Arduino 和/或 ESP32 经验的人可能会发现他们可以跳过一些步骤。
+#### 第1步：安装Arduino IDE
 
-#### Step 1: Install the Arduino IDE
-#### 第 1 步：安装 Arduino IDE
-
-Since HomeSpan is a library designed for Arduino's Integrated Development Environment, the first step is to download and install the latest version of this IDE from the [Arduino Software page](https://www.arduino.cc/en/software).  If you have experience with programming Arduino sketches, you'll find Homespan's use of the standard Arduino setup() and loop() functions, as well as the ever-present *\*.ino* file, very familiar.  If you've never programmed an Arduino, you may want to begin by first reviewing [Arduino's Guide to the IDE](https://www.arduino.cc/en/Guide/Environment) (and maybe try out a few Arduino examples) before proceeding to program with HomeSpan.
-
-由于 HomeSpan 是为 Arduino 的集成开发环境设计的库，因此第一步是从 [Arduino 软件页面](https://www.arduino.cc/en/software) 下载并安装此 IDE 的最新版本。 如果您有 Arduino 草图编程经验，您会发现 Homespan 对标准 Arduino setup() 和 loop() 函数的使用，以及一直存在的 *\*.ino* 文件，非常熟悉。 如果您从未编写过 Arduino，您可能希望首先查看 [Arduino 的 IDE 指南](https://www.arduino.cc/en/Guide/Environment)（并可能尝试一些 Arduino 示例 ) 在继续使用 HomeSpan 进行编程之前。
-
+由于HomeSpan是为Arduino集成开发环境设计的库，因此第一步是从Arduino软件页面下载并安装此 IDE 的最新版本。 如果您有Arduino 草图编程经验，您会发现 Homespan 对标准 Arduino setup() 和 loop() 函数的使用，以及一直存在的 *\*.ino* 文件，非常熟悉。 如果您从未编写过 Arduino，您可能希望首先查看 [Arduino 的 IDE 指南](https://www.arduino.cc/en/Guide/Environment)（并可能尝试一些 Arduino 示例 ) 在继续使用 HomeSpan 进行编程之前。
 
 #### Step 2: Install the Arduino-ESP32 Core
 #### 第 2 步：安装 Arduino-ESP32 内核
