@@ -94,7 +94,7 @@ HomeSpan 包括以下文档：
 * [HomeSpan OTA](https://github.com/abackup/HomeSpan-zh/blob/master/docs/OTA.md) - 直接从 Arduino IDE 无线更新您的草图，无需串行连接
 * [HomeSpan PWM](https://github.com/abackup/HomeSpan-zh/blob/master/docs/PWM.md) - 使用 ESP32 的片上 PWM 外设集成控制标准 LED 和伺服电机
 * [HomeSpan 射频控制](https://github.com/abackup/HomeSpan-zh/blob/master/docs/RMT.md) - 使用 ESP32 的片上 RMT 外设轻松生成 RF 和 IR 远程控制信号
-* [HomeSpan 灯条](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Pixels.md) - 可寻址的单线和两线 RGB 和 RGBW LED 和 LED 灯条的集成控制
+* [HomeSpan 灯带](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Pixels.md) - 可寻址的单线和两线 RGB 和 RGBW LED 和 LED 灯条的集成控制
 * [HomeSpan 电视服务](https://github.com/abackup/HomeSpan-zh/blob/master/docs/TVServices.md) - 如何使用 HomeKit 的无证电视服务和特性
 * [HomeSpan 消息记录](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Logging.md) - 如何生成日志消息以显示在 Arduino 串行监视器上以及可选地发布到 集成的 Web 日志页面
 * [HomeSpan 项目](https://github.com/topics/homespan) - HomeSpan 库的实际应用
