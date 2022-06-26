@@ -37,7 +37,7 @@ ESP32 开发板在大多数电子爱好网站上都有不同的配置，例如 [
 * 将 ESP32 板插入计算机上的空闲 USB 端口
 
 * 启动 Arduino IDE* Load one of the HomeSpan tutorial sketches (for example, *File → Examples → HomeSpan → 01-SimpleLightBulb*)
-* 
+
 * 加载 HomeSpan 教程草图之一（例如，*File → Examples → HomeSpan → 01-SimpleLightBulb*）
 
 * 设置开发板以匹配您的 ESP32 开发板（例如，*Tools → Board → ESP32 Arduino → Adafruit ESP32 Feather*）
