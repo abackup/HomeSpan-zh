@@ -42,7 +42,6 @@ ESP32 开发板在大多数电子爱好网站上都有不同的配置，例如 [
 
 * 设置开发板以匹配您的 ESP32 开发板（例如，*Tools → Board → ESP32 Arduino → Adafruit ESP32 Feather*）
 
-
 * 打开 Arduino 串行监视器（*工具 → 串行监视器*）
 
 * 编译并上传 HomeSpan 草图（*草图→上传*）
