@@ -55,7 +55,7 @@ HomeSpan与[Arduino-ESP32 Board Manager](https://github.com/espressif/arduino-es
   * 提供可选使用 NTP 时间服务器来设置设备时钟，以便所有消息都可以正确加时间戳
   * 有关完整详细信息，请参阅 [HomeSpan 消息记录](https://github.com/HomeSpan/HomeSpan/blob/master/docs/Logging.md)
 
-* ** LOG() 宏的新 *printf* 样式格式**
+* **LOG() 宏的新 *printf* 样式格式**
    * 添加 LOG0()、LOG1() 和 LOG2() 宏的可变参数形式，以便它们可以以与标准 C printf 函数相同的方式使用
    * 大大简化了日志消息的创建
    * 请参阅 [HomeSpan 消息记录](https://github.com/HomeSpan/HomeSpan/blob/master/docs/Logging.md) 了解完整详情
