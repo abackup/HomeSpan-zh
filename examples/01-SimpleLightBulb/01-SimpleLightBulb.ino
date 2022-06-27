@@ -36,78 +36,77 @@
 ////////////////////////////////////////////////////////////
 
 
-  // WELCOME TO HOMESPAN!
+  // 欢迎来到HOMESPAN!
   
-  // This first example introduces the HomeSpan library and demonstrates how to implement a simple on/off light control
-  // using a combination of HomeSpan Accessory, Service, and Characteristic objects.  Once this sketch has been uploaded
-  // to your HomeSpan device and the device is paired to your home, a new "lightbulb" tile will appear in the Home App of your iPhone,
-  // iPad, or Mac.
+  // 第一个示例介绍 HomeSpan 库并演示如何实现简单的开/关灯控制
+  // 使用 HomeSpan Accessory、Service 和 Characteristic 对象的组合。上传此草图后
+  // 到您的 HomeSpan 设备并且该设备已与您的家配对，一个新的“灯泡”图块将出现在您 iPhone 的 Home 应用程序中，
+  // iPad 或 Mac。
   
-  // Though the tile will be fully operational (i.e. you can change the status of the lightbulb from "on" or "off"), we won't yet connect
-  // an actual light or LED to the HomeSpan device, so nothing real will light up.  Instead, in this and the next few examples, we'll focus
-  // on learning about the different ways HomeKit controls can be configured.  Starting in Example 5, we'll connect an LED to the device
-  // and introduce the methods that actually turn the LED on and off from your Home App.
+  // 虽然图块将完全可操作（即您可以将灯泡的状态从“开”或“关”更改），但我们还没有连接
+  // HomeSpan 设备的实际灯或 LED，因此没有任何实际的东西会亮起。相反，在这个和接下来的几个例子中，我们将关注
+  // 了解配置 HomeKit 控件的不同方式。从示例 5 开始，我们将 LED 连接到设备
+  // 并介绍在您的 Home App 中实际打开和关闭 LED 的方法。
 
-  // NOTE: All HomeSpan examples are best understood when reviewed in conjunction with the documentation provided on the HomeSpan GitHub page.
-  // See https://github.com/HomeSpan/HomeSpan for details and references.  In particular, you may want to review the HomeSpan API Overview
-  // page before proceeding.
+  // 注意：与 HomeSpan GitHub 页面上提供的文档一起查看时，所有 HomeSpan 示例都可以得到最好的理解。
+  // 有关详细信息和参考，请参阅 https://github.com/HomeSpan/HomeSpan。特别是，您可能需要查看 HomeSpan API 概述
+  // 继续之前的页面。
   
-  // These examples also make frequent reference to  Apple's HomeKit Accessory Protocol Specification, known as HAP.  You can download this
-  // directly from Apple at https://developer.apple.com/support/homekit-accessory-protocol.
+  // 这些示例还经常引用 Apple 的 HomeKit 附件协议规范，即 HAP。你可以下载这个
+  // 直接来自 Apple，网址为 https://developer.apple.com/support/homekit-accessory-protocol。
 
-  // LET'S GET STARTED...
+  // 让我们开始吧...
 
-#include "HomeSpan.h"         // HomeSpan sketches always begin by including the HomeSpan library
+#include "HomeSpan.h"         // HomeSpan 草图总是以包含 HomeSpan 库开始
 
-void setup() {                // Your HomeSpan code should be placed within the standard Arduino setup() function
+void setup() {                // 您的 HomeSpan 代码应该放在标准的 Arduino setup() 函数中
  
-  Serial.begin(115200);       // Start a serial connection so you can receive HomeSpan diagnostics and control the device using HomeSpan's Command-Line Interface (CLI)
+  Serial.begin(115200);       // 启动串行连接，以便您可以接收 HomeSpan 诊断信息并使用 HomeSpan 的命令行界面 (CLI) 控制设备
 
-  // The HomeSpan library creates a global object named "homeSpan" that encapsulates all HomeSpan functionality.
-  // The begin() method is used to initialize HomeSpan and start all HomeSpan processes.
+  // HomeSpan 库创建一个名为“homeSpan”的全局对象，它封装了所有 HomeSpan 功能。
+  // begin() 方法用于初始化 HomeSpan 并启动所有 HomeSpan 进程。
   
-  // The first two parameters are Category and Name, which are used by HomeKit to configure the icon and name
-  // of the device shown in the Home App when initially pairing a HomeSpan device with your iPhone.
+  // 前两个参数是Category和Name，HomeKit用来配置图标和名称
+  // 最初将 HomeSpan 设备与 iPhone 配对时，Home App 中显示的设备的名称。
   
-  // In addition, the Name you choose below will be used as the "default name" for all Accessory Tiles.  When you first
-  // pair the device, the Home App will display this default name and allow you to change it (for each Accessory Tile)
-  // before pairing is complete.  However, even after the device is paired you can always change the name of any
-  // Accessory Tile directly from the Home App via the set-up screen for any Tile.
+  // 此外，您在下面选择的名称将用作所有配件瓷砖的“默认名称”。当你第一次
+  // 配对设备，Home App 将显示此默认名称并允许您更改它（对于每个 Accessory Tile）
+  // 在配对完成之前。但是，即使在设备配对后，您也可以随时更改任何设备的名称
+  // 通过任何 Tile 的设置屏幕直接从 Home App 中的 Accessory Tile。
 
-  // IMPORTANT: The Name you choose below MUST BE UNIQUE across all your HomeSpan devices!
+  // 重要提示：您在下面选择的名称在您的所有 HomeSpan 设备中必须是唯一的！
 
-  homeSpan.begin(Category::Lighting,"HomeSpan LightBulb");   // initializes a HomeSpan device named "HomeSpan Lightbulb" with Category set to Lighting
+  homeSpan.begin(Category::Lighting,"HomeSpan LightBulb");   // 初始化一个名为“HomeSpan Lightbulb”的 HomeSpan 设备，其中 Category 设置为 Lighting
 
-  // Next, we construct a simple HAP Accessory Database with a single Accessory containing 3 Services,
-  // each with their own required Characteristics.
+  // 接下来，我们用单个 Accessory c 构建一个简单的 HAP Accessory Database
+  // 每个都有自己需要的特性。
   
-  new SpanAccessory();                              // Begin by creating a new Accessory using SpanAccessory(), no arguments needed
+  new SpanAccessory();                              // 首先使用 SpanAccessory() 创建一个新的附件，不需要参数
 
-    new Service::AccessoryInformation();            // HAP requires every Accessory to implement an AccessoryInformation Service
+    new Service::AccessoryInformation();            // HAP 要求每个 Accessory 实现一个 AccessoryInformation Service
 
-  // The only required Characteristic for the Accessory Information Service is the special Identify Characteristic.  It takes no arguments:
+  // 附件信息服务唯一需要的特性是特殊的识别特性。它不需要任何参数：
   
-      new Characteristic::Identify();               // Create the required Identify Characteristic
+      new Characteristic::Identify();               // 创建所需的识别特征
       
-  // The Accessory Information Service also includes these four OPTIONAL Characteristics.  They perform no function and are for
-  // informational purposes only --- their values are displayed in HomeKit's setting panel for each Accessory.  Feel free
-  // to uncomment the lines and implement any combination of them, or none at all.
+  // 附件信息服务还包括这四个可选特征。它们不执行任何功能并且用于
+  // 仅供参考 --- 它们的值显示在 HomeKit 的每个附件的设置面板中。随意
+  // 取消注释这些行并实现它们的任意组合，或者根本没有。
                                                       
-//      new Characteristic::Manufacturer("HomeSpan");   // Manufacturer of the Accessory (arbitrary text string, and can be the same for every Accessory)
-//      new Characteristic::SerialNumber("123-ABC");    // Serial Number of the Accessory (arbitrary text string, and can be the same for every Accessory)
-//      new Characteristic::Model("120-Volt Lamp");     // Model of the Accessory (arbitrary text string, and can be the same for every Accessory)
-//      new Characteristic::FirmwareRevision("0.9");    // Firmware of the Accessory (arbitrary text string, and can be the same for every Accessory)
+//      new Characteristic::Manufacturer("HomeSpan");   // 配件的制造商（任意文本字符串，每个配件都可以相同）
+//      new Characteristic::SerialNumber("123-ABC");    // 配件序列号（任意字符串，每个配件都可以相同）
+//      new Characteristic::Model("120-Volt Lamp");     // 配件型号（任意字符串，每个配件都可以相同）
+//      new Characteristic::FirmwareRevision("0.9");    // 配件的固件（任意文本字符串，每个配件都可以相同）
 
-  // *NOTE* HAP requires that the Accessory Information Service always be instantiated BEFORE any other Services, which is why we created it first.
+  // *注意* HAP 要求附件信息服务始终在任何其他服务之前实例化，这就是我们首先创建它的原因。
+  // 现在已经定义了所需的“信息”服务，我们终于可以创建我们的灯泡服务了
 
-  // Now that the required "informational" Services have been defined, we can finally create our Light Bulb Service
+    new Service::LightBulb();                       // 创建灯泡服务
+      new Characteristic::On();                       // 此服务需要“开”字符来打开和关闭灯
 
-    new Service::LightBulb();                       // Create the Light Bulb Service
-      new Characteristic::On();                       // This Service requires the "On" Characterstic to turn the light on and off
-
-  // That's all that's needed to define a database from scratch, including all required HAP elements, to control a single lightbulb.
-  // Of course this sketch does not yet contain any code to implement the actual operation of the light - there is nothing to
-  // turn on and off.  But you'll still see a Light Bulb tile show up in your Home App with an ability to toggle it on and off.
+  // 这就是从头开始定义数据库所需的全部内容，包括所有必需的 HAP 元素，以控制单个灯泡。
+  // 当然，这个草图还没有包含任何代码来实现灯的实际操作 - 没有什么可做的
+  // 打开和关闭。但是您仍然会在您的家庭应用程序中看到一个灯泡图块，该图块可以打开和关闭它。
 
 } // end of setup()
 
@@ -115,14 +114,14 @@ void setup() {                // Your HomeSpan code should be placed within the 
 
 void loop(){
 
-  // The code in setup above implements the Accessory Attribute Database, but performs no operations.  HomeSpan itself must be
-  // continuously polled to look for requests from Controllers, such as the Home App on your iPhone.  The poll() method below is all that
-  // is needed to perform this continuously in each iteration of loop()
+  // 以上设置中的代码实现了附件属性数据库，但不执行任何操作。 HomeSpan 本身必须是
+  // 不断轮询以查找来自控制器的请求，例如 iPhone 上的 Home App。下面的 poll() 方法就是这样
+  // 需要在 loop() 的每次迭代中连续执行此操作
   
-  homeSpan.poll();         // run HomeSpan!
+  homeSpan.poll();         // 运行 HomeSpan！
   
 } // end of loop()
 
-// Congratulations!  You've created your first HomeSpan sketch, ready to be uploaded to your ESP32 board and paired with HomeKit.
+//恭喜！你已经创建了你的第一个 HomeSpan 草图，可以上传到你的 ESP32 板上并与 HomeKit 配对。
 //
 //
