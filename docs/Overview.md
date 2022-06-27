@@ -1,37 +1,37 @@
-# HomeSpan API Overview
+# HomeSpan API 概述
 
-The basic structure of a HomeSpan sketch is as follows:
+HomeSpan 草图的基本结构如下：
 
 ```C++
-#include "HomeSpan.h"         // include the HomeSpan library
+#include "HomeSpan.h"         // 包括 HomeSpan 库
 
 void setup() {     
  
-  Serial.begin(115200);       // start the Serial interface
+  Serial.begin(115200);       // 启动串行接口
   
-  /// HOMESPAN SETUP CODE GOES HERE ///
+  /// HOMESPAN 设置代码在这里 ///
   
 } // end of setup()
 
 void loop(){
 
-  /// HOMESPAN LOOP CODE GOES HERE ///
+  /// HOMESPAN 循环代码在这里 ///
 
 } // end of loop()
 ```
 
-Inclusion of HomeSpan.h creates a global object called `homeSpan` that implements a variety of methods.  The two most important are `begin()` and `poll()`.  The `begin()` method, which takes a number of optional parameters, initializes HomeSpan and is placed near the begining of the `setup()` section.  The `poll()` method, which take no arguments, is placed inside `loop()` and is what causes HomeSpan to run all its code.  This is generally the only function placed in the `loop()` section.  Our sketch now looks like this:
+包含 HomeSpan.h 会创建一个名为“homeSpan”的全局对象，它实现了各种方法。 最重要的两个是 `begin()` 和 `poll()`。 `begin()` 方法采用许多可选参数，初始化 HomeSpan 并放置在 `setup()` 部分的开头附近。 不带参数的 `poll()` 方法被放置在 `loop()` 中，这也是 HomeSpan 运行其所有代码的原因。 这通常是放在 `loop()` 部分中的唯一函数。 我们的草图现在看起来像这样：
 
 ```C++
-#include "HomeSpan.h"         // include the HomeSpan library
+#include "HomeSpan.h"         // 包括 HomeSpan 库
 
 void setup() {     
  
-  Serial.begin(115200);       // start the Serial interface
+  Serial.begin(115200);       // 启动串行接口
   
-  homeSpan.begin();           // initialize HomeSpan
+  homeSpan.begin();           // 初始化 HomeSpan
   
-  /// DEFINITION OF HAP ACCESSORY ATTRIBUTE DATABASE GOES HERE ///
+  /// HAP 附件属性数据库的定义在此处 ///
   
 } // end of setup()
 
