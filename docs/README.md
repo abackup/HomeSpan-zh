@@ -102,7 +102,7 @@ HomeSpan 包括以下文档：
 
 请注意，所有文档都是受版本控制的，并且与每个分支相关联。 *master* 分支通常指向最新版本。 *dev* 分支（如果可用）将包含正在积极开发中的代码。
 
-# External Resources
+# 外部资源
 
 除了 HomeSpan 资源之外，不熟悉 HomeKit 编程的开发人员还应下载 Apple 的 [HomeKit Accessory Protocol Specification, Release R2 (HAP-R2)](https://developer.apple.com/homekit/specification/)。 下载是免费的，但 Apple 要求您注册您的 Apple ID 才能访问该文档。
 
