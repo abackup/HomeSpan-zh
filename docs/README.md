@@ -55,28 +55,28 @@ HomeSpan与[Arduino-ESP32 Board Manager](https://github.com/espressif/arduino-es
   * 提供可选使用 NTP 时间服务器来设置设备时钟，以便所有消息都可以正确加时间戳
   * 有关完整详细信息，请参阅 [HomeSpan 消息记录](https://github.com/HomeSpan/HomeSpan/blob/master/docs/Logging.md)
 
-* **New *printf*-style formatting for LOG() macros**
-  * Adds variadic forms of the LOG0(), LOG1(), and LOG2() macros so they can be used in the same manner as a standard C printf function
-  * Greatly simplifies the creation of log messages 
-  * See [HomeSpan Message Logging](https://github.com/HomeSpan/HomeSpan/blob/master/docs/Logging.md) for full details
+* ** LOG() 宏的新 *printf* 样式格式**
+   * 添加 LOG0()、LOG1() 和 LOG2() 宏的可变参数形式，以便它们可以以与标准 C printf 函数相同的方式使用
+   * 大大简化了日志消息的创建
+   * 请参阅 [HomeSpan 消息记录](https://github.com/HomeSpan/HomeSpan/blob/master/docs/Logging.md) 了解完整详情
 
-* **New CUSTOM_SERV() macro**
-  * Allows for the creation of Custom Services
-  * Can be used in conjunction with the existing CUSTOM_CHAR() macro to produce Services beyond those provided in HAP-R2
-  * Includes a fully worked example of a custom [Pressure Sensor Accessory](https://github.com/HomeSpan/HomeSpan/blob/master/Other%20Examples/CustomService) that is recognized by *Eve for HomeKit*
-  * See [HomeSpan API Reference](https://github.com/HomeSpan/HomeSpan/blob/master/docs/Reference.md) for details
+* **新的 CUSTOM_SERV() 宏**
+   * 允许创建自定义服务
+   * 可以与现有的 CUSTOM_CHAR() 宏结合使用，以产生超出 HAP-R2 提供的服务
+   * 包括一个完整的自定义 [压力传感器附件](https://github.com/HomeSpan/HomeSpan/blob/master/Other%20Examples/CustomService) 示例，该示例已被 *Eve for HomeKit* 识别
+   * 详见【HomeSpan API 参考】(https://github.com/HomeSpan/HomeSpan/blob/master/docs/Reference.md)
 
-* **New "Safe-Load" mode for OTA updates**
-  * HomeSpan can check to make sure the new sketch being uploaded via OTA is another HomeSpan sketch.  If not, the upload fails
-  * Upon rebooting after an OTA update, HomeSpan checks to ensure that OTA is enabled in the updated sketch.  If not, HomeSpan rolls back to the previous version of the sketch
-  * See [HomeSpan OTA](https://github.com/HomeSpan/HomeSpan/blob/master/docs/OTA.md) for full details
+* **用于 OTA 更新的新“安全加载”模式**
+   * HomeSpan 可以检查以确保通过 OTA 上传的新草图是另一个 HomeSpan 草图。 如果不是，则上传失败
+   * 在 OTA 更新后重新启动时，HomeSpan 会检查以确保在更新的草图中启用了 OTA。 如果没有，HomeSpan 会回滚到之前版本的草图
+   * 详情请参阅 [HomeSpan OTA](https://github.com/HomeSpan/HomeSpan/blob/master/docs/OTA.md)
   
-* **Additional updates include:**
-  * a new (optional) argument to `SpanUserCommand()` that allows for passing a pointer to any arbitrary data structure
-  * a new SPAN_ACCESSORY() macro that expands to a common snippet of code often used when creating Accessories 
-  * refreshed and streamlined example Tutorials, and fully reworked Examples 7 and 11, to best conform with Home App behavior under iOS 15.4
+* **其他更新包括：**
+   * `SpanUserCommand()` 的新（可选）参数，允许将指针传递给任意数据结构
+   * 一个新的 SPAN_ACCESSORY() 宏，它扩展为创建配件时经常使用的通用代码片段
+   * 更新和简化示例教程，并完全重做示例 7 和 11，以最好地符合 iOS 15.4 下的 Home App 行为
 
-See [Releases](https://github.com/HomeSpan/HomeSpan/releases) for details on all changes and bug fixes included in this update.
+有关此更新中包含的所有更改和错误修复的详细信息，请参阅 [Releases](https://github.com/HomeSpan/HomeSpan/releases)。
 
 # HomeSpan资源
 
@@ -100,16 +100,16 @@ HomeSpan 包括以下文档：
 * [HomeSpan 项目](https://github.com/topics/homespan) - HomeSpan 库的实际应用
 * [HomeSpan FAQ](https://github.com/abackup/HomeSpan-zh/blob/master/docs/FAQ.md) - 常见问题解答
 
-Note that all documentation is version-controlled and tied to each branch.  The *master* branch generally points to the latest release.  The *dev* branch, when available, will contain code under active development.
+请注意，所有文档都是受版本控制的，并且与每个分支相关联。 *master* 分支通常指向最新版本。 *dev* 分支（如果可用）将包含正在积极开发中的代码。
 
 # External Resources
 
-In addition to HomeSpan resources, developers who are new to HomeKit programming should download Apple's [HomeKit Accessory Protocol Specification, Release R2 (HAP-R2)](https://developer.apple.com/homekit/specification/). The download is free, but Apple requires you to register your Apple ID for access to the document.
+除了 HomeSpan 资源之外，不熟悉 HomeKit 编程的开发人员还应下载 Apple 的 [HomeKit Accessory Protocol Specification, Release R2 (HAP-R2)](https://developer.apple.com/homekit/specification/)。 下载是免费的，但 Apple 要求您注册您的 Apple ID 才能访问该文档。
 
-You ***do not*** need to read the entire document.  The whole point of HomeSpan is that it implements all the required HAP operations under the hood so you can focus on just programming whatever logic is needed to control your real-world appliances (lights, fans, RF remote controls, etc.) with the device.  However, you will find Chapters 8 and 9 of the HAP guide to be an invaluable reference as it lists and describes all of the Services and Characteristics implemented in HomeSpan, many of which you will routinely utilize in your own HomeSpan sketches.
+您***不需要***阅读整个文档。 HomeSpan 的全部意义在于它在引擎盖下实现了所有必需的 HAP 操作，因此您可以专注于编程任何所需的逻辑，以使用该设备控制您的实际设备（灯、风扇、RF 遥控器等） . 但是，您会发现 HAP 指南的第 8 章和第 9 章是非常宝贵的参考，因为它列出并描述了 HomeSpan 中实现的所有服务和特征，其中许多您将在自己的 HomeSpan 草图中经常使用。
 
 ---
 
-### Feedback or Questions?
+### 反馈或问题？
 
-Please consider adding to the [HomeSpan Discussion Board](https://github.com/HomeSpan/HomeSpan/discussions), or email me directly at [homespan@icloud.com](mailto:homespan@icloud.com).
+请考虑添加到 [HomeSpan 讨论区](https://github.com/HomeSpan/HomeSpan/discussions)，或直接发送电子邮件至 [homespan@icloud.com](mailto:homespan@icloud.com)。
