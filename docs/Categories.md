@@ -1,45 +1,45 @@
-# HomeSpan Accessory Categories
+# HomeSpan 配件类别
 
-Every HomeSpan device must be assigned a HomeKit Accessory Category. HomeSpan implements these categories as C++ Classes with names that exactly match the spelling and capitalization specified by Apple in Section 13 of [HAP-R2](https://developer.apple.com/homekit/specification/), but without any spaces.  HomeSpan Accessory Categories are defined in HomeSpan's `Category` namespace.  For example, HomeSpan defines the *Garage Door Openers* Category (HAP Category 4) as `Category::GarageDoorOpeners`, which could be used when initializing HomeSpan as follows:
+每个 HomeSpan 设备都必须分配一个 HomeKit 配件类别。 HomeSpan 将这些类别实现为 C++ 类，其名称与 Apple 在 [HAP-R2](https://developer.apple.com/homekit/specification/) 的第 13 节中指定的拼写和大小写完全匹配，但没有任何空格。 HomeSpan 附件类别在 HomeSpan 的 `Category` 命名空间中定义。 例如，HomeSpan 将 *Garage Door Openers* 类别（HAP 类别 4）定义为 `Category::GarageDoorOpeners`，可以在初始化 HomeSpan 时使用，如下所示：
 
 ```C++
 homeSpan.begin(Category::GarageDoorOpeners,"Acme Garage Door Lifts");
 ```
 
-The table below provides a list of all HomeSpan Categories.
+下表提供了所有 HomeSpan 类别的列表。
 
-### Accessory Categories
+### 配件类别
 
 * AirConditioners
 * AirPurifiers
 * Bridges
-* Dehumidifiers
+* Dehumidifiers 除湿机
 * Doors
 * Fans
-* Faucets
+* Faucets 水龙头
 * Lighting
 * Locks
-* GarageDoorOpeners
-* Heaters
-* Humidifiers
-* IPCameras
-* Other
-* Outlets
-* ProgrammableSwitches
-* SecuritySystems
-* Sensors
-* ShowerSystems
-* Sprinklers
+* GarageDoorOpeners 车库门开启器
+* Heaters 加热器
+* Humidifiers 加湿器
+* IPCameras 网络摄像机
+* Other 其他
+* Outlets 插座
+* ProgrammableSwitches 可编程开关
+* SecuritySystems 安全系统
+* Sensors 传感器
+* ShowerSystems 淋浴系统
+* Sprinklers 洒水器
 * Switches
-* Thermostats
-* VideoDoorbells
+* Thermostats 恒温器
+* VideoDoorbells 可视门铃
 * Windows
-* WindowCoverings
-* Television
+* WindowCoverings 窗帘
+* Television 电视
 
-Note that the HomeKit primarily uses the Accessory Category of a device for determining the icon to show in the Home App when a device is being paired.  Apart from this purely cosmetic function, the Category assigned to a device does not in any way limit which Services or Characteristics can be implemented on that device.
+请注意，HomeKit 主要使用设备的附件类别来确定在设备配对时在 Home App 中显示的图标。 除了这个纯粹的装饰功能外，分配给设备的类别不会以任何方式限制可以在该设备上实现的服务或特性。
 
 ---
 
-[↩️](README.md) Back to the Welcome page
+[↩️](README.md) 返回欢迎页面
 
