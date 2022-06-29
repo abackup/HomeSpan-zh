@@ -1,25 +1,25 @@
-# HomeSpan Services and Characteristics
+# HomeSpan 服务和特点
 
-HomeSpan implements all [HAP-R2](https://developer.apple.com/homekit/specification/) Services and Characteristics except for those that involve video or audio streaming, Apple TV, or advanced lock management (i.e. all HAP Services except those that require Characteristics with a TLV8 data type).
+HomeSpan 实现了所有 [HAP-R2](https://developer.apple.com/homekit/specification/) 服务和特性，除了那些涉及视频或音频流、Apple TV 或高级锁定管理的服务和特性（即所有 HAP 服务，除了那些需要具有 TLV8 数据类型的特性）。
 
-HomeSpan Services and Characteristics are implemented as C++ Classes with names that exactly match the spelling and capitalization specified by Apple in Sections 8  and 9 of [HAP-R2](https://developer.apple.com/homekit/specification/), but without any spaces.  HomeSpan Services are defined in HomeSpan's `Service` namespace.  HomeSpan Characteristics are defined in HomeSpan's `Characteristic` namespace.  For example, HomeSpan defines the *Carbon Dioxide Sensor* Service (HAP Service 8.7) as `Service::CarbonDioxideSensor`, and the *Carbon Dioxide Detected* Characteristic (HAP Characteristic 9.16) as `Characteristic::CarbonDioxideDetected`.
+HomeSpan 服务和特性作为 C++ 类实现，其名称与 Apple 在 [HAP-R2] (https://developer.apple.com/homekit/specification/) 的第 8 和 9 节中指定的拼写和大小写完全匹配，但是没有任何空格。 HomeSpan 服务在 HomeSpan 的 `Service` 命名空间中定义。 HomeSpan 特征在 HomeSpan 的 `Characteristic` 命名空间中定义。例如，HomeSpan 将 *Carbon Dioxide Sensor* 服务 (HAP Service 8.7) 定义为 `Service::CarbonDioxideSensor`，将 *Carbon Dioxide Detected* Characteristic (HAP Characteristic 9.16) 定义为 `Characteristic::CarbonDioxideDetected`。
 
-HomeSpan Services and Characteristics are instantiated with a C++ `new` command.  Services do not take any arguments, whereas Characteristics take a single, optional argument that is used to initialize the value of the Characteristic at startup.  If this argument is not specified, HomeSpan will apply a reasonable [default value](#characteristic-types-and-defaults) based on the Characteristic's type and allowed range.
+HomeSpan 服务和特性使用 C++ `new` 命令实例化。服务不采用任何参数，而特性采用单个可选参数，用于在启动时初始化特性的值。如果未指定此参数，HomeSpan 将根据 Characteristic 的类型和允许的范围应用合理的 [默认值](#characteristic-types-and-defaults)。
 
-A list of all HomeSpan Services is provided in the table below.  For each Service the table also indicates which Characteristics are required and which are optional.  For example, a dimmable light bulb could be configured in HomeSpan as such:
+下表提供了所有 HomeSpan 服务的列表。对于每项服务，该表还指出了哪些特性是必需的，哪些是可选的。例如，可以在 HomeSpan 中配置可调光灯泡，如下所示：
 
 ```C++
-new Service::LightBulb();                         // instantiate a Light Bulb Service
-  new Characteristics:On();                         // instantiate the required On Characteristic without setting initial value
-  new Characteristic::Brightness(50);               // instantiate an optional Brightness Characteristic and set initial value to 50%
-  new Characteristic::Name("Living Room Lamp");     // instantiate an optional Name Characteristic for this Service, and set to "Living Room Lamp"
+new Service::LightBulb();                         // 实例化一个灯泡服务e
+  new Characteristics:On();                         // 在不设置初始值的情况下实例化所需的 On Characteristic
+  new Characteristic::Brightness(50);               // 实例化一个可选的亮度特性并将初始值设置为 50%
+  new Characteristic::Name("Living Room Lamp");     // 为此服务实例化一个可选的名称特征，并设置为“客厅灯”
 ```
 
-Please see Sections 8 and 9 of [HAP-R2](https://developer.apple.com/homekit/specification/) for a complete description of all HAP Services and Characteristics.  Note that HomeSpan's Service and Characteristic Classes already contain all the required HAP fields, such as the UUID, Format, and Permissions, so you don't need to specify any of these parameters.
+请参阅 [HAP-R2](https://developer.apple.com/homekit/specification/) 的第 8 节和第 9 节，了解所有 HAP 服务和特征的完整描述。 请注意，HomeSpan 的服务和特征类已经包含所有必需的 HAP 字段，例如 UUID、格式和权限，因此您无需指定任何这些参数。
 
-Additionally, when first starting up, HomeSpan begins by validating the device's configuration to ensure each Service you instantiate includes all required Characteristics, but does not include any Characteristics that are neither required nor optional.  If any errors are found, HomeSpan reports them to the Arduino Serial Monitor and halts the program.
+此外，首次启动时，HomeSpan 首先验证设备的配置，以确保您实例化的每个服务都包含所有必需的特征，但不包括任何既非必需也非可选的特征。 如果发现任何错误，HomeSpan 会将它们报告给 Arduino 串行监视器并停止程序。
 
-### Service List
+### 服务列表
 
 | Service | Required Characteristics | Optional Characteristics |
 | ------- | -------------------- | ------------------- |
@@ -65,7 +65,7 @@ Additionally, when first starting up, HomeSpan begins by validating the device's
 | WindowCovering | CurrentPosition<br>TargetPosition | Name<br>PositionState<br>HoldPosition<br>CurrentHorizontalTiltAngle<br>TargetHorizontalTiltAngle<br>CurrentVerticalTiltAngle<br>TargetVerticalTiltAngle<br>ObstructionDetected |
 
 
-### Characteristic Types and Defaults
+### 特征类型和默认值
 
 |Characteristic|Type|Default
 |---|---|---|
@@ -177,7 +177,7 @@ Additionally, when first starting up, HomeSpan begins by validating the device's
 |WaterLevel|double|0|
 
 
-### HAP Format Codes (HAP-R2 Table 6-5)
+### HAP 格式代码（HAP-R2 表 6-5）
 
 |HAP-R2 Format Code|HomeSpan C++ Type|
 |------------------|-----------------|
@@ -194,4 +194,4 @@ Additionally, when first starting up, HomeSpan begins by validating the device's
 
 ---
 
-[↩️](README.md) Back to the Welcome page
+[↩️](README.md) 返回欢迎页面
