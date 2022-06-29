@@ -74,4 +74,4 @@ HomeSpan *自动* 在实例化时将通道和计时器分配给 LedPin 和 Servo
 
 ---
 
-[↩️](README.md) Back to the Welcome page
+[↩️](README.md) 返回欢迎页面
