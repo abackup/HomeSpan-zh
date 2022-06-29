@@ -47,37 +47,6 @@ HomeSpan与Arduino-ESP32 Board Manager版本1和版本2完全兼容 。在版本
   * 启动WiFi接入点
 * 一个独立的、详细的最终用户指南
 
-## ❗最新更新-HomeSpan 1.5.1 (4/17/2022)
-
-* **新的网络日志功能**
-  * HomeSpan 现在可以托管用于消息记录的Web日志页面
-  * 新的 WEBLOG() 宏使创建用户定义的日志消息变得容易
-  * 提供可选使用 NTP 时间服务器来设置设备时钟，以便所有消息都可以正确加时间戳
-  * 有关完整详细信息，请参阅 [HomeSpan 消息记录](https://github.com/HomeSpan/HomeSpan/blob/master/docs/Logging.md)
-
-* **LOG() 宏的新 *printf* 样式格式**
-   * 添加 LOG0()、LOG1() 和 LOG2() 宏的可变参数形式，以便它们可以以与标准 C printf 函数相同的方式使用
-   * 大大简化了日志消息的创建
-   * 请参阅 [HomeSpan 消息记录](https://github.com/HomeSpan/HomeSpan/blob/master/docs/Logging.md) 了解完整详情
-
-* **新的 CUSTOM_SERV() 宏**
-   * 允许创建自定义服务
-   * 可以与现有的 CUSTOM_CHAR() 宏结合使用，以产生超出 HAP-R2 提供的服务
-   * 包括一个完整的自定义 [压力传感器附件](https://github.com/HomeSpan/HomeSpan/blob/master/Other%20Examples/CustomService) 示例，该示例已被 *Eve for HomeKit* 识别
-   * 详见【HomeSpan API 参考】(https://github.com/HomeSpan/HomeSpan/blob/master/docs/Reference.md)
-
-* **用于 OTA 更新的新“安全加载”模式**
-   * HomeSpan 可以检查以确保通过 OTA 上传的新草图是另一个 HomeSpan 草图。 如果不是，则上传失败
-   * 在 OTA 更新后重新启动时，HomeSpan 会检查以确保在更新的草图中启用了 OTA。 如果没有，HomeSpan 会回滚到之前版本的草图
-   * 详情请参阅 [HomeSpan OTA](https://github.com/HomeSpan/HomeSpan/blob/master/docs/OTA.md)
-  
-* **其他更新包括：**
-   * `SpanUserCommand()` 的新（可选）参数，允许将指针传递给任意数据结构
-   * 一个新的 SPAN_ACCESSORY() 宏，它扩展为创建配件时经常使用的通用代码片段
-   * 更新和简化示例教程，并完全重做示例 7 和 11，以最好地符合 iOS 15.4 下的 Home App 行为
-
-有关此更新中包含的所有更改和错误修复的详细信息，请参阅 [Releases](https://github.com/HomeSpan/HomeSpan/releases)。
-
 # HomeSpan资源
 
 HomeSpan包括以下文档：
