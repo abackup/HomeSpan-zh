@@ -26,7 +26,7 @@ HomeSpan与Arduino-ESP32 Board Manager版本1和版本2完全兼容 。在版本
   * 带有各种信息、调试和配置命令的命令行界面
 * 内置数据库验证，确保您的配置满足所有HAP要求
 * 利用ESP32的16通道PWM外设轻松控制的专用类：
-  * LED 亮度
+  * LED亮度
   * 伺服电机
 * 集成按钮功能，支持单击、双击和长按
 * 集成访问ESP32的片上远程控制外设，轻松生成IR和RF信号
@@ -51,13 +51,13 @@ HomeSpan与Arduino-ESP32 Board Manager版本1和版本2完全兼容 。在版本
 
 HomeSpan包括以下文档：
 
-* [HomeSpan入门](https://github.com/abackup/HomeSpan-zh/blob/master/docs/GettingStarted.md) -设置开发HomeSpan设备所需的软件和硬件
+* [HomeSpan入门](https://github.com/abackup/HomeSpan-zh/blob/master/docs/GettingStarted.md) - 设置开发HomeSpan设备所需的软件和硬件
 * [HomeSpan API概述](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Overview.md) - HomeSpan API概述，包括开发您的第一个API的分步指南HomeSpan草图
 * [HomeSpan教程](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Tutorials.md) - HomeSpan教程草图指南
-* [HomeSpan服务和特性](https://github.com/abackup/HomeSpan-zh/blob/master/docs/ServiceList.md) - HomeSpan 支持的所有HAP服务和特性的列表
+* [HomeSpan服务和特性](https://github.com/abackup/HomeSpan-zh/blob/master/docs/ServiceList.md) - HomeSpan支持的所有HAP服务和特性的列表
 * [HomeSpan配件类别](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Categories.md) - HomeSpan定义的所有HAP配件类别的列表
 * [HomeSpan命令行界面(CLI)](https://github.com/abackup/HomeSpan-zh/blob/master/docs/CLI.md) - 配置HomeSpan设备的WiFi凭据，修改其HomeKit设置代码，监控并更新其状态，并从Arduino IDE串行监视器访问详细的实时设备诊断
-* [HomeSpan用户指南](https://github.com/abackup/HomeSpan-zh/blob/master/docs/UserGuide.md) - 关于如何配置已经编程的HomeSpan设备的WiFi凭据、修改其HomeKit设置的统包说明编码，并将设备与HomeKit配对。 无需电脑！
+* [HomeSpan用户指南](https://github.com/abackup/HomeSpan-zh/blob/master/docs/UserGuide.md) - 关于如何配置已经编程的HomeSpan设备的WiFi凭据、修改其HomeKit设置的统包说明编码，并将设备与HomeKit配对。无需电脑！
 * [HomeSpan API参考](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Reference.md) - HomeSpan库API完整指南
 * [HomeSpan二维码](https://github.com/abackup/HomeSpan-zh/blob/master/docs/QRCodes.md) - 创建和使用二维码来配对HomeSpan设备
 * [HomeSpan OTA](https://github.com/abackup/HomeSpan-zh/blob/master/docs/OTA.md) - 直接从Arduino IDE无线更新您的草图，无需串行连接
