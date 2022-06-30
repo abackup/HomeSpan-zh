@@ -1,23 +1,23 @@
 # HomeSpan入门
 
-本页提供了获取和设置开发HomeSpan设备所需的所有软件和硬件的分步说明。 那些有Arduino或ESP32经验的人可能会发现他们可以跳过一些步骤。
+本页提供了获取和设置开发HomeSpan设备所需的所有软件和硬件的分步说明。那些有Arduino或ESP32经验的人可能会发现他们可以跳过一些步骤。
 
 #### 第1步：安装Arduino IDE
 
-由于HomeSpan是为Arduino集成开发环境设计的库，因此第一步是从Arduino软件页面下载并安装此 IDE 的最新版本。 如果您有Arduino 草图编程经验，您会发现 Homespan 对标准 Arduino setup() 和 loop() 函数的使用，以及一直存在的 *\*.ino* 文件，非常熟悉。 如果您从未编写过 Arduino，您可能希望首先查看 Arduino IDE 指南（并可能尝试一些 Arduino 示例 ) 在继续使用 HomeSpan 进行编程之前。
+由于HomeSpan是为Arduino集成开发环境设计的库，因此第一步是从Arduino软件页面下载并安装此IDE的最新版本。如果您有Arduino草图编程经验，您会发现Homespan对标准Arduino setup()和loop()函数的使用，以及一直存在的*\*.ino*文件，非常熟悉。如果您从未编写过Arduino，您可能希望首先查看 Arduino IDE 指南（并可能尝试一些 Arduino 示例 ) 在继续使用 HomeSpan 进行编程之前。
 
-#### 第 2 步：安装 Arduino-ESP32 内核
+#### 第 2 步：安装Arduino-ESP32内核
 
-Arduino IDE 带有内置编译器，并支持各种 Arduino 板，例如 Arduino Uno 和 Arduino Nano。 但是，IDE 本身并不支持对 ESP32 进行编程。 幸运的是，IDE 允许您为其他微控制器（包括 ESP32）下载和安装 *cores*，因此它们可以在 Arduino 环境中进行编程。 有关如何将 Arduino-ESP32 内核安装到 使用 [Arduino IDE Board Manager]（https://github.com/espressif/arduino-esp32/blob/master/docs/arduino-ide/boards_manager.md）的 Arduino IDE。
+Arduino IDE带有内置编译器，并支持各种Arduino板，例如Arduino Uno和Arduino Nano。但是，IDE本身并不支持对ESP32进行编程。幸运的是，IDE允许您为其他微控制器（包括 SP32）下载和安装*cores*，因此它们可以在Arduino环境中进行编程。有关如何将Arduino-ESP32内核安装到使用[Arduino IDE Board Manager]（https://github.com/espressif/arduino-esp32/blob/master/docs/arduino-ide/boards_manager.md）的 Arduino IDE。
 
-#### 第 3 步：安装 HomeSpan
+#### 第 3 步：安装HomeSpan
 
-HomeSpan 打包为标准 Arduino 库，可以从 Arduino IDE 自动安装，也可以通过 GitHub 手动安装。
+HomeSpan打包为标准Arduino库，可以从Arduino IDE自动安装，也可以通过GitHub手动安装。
 
-* 要自动安装，请从 Arduino IDE 中打开 Arduino Library Manager，方法是从 Arduino 菜单栏中选择 *Sketch → Include Library → Manage Libraries...*。 然后，在搜索框中输入 *HomeSpan*，从下拉框中选择最新版本，然后单击“安装”按钮。 Arduino Library Manager 将自动下载并安装您选择的版本。 HomeSpan 和所有教程示例草图现在都可以使用了。
+* 要自动安装，请从 Arduino IDE 中打开 Arduino Library Manager，方法是从Arduino 单栏中选择*Sketch → Include Library → Manage Libraries...*。然后，在搜索框中输入*HomeSpan*，从下拉框中选择最新版本，然后单击“安装”按钮。Arduino Library Manager将自动下载并安装您选择的版本。 HomeSpan 和所有教程示例草图现在都可以使用了。
 
 
-* 要手动安装，请先将 *Source Code (zip)* 的 [最新版本](https://github.com/HomeSpan/HomeSpan/releases/latest) 下载到您的桌面。 如果您的操作系统将包保存为 zip 格式，或者在保存到您的桌面时自动解压缩，则无关紧要。 接下来，从 Arduino IDE 的顶部菜单栏中，选择 *Sketch → Include Library → Add .ZIP Library...* 并导航到桌面文件夹，您应该在该文件夹中看到刚刚下载的 HomeSpan 包（作为 zip 文件， 或文件夹）。 选择包（不要打开它），然后单击“选择”。 这指示 Arduino IDE 将 HomeSpan 包复制到其库子文件夹中。 HomeSpan 现在可以用作标准 Arduino 库（您可以从桌面删除 HomeSpan 包，因为它不再需要）。
+* 要手动安装，请先将 *Source Code (zip)* 的 [最新版本](https://github.com/abackup/HomeSpan-zh/releases/latest) 下载到您的桌面。 如果您的操作系统将包保存为 zip 格式，或者在保存到您的桌面时自动解压缩，则无关紧要。 接下来，从 Arduino IDE 的顶部菜单栏中，选择 *Sketch → Include Library → Add .ZIP Library...* 并导航到桌面文件夹，您应该在该文件夹中看到刚刚下载的 HomeSpan 包（作为 zip 文件， 或文件夹）。 选择包（不要打开它），然后单击“选择”。 这指示 Arduino IDE 将 HomeSpan 包复制到其库子文件夹中。 HomeSpan 现在可以用作标准 Arduino 库（您可以从桌面删除 HomeSpan 包，因为它不再需要）。
 
 #### 第 4 步：获取 ESP32 开发板
 
@@ -72,16 +72,16 @@ ESP32 开发板在大多数电子爱好网站上都有不同的配置，例如 [
 
 如果您还没有通读 [HomeSpan API 概述](Overview.md) 页面，您现在应该阅读，以便您对开发 HomeSpan 草图的框架有一个很好的理解。
 
-接下来，探索教程草图，上传一些，看看它们是如何工作的。 这些示例从简单开始逐渐复杂化，带您了解 HomeSpan 的所有功能和特性。 在此过程中，您还将学习很多 HomeKit 提示和技巧。 有关所有包含示例的摘要，请参阅 [HomeSpan 教程](Tutorials.md)。 在草图中找到你不理解的东西？ 有关所有 HomeSpan 对象、函数和方法的详细信息，请访问 [HomeSpan API 参考](Reference.md)。 有更一般的问题吗？ 查看是否已在 [HomeSpan FAQ](FAQ.md) 页面或任何 [Disussion](https://github.com/HomeSpan/HomeSpan/discussions) 或 [Issues](https://github. com/HomeSpan/HomeSpan/issues）页面。 如果没有，请随时通过添加新问题来加入讨论。
+接下来，探索教程草图，上传一些，看看它们是如何工作的。 这些示例从简单开始逐渐复杂化，带您了解 HomeSpan 的所有功能和特性。 在此过程中，您还将学习很多 HomeKit 提示和技巧。 有关所有包含示例的摘要，请参阅 [HomeSpan 教程](Tutorials.md)。 在草图中找到你不理解的东西？ 有关所有 HomeSpan 对象、函数和方法的详细信息，请访问 [HomeSpan API 参考](Reference.md)。 有更一般的问题吗？ 查看是否已在 [HomeSpan FAQ](FAQ.md) 页面或任何 [Disussion](https://github.com/abackup/HomeSpan-zh/discussions) 或 [Issues](https://github. com/abackup/HomeSpan-zh/issues）页面。 如果没有，请随时通过添加新问题来加入讨论。
 
 准备好开始创建自己的 HomeSpan 草图了吗？ 查看 [HomeSpan 服务和特性](ServiceList.md) 页面以获取 HomeSpan 支持的所有 HomeKit 服务和特性的完整列表，以及 [HomeSpan 类别](Categories.md) 页面以获取所有支持的列表 HomeKit 类别。 并且不要忘记使用 Apple 的 [HomeKit Accessory Protocol Specification, Release R2 (HAP-R2)](https://developer.apple.com/homekit/specification/) 作为您对每项服务和详细信息的参考 特征。
 
 在开发您的草图时，请记住使用 Arduino 串行监视器。 HomeSpan 生成广泛的诊断程序，可帮助您调试草图并监控 HomeSpan 设备的各个方面。 您还可以使用 [HomeSpan 命令行界面 (CLI)](CLI.md) 从串行监视器控制 HomeSpan 的各个方面，包括配置设备的 WiFi 凭据和 HomeKit 设置代码。
 
-要访问更高级的功能，请查看 [HomeSpan PWM](https://github.com/HomeSpan/HomeSpan/blob/master/docs/PWM.md)、[HomeSpan RFControl](https://github. com/HomeSpan/HomeSpan/blob/master/docs/RMT.md) 和 [HomeSpan Pixels](https://github.com/HomeSpan/HomeSpan/blob/master/docs/Pixels.md) 页面获取教程和详细信息 关于如何使用 HomeSpan 通过 PWM 信号控制 LED、灯和伺服电机； 生成射频和红外遥控代码来操作电器和电视； 甚至控制多色 RGB LED 灯条。
+要访问更高级的功能，请查看 [HomeSpan PWM](https://github.com/abackup/HomeSpan-zh/blob/master/docs/PWM.md)、[HomeSpan RFControl](https://github. com/abackup/HomeSpan-zh/blob/master/docs/RMT.md) 和 [HomeSpan Pixels](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Pixels.md) 页面获取教程和详细信息 关于如何使用 HomeSpan 通过 PWM 信号控制 LED、灯和伺服电机； 生成射频和红外遥控代码来操作电器和电视； 甚至控制多色 RGB LED 灯条。
 
 最后，断开 HomeSpan 设备与计算机的连接，并直接从墙上适配器为其供电。 毕竟，HomeSpan 设备旨在独立运行，连接到现实世界的设备，如灯、风扇、门锁和窗帘。 有关如何操作和配置独立 HomeSpan 设备的 WiFi 凭据和 HomeKit 设置代码*无需将设备连接到计算机*的最终用户说明，请参阅 [HomeSpan 用户指南](UserGuide.md)。
 
 ---
 
-[↩️](README.md) 返回欢迎页面
+[?](README.md) 返回欢迎页面
