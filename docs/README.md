@@ -79,6 +79,6 @@ HomeSpan包括以下文档：
 
 ---
 
-### 反馈或问题？
+### 反馈或提问？
 
 请考虑添加到HomeSpan讨论区或直接发送电子邮件至homespan@icloud.com
