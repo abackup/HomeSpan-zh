@@ -9,9 +9,9 @@ HomeSpan 服务和特性使用 C++ `new` 命令实例化。服务不采用任何
 下表提供了所有 HomeSpan 服务的列表。对于每项服务，该表还指出了哪些特性是必需的，哪些是可选的。例如，可以在 HomeSpan 中配置可调光灯泡，如下所示：
 
 ```C++
-new Service::LightBulb();                         // 实例化一个灯泡服务e
-  new Characteristics:On();                         // 在不设置初始值的情况下实例化所需的 On Characteristic
-  new Characteristic::Brightness(50);               // 实例化一个可选的亮度特性并将初始值设置为 50%
+new Service::LightBulb();                           // 实例化一个灯泡服务e
+  new Characteristics:On();                         // 在不设置初始值的情况下实例化所需的On特征值
+  new Characteristic::Brightness(50);               // 实例化一个可选的亮度特性并将初始值设置为50%
   new Characteristic::Name("Living Room Lamp");     // 为此服务实例化一个可选的名称特征，并设置为“客厅灯”
 ```
 
