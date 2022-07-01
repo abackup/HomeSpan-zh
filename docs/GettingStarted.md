@@ -8,7 +8,7 @@
 
 #### 第 2 步：安装Arduino-ESP32内核
 
-Arduino IDE带有内置编译器，并支持各种Arduino板，例如Arduino Uno和Arduino Nano。但是，IDE本身并不支持对ESP32进行编程。幸运的是，IDE允许您为其他微控制器（包括 SP32）下载和安装*cores*，因此它们可以在Arduino环境中进行编程。有关如何将Arduino-ESP32内核安装到使用[Arduino IDE Board Manager]（https://github.com/espressif/arduino-esp32/blob/master/docs/arduino-ide/boards_manager.md） 的 Arduino IDE。
+Arduino IDE带有内置编译器，并支持各种Arduino板，例如Arduino Uno和Arduino Nano。但是，IDE本身并不支持对ESP32进行编程。幸运的是，IDE允许您为其他微控制器（包括 SP32）下载和安装*cores*，因此它们可以在Arduino环境中进行编程。有关如何将Arduino-ESP32内核安装到使用 [ Arduino IDE Board Manager](https://github.com/espressif/arduino-esp32/blob/master/docs/arduino-ide/boards_manager.md) 的 Arduino IDE。
 
 #### 第 3 步：安装HomeSpan
 
