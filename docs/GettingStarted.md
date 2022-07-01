@@ -78,7 +78,7 @@ ESP32 开发板在大多数电子爱好网站上都有不同的配置，例如Ad
 
 在开发您的草图时，请记住使用 Arduino 串行监视器。 HomeSpan 生成广泛的诊断程序，可帮助您调试草图并监控 HomeSpan 设备的各个方面。 您还可以使用 [HomeSpan 命令行界面 (CLI)](CLI.md) 从串行监视器控制 HomeSpan 的各个方面，包括配置设备的 WiFi 凭据和 HomeKit 设置代码。
 
-要访问更高级的功能，请查看 [HomeSpan PWM](https://github.com/abackup/HomeSpan-zh/blob/master/docs/PWM.md)、[HomeSpan RFControl](https://github. com/abackup/HomeSpan-zh/blob/master/docs/RMT.md) 和 [HomeSpan Pixels](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Pixels.md) 页面获取教程和详细信息 关于如何使用 HomeSpan 通过 PWM 信号控制 LED、灯和伺服电机； 生成射频和红外遥控代码来操作电器和电视； 甚至控制多色 RGB LED 灯条。
+要访问更高级的功能，请查看 [HomeSpan PWM](https://github.com/abackup/HomeSpan-zh/blob/master/docs/PWM.md)、[HomeSpan RFControl](https://github. com/abackup/HomeSpan-zh/blob/master/docs/RMT.md)和 [HomeSpan Pixels](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Pixels.md) 页面获取教程和详细信息 关于如何使用 HomeSpan 通过 PWM 信号控制 LED、灯和伺服电机； 生成射频和红外遥控代码来操作电器和电视； 甚至控制多色 RGB LED 灯条。
 
 最后，断开 HomeSpan 设备与计算机的连接，并直接从墙上适配器为其供电。 毕竟，HomeSpan 设备旨在独立运行，连接到现实世界的设备，如灯、风扇、门锁和窗帘。 有关如何操作和配置独立 HomeSpan 设备的 WiFi 凭据和 HomeKit 设置代码*无需将设备连接到计算机*的最终用户说明，请参阅 [HomeSpan 用户指南](UserGuide.md)。
 
