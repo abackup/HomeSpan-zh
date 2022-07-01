@@ -14,8 +14,6 @@ ESP32 拥有多达 16 个 PWM 通道，可用于驱动各种设备。 HomeSpan �
  
  支持以下方法：
 
-515 / 5,000
-翻譯結果
 * `void set(float level)`
 
    * 将 PWM %duty-cycle 设置为 *level*，其中 *level* 范围从 0（LED 完全关闭）到 100（LED 完全打开）
