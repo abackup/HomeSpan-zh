@@ -32,15 +32,15 @@ ESP32 开发板在大多数电子爱好网站上都有不同的配置，例如Ad
 
 #### 第 6 步：对您的第一个 HomeSpan 设备进行编程
 
-在继续之前，您可能需要先通读 [HomeSpan Overview](Overview.md) 页面。 或者，您可以直接进入并使用 HomeSpan 的内置教程草图之一对您的设备进行编程：
+在继续之前，您可能需要先通读 [HomeSpan概述](Overview.md) 页面。 或者您可以直接进入并使用 HomeSpan 的内置教程草图之一对您的设备进行编程：
 
 * 将 ESP32 板插入计算机上的空闲 USB 端口
 
-* 启动 Arduino IDE* Load one of the HomeSpan tutorial sketches (for example, *File → Examples → HomeSpan → 01-SimpleLightBulb*)
+* 启动 Arduino IDE* 加载 HomeSpan 教程草图之一 (例如，*文件 → 示例 → HomeSpan → 01-SimpleLightBulb*)
 
-* 加载 HomeSpan 教程草图之一（例如，*File → Examples → HomeSpan → 01-SimpleLightBulb*）
+* 加载 HomeSpan 教程草图之一（例如，*文件 → 示例 → HomeSpan → 01-SimpleLightBulb*）
 
-* 设置开发板以匹配您的 ESP32 开发板（例如，*Tools → Board → ESP32 Arduino → Adafruit ESP32 Feather*）
+* 设置开发板以匹配您的 ESP32 开发板（例如，*工具 → 开发板 → ESP32 Arduino → Adafruit ESP32 Feather*）
 
 * 打开 Arduino 串行监视器（*工具 → 串行监视器*）
 
@@ -60,21 +60,21 @@ ESP32 开发板在大多数电子爱好网站上都有不同的配置，例如Ad
 1. 一个常开单刀按钮，用作 HomeSpan 控制按钮，以及
 1. 一个 LED（带有限流电阻）用作 HomeSpan 状态 LED。
 
-控制按钮应安装在接地和 ESP32 上任何可用作输入的引脚之间。 要通知 HomeSpan 您选择了哪个引脚，您必须在您的草图顶部附近调用方法 `homeSpan.setControlPin(pin)`（有关详细信息，请参阅 [HomeSpan API 参考]（Reference.md）），否则 HomeSpan 将假定 控制按钮**未**安装。
+控制按钮应安装在接地和 ESP32 上任何可用作输入的引脚之间。 要通知 HomeSpan 您选择了哪个引脚，您必须在您的草图顶部附近调用方法 `homeSpan.setControlPin(pin)`（有关详细信息，请参阅 [HomeSpan API参考]（Reference.md）），否则 HomeSpan 将假定 控制按钮**未**安装。
 
 同样，状态 LED 可以连接到 ESP32 上任何可用作输出的引脚（并通过适当大小的限流电阻接地）。 要通知 HomeSpan 您选择了哪个引脚，您必须在草图顶部附近调用方法 `homeSpan.setStatusPin(pin)`，否则 HomeSpan 将假定状态 LED **未**安装。 请注意，一些 ESP32 板有一个内置 LED --- 如果它是一个简单的开/关 LED，则可以将其用于状态 LED，*不是*需要特殊驱动器的可寻址彩色 LED。
 
 
-使用控制按钮和状态 LED 来配置独立的 HomeSpan 设备，包括启动 HomeSpan 的临时 WiFi 网络以配置设备的 WiFi 凭据和 HomeKit 设置代码，在 [HomeSpan 用户指南](UserGuide.md) 中有详细说明。
+使用控制按钮和状态 LED 来配置独立的 HomeSpan 设备，包括启动 HomeSpan 的临时 WiFi 网络以配置设备的 WiFi 凭据和 HomeKit 设置代码，在 [HomeSpan用户指南](UserGuide.md) 中有详细说明。
 
 
 ## 接下来是什么？
 
-如果您还没有通读 [HomeSpan API 概述](Overview.md) 页面，您现在应该阅读，以便您对开发 HomeSpan 草图的框架有一个很好的理解。
+如果您还没有通读 [HomeSpan API概述](Overview.md) 页面，您现在应该阅读，以便您对开发 HomeSpan 草图的框架有一个很好的理解。
 
-接下来，探索教程草图，上传一些，看看它们是如何工作的。 这些示例从简单开始逐渐复杂化，带您了解 HomeSpan 的所有功能和特性。 在此过程中，您还将学习很多 HomeKit 提示和技巧。 有关所有包含示例的摘要，请参阅 [HomeSpan 教程](Tutorials.md)。 在草图中找到你不理解的东西？ 有关所有 HomeSpan 对象、函数和方法的详细信息，请访问 [HomeSpan API 参考](Reference.md)。 有更一般的问题吗？ 查看是否已在 [HomeSpan FAQ](FAQ.md) 页面或任何 [Disussion](https://github.com/abackup/HomeSpan-zh/discussions) 或 [Issues](https://github. com/abackup/HomeSpan-zh/issues）页面。 如果没有，请随时通过添加新问题来加入讨论。
+接下来，探索教程草图，上传一些，看看它们是如何工作的。 这些示例从简单开始逐渐复杂化，带您了解 HomeSpan 的所有功能和特性。 在此过程中，您还将学习很多 HomeKit 提示和技巧。 有关所有包含示例的摘要，请参阅 [HomeSpan教程](Tutorials.md)。 在草图中找到你不理解的东西？ 有关所有 HomeSpan 对象、函数和方法的详细信息，请访问 [HomeSpan API参考](Reference.md)。 有更一般的问题吗？ 查看是否已在 [HomeSpan FAQ](FAQ.md) 页面或任何 [Disussion](https://github.com/abackup/HomeSpan-zh/discussions) 或 [Issues](https://github. com/abackup/HomeSpan-zh/issues）页面。 如果没有，请随时通过添加新问题来加入讨论。
 
-准备好开始创建自己的 HomeSpan 草图了吗？ 查看 [HomeSpan 服务和特性](ServiceList.md) 页面以获取 HomeSpan 支持的所有 HomeKit 服务和特性的完整列表，以及 [HomeSpan 类别](Categories.md) 页面以获取所有支持的列表 HomeKit 类别。 并且不要忘记使用 Apple 的 [HomeKit Accessory Protocol Specification, Release R2 (HAP-R2)](https://developer.apple.com/homekit/specification/) 作为您对每项服务和详细信息的参考 特征。
+准备好开始创建自己的 HomeSpan 草图了吗？ 查看 [HomeSpan服务和特性](ServiceList.md) 页面以获取 HomeSpan 支持的所有 HomeKit 服务和特性的完整列表，以及 [HomeSpan 类别](Categories.md) 页面以获取所有支持的列表 HomeKit 类别。 并且不要忘记使用 Apple 的 [(HAP-R2)](https://developer.apple.com/homekit/specification/) 作为您对每项服务和详细信息的参考 特征。
 
 在开发您的草图时，请记住使用 Arduino 串行监视器。 HomeSpan 生成广泛的诊断程序，可帮助您调试草图并监控 HomeSpan 设备的各个方面。 您还可以使用 [HomeSpan 命令行界面 (CLI)](CLI.md) 从串行监视器控制 HomeSpan 的各个方面，包括配置设备的 WiFi 凭据和 HomeKit 设置代码。
 
