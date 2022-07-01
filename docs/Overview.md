@@ -1,6 +1,6 @@
-# HomeSpan API 概述
+# HomeSpan API概述
 
-HomeSpan 草图的基本结构如下：
+HomeSpan草图的基本结构如下：
 
 ```C++
 #include "HomeSpan.h"         // 包括 HomeSpan 库
@@ -20,7 +20,7 @@ void loop(){
 } // end of loop()
 ```
 
-包含 HomeSpan.h 会创建一个名为“homeSpan”的全局对象，它实现了各种方法。 最重要的两个是 `begin()` 和 `poll()`。 `begin()` 方法采用许多可选参数，初始化 HomeSpan 并放置在 `setup()` 部分的开头附近。 不带参数的 `poll()` 方法被放置在 `loop()` 中，这也是 HomeSpan 运行其所有代码的原因。 这通常是放在 `loop()` 部分中的唯一函数。 我们的草图现在看起来像这样：
+包含HomeSpan.h会创建一个名为`homeSpan`的全局对象，它实现了各种方法。 最重要的两个是 `begin()` 和 `poll()`。 `begin()` 方法采用许多可选参数，初始化HomeSpan并放置在 `setup()` 部分的开头附近。不带参数的 `poll()` 方法被放置在 `loop()` 中，这也是HomeSpan运行其所有代码的原因。这通常是放在 `loop()` 部分中的唯一函数。 我们的草图现在看起来像这样：
 
 ```C++
 #include "HomeSpan.h"         // 包括 HomeSpan 库
@@ -33,46 +33,46 @@ void setup() {
   
   /// HAP 附件属性数据库的定义在此处 ///
   
-} //设置结束（）
+} //设置结束
 
 void loop(){
 
  homeSpan.poll(); 
 
-} // 循环结束（）
+} // 循环结束
 ```
 
-## 创建 HAP 附件属性数据库
+## 创建HAP附件属性数据库
 
-下一步是实现定义 HAP 附件属性数据库的代码，该数据库不是真正的数据库，而只是此 HomeSpan 设备实现的所有 HAP 附件对象、服务对象和特性对象的列表。
+下一步是实现定义HAP附件属性数据库的代码，该数据库不是真正的数据库，而只是此HomeSpan设备实现的所有HAP附件对象、服务对象和特性对象的列表。
 
-您可以通过实例化一个新的 `SpanAccessory` 对象来创建一个新的 HAP 附件，如下所示：
+您可以通过实例化一个新的 `SpanAccessory` 对象来创建一个新的HAP附件，如下所示：
 
 ```C++
 new SpanAccessory();
 ```
 
-SpanAccessory 可以在没有任何参数的情况下实例化，并且您不需要将对象保存在变量中，因为 HomeSpan 会自动在 `homespan` 对象中注册 Accessory。
+SpanAccessory可以在没有任何参数的情况下实例化，并且您不需要将对象保存在变量中，因为HomeSpan会自动在 `homespan` 对象中注册 Accessory。
 
-创建 HAP 附件后，您可以通过实例化 HomeSpan 服务和特性对象开始添加 HAP 服务和 HAP 特性。 HomeSpan 支持的每个 HAP 服务都在“Service”命名空间中定义。 HomeSpan 支持的每个 HAP 特性都在 `Characteristic` 命名空间中定义。 有关完整列表，请参阅 [HomeSpan 服务和特征](ServiceList.md)。
+创建HAP附件后，您可以通过实例化HomeSpan服务和特性对象开始添加HAP服务和HAP特性。HomeSpan支持的每个HAP服务都在`Service`命名空间中定义。HomeSpan支持的每个HAP特性都在 `Characteristic` 命名空间中定义。有关完整列表，请参阅 [HomeSpan 服务和特征](ServiceList.md)。
 
-例如，要将 HAP 二氧化碳传感器服务添加到附件，只需实例化相应的 HomeSpan 服务对象，如下所示：
+例如，要将HAP二氧化碳传感器服务添加到附件，只需实例化相应的HomeSpan服务对象，如下所示：
 
 ```C++
 new Service::CarbonDioxideSensor();
 ```
 
-HomeSpan 服务对象不带参数，您不需要将对象保存在变量中。 HomeSpan 将自动注册此服务并将其附加到您定义的最后一个附件。
+HomeSpan服务对象不带参数，您不需要将对象保存在变量中。HomeSpan将自动注册此服务并将其附加到您定义的最后一个附件。
 
-HAP 特征以类似的方式添加到服务中。 例如，要添加 HAP 检测到的二氧化碳特征，只需按如下方式实例化相应的 HomeSpan 特征对象：
+HAP特征以类似的方式添加到服务中。例如要添加HAP检测到的二氧化碳特征，只需按如下方式实例化相应的HomeSpan特征对象：
 
 ```C++
 new Characteristic::CarbonDioxideDetected();
 ```
 
-HomeSpan 将自动注册此特性并将其附加到您定义的最后一个服务。 但是，与附件和服务对象不同，特性确实采用单个可选参数（上面未显示），该参数在启动时初始化特性的值。 如果您不指定参数，HomeSpan 将使用合理的默认值。
+HomeSpan将自动注册此特性并将其附加到您定义的最后一个服务。但是与附件和服务对象不同，特性确实采用单个可选参数（上面未显示），该参数在启动时初始化特性的值。 如果您不指定参数，HomeSpan将使用合理的默认值。
 
-因此，通过简单地实例化一个或多个 SpanAccessory 对象来定义一个完整的 HAP 附件属性数据库，每个 SpanAccessory 对象具有一个或多个 Service 对象，而这些对象又包含一个或多个 Characteristic 对象。 例如，一个 HomeSpan 设备支持一个带有非可调光吸顶灯的变速、可逆吊扇和一个带有可调光灯泡的台灯，可以按如下方式实现：
+因此，通过简单地实例化一个或多个SpanAccessory对象来定义一个完整的HAP附件属性数据库，每个SpanAccessory对象具有一个或多个Service 对象，而这些对象又包含一个或多个Characteristic对象。 例如一个HomeSpan设备支持一个带有非可调光吸顶灯的变速、可逆吊扇和一个带有可调光灯泡的台灯，可以按如下方式实现：
 
 ```C++
 #include "HomeSpan.h"         // 包括 HomeSpan 库
@@ -91,7 +91,7 @@ void setup() {
    new Service::LightBulb();
     new Characteristic::On();
     
-  new SpanAccessory()        // 可调光台灯
+  new SpanAccessory();        // 可调光台灯
    new Service::LightBulb();
     new Characteristic::On();
     new Characteristic::Brightness(50);     // 将默认亮度初始化为 50%
@@ -105,11 +105,11 @@ void loop(){
 } // end of loop()
 ```
 
-如您所见，您不需要命名任何对象，或指定任何 HAP 参数，例如格式类型、UUID 代码等。但是，实例化对象的*顺序*至关重要。 特征自动与最后实例化的服务相关联，服务自动与最后实例化的附件相关联。
+如您所见，您不需要命名任何对象，或指定任何HAP参数，例如格式类型、UUID代码等。但是，实例化对象的*顺序*至关重要。 特征自动与最后实例化的服务相关联，服务自动与最后实例化的附件相关联。
 
-> :heavy_check_mark：HomeSpan 具有广泛的错误检查功能。 在启动时，HomeSpan 将验证您实例化的 HAP 附件属性数据库的配置，以确保每个附件都具有所有必需的服务，并且每个服务都具有其所有必需的特征。 如果 HomeSpan 发现 Accessory 缺少必需的 Service，Service 缺少必需的 Characteristic，或者既非必需也非可选的 Characteristic 已添加到不支持该 Characteristic 的 Service，HomeSpan 将报告这些错误并停止程序 .
+> :heavy_check_mark:HomeSpan具有广泛的错误检查功能。 在启动时HomeSpan将验证您实例化的HAP附件属性数据库的配置，以确保每个附件都具有所有必需的服务，并且每个服务都具有其所有必需的特征。 如果HomeSpan发现Accessory缺少必需的Service，Service缺少必需的 Characteristic，或者既非必需也非可选的Characteristic已添加到不支持该Characteristic的Service，HomeSpan将报告这些错误并停止程序。
 
-事实上，如果你尝试运行上面的草图，你会发现它无法验证。 这是因为每个附件都缺少所需的服务和特性——HAP 附件信息服务和识别特性。 请参阅 [Tutorials](Tutorials.md) 以获取包含所有必需 HAP 元素的各种完整且有效的示例，例如简单台灯的此草图：
+事实上，如果你尝试运行上面的草图，你会发现它无法验证。 这是因为每个附件都缺少所需的服务和特性——HAP附件信息服务和识别特性。 请参阅 [Tutorials](Tutorials.md) 以获取包含所有必需HAP元素的各种完整且有效的示例，例如简单台灯的此草图：
 
 ```C++
 /* HomeSpan Table Lamp Example */
@@ -124,11 +124,11 @@ void setup() {
 
   new SpanAccessory();           // 台灯配件
   
-    new Service::AccessoryInformation();            // HAP 要求每个附件都实现一个 AccessoryInformationService  
+    new Service::AccessoryInformation();            // HAP 要求每个附件都实现一个 AccessoryInformation服务
       new Characteristic::Identify();               // HAP 要求附件信息服务包括识别Characteristic
         
     new Service::LightBulb();                       // 创建灯泡服务
-      new Characteristic::On();                       // 存储灯泡状态的特性：开或关
+      new Characteristic::On();                     // 存储灯泡状态的特性：开或关
   
 } // end of setup()
 
@@ -139,9 +139,9 @@ void loop(){
 } // end of loop()
 ```
 
-## 将 HomeSpan 连接到真实世界的电器
+## 将HomeSpan连接到真实世界的电器
 
-上面的台灯示例是一个功能齐全的 HomeSpan 草图。 如果您将其上传到您的 ESP32 设备并将设备与 HomeKit 配对，您会发现 Home App 中出现一个标有“我的台灯”的新磁贴。 瓷砖是可操作的。 按一次，它显示灯打开。 再按一次，指示灯熄灭。 当然，现实世界中什么也没有发生——HomeSpan 还没有被编程来打开一个实际的灯。
+上面的台灯示例是一个功能齐全的HomeSpan草图。 如果您将其上传到您的ESP32设备并将设备与 HomeKit 配对，您会发现 Home App 中出现一个标有“我的台灯”的新磁贴。 瓷砖是可操作的。 按一次，它显示灯打开。 再按一次，指示灯熄灭。 当然，现实世界中什么也没有发生——HomeSpan 还没有被编程来打开一个实际的灯。
 
 当您按下 Home App 中的磁贴时，HomeKit 会向 HomeSpan 发送请求以 *更新* 一个或多个特性。在上面的示例中，按下磁贴会导致 HomeKit 专门请求将灯泡服务的 On Characteristic 更新为 true（on）或 false（off）。当 HomeSpan 收到更新一个或多个特性的请求时，而不是顺序调用代码来分别更新每个特性，HomeSpan 而是根据它们的服务对请求进行分组，并为该服务调用 `update()` 方法。这是因为许多服务支持物理相关的多个特征。例如，打开一盏灯并将其亮度设置为 50% 需要更新两个特性（开和亮度）。在这些按顺序处理的系统中，用户需要编写复杂的代码来保存中间状态，并确定当它收到打开灯的请求时要做什么，如果还不知道设置亮度的请求是否会紧随其后。
 
@@ -198,7 +198,7 @@ struct TableLamp : Service::LightBulb{
 };
 ```
 
-最后，我们将派生的 TableLamp 服务添加到原始草图中，并替换我们的通用灯泡服务和 On Characteristic 的实例化：
+最后，我们将派生的TableLamp服务添加到原始草图中，并替换我们的通用灯泡服务和 On Characteristic 的实例化：
 
 ```C++
 new Service::LightBulb();                       // Create the Light Bulb Service
@@ -211,9 +211,9 @@ TableLamp 服务的实例化如下：
 new TableLamp(17);
 ```
 
-其中 17 指定连接到用于打开和关闭台灯的假设继电器的 ESP32 引脚号。
+其中针脚17指定连接到用于打开和关闭台灯的假设继电器的 ESP32 引脚号。
 
-下面完整介绍了我们完成的用于操作台灯的 HomeSpan 草图。 请注意，它也可以在 Arduino IDE 中的 *File → Examples → HomeSpan → Other Examples → TableLamp* 下使用。
+下面完整介绍了我们完成的用于操作台灯的HomeSpan草图。 请注意，它也可以在 Arduino IDE 中的 *文件 → 示例 → HomeSpan → Other Examples → TableLamp* 下使用。
 
 ```C++
 /* HomeSpan Table Lamp Example */
