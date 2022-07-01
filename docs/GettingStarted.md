@@ -1,14 +1,14 @@
 # HomeSpan入门
 
-本页提供了获取和设置开发HomeSpan设备所需的所有软件和硬件的分步说明。那些有Arduino或ESP32经验的人可能会发现他们可以跳过一些步骤。
+本页提供了获取和设置开发HomeSpan设备所需的所有软件和硬件的分步说明。那些有Arduino或ESP32经验的人可能会发现你们可以跳过一些步骤。
 
 #### 第1步：安装Arduino IDE
 
-由于HomeSpan是为Arduino集成开发环境设计的库，因此第一步是从Arduino软件页面下载并安装此IDE的最新版本。如果您有Arduino草图编程经验，您会发现Homespan对标准Arduino setup()和loop()函数的使用，以及一直存在的*\*.ino*文件，非常熟悉。如果您从未编写过Arduino，您可能希望首先查看 Arduino IDE 指南（并可能尝试一些 Arduino 示例 ) 在继续使用 HomeSpan 进行编程之前。
+由于HomeSpan是为Arduino集成开发环境设计的库，因此第一步是从Arduino.cc页面下载并安装此IDE的最新版本。如果您有Arduino草图编程经验，您会发现Homespan对标准Arduino setup( )和loop( )函数的使用，以及非常熟悉一直存在的*\*.ino*文件。如果您从未编写过Arduino，您可能希望首先查看 Arduino IDE指南（并尝试一些Arduino示例 ) 在继续使用HomeSpan进行编程。
 
 #### 第 2 步：安装Arduino-ESP32内核
 
-Arduino IDE带有内置编译器，并支持各种Arduino板，例如Arduino Uno和Arduino Nano。但是，IDE本身并不支持对ESP32进行编程。幸运的是，IDE允许您为其他微控制器（包括 SP32）下载和安装*cores*，因此它们可以在Arduino环境中进行编程。有关如何将Arduino-ESP32内核安装到使用 [ Arduino IDE Board Manager](https://github.com/espressif/arduino-esp32/blob/master/docs/arduino-ide/boards_manager.md) 的 Arduino IDE。
+Arduino IDE带有内置编译器，并支持各种Arduino板，例如Arduino Uno和Arduino Nano。但，IDE本身并不支持对ESP32进行编程。幸运的是，IDE允许您为其他微控制器（包括 SP32）下载和安装*cores*，因此它们可以在Arduino环境中进行编程。有关如何将Arduino-ESP32内核安装到使用 [ Arduino IDE开发板管理](https://github.com/espressif/arduino-esp32/blob/master/docs/arduino-ide/boards_manager.md) 的Arduino IDE。
 
 #### 第 3 步：安装HomeSpan
 
