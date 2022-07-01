@@ -8,7 +8,7 @@
 
 #### 第 2 步：安装Arduino-ESP32内核
 
-Arduino IDE带有内置编译器，并支持各种Arduino板，例如Arduino Uno和Arduino Nano。但是，IDE本身并不支持对ESP32进行编程。幸运的是，IDE允许您为其他微控制器（包括 SP32）下载和安装*cores*，因此它们可以在Arduino环境中进行编程。有关如何将Arduino-ESP32内核安装到使用[Arduino IDE Board Manager]（https://github.com/espressif/arduino-esp32/blob/master/docs/arduino-ide/boards_manager.md）的 Arduino IDE。
+Arduino IDE带有内置编译器，并支持各种Arduino板，例如Arduino Uno和Arduino Nano。但是，IDE本身并不支持对ESP32进行编程。幸运的是，IDE允许您为其他微控制器（包括 SP32）下载和安装*cores*，因此它们可以在Arduino环境中进行编程。有关如何将Arduino-ESP32内核安装到使用[Arduino IDE Board Manager]（https://github.com/espressif/arduino-esp32/blob/master/docs/arduino-ide/boards_manager.md） 的 Arduino IDE。
 
 #### 第 3 步：安装HomeSpan
 
@@ -17,12 +17,12 @@ HomeSpan打包为标准Arduino库，可以从Arduino IDE自动安装，也可以
 * 要自动安装，请从 Arduino IDE 中打开 Arduino Library Manager，方法是从Arduino 单栏中选择*Sketch → Include Library → Manage Libraries...*。然后，在搜索框中输入*HomeSpan*，从下拉框中选择最新版本，然后单击“安装”按钮。Arduino Library Manager将自动下载并安装您选择的版本。 HomeSpan 和所有教程示例草图现在都可以使用了。
 
 
-* 要手动安装，请先将 *Source Code (zip)* 的 [最新版本](https://github.com/abackup/HomeSpan-zh/releases/latest) 下载到您的桌面。 如果您的操作系统将包保存为 zip 格式，或者在保存到您的桌面时自动解压缩，则无关紧要。 接下来，从 Arduino IDE 的顶部菜单栏中，选择 *Sketch → Include Library → Add .ZIP Library...* 并导航到桌面文件夹，您应该在该文件夹中看到刚刚下载的 HomeSpan 包（作为 zip 文件， 或文件夹）。 选择包（不要打开它），然后单击“选择”。 这指示 Arduino IDE 将 HomeSpan 包复制到其库子文件夹中。 HomeSpan 现在可以用作标准 Arduino 库（您可以从桌面删除 HomeSpan 包，因为它不再需要）。
+* 要手动安装，请先将 *Source Code (zip)* 的最新版本下载到您的桌面。如果您的操作系统将包保存为zip格式，或者在保存到您的桌面时自动解压缩，则无关紧要。 接下来，从 Arduino IDE 的顶部菜单栏中，选择 *Sketch → Include Library → Add .ZIP Library...* 并导航到桌面文件夹，您应该在该文件夹中看到刚刚下载的 HomeSpan 包（作为 zip 文件， 或文件夹）。 选择包（不要打开它），然后单击“选择”。 这指示 Arduino IDE 将 HomeSpan 包复制到其库子文件夹中。 HomeSpan 现在可以用作标准 Arduino 库（您可以从桌面删除 HomeSpan 包，因为它不再需要）。
 
 #### 第 4 步：获取 ESP32 开发板
 
 
-ESP32 开发板在大多数电子爱好网站上都有不同的配置，例如 [Adafruit](https://www.adafruit.com) 和 [Sparkfun](https://www.sparkfun.com)。 HomeSpan 是使用双核 ESP32-WROOM-32（来自 Adafruit 的 [Huzzah32](https://www.adafruit.com/product/3619)）开发的，但在双核 ESP32-WROVER 芯片上也同样适用。 HomeSpan *未*在任何单核 ESP32 芯片上进行过测试，例如 ESP32-S2。
+ESP32 开发板在大多数电子爱好网站上都有不同的配置，例如Adafruit和Sparkfun。 HomeSpan的使用双核ESP32-WROOM-32（来自 Adafruit 的 [Huzzah32](https://www.adafruit.com/product/3619)）开发的，但在双核 ESP32-WROVER 芯片上也同样适用。 HomeSpan *未*在任何单核 ESP32 芯片上进行过测试，例如 ESP32-S2。
 
 
 #### 第 5 步：安装任何所需的 USB 驱动程序
