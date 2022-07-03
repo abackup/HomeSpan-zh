@@ -14,7 +14,7 @@
 
 本指南不涵盖由 HomeSpan 设备控制的任何电器的具体操作，例如灯、风扇、窗帘等。本文档也可提供为 [PDF 文件](./HomeSpanUserGuide.pdf) 格式为 作为双面小册子印刷。
 
-＃＃ 入门
+## 入门
 
 ***欢迎来到 HomeSpan！***
 
@@ -37,15 +37,15 @@ HomeSpan 设备经过全新设计，可与 Apple HomeKit 配合使用，让您�
 
 在配置 HomeSpan 之前，您需要确定设备的状态。 HomeSpan 设备通过 HomeSpan 状态 LED 指示其状态，根据设备的当前状态，该 LED 可以打开、关闭、闪烁或闪烁。设备的 4 个主要状态是：
 
-#### 无WIFI
+#### NO‑WIFI
 
 如果状态 LED 每 3 秒闪烁一次，则设备缺少任何存储的 WiFi 凭据，因此无法连接到 WiFi 网络。这是新设备以及任何已删除其 WiFi 凭据的设备的正常状态。请参阅[设置 HomeSpan 的 WiFi 凭据和设置代码](#setting-homespans-wifi-credentials-and-setup-code)，了解如何在设备上输入和存储家庭网络的 WiFi 名称和 WiFi 密码。
 
-#### 准备配对
+#### READY‑TO‑PAIR
 
 如果状态 LED 每 3 秒闪烁两次，则设备已连接到 WiFi 网络，但尚未与 Apple HomeKit 配对。有关如何将您的设备与 Apple HomeKit 配对的说明，请参阅 [与 HomeKit 配对](#pairing-to-homekit)。
 
-#### 配对
+#### PAIRED
 
 如果状态 LED 常亮，则设备已连接到本地 WiFi 网络并已与 Apple HomeKit 配对。处于这种状态的设备应该可以完全运行。
 
