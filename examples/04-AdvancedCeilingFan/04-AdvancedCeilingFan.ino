@@ -30,18 +30,17 @@
 //    HomeSpan: A HomeKit implementation for the ESP32    //
 //    ------------------------------------------------    //
 //                                                        //
-// Example 4: A variable-speed ceiling fan with           //
-//            dimmable ceiling light                      //
+// Example 4: 带可调光吸顶灯的变速吊扇                     //
 //                                                        //
 ////////////////////////////////////////////////////////////
 
 
-#include "HomeSpan.h"         // Always start by including the HomeSpan library
+#include "HomeSpan.h"         // 始终从包含 HomeSpan 库开始
 
 void setup() {
 
-  // Example 4 expands on the first Accessory in Example 3 by adding Characteristics to set FAN SPEED, FAN DIRECTION, and LIGHT BRIGHTNESS.
-  // For ease of reading, all prior comments have been removed and new comments added to show explicit changes from the previous example.
+// 示例 4 通过添加特性来设置风扇速度、风扇方向和亮度，扩展了示例 3 中的第一个附件。
+// 为了便于阅读，所有先前的评论都已被删除，并添加了新的评论以显示与上一个示例的显式更改。
  
   Serial.begin(115200); 
 
@@ -53,41 +52,40 @@ void setup() {
       new Characteristic::Identify();                        
 
     new Service::LightBulb();                      
-      new Characteristic::On(true);            // NEW: Providing an argument sets its initial value.  In this case it means the LightBulb will be turned on at start-up
+      new Characteristic::On(true);            //新：提供参数设置其初始值。 在这种情况下，这意味着灯泡将在启动时打开
 
-    // In addition to setting the initial value of a Characteristic, it is also possible to override the default min/max/step range specified by HAP.
-    // We do this with the setRange() method:
+    // 除了设置特性的初始值外，还可以覆盖 HAP 指定的默认最小/最大/步长范围。
+    // 我们使用 setRange() 方法来做到这一点：
     
     // setRange(min, max, step), where
     //
     // min = minimum allowed value
     // max = maximum allowed value
-    // step = step size (can be left blank, in which case the HAP default is retained)
+    // step = step size (可以留空，在这种情况下保留 HAP 默认值)
 
-    // The setRange() method can be called on any numerical-based Characteristic that supports range overrides.  The easiest way to apply to method is to call it right
-    // after instantiating a new Characteristic.  Don't forget to surround the "new" command in parentheses when chaining a method in this fashion.
+    // 可以在任何支持范围覆盖的基于数字的特征上调用 setRange() 方法。 应用于方法的最简单方法是正确调用它
+    // 在实例化一个新特性之后。 以这种方式链接方法时，不要忘记将“new”命令括在括号中。
     
-    // Here we create a Brightness Characteristic to set the brightness of the LightBulb with an initial value of 50% and an allowable range
-    // from 20-100% in steps of 5%.  See Notes 1 and 2 below for more details:
-    
+    // 这里我们创建一个 Brightness Characteristic 来设置 LightBulb 的亮度，初始值为 50% 和一个允许范围
+    // 从 20-100% 以 5% 为步长。 有关详细信息，请参阅下面的注释 1 和 2：
+ 
       (new Characteristic::Brightness(50))->setRange(20,100,5);    
 
     new Service::Fan();                             
       new Characteristic::Active();             
-      new Characteristic::RotationDirection();                        // NEW: This allows control of the Rotation Direction of the Fan
-      (new Characteristic::RotationSpeed(50))->setRange(0,100,25);    // NEW: This allows control of the Rotation Speed of the Fan, with an initial value of 50% and a range from 0-100 in steps of 25%
+      new Characteristic::RotationDirection();                        // 新：这允许控制风扇的旋转方向
+      (new Characteristic::RotationSpeed(50))->setRange(0,100,25);    // 新：这允许控制风扇的转速，初始值为 50%，范围为 0-100，步长为 25%
 
-  // NOTE 1: Setting the initial value of the Brightness Characteristic to 50% does not by itself cause HomeKit to turn the light on to 50% upon start-up.
-  // Rather, this is governed by the initial value of the On Characteristic, which in this case happens to be set to true.  If it were set to false,
-  // or left unspecified (default is false) then the LightBulb will be off at start-up.  However, it will jump to 50% brightness as soon as turned on
-  // for the first time.  This same logic applies to the Active and RotationSpeed Characteristics for a Fan.
+  // 注意 1：将亮度特性的初始值设置为 50% 本身不会导致 HomeKit 在启动时将灯打开到 50%。
+  // 相反，这由 On Characteristic 的初始值控制，在这种情况下恰好设置为 true。 如果它设置为 false 或
+  //  未指定（默认为 false），则灯泡将在启动时关闭。 但是，第一次打开它就会跳到50%的亮度。 同样的
+  //  逻辑适用于风扇的 Active 和 RotationSpeed 特性。
 
-  // NOTE 2: The default range for Characteristics that support a range of values is specified in HAP Section 9.  For Brightness, the range defaults
-  // to min=0%, max=100%, step=1%.  Using setRange() to change the minimum Brightness from 0% to 20% (or any non-zero value) provides for a better
-  // HomeKit experience.  This is because the LightBulb power is controlled by the On Characteristic, and allowing Brightness to be as low as 0%
-  // sometimes results in HomeKit turning on the LightBulb but with Brightness=0%, which is not very intuitive.  This can occur when asking Siri
-  // to lower the Brightness all the way, and then turning on the LightBulb.  By setting a minumum value of 20%, HomeKit always ensures that there is
-  // some Brightness value whenever the LightBulb is turned on.
+  // 注 2：支持值范围的特性的默认范围在 HAP 第 9 节中指定。对于亮度，范围默认为 min=0%，max=100%，step=1%。
+  // 使用 setRange() 将最小亮度从 0% 更改为 20%（或任何非零值）可提供更好的 HomeKit 体验。 这是因为灯泡的功率是
+  //  由 On Characteristic 控制的，并且允许 Brightness 低至 0% 有时会导致 HomeKit 打开灯泡但 Brightness=0%，
+  //  这不是很直观。 当要求 Siri 一直降低亮度，然后打开灯泡时，可能会发生这种情况。 通过将最小值设置为 20%，
+ //   HomeKit 始终确保灯泡打开时有一些亮度值。
 
 } // end of setup()
 
