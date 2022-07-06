@@ -8,7 +8,7 @@ HomeSpan 支持无线 (OTA) 更新，它允许您直接从 Arduino IDE *无线*�
 
 您可以使用“O”命令从 [HomeSpan CLI](CLI.md) 更改 HomeSpan 设备的密码。与设备的设置代码类似，HomeSpan 将您指定的 OTA 密码的不可恢复散列版本保存在非易失性存储 (NVS) 中。如果您忘记了您指定的密码，您需要使用“O”命令创建一个新密码，或者您可以通过使用“E”命令完全擦除 NVS 来恢复默认的 OTA 密码。
 
-> :感叹号：虽然不推荐，但您可以在为您的草图启用 OTA 时覆盖密码要求，方法是将 *false* 作为启用方法的参数，如下所示：`homeSpan.enableOTA(false)`。谨慎使用！任何可以通过您的网络访问该设备的人现在都可以上传新草图。
+> :exclamation: 虽然不推荐，但您可以在为您的草图启用 OTA 时覆盖密码要求，方法是将 *false* 作为启用方法的参数，如下所示：`homeSpan.enableOTA(false)`。谨慎使用！任何可以通过您的网络访问该设备的人现在都可以上传新草图。
 
 请注意，为了使 OTA 正常运行，您的草图必须使用包含 OTA 分区的分区方案进行编译。分区方案位于 Arduino IDE 的 *Tools → Partition Scheme* 菜单下。选择一个表明它支持 OTA 的方案。请注意，标记为“默认”的方案通常包括 OTA 分区。如果不确定，请尝试一下。 HomeSpan 会通知您是否这样做。
 
