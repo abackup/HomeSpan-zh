@@ -41,49 +41,33 @@
 
 void setup() {
 
-  // So far we've seen that HomeSpan allows you to create derived Services with their own constructors and update() methods.  For many applications, this
-  // will be all that is needed.  However, for many other types of applications you may need to take action or perform some background operations without
-  // any prompting or requests from HomeKit.
-
-  // To perform background operations and actions, every Service implements a loop() method.  The default loop() method is to do nothing, which has been
-  // fine for all our prior examples.  But if you need to perform some continuous background action, all you need to do is implement a loop() method for
-  // your derived Service.  At the end of each HomeSpan polling cycle, the loop() method is called for each Service that implements its own code.
-  // In this fashion, the loop() method is similar to the main loop() method in the Arduino IDE itself - except it can be customized for each Service.
-
-  // In this Example 12 we explore the use of loop() methods to implement two new accessories - a Temperature Sensor and an Air Quality Sensor.  Of course
-  // we won't actually have these physical devices attached to the ESP32 for the purpose of this example, but we will simulate "reading" their properties.
-  // This is one of the main purposes of implementing a loop() method.  It allows you to read a sensor or perform some sort of repetitive, Service-specific
-  // action.
-
-  // Once you read (or simulate reading) a sensor's values in a loop() method, you need to somehow communicate this back to HomeKit so the new values can be 
-  // reflected in the HomeKit Controller.  This may be strictly for information purposes (such as a temperature sensor) or could be used by HomeKit itself
-  // to trigger other devices (as might occur if implementing a Door Sensor).
-
-  // Fortunately, HomeSpan makes communicating the values of Characteristics back to HomeKit easy.  In prior examples we saw how getVal() and getNewVal()
-  // are used to read current and updated Characteristic values requested by HomeKit.  To perform the reverse, we simply use a method called setVal().
-  // Setting the value of a Characteristic with this function does two things.  First, it causes HomeSpan to send an Event Notification message back to HomeKit
-  // letting HomeKit know the new value of the Characteristic.  Since messages create network traffic, HomeSpan keeps track of all setVal() changes across
-  // all Services and creates one a single Event Notification message reporting all the changes togther at the end of each polling cycle.
-
-  // The second thing that HomeSpan does when you change the value of a Characteristic with setVal() is to reset an internal timer for that Characteristic that
-  // keeps track of how long it's been since the last modification, whether from a previous setVal() instruction, or by HomeKit itself via a call to update().
-  // You can query the time since the last modificaton using the method timeVal() which returns the elapsed time in milliseconds.  By calling this function from 
-  // within loop() you can determine when it's time for a new sensor read, or when to perform some other action.
-
-  // NOTE: It it NOT recommended to continuously change Characteristic values using setVal() as this will generate a lot of network traffic since HomeSpan
-  // sends Event Notifications bck to all registered HomeKit Controllers.  It's fine to perform internal calculations, generate signals on different pins,
-  // and perform any other internal actions you may need as frequently as you require.  But limit the use of setVal() to a reasonable frequency, such as maybe
-  // one per minute for a temperature sensor.  Do not use setVal() unless the value of the Characteristic changes, but do use it to immediately inform HomeKit of
-  // something time-sensitive, such as a door opening, or a smoke alarm triggering.
-
-  // As usual, all of the logic for this example are encapsulated in new standalone derived Services.  You'll find fully-commented definitions for the DEV_TempSensor() and 
-  // the DEV_AirQualitySensor() Services instantiated below, in the DEV_Sensors.h file.  As noted, this example is for instructional purposes only -- we do not actually
-  // connect a Temperature Sensor or Air Quality Sensor to our ESP32 device.  As such, we did not define the Services to take any arguments to specify pin numbers or any
-  // other information needed to implement an actual sensor.  Instead, in order to see how real a device would work, we simulate periodic changes by modifying Characteristic
-  // values using setVal() with either a sequence of repeating values, or random values.  See DEV_Sensors.h for complete details.
-
-  // Once you understand these examples, you should be able to use implement your own loop() method and utilize setVal() along with timeVal() for any combination of
-  // HomeKit Services with Characteristics that require your device to send periodic update messages to HomeKit Controllers, ranging from Smoke Alarms to Door Sensors.
+  // 到目前为止，我们已经看到 HomeSpan 允许您使用自己的构造函数和 update() 方法创建派生服务。对于许多应用程序，这将是全部所需。
+ //但是，对于许多其他类型的应用程序，您可能需要采取行动或者在没有来自 HomeKit 的任何提示或请求的情况下执行一些后台操作。为了执行
+ // 后台操作和动作，每个 Service 都实现了一个 loop() 方法。默认的 loop() 方法是什么都不做，这对于我们之前的所有示例都很好。但是
+ // 如果你需要执行一些连续的后台动作，你就可以需要做的是为你的派生服务实现一个loop()方法。在每个HomeSpan轮询周期结束时，每个实现
+//  自己代码的服务都会调用loop()方法。在这种方式下，loop() 方法类似于 Arduino IDE 本身中的 main loop() 方法——除了它可以为每个服务
+ // 定制。在本例 12 中，我们探索了使用 loop() 方法来实现两个新配件 - 温度传感器和空气质量传感器。当然，出于本示例的目的，我们实际
+ // 上不会将这些物理设备连接到 ESP32，但我们将模拟“读取”它们的属性。这是实现 loop() 方法的主要目的之一。它允许您读取传感器或执行
+//  某种重复的、特定于服务的操作。一旦您在 loop() 方法中读取（或模拟读取）传感器的值，您需要以某种方式将其传达回 HomeKit，以便新
+//  值可以反映在 HomeKit 控制器中。这可能仅用于信息目的（例如温度传感器）或 HomeKit 本身可以使用它来触发其他设备（如果实现门传感器
+//  可能会发生这种情况）。幸运的是，HomeSpan 使得将 Characteristic 的值传回 HomeKit 变得容易。在前面的示例中，我们看到了如何使用
+//  getVal() 和 getNewVal() 来读取 HomeKit 请求的当前和更新的 Characteristic 值。要执行相反的操作，我们只需使用一个方法称为 
+//  setVal()。使用此函数设置 Characteristic 的值有两件事情。首先，它会导致 HomeSpan 将 Event Notification 消息发送回 HomeKit，
+ // 让 HomeKit 知道 Characteristic 的新值。由于消息会创建网络流量，HomeSpan 会跟踪所有 setVal( ) 更改所有服务并创建一个单独的事件
+ // 通知消息，在每个轮询周期结束时一起报告所有更改。当您使用 setVal() 更改 Characteristic 的值时，HomeSpan 所做的第二件事是重置该
+//  Characteristic 的内部计时器，该计时器跟踪自上次修改以来已经过去了多长时间，无论是来自先前的 setVal() 指令，还是由 HomeKit 
+//  本身通过调用 update()。您可以使用 timeVal() 方法查询自上次修改以来的时间，该方法以毫秒为单位返回经过的时间。通过在 loop() 中
+//  调用此函数，您可以确定何时是读取新传感器的时间，或何时执行其他操作行动。
+ //注意：不建议使用 setVal() 连续更改特性值，因为这会产生大量网络流量，因为 HomeSpan 会向所有已注册的 HomeKit 控制器发送事件通知
+//  bck。执行内部计算、在不同引脚上生成信号和尽可能频繁地执行您可能需要的任何其他内部操作。但将 setVal() 的使用限制在合理的频率，
+//  例如温度传感器可能每分钟一次。除非 Characteristic 的值，否则不要使用 setVal()更改，但确实使用它来立即通知 HomeKit 一些时间敏感
+ // 的事情，例如开门或触发烟雾报警器。
+ //像往常一样，此示例的所有逻辑都封装在新的独立派生服务中。您将在 DEV_Sensors.h 文件中找到下面实例化的 DEV_TempSensor() 和 
+//  DEV_AirQualitySensor() 服务的完整注释定义。如上所述，此示例仅用于说明目的——我们实际上并没有将温度传感器或空气质量传感器连接到
+//  我们的 ESP32 设备。因此，我们没有定义服务以使用任何参数来指定引脚号或实现所需的任何其他信息一个实际的传感器。相反，为了了解设备
+//  的工作情况，我们通过使用 setVal() 修改特征值来模拟周期性变化，其中包含重复值序列或随机值。有关完整详细信息，请参阅 DEV_Sensors.h。
+// 一旦你理解了这些例子，你应该能够使用实现你自己的 loop() 方法，并使用 setVal() 和 timeVal() 来实现 HomeKit 服务的任意组合，以及
+//  需要你的设备向 HomeKit 控制器发送定期更新消息的特性，从烟雾报警器到门传感器。
   
   Serial.begin(115200);
 
