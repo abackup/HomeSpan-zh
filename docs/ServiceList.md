@@ -51,7 +51,7 @@ new Service::LightBulb();                           // 实例化一个灯泡服�
 | OccupancySensor占用传感器 | OccupancyDetected检测到占用 | Name名称<br>StatusActive活跃状态<br>StatusFault状态故障<br>StatusTampered状态篡改<br>StatusLowBattery状态低电量 |
 | Outlet插座| On开关<br>OutletInUse正在使用 | Name名称 |
 | SecuritySystem安保系统 | SecuritySystemCurrentState安保系统当前状态<br>SecuritySystemTargetState安全系统目标状态 | Name名称<br>SecuritySystemAlarmType安全系统警报类型<br>StatusFault状态故障<br>StatusTampered状态篡改 |
-| ServiceLabel服务标签 | ServiceLabel服务标签Name名称space | *none* |
+| ServiceLabel服务标签 | ServiceLabelNamespace服务标签命名空间 | *none* |
 | Slat | CurrentSlatState<br>SlatType | Name名称<br>SwingMode摇摆模式<br>CurrentTiltAngle当前倾斜角度<br>TargetTiltAngle目标倾斜角度 |
 | SmokeSensor烟雾传感器 | SmokeDetected烟雾检测 | Name名称<br>StatusActive活跃状态<br>StatusFault状态故障<br>StatusTampered状态篡改<br>StatusLowBattery状态低电量 |
 | Speaker扬声器 | Mute静音 | Name名称<br>Volume音量 |
