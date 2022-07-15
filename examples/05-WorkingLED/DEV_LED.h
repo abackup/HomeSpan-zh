@@ -34,67 +34,31 @@ struct DEV_LED : Service::LightBulb {               // First we create a derived
       
 //////////////////////////////////
 
-// HOW update() WORKS:
-// ------------------
+// update() 怎么工作: ------------------ 每当 HomeKit 控制器请求 HomeSpan 更新特性时，HomeSpan 都会为包含特性的 SERVICE 调用 update() 方法。它只调用一次，即使该服务
+//请求多个特性更新。例如，如果您指示 HomeKit 打开一盏灯并将其设置为 50% 亮度，它将向 HomeSpan 发送两个请求：一个更新“灯泡服务的“开”特性从“假”变为“真”，另一个将同一服务
+//的“亮度”特性更新为 50。这是非常低效的，并且需要用户处理对同一服务的多次更新。取而代之的是，HomeSpan 将这两个请求合并到一个对 Service 本身的 update() 调用中，您可以在其
+//中处理同时更改的所有特性。在上面的示例中，我们只有一个特性要处理，所以这并不意味着什么。但在后面的例子中，我们将看到它是如何与多个特征一起工作的。
 //
-// Whenever a HomeKit controller requests HomeSpan to update a Characteristic, HomeSpan calls the update() method for the SERVICE that contains the
-// Characteristic.  It calls this only one time, even if multiple Characteristics updates are requested for that Service.  For example, if you
-// direct HomeKit to turn on a light and set it to 50% brightness, it will send HomeSpan two requests: one to update the "On" Characteristic of the
-// LightBulb Service from "false" to "true" and another to update the "Brightness" Characteristic of that same Service to 50.  This is VERY inefficient
-// and would require the user to process multiple updates to the same Service.
-//
-// Instead, HomeSpan combines both requests into a single call to update() for the Service itself, where you can process all of the Characteristics
-// that change at the same time.  In the example above, we only have a single Characteristic to deal with, so this does not mean much.  But in later
-// examples we'll see how this works with multiple Characteristics.
-
-// HOW TO ACCESS A CHARACTERISTIC'S NEW AND CURRENT VALUES
-// -------------------------------------------------------
-//
-// HomeSpan stores the values for its Characteristics in a union structure that allows for different types, such as floats, booleans, etc.  The specific
-// types are defined by HAP for each Characteristic.  Looking up whether a Characteristic is a uint8 or uint16 can be tiresome, so HomeSpan abstracts
-// all these details.  Since C++ adheres to strict variable typing, this is done through the use of template methods.  Every Characteristic supports
-// the following two methods:
-//
-//    getVal<type>()     - returns the CURRENT value of the Characterisic, after casting into "type"
-//    getNewVal<type>()  - returns the NEW value (i.e. to be updated) of the Characteritic, after casting into "type"
-//
-// For example, MyChar->getVal<int>() returns the current value of SpanCharacterstic MyChar as an int, REGARDLESS of how the value is stored by HomeSpan.
-// Similarly, MyChar->getVal<double>() returns a value as a double, even it is stored as as a boolean (in which case you'll either get 0.00 or 1.00).
-// Of course you need to make sure you understand the range of expected values so that you don't try to access a value stored as 2-byte int using getVal<uint8_t>().
-// But it's perfectly okay to use getVal<int>() to access the value of a Characteristic that HAP insists on storing as a float, even though its range is
-// strictly between 0 and 100 in steps of 1.  Knowing the range and step size is all you need to know in determining you can access this as an <int> or even a <uint8_t>.
-//
-// Because most Characteristic values can properly be cast into int, getVal and getNewVal both default to <int> if the template parameter is not specified.
-// As you can see above, we retrieved the new value HomeKit requested for the On Characteristic that we named "power" by simply calling power->getNewVal().
-// Since no template parameter is specified, getNewVal() will return an int.  And since the On Characteristic is natively stored as a boolean, getNewVal()
-// will either return a 0 or a 1, depending on whether HomeKit is requesting the Characteristic to be turned off or on. 
-//
-// You may also note that in the above example we needed to use getNewVal(), but did not use getVal() anywhere.  This is because we know exactly what
-// to do if HomeKit requests an LED to be turned on or off.  The current status of the LED (on or off) does not matter.  In latter examples we will see
-// instances where the current state of the device DOES matter, and we will need to access both current and new values.
-//
-// Finally, there is one additional method for Characteristics that is not used above but will be in later examples: updated().  This method returns a
-// boolean indicating whether HomeKit has requested a Characteristic to be updated, which means that getNewVal() will contain the new value it wants to set
-// for that Characteristic.  For a Service with only one Characteristic, as above, we don't need to ask if "power" was updated using power->updated() because
-// the fact the the update() method for the Service is being called means that HomeKit is requesting an update, and the only thing to update is "power".
-// But for Services with two or more Characteristics, update() can be called with a request to update only a subset of the Characteristics.  We will
-// find good use for the updated() method in later, multi-Characteristic examples.
-
-// UNDER THE HOOD: WHAT THE RETURN CODE FOR UPDATE() DOES
-// ------------------------------------------------------
-//
-// HomeKit requires each Characteristic to return a special HAP status code when an attempt to update its value is made.  HomeSpan automatically takes care of
-// most of the errors, such as a Characteristic not being found, or a request to update a Characteristic that is read only.  In these cases update() is never
-// even called.  But if it is, HomeSpan needs to return a HAP status code for each of the Characteristics that were to be updated in that Service.
-// By returning "true" you tell HomeSpan that the newValues requested are okay and you've made the required updates to the physical device.  Upon 
-// receiving a true return value, HomeSpan updates the Characteristics themselves by copying the "newValue" data elements into the current "value" data elements.
-// HomeSpan then sends a message back to HomeKit with a HAP code representing "OK," which lets the Controller know that the new values it requested have been
-// sucessfully processed.  At no point does HomeKit ask for, or allow, a data value to be sent back from HomeSpan indicating the data in a Characteristic.
-// When requesting an update, HomeKit simply expects a HAP status code of OK, or some other status code representing an error.  To tell HomeSpan to send the Controller
-// an error code, indicating that you were not able to successfully process the update, simply have update() return a value of "false."  HomeSpan converts a
-// return of "false" to the HAP status code representing "UNABLE," which will cause the Controller to show that the device is not responding.
-
-// There are very few reasons you should need to return "false" since so much checking is done in advance by either HomeSpan or HomeKit
-// itself.  For instance, HomeKit does not allow you to use the Controller, or even Siri, to change the brightness of LightBulb to a value outside the
-// range of allowable values you specified.  This means that any update() requests you receive should only contain newValue data elements that are in-range.
-//
+ //如何访问特性的新值和当前值 ----------------------------------------- -------------- HomeSpan 将其特性的值存储在一个联合结构中，该结构允许不同的类型，例如浮点数、布尔
+ //值等。具体类型由 HAP 为每个特性定义。查找一个 Characteristic 是 uint8 还是 uint16 可能会很烦人，因此 HomeSpan 将所有这些细节都抽象出来。由于 C++ 坚持严格的变量类型，
+ //这是通过使用模板方法来完成的。每个 Characteristic 都支持以下两种方法：getVal<type >() - 在转换为“type”后返回 Characteristic 的 CURRENT 值>getVal<int>() 以 int 形式返
+ //回 SpanCharacterstic MyChar 的当前值，无论 HomeSpan 如何存储该值。类似地，MyChar->getVal<double>() 返回一个双精度值，即使它存储为布尔值（在这种情况下，您将获得 0.00 
+ // 或 1.00）。当然，您需要确保了解预期值的范围，以免尝试使用 getVal<uint8_t>() 访问存储为 2 字节 int 的值。但是使用 getVal<int>() 来访问 HAP 坚持存储为浮点数的特性的值
+ // 是完全可以的，即使它的范围严格在 0 到 100 之间，步长为 1。知道范围和步长是在确定可以将其作为 <int> 甚至是 <uint8_t> 访问时，您需要知道的一切。因为大多数 Characteristic 
+  //值都可以正确地转换为 int，如果未指定模板参数，getVal 和 getNewVal 都默认为 <int>。正如您在上面看到的，我们通过简单地调用 power->getNewVal() 来检索 HomeKit 为我们命名为
+ // “power”的 On Characteristic 请求的新值。由于没有指定模板参数，getNewVal() 将返回一个 int。由于 On Characteristic 本身存储为布尔值，getNewVal() 将返回 0 或 1，具体取决
+ // 于 HomeKit 是否请求打开 Characteristic您可能还注意到，在上面的示例中，我们需要使用 getNewVal()，但没有在任何地方使用 getVal()。这是因为我们知道 HomeKit 请求打开或关闭 
+  //LED 时该怎么做. LED 的当前状态（开或关）无关紧要。在后面的示例中，我们将看到设备的当前状态确实很重要的实例，我们将需要访问当前值和新值。最后，还有一种额外的 
+  //Characteristic 方法，上面没有使用，但将在后面的示例中使用：updated()。此方法返回一个布尔值，指示 HomeKit 是否已请求更新 Characteristic，这意味着 getNewVal() 将包含它要
+ // 为该特性设置新值。对于只有一个特性的服务，如上所述，我们不需要询问“电源”是否使用 power->updated() 更新，因为事实上 update() 方法因为服务被调用意味着 HomeKit 正在请求更新，
+  //而唯一要更新的是“电源”。但是对于具有两个或更多特性的服务，可以调用 update() 并请求仅更新特性的一个子集。我们将在后面的多特性示例中找到 updated() 方法的好用处。
+ // 
+ //幕后：UPDATE() 的返回代码是做什么的 ------------------------- ----------------- HomeKit 要求每个 Characteristic 在尝试更新其值时返回一个特殊的 HAP 状态代码。HomeSpan 自
+ //动处理大部分错误，例如未找到特征，或更新只读特征的请求。在这些情况下，甚至从未调用 update()。但如果是，HomeSpan 需要为每个要返回的特征返回 HAP 状态代码在该服务中更新。
+ //
+ //通过返回“true”，您告诉 HomeSpan 请求的 newValues 没问题，并且您已对物理设备进行了所需的更新。收到真实的返回值后，HomeSpan 通过将“newValue”数据元素复制到当前“值”数据元素。
+ //然后 HomeSpan 向 HomeKit 发送一条带有表示“OK”的 HAP 代码的消息，这让 Controller 知道它请求的新值已被成功处理。HomeKit 在任何时候都不会要求或允许发送数据值从 HomeSpan 返回
+// ，指示特征中的数据。当请求更新时，HomeKit 只期望 HAP 状态码 OK，或其他一些表示错误的状态码。要告诉 HomeSpan 向 Controller 发送错误码，表明您无法成功处理更新，只需更新() 
+//  返回值“false”。HomeSpan 将返回值“false”转换为表示“UNABLE”的 HAP 状态代码，这将导致控制器显示设备没有响应。
+ //您需要返回“false”的原因很少，因为 HomeSpan 或 HomeKit 本身会提前完成大量检查。例如，HomeKit 不允许您使用 Controller 甚至 Siri 来更改亮度将灯泡设置为您指定的允许值范围之
+ //外的值。这意味着您收到的任何 update() 请求都应仅包含范围内的 newValue 数据元素。
