@@ -24,21 +24,21 @@ new Service::LightBulb();                           // 实例化一个灯泡服�
 | Service服务 | Required Characteristics所需特性 | Optional Characteristics可选特性 |
 | ------- | -------------------- | ------------------- |
 | AccessoryInformation配件信息| FirmwareRevision固件版本<br>Identity身份<br>Manufacturer制造商<br>Model型号<br>Name名称<br>SerialNumber序列号 | HardwareRevision硬件修订 |
-| AirPurifier | Active<br>CurrentAirPurifierState<br>TargetAirPurifierState | Name<br>RotationSpeed<br>SwingMode<br>LockPhysicalControls |
-| AirQualitySensor空气净化器 | AirQuality | Name<br>OzoneDensity<br>NitrogenDioxideDensity<br>SulphurDioxideDensity<br>PM25Density<br>PM10Density<br>VOCDensity<br>StatusActive<br>StatusFault<br>StatusTampered<br>StatusLowBattery |
-| BatteryService | BatteryLevel<br>ChargingState<br>StatusLowBattery | Name |
-| CarbonDioxideSensor | CarbonDioxideDetected | Name<br>StatusActive<br>StatusFault<br>StatusTampered<br>StatusLowBattery<br>CarbonDioxideLevel<br>CarbonDioxidePeakLevel |
-| CarbonMonoxideSensor | CarbonMonoxideDetected | Name<br>StatusActive<br>StatusFault<br>StatusTampered<br>StatusLowBattery<br>CarbonMonoxideLevel<br>CarbonMonoxidePeakLevel |
-| ContactSensor | ContactSensorState | Name<br>StatusActive<br>StatusFault<br>StatusTampered<br>StatusLowBattery |
-| Door | CurrentPosition<br>TargetPosition<br>PositionState | Name<br>HoldPosition<br>ObstructionDetected |
-| Doorbell | ProgrammableSwitchEvent | Name<br>Volume<br>Brightness |
-| Fan | Active | Name<br>CurrentFanState<br>TargetFanState<br>RotationDirection<br>RotationSpeed<br>SwingMode<br>LockPhysicalControls |
-| Faucet | Active | StatusFault<br>Name |
-| FilterMaintenance | FilterChangeIndication | Name<br>FilterLifeLevel<br>ResetFilterIndication |
-| GarageDoorOpener | CurrentDoorState<br>TargetDoorState<br>ObstructionDetected | LockCurrentState<br>LockTargetState<br>Name |
-| HAPProtocolInformation | Version | *none* |
-| HeaterCooler | Active<br>CurrentTemperature<br>CurrentHeaterCoolerState<br>TargetHeaterCoolerState | Name<br>RotationSpeed<br>TemperatureDisplayUnits<br>SwingMode<br>CoolingThresholdTemperature<br>HeatingThresholdTemperature<br>LockPhysicalControls |
-| HumidifierDehumidifier | Active<br>CurrentRelativeHumidity<br>CurrentHumidifierDehumidifierState<br>TargetHumidifierDehumidifierState | Name<br>RelativeHumidityDehumidifierThreshold<br>RelativeHumidityHumidifierThreshold<br>RotationSpeed<br>SwingMode<br>WaterLevel<br>LockPhysicalControls |
+| AirPurifier空气净化器 | Active<br>CurrentAirPurifierState当前空气净化器状态<br>TargetAirPurifierState目标空气净化器状态 | Name<br>RotationSpeed旋转速度<br>SwingMode摇摆模式<br>LockPhysicalControls |
+| AirQualitySensor空气质量传感器 | AirQuality空气质量 | Name<br>OzoneDensity臭氧密度<br>NitrogenDioxideDensity二氧化氮密度<br>SulphurDioxideDensity二氧化硫密度<br>PM25DensityPM25密度<br>PM10DensityPM10密度<br>VOCDensityVOC密度<br>StatusActive状态活动<br>StatusFault状态故障<br>StatusTampered状态篡改<br>StatusLowBattery状态低电量 |
+| BatteryService电池服务 | BatteryLevel电池电量<br>ChargingState充电状态<br>StatusLowBattery状态低电量 | Name |
+| CarbonDioxideSensor二氧化碳传感器 | CarbonDioxideDetected检测到二氧化碳 | Name<br>StatusActive状态活动<br>StatusFault<br>StatusTampered<br>StatusLowBattery<br>CarbonDioxideLevel二氧化碳水平<br>CarbonDioxidePeakLevel |
+| CarbonMonoxideSensor一氧化碳传感器 | CarbonMonoxideDetected | Name<br>StatusActive<br>StatusFault<br>StatusTampered<br>StatusLowBattery<br>CarbonMonoxideLevel<br>CarbonMonoxidePeakLevel一氧化碳峰值水平 |
+| ContactSensor接触传感器 | ContactSensorState接触传感器状态 | Name<br>StatusActive<br>StatusFault<br>StatusTampered<br>StatusLowBattery |
+| Door门 | CurrentPosition<br>TargetPosition<br>PositionState | Name<br>HoldPosition<br>ObstructionDetected |
+| Doorbell门铃 | ProgrammableSwitchEvent可编程开关事件 | Name<br>Volume<br>Brightness |
+| Fan电扇 | Active | Name<br>CurrentFanState<br>TargetFanState<br>RotationDirection<br>RotationSpeed<br>SwingMode<br>LockPhysicalControls |
+| Faucet水龙头 | Active | StatusFault状态故障<br>Name |
+| FilterMaintenance过滤器维护 | FilterChangeIndication | Name<br>FilterLifeLevel<br>ResetFilterIndication |
+| GarageDoorOpener车库开门器 | CurrentDoorState当前门状态<br>TargetDoorState目标门状态<br>ObstructionDetected | LockCurrentState<br>LockTargetState<br>Name |
+| HAPProtocolInformationHAPP协议信息 | Version版本 | *none* |
+| HeaterCooler加热器冷却器 | Active<br>CurrentTemperature<br>CurrentHeaterCoolerState<br>TargetHeaterCoolerState | Name<br>RotationSpeed<br>TemperatureDisplayUnits<br>SwingMode<br>CoolingThresholdTemperature<br>HeatingThresholdTemperature<br>LockPhysicalControls |
+| HumidifierDehumidifier加湿器除湿机 | Active<br>CurrentRelativeHumidity当前相对湿度<br>CurrentHumidifierDehumidifierState当前加湿器除湿器状态<br>TargetHumidifierDehumidifierState目标加湿器除湿器状态 | Name<br>RelativeHumidityDehumidifierThreshold<br>RelativeHumidityHumidifierThreshold<br>RotationSpeed<br>SwingMode<br>WaterLevel<br>LockPhysicalControls |
 | HumiditySensor | CurrentRelativeHumidity | Name<br>StatusActive<br>StatusFault<br>StatusTampered<br>StatusLowBattery |
 | InputSource | Identifier | ConfiguredName<br>IsConfigured<br>CurrentVisibilityState<br>TargetVisibilityState |
 | IrrigationSystem | Active<br>ProgramMode<br>InUse | RemainingDuration<br>Name<br>StatusFault |
