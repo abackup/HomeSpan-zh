@@ -49,7 +49,7 @@ new Service::LightBulb();                           // 实例化一个灯泡服�
 | Microphone麦克风 | Mute静音 | Name名称<br>Volume音量 |
 | MotionSensor运动传感器 | MotionDetected运动检测 | Name名称<br>StatusActive活跃状态<br>StatusFault状态故障<br>StatusTampered状态篡改<br>StatusLowBattery状态低电量 |
 | OccupancySensor占用传感器 | OccupancyDetected检测到占用 | Name名称<br>StatusActive活跃状态<br>StatusFault状态故障<br>StatusTampered状态篡改<br>StatusLowBattery状态低电量 |
-| Outlet插座| On<br>OutletInUse正在使用 | Name名称 |
+| Outlet插座| On开关<br>OutletInUse正在使用 | Name名称 |
 | SecuritySystem安保系统 | SecuritySystemCurrentState安保系统当前状态<br>SecuritySystemTargetState安全系统目标状态 | Name名称<br>SecuritySystemAlarmType安全系统警报类型<br>StatusFault状态故障<br>StatusTampered状态篡改 |
 | ServiceLabel服务标签 | ServiceLabel服务标签Name名称space | *none* |
 | Slat | CurrentSlatState<br>SlatType | Name名称<br>SwingMode摇摆模式<br>CurrentTiltAngle当前倾斜角度<br>TargetTiltAngle目标倾斜角度 |
@@ -66,113 +66,113 @@ new Service::LightBulb();                           // 实例化一个灯泡服�
 
 ### 特征类型和默认值
 
-|Characteristic|Type|Default
+|Characteristic特征|Type类型|Default默认值
 |---|---|---|
 |Active|uint8_t|0|
-|ActiveIdentifier|uint32_t|0|
-|AirQuality|uint8_t|0|
-|BatteryLevel|uint8_t|0|
-|Brightness|int|0|
-|CarbonMonoxideLevel|double|0|
-|CarbonMonoxidePeakLevel|double|0|
-|CarbonMonoxideDetected|uint8_t|0|
-|CarbonDioxideLevel|double|0|
-|CarbonDioxidePeakLevel|double|0|
-|CarbonDioxideDetected|uint8_t|0|
-|ChargingState|uint8_t|0|
-|CoolingThresholdTemperature|double|10| 
-|ColorTemperature|uint32_t|50|
-|ConfiguredName|char \*|"unnamed"|
-|ContactSensorState|uint8_t|1|
+|ActiveIdentifier活动标识符|uint32_t|0|
+|AirQuality空气质量|uint8_t|0|
+|BatteryLevel电池电量|uint8_t|0|
+|Brightness亮度|int|0|
+|CarbonMonoxideLevel一氧化碳水平|double|0|
+|CarbonMonoxidePeakLevel一氧化碳峰值水平|double|0|
+|CarbonMonoxideDetected检测到一氧化碳|uint8_t|0|
+|CarbonDioxideLevel二氧化碳水平|double|0|
+|CarbonDioxidePeakLevel二氧化碳峰值水平|double|0|
+|CarbonDioxideDetected检测到二氧化碳|uint8_t|0|
+|ChargingState充电状态|uint8_t|0|
+|CoolingThresholdTemperature冷却阈值温度|double|10| 
+|ColorTemperature色温|uint32_t|50|
+|ConfiguredName配置名称|char \*|"unnamed"|
+|ContactSensorState接触传感器状态|uint8_t|1|
 |CurrentAmbientLightLevel当前环境光级别|double|1|
-|CurrentHorizontalTiltAngle|int|0|
-|CurrentAirPurifierState|uint8_t|1|
+|CurrentHorizontalTiltAngle当前水平倾斜角度|int|0|
+|CurrentAirPurifierState当前空气净化器状态|uint8_t|1|
 |CurrentSlatState|uint8_t|0|
-|CurrentPosition|uint8_t|0|
-|CurrentVerticalTiltAngle|int|0|
-|CurrentHumidifierDehumidifierState|uint8_t|1|
-|CurrentDoorState|uint8_t|1|
-|CurrentFanState|uint8_t|1|
-|CurrentHeatingCoolingState|uint8_t|0|
-|CurrentHeaterCoolerState|uint8_t|1|
-|CurrentRelativeHumidity|double|0|
-|CurrentTemperature|double|0|
-|CurrentTiltAngle|int|0|
-|CurrentVisibilityState|uint8_t|0|
-|FilterLifeLevel|double|0|
+|CurrentPosition当前位置|uint8_t|0|
+|CurrentVerticalTiltAngle当前垂直倾斜角度|int|0|
+|CurrentHumidifierDehumidifierState当前加湿器除湿器状态|uint8_t|1|
+|CurrentDoorState当前门状态|uint8_t|1|
+|CurrentFanState当前风扇状态|uint8_t|1|
+|CurrentHeatingCoolingState当前加热冷却状态|uint8_t|0|
+|CurrentHeaterCoolerState当前加热器冷却器状态|uint8_t|1|
+|CurrentRelativeHumidity当前相对湿度|double|0|
+|CurrentTemperature当前温度|double|0|
+|CurrentTiltAngle当前倾斜角度|int|0|
+|CurrentVisibilityState当前可见性状态|uint8_t|0|
+|FilterLifeLevel过滤器生命等级|double|0|
 |FilterChangeIndication过滤器变化指示|uint8_t|0|
-|FirmwareRevision|char \*|"1.0.0"|
-|HardwareRevision|char \*|"1.0.0"|
-|HeatingThresholdTemperature|double|16|
+|FirmwareRevision固件版本|char \*|"1.0.0"|
+|HardwareRevision硬件版本|char \*|"1.0.0"|
+|HeatingThresholdTemperature加热阈值温度|double|16|
 |HoldPosition暂停位置|boolean|false|
-|Hue|double|0|
-|Identifier|uint32_t|0|
-|Identify|boolean|false|
+|Hue色调|double|0|
+|Identifier标识符|uint32_t|0|
+|Identify确认|boolean|false|
 |InUse正在使用|uint8_t|0|
 |IsConfigured已配置|uint8_t|0|
 |LeakDetected泄漏检测|uint8_t|0|
-|LockCurrentState锁定当前状态锁定当前状态|uint8_t|0|
-|LockPhysicalControls|uint8_t|0|
-|LockTargetState锁定目标状态锁定目标状态|uint8_t|0|
-|Manufacturer|char \*|"HomeSpan"|
-|Model|char \*|"HomeSpan-ESP32"|
-|MotionDetected|boolean|false|
-|Mute沉默的|boolean|false|
-|Name|char \*|"unnamed"|
-|NitrogenDioxideDensity|double|0|
-|ObstructionDetected|boolean|false|
+|LockCurrentState锁定当前状态|uint8_t|0|
+|LockPhysicalControls锁定物理控制|uint8_t|0|
+|LockTargetState锁定目标状态|uint8_t|0|
+|Manufacturer制造商|char \*|"HomeSpan"|
+|Model型号|char \*|"HomeSpan-ESP32"|
+|MotionDetected运动检测|boolean|false|
+|Mute静音|boolean|false|
+|Name名称|char \*|"unnamed"|
+|NitrogenDioxideDensity二氧化氮密度|double|0|
+|ObstructionDetected检测到障碍物|boolean|false|
 |PM25Density|double|0|
-|OccupancyDetected|uint8_t|0|
+|OccupancyDetected检测到占用|uint8_t|0|
 |OutletInUse正在使用|boolean|false|
-|On|boolean|false|
-|OzoneDensity|double|0|
+|On开关|boolean|false|
+|OzoneDensity臭氧密度|double|0|
 |PM10Density|double|0|
-|PositionState|uint8_t|2|
-|PowerModeSelection|uint8_t|0|
-|ProgramMode|uint8_t|0|
+|PositionState位置状态|uint8_t|2|
+|PowerModeSelection电源模式选择|uint8_t|0|
+|ProgramMode程序模式|uint8_t|0|
 |ProgrammableSwitchEvent可编程开关事件|uint8_t|0|
-|RelativeHumidityDehumidifierThreshold|double|50|
-|RelativeHumidityHumidifierThreshold|double|50|
+|RelativeHumidityDehumidifierThreshold相对湿度除湿阈值|double|50|
+|RelativeHumidityHumidifierThreshold相对湿度加湿器阈值|double|50|
 |RemainingDuration剩余时间|uint32_t|60|
-|RemoteKey|uint8_t|0|
-|ResetFilterIndication|uint8_t|0|
-|RotationDirection|int|0|
-|RotationSpeed|double|0|
-|Saturation|double|0|
-|SecuritySystemAlarmType|uint8_t|0|
-|SecuritySystemCurrentState|uint8_t|3|
+|RemoteKey遥控钥匙|uint8_t|0|
+|ResetFilterIndication重置过滤器指示|uint8_t|0|
+|RotationDirection旋转方向|int|0|
+|RotationSpeed旋转速度|double|0|
+|Saturation饱和度|double|0|
+|SecuritySystemAlarmType安全系统警报类型|uint8_t|0|
+|SecuritySystemCurrentState安全系统当前状态|uint8_t|3|
 |SecuritySystemTargetState安全系统目标状态|uint8_t|3| 
-|SerialNumber|char \*|"HS-12345"|
+|SerialNumber序列号|char \*|"HS-12345"|
 |ServiceLabelIndex服务标签索引|uint8_t|1|
-|ServiceLabelNamespace|uint8_t|1|
+|ServiceLabelNamespace服务标签命名空间|uint8_t|1|
 |SlatType|uint8_t|0|
-|SmokeDetected|uint8_t|0|
-|StatusActive|boolean|true|
-|StatusFault|uint8_t|0|
-|StatusJammed|uint8_t|0|
+|SmokeDetected烟雾检测|uint8_t|0|
+|StatusActive状态活动|boolean|true|
+|StatusFault状态故障|uint8_t|0|
+|StatusJammed状态卡住|uint8_t|0|
 |StatusLowBattery状态低电量|uint8_t|0|
 |StatusTampered状态篡改|uint8_t|0|
-|SulphurDioxideDensity|double|0|
+|SulphurDioxideDensity二氧化硫密度|double|0|
 |SwingMode摇摆模式|uint8_t|0|
-|TargetAirPurifierState|uint8_t|1|
-|TargetFanState|uint8_t|1|
-|TargetTiltAngle|int|0|
-|SetDuration|uint32_t|60|
-|TargetHorizontalTiltAngle|int|0|
-|TargetHumidifierDehumidifierState|uint8_t|0|
-|TargetPosition|uint8_t|0|
-|TargetDoorState|uint8_t|1|
+|TargetAirPurifierState目标空气净化器状态|uint8_t|1|
+|TargetFanState目标风扇状态|uint8_t|1|
+|TargetTiltAngle目标倾斜角度|int|0|
+|SetDuration设置持续时间|uint32_t|60|
+|TargetHorizontalTiltAngle目标水平倾斜角度|int|0|
+|TargetHumidifierDehumidifierState目标加湿器除湿器状态|uint8_t|0|
+|TargetPosition目标位置|uint8_t|0|
+|TargetDoorState目标门状态|uint8_t|1|
 |TargetHeaterCoolerState目标加热器冷却器状态|uint8_t|0|
-|TargetHeatingCoolingState|uint8_t|0|
-|TargetRelativeHumidity|double|0|
-|TargetTemperature|double|16|
-|TemperatureDisplayUnits|uint8_t|0|
-|TargetVerticalTiltAngle|int|0|
-|TargetVisibilityState|uint8_t|0|
-|ValveType|uint8_t|0|
-|Version|char \*|"1.0.0"|
-|VOCDensity|double|0|
-|Volume|uint8_t|0|
+|TargetHeatingCoolingState目标加热冷却状态|uint8_t|0|
+|TargetRelativeHumidity目标相对湿度|double|0|
+|TargetTemperature目标温度|double|16|
+|TemperatureDisplayUnits温度显示单位|uint8_t|0|
+|TargetVerticalTiltAngle目标垂直倾斜角度|int|0|
+|TargetVisibilityState目标可见性状态|uint8_t|0|
+|ValveType阀门类型|uint8_t|0|
+|Version版本|char \*|"1.0.0"|
+|VOCDensityVOC密度|double|0|
+|Volume音量|uint8_t|0|
 |WaterLevel水位|double|0|
 
 
