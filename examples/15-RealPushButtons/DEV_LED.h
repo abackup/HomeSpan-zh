@@ -16,14 +16,14 @@ struct DEV_DimmableLED : Service::LightBulb {       // Dimmable LED
    // 升高按钮：短按增加 1% 的亮度； 长按亮度增加10%； 双击将亮度增加到最大
    // 下按钮：短按降低亮度 1%； 长按降低亮度10%； 双击将亮度降至最低
   
-  LedPin *ledPin;                                   // reference to Led Pin
-  int powerPin;                                     // NEW! pin with pushbutton to turn on/off LED
-  int raisePin;                                     // NEW! pin with pushbutton to increase brightness
-  int lowerPin;                                     // NEW! pin with pushButton to decrease brightness
-  int channel;                                      // PWM channel used for this LED (should be unique for each LED)
-  SpanCharacteristic *power;                        // reference to the On Characteristic
-  SpanCharacteristic *level;                        // reference to the Brightness Characteristic
-  int favoriteLevel=50;                             // NEW! keep track of a 'favorite' level
+  LedPin *ledPin;                                   // 参考 LED 引脚
+  int powerPin;                                     // 新的！ 带按钮的引脚可打开/关闭 LED
+  int raisePin;                                     // 新的！ 带按钮的引脚以增加亮度
+  int lowerPin;                                     // 新的！ 带按钮的引脚以降低亮度
+  int channel;                                      // 此 LED 使用的 PWM 通道（每个 LED 应该是唯一的）
+  SpanCharacteristic *power;                        // 引用 On 特性
+  SpanCharacteristic *level;                        // 参考亮度特性
+  int favoriteLevel=50;                             // 新的！ 跟踪“最喜欢”的关卡
 
   // 新的！ 构造函数包括 3 个额外的参数来指定电源、升高和降低按钮的引脚号
   
@@ -31,9 +31,9 @@ struct DEV_DimmableLED : Service::LightBulb {       // Dimmable LED
 
     power=new Characteristic::On();     
                 
-    level=new Characteristic::Brightness(favoriteLevel);       // Brightness Characteristic with an initial value equal to the favorite level
-    level->setRange(5,100,1);                                  // sets the range of the Brightness to be from a min of 5%, to a max of 100%, in steps of 1%
-
+    level=new Characteristic::Brightness(favoriteLevel);       // 亮度特性，初始值等于最喜欢的级别
+    level->setRange(5,100,1);                                  // 将亮度的范围设置为从最小值 5% 到最大值 100%，步长为 1%
+    
     //新的！ 下面我们创建三个 SpanButton() 对象。 首先，我们根据需要指定引脚号，但允许 SpanButton() 使用
      // 长按（2000 毫秒）、单按（5 毫秒）和双按（200 毫秒）的默认值。 在第二个和第三个我们改变
      // 默认长按时间为 500 毫秒，适用于反复增加或减少亮度。
