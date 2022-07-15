@@ -3,20 +3,20 @@
 //   DEVICE-SPECIFIC LED SERVICES //
 ////////////////////////////////////
 
-struct DEV_TempSensor : Service::TemperatureSensor {     // A standalone Temperature sensor
+struct DEV_TempSensor : Service::TemperatureSensor {     // 独立的温度传感器
 
-  SpanCharacteristic *temp;                         // reference to the Current Temperature Characteristic
+  SpanCharacteristic *temp;                         //参考当前温度特性
   
-  DEV_TempSensor() : Service::TemperatureSensor(){       // constructor() method
+  DEV_TempSensor() : Service::TemperatureSensor(){       //构造函数()方法
     
     //首先，我们实例化温度传感器的主要特征，即当前温度，并将其初始值设置为 20 度。对于真正的传感器，我们将读取读数并将其初始化
     //为该值。注意：HomeKit 对所有温度都使用摄氏度 温度设置。HomeKit 将根据 iPhone 上的设置在 HomeKit 应用程序中显示温度。 尽管
      // HAP 文档包含一个似乎允许设备通过为每个服务指定摄氏或华氏显示来覆盖此设置的特性，但它似乎不像宣传的那样工作。
     
-    temp=new Characteristic::CurrentTemperature(-10.0);        // instantiate the Current Temperature Characteristic
-    temp->setRange(-50,100);                                  // expand the range from the HAP default of 0-100 to -50 to 100 to allow for negative temperatures
+    temp=new Characteristic::CurrentTemperature(-10.0);        // 实例化当前温度特性
+    temp->setRange(-50,100);                                  // 将范围从 HAP 默认值 0-100 扩大到 -50 到 100，以允许负温度
         
-    Serial.print("Configuring Temperature Sensor");           // initialization message
+    Serial.print("Configuring Temperature Sensor");           // 初始化消息
     Serial.print("\n");
 
   } // end constructor
@@ -31,12 +31,12 @@ struct DEV_TempSensor : Service::TemperatureSensor {     // A standalone Tempera
 
   void loop(){
 
-    if(temp->timeVal()>5000){                               // check time elapsed since last update and proceed only if greater than 5 seconds
-      float temperature=temp->getVal<float>()+0.5;          // "simulate" a half-degree temperature change...
-      if(temperature>35.0)                                  // ...but cap the maximum at 35C before starting over at -30C
+    if(temp->timeVal()>5000){                               // 检查自上次更新以来经过的时间，仅在大于 5 秒时继续
+      float temperature=temp->getVal<float>()+0.5;          // “模拟”半度的温度变化......
+      if(temperature>35.0)                                  // ...但在 -30C 重新开始之前将最大值限制在 35C
         temperature=-30.0;
       
-      temp->setVal(temperature);                            // set the new temperature; this generates an Event Notification and also resets the elapsed time
+      temp->setVal(temperature);                            // 设置新温度； 这会生成一个事件通知并重置经过的时间
       
       LOG1("Temperature Update: ");
       LOG1(temperature*9/5+32);
@@ -49,35 +49,35 @@ struct DEV_TempSensor : Service::TemperatureSensor {     // A standalone Tempera
       
 //////////////////////////////////
 
-struct DEV_AirQualitySensor : Service::AirQualitySensor {     // A standalone Air Quality sensor
+struct DEV_AirQualitySensor : Service::AirQualitySensor {     // 独立的空气质量传感器
 
   // 空气质量传感器与温度传感器类似，只是它支持多种测量。
    // 我们将使用其中的三个。 第一个是必需的，后两个是可选的。
 
-  SpanCharacteristic *airQuality;                 // reference to the Air Quality Characteristic, which is an integer from 0 to 5
-  SpanCharacteristic *o3Density;                  // reference to the Ozone Density Characteristic, which is a float from 0 to 1000
-  SpanCharacteristic *no2Density;                 // reference to the Nitrogen Dioxide Characteristic, which is a float from 0 to 1000
+  SpanCharacteristic *airQuality;                 // 参考空气质量特性，它是一个从 0 到 5 的整数
+  SpanCharacteristic *o3Density;                  // 参考臭氧密度特性，它是从 0 到 1000 的浮点数
+  SpanCharacteristic *no2Density;                 // 参考二氧化氮特性，它是从 0 到 1000 的浮点数
   
   DEV_AirQualitySensor() : Service::AirQualitySensor(){       // constructor() method
     
-    airQuality=new Characteristic::AirQuality(1);                         // instantiate the Air Quality Characteristic and set initial value to 1
-    o3Density=new Characteristic::OzoneDensity(300.0);                    // instantiate the Ozone Density Characteristic and set initial value to 300.0
-    no2Density=new Characteristic::NitrogenDioxideDensity(700.0);         // instantiate the Nitrogen Dioxide Density Characteristic and set initial value to 700.0
+    airQuality=new Characteristic::AirQuality(1);                         // 实例化空气质量特性并将初始值设置为 1
+    o3Density=new Characteristic::OzoneDensity(300.0);                    // 实例化臭氧密度特性并将初始值设置为 300.0
+    no2Density=new Characteristic::NitrogenDioxideDensity(700.0);         // 实例化二氧化氮密度特性并将初始值设置为 700.0
     
-    Serial.print("Configuring Air Quality Sensor");   // initialization message
+    Serial.print("Configuring Air Quality Sensor");   // 初始化消息
     Serial.print("\n");
 
   } // end constructor
 
   void loop(){
 
-    // Note we are NOT updating the Nitrogen Dioxide Density Characteristic.  This should therefore remain steady at its initial value of 700.0
+    // 请注意，我们不会更新二氧化氮密度特性。 因此，这应该保持稳定在其初始值 700.0
 
-    if(airQuality->timeVal()>5000)                            // modify the Air Quality Characteristic every 5 seconds
-      airQuality->setVal((airQuality->getVal()+1)%6);         // simulate a change in Air Quality by incrementing the current value by one, and keeping in range 0-5
+    if(airQuality->timeVal()>5000)                            //每 5 秒修改一次空气质量特性
+      airQuality->setVal((airQuality->getVal()+1)%6);         // 通过将当前值加一并保持在 0-5 范围内来模拟空气质量的变化
 
-    if(o3Density->timeVal()>10000)                            // modify the Ozone Density Characteristic value every 10 seconds
-      o3Density->setVal((double)random(200,500));             // simulate a change with a random value between 200 and 499.  Note use of (double) cast since random() returns an integer
+    if(o3Density->timeVal()>10000)                            // 每 10 秒修改一次臭氧密度特性值
+      o3Density->setVal((double)random(200,500));             // 用 200 到 499 之间的随机值模拟变化。注意使用 (double) cast，因为 random() 返回一个整数
        
   } // loop
 
@@ -85,7 +85,7 @@ struct DEV_AirQualitySensor : Service::AirQualitySensor {     // A standalone Ai
       
 //////////////////////////////////
 
-// What you should see in your HomeKit Application
+// 您应该在 HomeKit 应用程序中看到的内容
 // -----------------------------------------------
 
 // 如果你加载上面的例子，你的 HomeKit 应用应该会显示两个新的磁贴：一个标有“温度传感器”，另一个标有“空气质量”。温度传感器图块应
