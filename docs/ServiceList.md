@@ -21,48 +21,48 @@ new Service::LightBulb();                           // 实例化一个灯泡服�
 
 ### 服务列表
 
-| Service服务 | Required Characteristics所需特性 | Optional Characteristics可选特性 |
+| Service服务 | Required Characteristics必需特性 | Optional Characteristics可选特性 |
 | ------- | -------------------- | ------------------- |
-| AccessoryInformation配件信息| FirmwareRevision固件版本<br>Identity身份<br>Manufacturer制造商<br>Model型号<br>Name名称<br>SerialNumber序列号 | HardwareRevision硬件修订 |
-| AirPurifier空气净化器 | Active<br>CurrentAirPurifierState当前空气净化器状态<br>TargetAirPurifierState目标空气净化器状态 | Name<br>RotationSpeed旋转速度<br>SwingMode摇摆模式<br>LockPhysicalControls |
-| AirQualitySensor空气质量传感器 | AirQuality空气质量 | Name<br>OzoneDensity臭氧密度<br>NitrogenDioxideDensity二氧化氮密度<br>SulphurDioxideDensity二氧化硫密度<br>PM25DensityPM25密度<br>PM10DensityPM10密度<br>VOCDensityVOC密度<br>StatusActive状态活动<br>StatusFault状态故障<br>StatusTampered状态篡改<br>StatusLowBattery状态低电量 |
-| BatteryService电池服务 | BatteryLevel电池电量<br>ChargingState充电状态<br>StatusLowBattery状态低电量 | Name |
-| CarbonDioxideSensor二氧化碳传感器 | CarbonDioxideDetected检测到二氧化碳 | Name<br>StatusActive状态活动<br>StatusFault<br>StatusTampered<br>StatusLowBattery<br>CarbonDioxideLevel二氧化碳水平<br>CarbonDioxidePeakLevel |
-| CarbonMonoxideSensor一氧化碳传感器 | CarbonMonoxideDetected | Name<br>StatusActive<br>StatusFault<br>StatusTampered<br>StatusLowBattery<br>CarbonMonoxideLevel<br>CarbonMonoxidePeakLevel一氧化碳峰值水平 |
-| ContactSensor接触传感器 | ContactSensorState接触传感器状态 | Name<br>StatusActive<br>StatusFault<br>StatusTampered<br>StatusLowBattery |
-| Door门 | CurrentPosition<br>TargetPosition<br>PositionState | Name<br>HoldPosition<br>ObstructionDetected |
-| Doorbell门铃 | ProgrammableSwitchEvent可编程开关事件 | Name<br>Volume<br>Brightness |
-| Fan电扇 | Active | Name<br>CurrentFanState<br>TargetFanState<br>RotationDirection<br>RotationSpeed<br>SwingMode<br>LockPhysicalControls |
-| Faucet水龙头 | Active | StatusFault状态故障<br>Name |
-| FilterMaintenance过滤器维护 | FilterChangeIndication | Name<br>FilterLifeLevel<br>ResetFilterIndication |
-| GarageDoorOpener车库开门器 | CurrentDoorState当前门状态<br>TargetDoorState目标门状态<br>ObstructionDetected | LockCurrentState<br>LockTargetState<br>Name |
+| AccessoryInformation配件信息| FirmwareRevision固件版本<br>Identity身份<br>Manufacturer制造商<br>Model型号<br>Name名称名称<br>SerialNumber序列号 | HardwareRevision硬件版本 |
+| AirPurifier空气净化器 | Active活跃<br>CurrentAirPurifierState当前空气净化器状态<br>TargetAirPurifierState目标空气净化器状态 | Name名称<br>RotationSpeed旋转速度旋转速度<br>SwingMode摇摆模式<br>LockPhysicalControls锁定物理控制锁定物理控制 |
+| AirQualitySensor空气质量传感器 | AirQuality空气质量 | Name名称<br>OzoneDensity臭氧密度<br>NitrogenDioxideDensity二氧化氮密度<br>SulphurDioxideDensity二氧化硫密度<br>PM25DensityPM25密度<br>PM10DensityPM10密度<br>VOCDensityVOC密度<br>StatusActive活跃状态活动<br>StatusFault状态故障状态故障<br>StatusTampered状态篡改<br>StatusLowBattery状态低电量 |
+| BatteryService电池服务 | BatteryLevel电池电量<br>ChargingState充电状态<br>StatusLowBattery状态低电量 | Name名称 |
+| CarbonDioxideSensor二氧化碳传感器 | CarbonDioxideDetected检测到二氧化碳 | Name名称<br>StatusActive活跃状态活动<br>StatusFault状态故障状态故障<br>StatusTampered<br>StatusLowBattery状态低电量<br>CarbonDioxideLevel二氧化碳水平<br>CarbonDioxidePeakLevel二氧化碳峰值水平 |
+| CarbonMonoxideSensor一氧化碳传感器 | CarbonMonoxideDetected检测到一氧化碳 | Name名称<br>StatusActive活跃状态活动<br>StatusFault状态故障状态故障<br>StatusTampered状态篡改<br>StatusLowBattery状态低电量<br>CarbonMonoxideLevel一氧化碳水平<br>CarbonMonoxidePeakLevel一氧化碳峰值水平 |
+| ContactSensor接触传感器 | ContactSensorState接触传感器状态 | Name名称<br>StatusActive活跃状态活动<br>StatusFault状态故障状态故障<br>StatusTampered状态篡改<br>StatusLowBattery状态低电量 |
+| Door门 | CurrentPosition当前位置<br>TargetPosition目标位置<br>PositionState位置状态 | Name名称<br>HoldPosition<br>ObstructionDetected检测到障碍物 |
+| Doorbell门铃 | ProgrammableSwitchEvent可编程开关事件 | Name名称<br>Volume音量<br>Brightness亮度 |
+| Fan电扇 | Active活跃 | Name名称<br>CurrentFanState当前风扇状态<br>CTargetFanState目标风扇状态<br>RotationDirection旋转方向<br>RotationSpeed旋转速度<br>SwingMode<br>LockPhysicalControls锁定物理控制 |
+| Faucet水龙头 | Active活跃 | StatusFault状态故障状态故障<br>Name名称 |
+| FilterMaintenance过滤器维护 | FilterChangeIndication | Name名称<br>FilterLifeLevel过滤器生命等级<br>ResetFilterIndication重置过滤器指示 |
+| GarageDoorOpener车库开门器 | CurrentDoorState当前门状态<br>TargetDoorState目标门状态<br>ObstructionDetected检测到障碍物 | LockCurrentState<br>LockTargetState<br>Name名称 |
 | HAPProtocolInformationHAPP协议信息 | Version版本 | *none* |
-| HeaterCooler加热器冷却器 | Active<br>CurrentTemperature<br>CurrentHeaterCoolerState<br>TargetHeaterCoolerState | Name<br>RotationSpeed<br>TemperatureDisplayUnits<br>SwingMode<br>CoolingThresholdTemperature<br>HeatingThresholdTemperature<br>LockPhysicalControls |
-| HumidifierDehumidifier加湿器除湿机 | Active<br>CurrentRelativeHumidity当前相对湿度<br>CurrentHumidifierDehumidifierState当前加湿器除湿器状态<br>TargetHumidifierDehumidifierState目标加湿器除湿器状态 | Name<br>RelativeHumidityDehumidifierThreshold<br>RelativeHumidityHumidifierThreshold<br>RotationSpeed<br>SwingMode<br>WaterLevel<br>LockPhysicalControls |
-| HumiditySensor | CurrentRelativeHumidity | Name<br>StatusActive<br>StatusFault<br>StatusTampered<br>StatusLowBattery |
-| InputSource | Identifier | ConfiguredName<br>IsConfigured<br>CurrentVisibilityState<br>TargetVisibilityState |
-| IrrigationSystem | Active<br>ProgramMode<br>InUse | RemainingDuration<br>Name<br>StatusFault |
-| LeakSensor | LeakDetected | Name<br>StatusActive<br>StatusFault<br>StatusTampered<br>StatusLowBattery |
-| LightBulb | On | Brightness<br>Hue<br>Name<br>Saturation<br>ColorTemperature |
-| LightSensor | CurrentAmbientLightLevel | Name<br>StatusActive<br>StatusFault<br>StatusTampered<br>StatusLowBattery |
-| LockMechanism | LockCurrentState<br>LockTargetState | Name |
-| Microphone | Mute | Name<br>Volume |
-| MotionSensor | MotionDetected | Name<br>StatusActive<br>StatusFault<br>StatusTampered<br>StatusLowBattery |
-| OccupancySensor | OccupancyDetected | Name<br>StatusActive<br>StatusFault<br>StatusTampered<br>StatusLowBattery |
-| Outlet | On<br>OutletInUse | Name |
-| SecuritySystem | SecuritySystemCurrentState<br>SecuritySystemTargetState | Name<br>SecuritySystemAlarmType<br>StatusFault<br>StatusTampered |
-| ServiceLabel | ServiceLabelNamespace | *none* |
-| Slat | CurrentSlatState<br>SlatType | Name<br>SwingMode<br>CurrentTiltAngle<br>TargetTiltAngle |
-| SmokeSensor | SmokeDetected | Name<br>StatusActive<br>StatusFault<br>StatusTampered<br>StatusLowBattery |
-| Speaker | Mute | Name<br>Volume |
-| StatelessProgrammableSwitch | ProgrammableSwitchEvent | Name<br>ServiceLabelIndex |
-| Switch | On | Name |
-| Television | Active | ConfiguredName<br>ActiveIdentifier<br>RemoteKey<br>PowerModeSelection | 
-| TemperatureSensor | CurrentTemperature | Name<br>StatusActive<br>StatusFault<br>StatusTampered<br>StatusLowBattery |
-| Thermostat | CurrentHeatingCoolingState<br>TargetHeatingCoolingState<br>CurrentTemperature<br>TargetTemperature<br>TemperatureDisplayUnits | CoolingThresholdTemperature<br>CurrentRelativeHumidity<br>HeatingThresholdTemperature<br>Name<br>TargetRelativeHumidity | 
-| Valve | Active<br>InUse<br>ValveType | SetDuration<br>RemainingDuration<br>IsConfigured<br>ServiceLabelIndex<br>StatusFault<br>Name |
-| Window | CurrentPosition<br>TargetPosition<br>PositionState | Name<br>HoldPosition<br>ObstructionDetected |
-| WindowCovering | CurrentPosition<br>TargetPosition | Name<br>PositionState<br>HoldPosition<br>CurrentHorizontalTiltAngle<br>TargetHorizontalTiltAngle<br>CurrentVerticalTiltAngle<br>TargetVerticalTiltAngle<br>ObstructionDetected |
+| HeaterCooler加热器冷却器 | Active活跃<br>CurrentTemperature当前温度<br>CurrentHeaterCoolerState当前加热器冷却器状态<br>TargetHeaterCoolerState | Name名称<br>RotationSpeed旋转速度<br>TemperatureDisplayUnits<br>SwingMode<br>CoolingThresholdTemperature冷却阈值温度<br>HeatingThresholdTemperature加热阈值温度<br>LockPhysicalControls锁定物理控制 |
+| HumidifierDehumidifier加湿器除湿机 | Active活跃<br>CurrentRelativeHumidity当前相对湿度<br>CurrentHumidifierDehumidifierState当前加湿器除湿器状态<br>TargetHumidifierDehumidifierState目标加湿器除湿器状态 | Name名称<br>RelativeHumidityDehumidifierThreshold<br>RelativeHumidityHumidifierThreshold相对湿度加湿器阈值<br>RotationSpeed旋转速度<br>SwingMode<br>WaterLevel<br>LockPhysicalControls锁定物理控制 |
+| HumiditySensor | CurrentRelativeHumidity | Name名称<br>StatusActive活跃<br>StatusFault状态故障<br>StatusTampered<br>StatusLowBattery |
+| InputSource | Identifier标识符 | ConfiguredName名称<br>IsConfigured<br>CurrentVisibilityState当前可见性状态<br>TargetVisibilityState目标可见性状态 |
+| IrrigationSystem | Active活跃<br>ProgramMode<br>InUse | RemainingDuration<br>Name名称<br>StatusFault状态故障 |
+| LeakSensor | LeakDetected | Name名称<br>StatusActive活跃<br>StatusFault状态故障<br>StatusTampered<br>StatusLowBattery |
+| LightBulb | On | Brightness亮度<br>Hue<br>Name名称<br>Saturation饱和度<br>ColorTemperature |
+| LightSensor | CurrentAmbientLightLevel | Name名称<br>StatusActive活跃<br>StatusFault状态故障<br>StatusTampered<br>StatusLowBattery |
+| LockMechanism | LockCurrentState<br>LockTargetState | Name名称 |
+| Microphone | Mute | Name名称<br>Volume音量 |
+| MotionSensor | MotionDetected | Name名称<br>StatusActive活跃<br>StatusFault状态故障<br>StatusTampered<br>StatusLowBattery |
+| OccupancySensor | OccupancyDetected | Name名称<br>StatusActive活跃<br>StatusFault状态故障<br>StatusTampered<br>StatusLowBattery |
+| Outlet | On<br>OutletInUse | Name名称 |
+| SecuritySystem | SecuritySystemCurrentState<br>SecuritySystemTargetState | Name名称<br>SecuritySystemAlarmType<br>StatusFault状态故障<br>StatusTampered |
+| ServiceLabel | ServiceLabelName名称space | *none* |
+| Slat | CurrentSlatState<br>SlatType | Name名称<br>SwingMode<br>CurrentTiltAngle<br>TargetTiltAngle |
+| SmokeSensor | SmokeDetected | Name名称<br>StatusActive活跃<br>StatusFault状态故障<br>StatusTampered<br>StatusLowBattery |
+| Speaker | Mute | Name名称<br>Volume音量 |
+| StatelessProgrammableSwitch | ProgrammableSwitchEvent | Name名称<br>ServiceLabelIndex |
+| Switch | On | Name名称 |
+| Television | Active活跃 | ConfiguredName名称<br>Active活跃Identifier标识符<br>RemoteKey遥控钥匙<br>PowerModeSelection | 
+| TemperatureSensor | CurrentTemperature当前温度 | Name名称<br>StatusActive活跃<br>StatusFault状态故障<br>StatusTampered<br>StatusLowBattery |
+| Thermostat | CurrentHeatingCoolingState<br>TargetHeatingCoolingState<br>CurrentTemperature当前温度<br>TargetTemperature<br>TemperatureDisplayUnits | CoolingThresholdTemperature冷却阈值温度<br>CurrentRelativeHumidity<br>HeatingThresholdTemperature加热阈值温度<br>Name名称<br>TargetRelativeHumidity | 
+| Valve | Active活跃<br>InUse<br>ValveType | SetDuration<br>RemainingDuration<br>IsConfigured<br>ServiceLabelIndex<br>StatusFault状态故障<br>Name名称 |
+| Window | CurrentPosition<br>TargetPosition<br>PositionState位置状态 | Name名称<br>HoldPosition<br>ObstructionDetected检测到障碍物 |
+| WindowCovering | CurrentPosition<br>TargetPosition | Name名称<br>PositionState位置状态<br>HoldPosition<br>CurrentHorizontalTiltAngle<br>TargetHorizontalTiltAngle<br>CurrentVerticalTiltAngle<br>TargetVerticalTiltAngle<br>ObstructionDetected检测到障碍物 |
 
 
 ### 特征类型和默认值
