@@ -15,7 +15,7 @@
    * **必须**在任何其他 HomeSpan 函数之前在每个草图的开头调用，并且通常放置在 Arduino `setup()` 方法的顶部附近，但 **after** `Serial.begin()` 所以 初始化诊断可以输出到串行监视器
    * 所有参数都是**可选的**
   
-     * *catID* - HAP 类别 HomeSpan 广播用于与 HomeKit 配对。 默认为类别::照明。 有关完整列表，请参阅 [HomeSpan 附件类别(Categories.md)
+     * *catID* - HAP 类别 HomeSpan 广播用于与 HomeKit 配对。 默认为类别::照明。 有关完整列表，请参阅 [HomeSpan 附件类别](Categories.md)
      * *displayName* - HomeSpan 广播的 MDNS 显示名称。 默认为“HomeSpan 服务器”
      * *hostNameBase* - 完整的 MDNS 主机名由 HomeSpan 作为 *hostNameBase-DeviceID*.local 广播，其中 DeviceID 是 HomeSpan 自动生成的唯一 6 字节代码。 默认为“HomeSpan”
      * *modelName* - HAP 模型名称 HomeSpan 广播用于与 HomeKit 配对。 默认为“HomeSpan-ESP32”
