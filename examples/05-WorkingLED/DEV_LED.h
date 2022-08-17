@@ -1,35 +1,33 @@
 
 ////////////////////////////////////
-//   DEVICE-SPECIFIC LED SERVICES //
+//      特定于设备的 LED 服务      //
 ////////////////////////////////////
 
-// HERE'S WHERE WE DEFINE OUR NEW LED SERVICE!
+// 在这里，我们定义了我们的新 LED 服务！
 
-struct DEV_LED : Service::LightBulb {               // First we create a derived class from the HomeSpan LightBulb Service
+struct DEV_LED : Service::LightBulb {               // 首先，我们从 HomeSpan 灯泡服务创建一个派生类
 
-  int ledPin;                                       // this variable stores the pin number defined for this LED
-  SpanCharacteristic *power;                        // here we create a generic pointer to a SpanCharacteristic named "power" that we will use below
+  int ledPin;                                       // 此变量存储为此 LED 定义的引脚号
+  SpanCharacteristic *power;                        // 在这里，我们创建一个指向名为“power”的 SpanCharacteristic 的通用指针，我们将在下面使用它
 
-  // Next we define the constructor for DEV_LED.  Note that it takes one argument, ledPin,
-  // which specifies the pin to which the LED is attached.
+  // 接下来我们定义 DEV_LED 的构造函数。 请注意，它需要一个参数 ledPin，
+  // 它指定了 LED 连接到的引脚。
   
   DEV_LED(int ledPin) : Service::LightBulb(){
 
-    power=new Characteristic::On();                 // this is where we create the On Characterstic we had previously defined in setup().  Save this in the pointer created above, for use below
-    this->ledPin=ledPin;                            // don't forget to store ledPin...
-    pinMode(ledPin,OUTPUT);                         // ...and set the mode for ledPin to be an OUTPUT (standard Arduino function)
-    
-  } // end constructor
+    power=new Characteristic::On();                 // 这是我们创建之前在 setup() 中定义的 On Characterstic 的地方。 将其保存在上面创建的指针中，以供下面使用
+    this->ledPin=ledPin;                            // 不要忘记存储ledPin ...
+    pinMode(ledPin,OUTPUT);                         // ...并将 ledPin 的模式设置为 OUTPUT（标准 Arduino 功能）
+  } // 结束构造函数
 
-  // Finally, we over-ride the default update() method with instructions that actually turn on/off the LED.  Note update() returns type boolean
-
+  // 最后，我们使用实际打开/关闭 LED 的指令覆盖默认的 update() 方法。 注意 update() 返回类型 boolean
   boolean update(){            
 
-    digitalWrite(ledPin,power->getNewVal());        // use a standard Arduino function to turn on/off ledPin based on the return of a call to power->getNewVal() (see below for more info)
+    digitalWrite(ledPin,power->getNewVal());        // 使用标准 Arduino 函数根据对 power->getNewVal() 的调用返回来打开/关闭 ledPin（有关更多信息，请参见下文）
    
-    return(true);                                   // return true to indicate the update was successful (otherwise create code to return false if some reason you could not turn on the LED)
+    return(true);                                   // 返回 true 表示更新成功（否则，如果由于某种原因无法打开 LED，则创建代码以返回 false）
   
-  } // update
+  } // 更新
 };
       
 //////////////////////////////////
