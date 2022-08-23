@@ -98,6 +98,14 @@ HomeSpan 库包括 16 个越来越复杂的教程草图，带您了解 HomeSpan 
 * enabling the HomeSpan Web Log and specifying an optional NTP time server with the `homeSpan.enableWebLog()` method
 * using the `WEBLOG()` macro to create Web Log messages
 
+### [Example 20 - AdvancedTechniques](../examples/20-AdvancedTechniques)
+Example 20 illustrates a number of advanced techniques through the implementation of a "dynamic" bridge that allows Light Accessories to be *interactively* added and deleted at any time without the need to reboot the device.  New HomeSpan API topics covered in this example include:
+
+* creating custom CLI commands using `SpanUserCommand()`
+* dynamically deleting Accessories with `homeSpan.deleteAccessory()`
+* refreshing the Accessory database (which automatically updates the Home App) using `homeSpan.updateDatabase()`
+* using `homeSpan.autoPoll()` to implement HomeSpan Polling in the background (and on the second core, if available)
+
 ## 其他示例
 
 以下示例展示了 HomeSpan 文档的不同部分中引用的各种 HomeSpan 和 HomeKit 功能。这些草图可以在 Arduino IDE 中的 *File → Examples → HomeSpan → Other Examples* 下找到
