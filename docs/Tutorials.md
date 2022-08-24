@@ -127,6 +127,10 @@ HomeKit *undocumented* 电视服务的示例，展示了如何使用不同的特
 
 ### [CustomService](../Other%20Examples/CustomService)
 演示如何在 HomeSpan 中创建自定义服务和自定义特征，以实现 *Eve for HomeKit* 应用程序识别的大气压力传感器。有关完整详细信息，请参阅 [自定义特征和自定义服务宏](Reference.md#custom-characteristics-and-custom-services-macros)
+
+### [ProgrammableHub](../Other%20Examples/ProgrammableHub)
+演示如何实现一个完全可编程的灯光配件集线器，允许用户直接通过设备托管的*web 界面*或通过 HomeSpan 的*命令行界面*动态*添加/删除多达 12 个灯光配件。 每个灯都可以配置为可调光/非可调光，没有颜色控制、全 RGB 颜色控制或色温控制。 建立在许多使用的技术之上 [示例 20](../examples/20-AdvancedTechniques)
+
  
 ---
 
