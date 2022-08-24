@@ -98,13 +98,13 @@ HomeSpan 库包括 16 个越来越复杂的教程草图，带您了解 HomeSpan 
 * enabling the HomeSpan Web Log and specifying an optional NTP time server with the `homeSpan.enableWebLog()` method
 * using the `WEBLOG()` macro to create Web Log messages
 
-### [Example 20 - AdvancedTechniques](../examples/20-AdvancedTechniques)
-Example 20 illustrates a number of advanced techniques through the implementation of a "dynamic" bridge that allows Light Accessories to be *interactively* added and deleted at any time without the need to reboot the device.  New HomeSpan API topics covered in this example include:
+### [示例 20 - AdvancedTechniques](../examples/20-AdvancedTechniques)
+示例 20 通过实现“动态”桥接说明了许多高级技术，该桥接允许随时*交互地*添加和删除灯光配件，而无需重新启动设备。 此示例中涵盖的新 HomeSpan API 主题包括:
 
-* creating custom CLI commands using `SpanUserCommand()`
-* dynamically deleting Accessories with `homeSpan.deleteAccessory()`
-* refreshing the Accessory database (which automatically updates the Home App) using `homeSpan.updateDatabase()`
-* using `homeSpan.autoPoll()` to implement HomeSpan Polling in the background (and on the second core, if available)
+* 使用 `SpanUserCommand()` 创建自定义 CLI 命令
+* 使用 `homeSpan.deleteAccessory()` 动态删除附件
+* 使用 `homeSpan.updateDatabase()` 刷新 Accessory 数据库（自动更新 Home App）
+* 使用 `homeSpan.autoPoll()` 在后台（以及在第二个内核上，如果可用）实现 HomeSpan 轮询
 
 ## 其他示例
 
