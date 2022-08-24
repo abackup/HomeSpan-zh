@@ -88,46 +88,46 @@ void setup() {
   // 现在我们根据灯光阵列中记录的内容创建灯光配件
   // 我们将使用 C++ 迭代器遍历所有元素，直到到达数组的末尾，或者找到一个值为零的元素
 
-  for(auto it=lights.begin(); it!=lights.end() && *it!=0; it++)       // loop over all elements (stopping when we get to the end, or hit an element with a value of zero)
-    addLight(*it);                                                    // call addLight (defined further below) with an argument equal to the integer stored in that element
+  for(auto it=lights.begin(); it!=lights.end() && *it!=0; it++)       // 循环遍历所有元素（当我们到达末尾时停止，或者点击一个值为 0 的元素）
+    addLight(*it);                                                    // 使用等于存储在该元素中的整数的参数调用 addLight（在下面进一步定义）
 
-  // Next we create four user-defined CLI commands so we can add and delete Light Accessories from the CLI.
-  // The functions for each command are defined further below.
+  // 接下来，我们创建四个用户定义的 CLI 命令，以便我们可以从 CLI 添加和删除 Light Accessories。
+  // 每个命令的功能在下面进一步定义。
 
   new SpanUserCommand('a',"<num> - add a new light accessory with id=<num>",addAccessory);
   new SpanUserCommand('d',"<num> - delete a light accessory with id=<num>",deleteAccessory);
   new SpanUserCommand('D'," - delete ALL light accessories",deleteAllAccessories);  
   new SpanUserCommand('u',"- update accessories database",updateAccessories);
 
-  // Finally we call autoPoll to start polling the background.  Note this is purely optional and only used here to illustrate how to
-  // use autoPoll - you could instead have called the usual homeSpan.poll() function by including it inside the Arduino loop() function
+  // 最后我们调用 autoPoll 开始轮询后台。 请注意，这纯粹是可选的，仅用于说明如何使用 autoPoll - 您可以通过将其包含在 Arduino loop() 函数中来调用
+  //通常的 homeSpan.poll() 函数
 
   homeSpan.autoPoll();
   
 } // end of setup()
 
-// Usually the Arduino loop() function would be defined somewhere here.  But since we used autoPoll in the setup() function,
-// we don't have to define the loop() function at all in this sketch!  Why don't we get an error?  Because HomeSpan includes
-// a default loop() function, which prevents the compiler from complaining about loop() being undefined.
+// 通常 Arduino loop() 函数会在此处定义。 但是由于我们在 setup() 函数中使用了 autoPoll，
+// 在这个草图中，我们根本不需要定义 loop() 函数！ 为什么我们不会得到错误？ 因为 HomeSpan 包括
+// 默认的 loop() 函数，它可以防止编译器抱怨 loop() 未定义。
 
 ///////////////////////////
 
-// This function creates a new Light Accessory with n as the "ID".
-// It is called initially in setup() above to create Light Accessories based
-// on what was stored in the lights array.  It is also called in response to 
-// typing 'a' into the CLI (see below), which dynamically adds a new Light Accessory
-// while the device is running.
+// 此函数创建一个新的灯附件，其中 n 为“ID”。
+// 在上面的 setup() 中最初调用它来创建基于 Light Accessories
+//关于存储在灯光数组中的内容。 它也被称为响应
+// 在 CLI 中输入“a”（见下文），它会动态添加新的 Light Accessory
+// 当设备运行时。
 
 void addLight(int n){
 
   char name[32];
-  sprintf(name,"Light-%d",n);                    // create the name of the device using the specified "ID"
+  sprintf(name,"Light-%d",n);                    // 使用指定的“ID”创建设备名称
   char sNum[32];
-  sprintf(sNum,"%0.10d",n);                      // create serial number from the ID - this is helpful in case we rename the Light to something else using the Home App
-
+  sprintf(sNum,"%0.10d",n);                      //从 ID 创建序列号 - 这在我们使用 Home 应用程序将 Light 重命名为其他名称时很有帮助
+    
   Serial.printf("Adding Accessory: %s\n",name);
   
-  new SpanAccessory(n+1);                       // IMPORTANT: add 1, since first Accessory with AID=1 is already used by the Bridge Accessory
+  new SpanAccessory(n+1);                       // 重要提示：加 1，因为第一个 AID=1 的附件已被桥接附件使用
     new Service::AccessoryInformation();
       new Characteristic::Identify();
       new Characteristic::Name(name);
@@ -138,61 +138,61 @@ void addLight(int n){
 
 ///////////////////////////
 
-// This function is called in response to typing '@a <num>' into the CLI.
-// It adds a new Light Accessory with ID=num, by calling addLight(num) above.
+// 响应在 CLI 中键入“@a <number>”调用此函数。
+// 它通过调用上面的 addLight(num) 添加一个 ID=num 的新 Light Accessory。
 
 void addAccessory(const char *buf){
  
-  int n=atoi(buf+1);                                // read the value of <num> specified
+  int n=atoi(buf+1);                                // 读取指定的 <num> 的值
 
-  if(n<1){                                          // ensure <num> is greater than 0
+  if(n<1){                                          // 确保 <num> 大于 0
     Serial.printf("Invalid Accessory number!\n");
     return;
   }
 
-  if(find(lights.begin(),lights.end(),n)!=lights.end()){              // search for this ID in the existing lights array - if found, report an error and return
+  if(find(lights.begin(),lights.end(),n)!=lights.end()){              // 在现有的灯光数组中搜索这个ID - 如果找到，报告错误并返回
     Serial.printf("Accessory Light-%d already implemented!\n",n);
     return;
   }
   
-  auto it=find(lights.begin(),lights.end(),0);                        // find the next "free" element in the light array (the first element with a value of zero)
+  auto it=find(lights.begin(),lights.end(),0);                        // 在灯光阵列中找到下一个“空闲”元素（第一个值为 0 的元素）
   
-  if(it==lights.end()){                                                       // if there were no elements with a zero, the array is full and no new Lights can be added
+  if(it==lights.end()){                                                       //如果没有元素为零，则数组已满，无法添加新灯光
     Serial.printf("Can't add any more lights - max is %d!\n",lights.size());
     return;
   }
 
-  *it=n;                                                        // save light number
-  nvs_set_blob(savedData,"LIGHTS",&lights,sizeof(lights));      // update data in the NVS
+  *it=n;                                                        // 保存灯号
+  nvs_set_blob(savedData,"LIGHTS",&lights,sizeof(lights));      // 更新 NVS 中的数据
   nvs_commit(savedData); 
-  addLight(n);                                                  // add light accessory by calling the function above!
+  addLight(n);                                                  // 调用上面的函数添加灯光配件！
 }
 
 ///////////////////////////
 
-// This function deletes an existing Light Accessory and is called
-// in response to typing '@d <num>' into the CLI.
+// 这个函数删除一个现有的 Light Accessory 并被调用
+// 响应在 CLI 中键入“@d <num>”。
 
 void deleteAccessory(const char *buf){
 
-  int n=atoi(buf+1);                                  // same as above, we read the specified <num> and check that it is valid (i.e. greater than 0)
+  int n=atoi(buf+1);                                  // 同上，我们读取指定的 <num> 并检查它是否有效（即大于 0）
 
   if(n<1){
     Serial.printf("Invalid Accessory number!\n");
     return;
   }
 
-  // Below we use the homeSpan method deleteAccessory(aid) to completely delete the Accessory with AID=n+1.
-  // We add 1 because the AID of the first Light Accessory is 2, since the Bridge Accessory has an AID of 1.
-  // The deleteAccessory() method returns true if an Accessory with matching AID is found, otherwise it returns false.
-  // When deleting an Accessory, HomeSpan will print a delete message for every Service, Characteristic, loop() method,
-  // button() method, and SpanButton, associated with that Accessory.  These are Level-1 Log messages, so you'll need
-  // to have the Log Level in the sketch set to 1 or 2 to receive the output.
+ // 下面我们使用homeSpan方法deleteAccessory(aid)来彻底删除AID=n+1的Accessory。
+   // 我们加 1 因为第一个 Light Accessory 的 AID 是 2，因为 Bridge Accessory 的 AID 是 1。
+   // 如果找到与 AID 匹配的 Accessory，则 deleteAccessory() 方法返回 true，否则返回 false。
+   // 删除附件时，HomeSpan 将为每个 Service、Characteristic、loop() 方法打印一条删除消息，
+   // button() 方法和 SpanButton，与该附件关联。 这些是 1 级日志消息，因此您需要
+   // 将草图中的日志级别设置为 1 或 2 以接收输出。
 
-  if(homeSpan.deleteAccessory(n+1)){                            // if deleteAccessory() is true, a match has been found
+  if(homeSpan.deleteAccessory(n+1)){                            // 如果 deleteAccessory() 为真，则已找到匹配项
     Serial.printf("Deleting Accessory: Light-%d\n",n);
   
-    fill(remove(lights.begin(),lights.end(),n),lights.end(),0);     // remove entry from lights array and fill any undefined elements with zero
+    fill(remove(lights.begin(),lights.end(),n),lights.end(),0);     // 从灯光数组中删除条目并用零填充任何未定义的元素
     nvs_set_blob(savedData,"LIGHTS",&lights,sizeof(lights));        // update data in the NVS
     nvs_commit(savedData);
     
@@ -205,18 +205,17 @@ void deleteAccessory(const char *buf){
 
 void deleteAllAccessories(const char *buf){
 
-// This function is called in response to typing '@D' into the CLI.
-// It deletes all Light Accessories
+// 调用此函数以响应在 CLI 中键入“@D”。
+// 删除所有灯光配件
 
-  if(lights[0]==0){                                                   // first check that there is at least one Light Accessory by checking for a non-zero ID in lights[0]
+  if(lights[0]==0){                                                   // 首先通过检查灯[0] 中的非零 ID 来检查至少有一个灯附件
     Serial.printf("There are no Light Accessories to delete!\n");
     return;
   }
 
-  for(auto it=lights.begin(); it!=lights.end() && *it!=0; it++)       // use an iterator to loop over all non-zero elements in the lights array...
-    homeSpan.deleteAccessory(*it+1);                                  // ... and delete the matching Light Accessory (don't forgot to add 1 to the Light ID to form the AID)
-
-  fill(lights.begin(),lights.end(),0);                          // zero out all the elements in the lights array, since all Light Accessories have been deleted
+  for(auto it=lights.begin(); it!=lights.end() && *it!=0; it++)       // 使用迭代器循环遍历灯光数组中的所有非零元素...
+    homeSpan.deleteAccessory(*it+1);                                  // ... 并删除匹配的Light Accessory（不要忘记将Light ID加1以形成AID）
+  fill(lights.begin(),lights.end(),0);                          // 将灯光数组中的所有元素清零，因为所有灯光配件都已删除
   nvs_set_blob(savedData,"LIGHTS",&lights,sizeof(lights));      // update data in the NVS
   nvs_commit(savedData);
 
@@ -225,22 +224,22 @@ void deleteAllAccessories(const char *buf){
 
 ///////////////////////////
 
-// Lastly we have the all-important updateAccessories function.
-// This is called in response to typing '@u' into the CLI.
-// Though the above functions can be used to add and delete Light Accessories
-// dyammically, Controllers such as the Home App that are already connected to
-// the device don't yet know additional Light Accessories have been added to (or
-// deleted from) the overall Accessories datase.  To let them know, HomeSpan needs
-// to increment the HAP Configuration Number and re-broadcast it via MDNS so all
-// connected Controllers are aware that they need to request a refresh from the device.
+//最后，我们有了最重要的 updateAccessories 函数。
+// 这是响应在 CLI 中键入“@u”而调用的。
+// 虽然上面的函数可以用来添加和删除Light Accessories
+// 动态地，已经连接到的控制器，例如 Home App
+// 设备还不知道已经添加了额外的灯光配件（或
+// 从）整体附件数据中删除。 为了让他们知道，HomeSpan 需要
+// 增加 HAP 配置编号并通过 MDNS 重新广播它，所以所有
+// 连接的控制器知道他们需要从设备请求刷新。
 
-// When you type '@u' into the CLI, you should see a lot of activity between the device
-// and any connected Controllers as they request a refresh.  Be patient - it can take up to a
-// minute for changes to be properly reflected in the Home App on your iPhone or Mac.
+// 当您在 CLI 中键入“@u”时，您应该会看到设备之间有很多活动
+// 以及任何连接的控制器，因为它们请求刷新。 请耐心等待 - 最多可能需要
+// 分钟，以便更改正确反映在 iPhone 或 Mac 上的家庭应用程序中。
 
 void updateAccessories(const char *buf){
 
-  // note the updateDatabase() method returns true if the database has indeed changed (e.g. one or more new Light Accessories were added), or false if nothing has changed
+  // 请注意，如果数据库确实发生了变化（例如，添加了一个或多个新的 Light Accessories），updateDatabase() 方法返回 true，如果没有任何变化，则返回 false
   
   if(homeSpan.updateDatabase())
     Serial.printf("Accessories Database updated.  New configuration number broadcasted...\n");
