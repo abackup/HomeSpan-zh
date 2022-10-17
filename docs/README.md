@@ -6,7 +6,7 @@
 
 HomeSpan提供了一个以微控制器为中心符合Apple的HomeKit附件协议规范版本R2 (HAP-R2)协议的实现，专为在Arduino IDE中运行的ESP32微控制器而设计。HomeSpan无需任何外部网桥或组件，仅需通过您的家庭WiFi网络直接与HomeKit配对。借助HomeSpan，您可以使用ESP32 I/O的全部功能来创建自定义控制软件或硬件，通过iPhone、iPad或Mac上的Home App或使用Siri自动操作外部设备。
 
-HomeSpan与Arduino-ESP32 Board Manager版本1和版本2完全兼容 。在版本1下，HomeSpan只能在ESP32上运行；在版本2下，HomeSpan可以在ESP32以及ESP32-S2和ESP32-C3芯片上运行。
+HomeSpan与Arduino-ESP32 Board Manager版本1和版本2完全兼容 。在版本1下，HomeSpan只能在ESP32上运行；在版本2下，HomeSpan可以在ESP32以及ESP32-S2、ESP32-C3和ESP32-S3芯片上运行。
 
 ### HomeSpan强调
 
