@@ -33,7 +33,7 @@ void setup() {
   
   /// HAP 附件属性数据库的定义在此处 ///
   
-  //homeSpan.autoPoll();需要注释掉 loop函数中的homeSpan.poll()
+  //homeSpan.autoPoll();需要注释掉loop函数中的homeSpan.poll()
   
 } //设置结束
 
