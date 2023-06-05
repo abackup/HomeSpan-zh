@@ -26,11 +26,14 @@ HomeSpan需要 Arduino-ESP2 Board Manager的2.0.0或更高版本，并且已经�
   * 带有各种信息、调试和配置命令的命令行界面
 * 内置数据库验证，确保您的配置满足所有HAP要求
 * 利用ESP32的16通道PWM外设轻松控制的专用类：
-  * LED亮度
+  * LED亮度（包括自动淡入淡出效果）
   * 伺服电机
 * 集成按钮功能，支持单击、双击和长按
+  * 将 ESP32 引脚连接到接地或 VCC 的物理按钮
+  * 连接到 ESP32 针脚的触摸板/传感器（适用于支持触摸板的 ESP32 设备）
 * 集成访问ESP32的片上远程控制外设，轻松生成IR和RF信号
 * 用于控制单线和两线可寻址RGB、RGBW LED和LED灯带的专用类
+* 使用ESP-NOW促进ESP32设备之间的无缝点对点通信的专用类
 * 用于用户定义日志消息的集成Web日志
 * 广泛评论的教程草图，带您从HomeSpan的基础知识到高级HomeKit主题
 * 展示HomeSpan实际实现的其他示例和项目
@@ -64,8 +67,10 @@ HomeSpan包括以下文档：
 * [HomeSpan PWM](https://github.com/abackup/HomeSpan-zh/blob/master/docs/PWM.md) - 使用 ESP32的片上PWM外设集成控制标准LED和伺服电机
 * [HomeSpan射频控制](https://github.com/abackup/HomeSpan-zh/blob/master/docs/RMT.md) - 使用 ESP32的片上RMT外设轻松生成RF和IR远程控制信号
 * [HomeSpan灯带](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Pixels.md) - 可寻址的单线和两线RGB、RGBW LED和LED灯条的集成控制
+* [HomeSpan SpanPoint](https://github.com/abackup/HomeSpan-zh/blob/master/docs/NOW.md) - 使用ESP-NOW促进ESP32设备之间的点对点双向通信
 * [HomeSpan电视服务](https://github.com/abackup/HomeSpan-zh/blob/master/docs/TVServices.md) - 如何使用HomeKit的无证电视服务和特性
 * [HomeSpan消息记录](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Logging.md) - 如何生成日志消息以显示在Arduino串行监视器上以及可选地发布到集成的Web日志页面
+* [HomeSpan Device Cloning](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Cloning.md) - 无缝地将损坏的设备更换为新设备，而无需重新配对并丢失HomeKit自动装置
 * [HomeSpan项目](https://github.com/topics/homespan) - HomeSpan库的实际应用
 * [HomeSpan FAQ](https://github.com/abackup/HomeSpan-zh/blob/master/docs/FAQ.md) - 常见问题解答
 
