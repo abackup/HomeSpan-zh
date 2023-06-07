@@ -2,7 +2,7 @@
 
 HomeSpan 为开发人员提供了一个轻量级命令行界面 (CLI) . HomeSpan CLI 允许您查看实时 HomeSpan 诊断、查询设备的运行状态、检查其 HAP 数据库并执行一些基本功能，例如启动出厂重置。 最重要的是，CLI 可用于配置 HomeSpan 的网络连接及其 HomeKit 设置代码。
 
-> :感叹：使用串行监视器时，请确保将波特率设置为与您在 HomeSpan 草图中的“Serial.begin()”函数中指定的任何值相匹配。 此外，您需要将串行监视器设置为传输 \<newline\> 作为行尾。
+> :exclamation: 使用串行监视器时，请确保将波特率设置为与您在 HomeSpan 草图中的“Serial.begin()”函数中指定的任何值相匹配。 此外，您需要将串行监视器设置为传输 \<newline\> 作为行尾。
 
 ### 启动诊断
 
