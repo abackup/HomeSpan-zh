@@ -78,7 +78,7 @@ HomeSpan包括以下文档：
 
 # 外部资源
 
-除了HomeSpan资源之外，不熟悉HomeKit编程的开发人员还应下载Apple的HomeKit Accessory Protocol Specification, Release R2 (HAP-R2) 下载是免费的，但Apple要求您注册您的Apple ID才能访问该文档。
+除了HomeSpan资源之外，不熟悉HomeKit编程的开发人员还应下载Apple的HomeKit Accessory Protocol Specification, Release R2 (HAP-R2) 下载是免费的（现在Apple已不再提供），但Apple要求您注册您的Apple ID才能访问该文档。
 
 您***不需要***阅读整个文档。 HomeSpan的全部意义在于它在引擎盖下实现了所有必需的HAP操作，因此您可以专注于编程任何所需的逻辑，以使用该设备控制您的实际设备（灯、风扇、RF遥控器等）。但是您会发现HAP指南的第8章和第9章是非常宝贵的参考，因为它列出并描述了HomeSpan中实现的所有服务和特征，其中许多您将在自己的HomeSpan草图中经常使用。
 
