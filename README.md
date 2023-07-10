@@ -54,7 +54,7 @@ HomeSpan需要 Arduino-ESP2 Board Manager的2.0.0或更高版本，并且已经�
 
 HomeSpan包括以下文档：
 
-* [HomeSpan入门](https://github.com/abackup/HomeSpan-zh/blob/master/docs/GettingStarted.md) - 设置开发HomeSpan设备所需的软件和硬件
+* [HomeSpan入门](docs/GettingStarted.md) - 设置开发HomeSpan设备所需的软件和硬件
 * [HomeSpan API概述](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Overview.md) - HomeSpan API概述，包括开发您的第一个API的分步指南HomeSpan草图
 * [HomeSpan教程](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Tutorials.md) - HomeSpan教程草图指南
 * [HomeSpan服务和特性](https://github.com/abackup/HomeSpan-zh/blob/master/docs/ServiceList.md) - HomeSpan支持的所有HAP服务和特性的列表
@@ -67,6 +67,7 @@ HomeSpan包括以下文档：
 * [HomeSpan PWM](https://github.com/abackup/HomeSpan-zh/blob/master/docs/PWM.md) - 使用 ESP32的片上PWM外设集成控制标准LED和伺服电机
 * [HomeSpan射频控制](https://github.com/abackup/HomeSpan-zh/blob/master/docs/RMT.md) - 使用 ESP32的片上RMT外设轻松生成RF和IR远程控制信号
 * [HomeSpan灯带](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Pixels.md) - 可寻址的单线和两线RGB、RGBW LED和LED灯条的集成控制
+* [HomeSpan控制步进电机](docs/Stepper.md) - integrated control of stepper motors, including PWM microstepping
 * [HomeSpan SpanPoint](https://github.com/abackup/HomeSpan-zh/blob/master/docs/NOW.md) - 使用ESP-NOW促进ESP32设备之间的点对点双向通信
 * [HomeSpan电视服务](https://github.com/abackup/HomeSpan-zh/blob/master/docs/TVServices.md) - 如何使用HomeKit的无证电视服务和特性
 * [HomeSpan消息记录](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Logging.md) - 如何生成日志消息以显示在Arduino串行监视器上以及可选地发布到集成的Web日志页面
