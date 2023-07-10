@@ -1,6 +1,6 @@
 # 欢迎！
 
-个人复制翻译的[HomeSpan](https://github.com/HomeSpan/HomeSpan)，喜欢的请去[原地址](https://github.com/HomeSpan/HomeSpan)查看。
+个人复制翻译的[HomeSpan](https://github.com/HomeSpan/HomeSpan)的1.8.0版本，喜欢的请去[原地址](https://github.com/HomeSpan/HomeSpan)查看。
 
 欢迎使用HomeSpan-一个强大且非常易于使用的Arduino库，完全使用Arduino IDE创建您自己的基于ESP32的HomeKit设备。
 
