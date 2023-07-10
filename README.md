@@ -55,25 +55,25 @@ HomeSpan需要 Arduino-ESP2 Board Manager的2.0.0或更高版本，并且已经�
 HomeSpan包括以下文档：
 
 * [HomeSpan入门](docs/GettingStarted.md) - 设置开发HomeSpan设备所需的软件和硬件
-* [HomeSpan API概述](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Overview.md) - HomeSpan API概述，包括开发您的第一个API的分步指南HomeSpan草图
-* [HomeSpan教程](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Tutorials.md) - HomeSpan教程草图指南
-* [HomeSpan服务和特性](https://github.com/abackup/HomeSpan-zh/blob/master/docs/ServiceList.md) - HomeSpan支持的所有HAP服务和特性的列表
-* [HomeSpan配件类别](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Categories.md) - HomeSpan定义的所有HAP配件类别的列表
-* [HomeSpan命令行界面(CLI)](https://github.com/abackup/HomeSpan-zh/blob/master/docs/CLI.md) - 配置HomeSpan设备的WiFi凭据，修改其HomeKit设置代码，监控并更新其状态，并从Arduino IDE串行监视器访问详细的实时设备诊断
-* [HomeSpan用户指南](https://github.com/abackup/HomeSpan-zh/blob/master/docs/UserGuide.md) - 关于如何配置已经编程的HomeSpan设备的WiFi凭据、修改其HomeKit设置的统包说明编码，并将设备与HomeKit配对。无需电脑！
-* [HomeSpan API参考](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Reference.md) - HomeSpan库API完整指南
-* [HomeSpan二维码](https://github.com/abackup/HomeSpan-zh/blob/master/docs/QRCodes.md) - 创建和使用二维码来配对HomeSpan设备
-* [HomeSpan OTA](https://github.com/abackup/HomeSpan-zh/blob/master/docs/OTA.md) - 直接从Arduino IDE无线更新您的草图，无需串行连接
-* [HomeSpan PWM](https://github.com/abackup/HomeSpan-zh/blob/master/docs/PWM.md) - 使用 ESP32的片上PWM外设集成控制标准LED和伺服电机
-* [HomeSpan射频控制](https://github.com/abackup/HomeSpan-zh/blob/master/docs/RMT.md) - 使用 ESP32的片上RMT外设轻松生成RF和IR远程控制信号
-* [HomeSpan灯带](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Pixels.md) - 可寻址的单线和两线RGB、RGBW LED和LED灯条的集成控制
+* [HomeSpan API概述](docs/Overview.md) - HomeSpan API概述，包括开发您的第一个API的分步指南HomeSpan草图
+* [HomeSpan教程](docs/Tutorials.md) - HomeSpan教程草图指南
+* [HomeSpan服务和特性](docs/ServiceList.md) - HomeSpan支持的所有HAP服务和特性的列表
+* [HomeSpan配件类别]docs/Categories.md) - HomeSpan定义的所有HAP配件类别的列表
+* [HomeSpan命令行界面(CLI)](docs/CLI.md) - 配置HomeSpan设备的WiFi凭据，修改其HomeKit设置代码，监控并更新其状态，并从Arduino IDE串行监视器访问详细的实时设备诊断
+* [HomeSpan用户指南](docs/UserGuide.md) - 关于如何配置已经编程的HomeSpan设备的WiFi凭据、修改其HomeKit设置的统包说明编码，并将设备与HomeKit配对。无需电脑！
+* [HomeSpan API参考](docs/Reference.md) - HomeSpan库API完整指南
+* [HomeSpan二维码](docs/QRCodes.md) - 创建和使用二维码来配对HomeSpan设备
+* [HomeSpan OTA](docs/OTA.md) - 直接从Arduino IDE无线更新您的草图，无需串行连接
+* [HomeSpan PWM](docs/PWM.md) - 使用 ESP32的片上PWM外设集成控制标准LED和伺服电机
+* [HomeSpan射频控制](docs/RMT.md) - 使用 ESP32的片上RMT外设轻松生成RF和IR远程控制信号
+* [HomeSpan灯带](docs/Pixels.md) - 可寻址的单线和两线RGB、RGBW LED和LED灯条的集成控制
 * [HomeSpan控制步进电机](docs/Stepper.md) - integrated control of stepper motors, including PWM microstepping
-* [HomeSpan SpanPoint](https://github.com/abackup/HomeSpan-zh/blob/master/docs/NOW.md) - 使用ESP-NOW促进ESP32设备之间的点对点双向通信
-* [HomeSpan电视服务](https://github.com/abackup/HomeSpan-zh/blob/master/docs/TVServices.md) - 如何使用HomeKit的无证电视服务和特性
-* [HomeSpan消息记录](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Logging.md) - 如何生成日志消息以显示在Arduino串行监视器上以及可选地发布到集成的Web日志页面
-* [HomeSpan Device Cloning](https://github.com/abackup/HomeSpan-zh/blob/master/docs/Cloning.md) - 无缝地将损坏的设备更换为新设备，而无需重新配对并丢失HomeKit自动装置
+* [HomeSpan SpanPoint](docs/NOW.md) - 使用ESP-NOW促进ESP32设备之间的点对点双向通信
+* [HomeSpan电视服务](docs/TVServices.md) - 如何使用HomeKit的无证电视服务和特性
+* [HomeSpan消息记录](docs/Logging.md) - 如何生成日志消息以显示在Arduino串行监视器上以及可选地发布到集成的Web日志页面
+* [HomeSpan Device Cloning](docs/Cloning.md) - 无缝地将损坏的设备更换为新设备，而无需重新配对并丢失HomeKit自动装置
 * [HomeSpan项目](https://github.com/topics/homespan) - HomeSpan库的实际应用
-* [HomeSpan FAQ](https://github.com/abackup/HomeSpan-zh/blob/master/docs/FAQ.md) - 常见问题解答
+* [HomeSpan FAQ](docs/FAQ.md) - 常见问题解答
 
 请注意，所有文档都是受版本控制的，并且与每个分支相关联。 *master* 分支通常指向最新版本。 *dev* 分支（如果可用）将包含正在积极开发中的代码。
 
