@@ -1,5 +1,6 @@
-<div style='display: none'>时间：2023.7.19翻译
+<div style='display: none'>
 </div>
+[comment]: <时间：2023.7.19翻译>
 
 # 欢迎！
 
