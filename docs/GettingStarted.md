@@ -1,6 +1,7 @@
 <div style='display: none'>
 时间：2023.7.19翻译
 </div>
+
 # HomeSpan入门
 
 本页提供了获取和设置开发HomeSpan设备所需的所有软件和硬件的分步说明。那些有Arduino或ESP32经验的人可能会发现你们可以跳过一些步骤。
