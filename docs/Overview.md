@@ -1,3 +1,7 @@
+<!---
+<p>时间：2023.7.19翻译</p>
+-->
+
 # HomeSpan API概述
 
 HomeSpan草图的基本结构如下：
@@ -11,13 +15,13 @@ void setup() {
   
   /// HOMESPAN 设置代码在这里 ///
   
-} // end of setup()
+} // 设置结束
 
 void loop(){
 
   /// HOMESPAN 循环代码在这里 ///
 
-} // end of loop()
+} // 循环结束
 ```
 
 包含HomeSpan.h会创建一个名为`homeSpan`的全局对象，它实现了各种方法。 最重要的两个是 `begin()` 和 `poll()`。 `begin()` 方法采用许多可选参数，初始化HomeSpan并放置在 `setup()` 部分的开头附近。不带参数的 `poll()` 方法被放置在 `loop()` 中，这也是HomeSpan运行其所有代码的原因。这通常是放在 `loop()` 部分中的唯一函数。 我们的草图现在看起来像这样：
@@ -43,6 +47,29 @@ void loop(){
 
 } // 循环结束
 ```
+请注意，作为*替代*，您可以指示 HomeSpan 创建单独的任务，在后台重复调用 `homeSpan.poll()`。 为此，请将主 `loop()` 中对 `homeSpan.poll()` 的调用替换为 `setup()` 函数末尾对 `homeSpan.autoPoll()` 的调用：
+
+```C++
+#include "HomeSpan.h"         // 包括 HomeSpan 库
+
+void setup() {     
+ 
+  Serial.begin(115200);       // 启动串行接口
+  
+  homeSpan.begin();           // 初始化 HomeSpan
+  
+  ///  HAP 附件属性数据库的定义位于此处 ///
+  
+ homeSpan.autoPoll();         // 启动一个在后台重复调用  `homeSpan.poll()` 的任务
+
+} // 设置结束
+
+void loop(){
+
+} //循环结束
+```
+
+这在使用双核处理器时特别有效，因为 HomeSpan 将在“空闲”处理器上运行轮询任务，否则该处理器不会执行任何其他 Arduino 功能。
 
 ## 创建HAP附件属性数据库
 
@@ -98,18 +125,18 @@ void setup() {
     new Characteristic::On();
     new Characteristic::Brightness(50);     // 将默认亮度初始化为 50%
   
-} // end of setup()
+} // 结束设置
 
 void loop(){
 
  homeSpan.poll(); 
 
-} // end of loop()
+} //结束循环
 ```
 
 如您所见，您不需要命名任何对象，或指定任何HAP参数，例如格式类型、UUID代码等。但是，实例化对象的*顺序*至关重要。 特征自动与最后实例化的服务相关联，服务自动与最后实例化的附件相关联。
 
-> :heavy_check_mark:HomeSpan具有广泛的错误检查功能。 在启动时HomeSpan将验证您实例化的HAP附件属性数据库的配置，以确保每个附件都具有所有必需的服务，并且每个服务都具有其所有必需的特征。 如果HomeSpan发现Accessory缺少必需的Service，Service缺少必需的 Characteristic，或者既非必需也非可选的Characteristic已添加到不支持该Characteristic的Service，HomeSpan将报告这些错误并停止程序。
+> :heavy_check_mark: HomeSpan具有广泛的错误检查功能。 在启动时HomeSpan将验证您实例化的HAP附件属性数据库的配置，以确保每个附件都具有所有必需的服务，并且每个服务都具有其所有必需的特征。 如果HomeSpan发现Accessory缺少必需的Service，Service缺少必需的 Characteristic，或者既非必需也非可选的Characteristic已添加到不支持该Characteristic的Service，HomeSpan将报告这些错误并停止程序。
 
 事实上，如果你尝试运行上面的草图，你会发现它无法验证。 这是因为每个附件都缺少所需的服务和特性——HAP附件信息服务和识别特性。 请参阅 [Tutorials](Tutorials.md) 以获取包含所有必需HAP元素的各种完整且有效的示例，例如简单台灯的此草图：
 
@@ -203,7 +230,7 @@ struct TableLamp : Service::LightBulb{
 最后，我们将派生的TableLamp服务添加到原始草图中，并替换我们的通用灯泡服务和 On Characteristic 的实例化：
 
 ```C++
-new Service::LightBulb();                       // Create the Light Bulb Service
+new Service::LightBulb();                       // 创建灯泡服务
   new Characteristic::On();                       // 存储灯泡状态的特性：开或关
 ```
 
@@ -220,7 +247,7 @@ new TableLamp(17);
 ```C++
 /* HomeSpan Table Lamp Example */
 
-#include "HomeSpan.h"         // include the HomeSpan library
+#include "HomeSpan.h"         // 包含HomeSpan库
 
 //// 定义 TableLamp 服务 ////
 
