@@ -1,5 +1,5 @@
 <!---
-<p>时间：2023.7.19翻译</p>
+<p>时间：2023.7.21翻译</p>
 -->
 
 # HomeSpan API概述
@@ -143,13 +143,13 @@ void loop(){
 ```C++
 /* HomeSpan Table Lamp Example */
 
-#include "HomeSpan.h"         // include the HomeSpan library
+#include "HomeSpan.h"         // 包含HomeSpan库
 
 void setup() {     
  
-  Serial.begin(115200);       // start the Serial interface
+  Serial.begin(115200);       // 开启串口
   
-  homeSpan.begin();           // initialize HomeSpan
+  homeSpan.begin();           // 初始化HomeSpan
 
   new SpanAccessory();           // 台灯配件
   
@@ -182,7 +182,7 @@ HomeSpan 使用的 *Service-Centric* 方法使得实现代码来处理更新变�
 struct TableLamp : Service::LightBulb {};
 ```
 
-在这个新结构中，我们可以创建自己的构造函数，可能带有一个或多个参数。 构造函数可以存储一些特定于设备的参数，例如将用于驱动打开和关闭台灯的继电器的 ESP32 引脚的编号。 构造函数还应定义服务所需的所有特征。 您还需要将至少一些 Characteristic 对象保存为命名变量，以便稍后在 `update()` 方法中引用它们。 所有 HomeSpan 特性的基类是“SpanCharacteristic”，因此创建一个变量来存储 HomeSpan 特性需要您将其定义为“SpanCharacteristic *”。 综上所述，到目前为止，我们有：
+在这个新结构中，我们可以创建自己的构造函数，可能带有一个或多个参数。 构造函数可以存储一些特定于设备的参数，例如将用于驱动打开和关闭台灯的继电器的 ESP32 引脚的编号。 构造函数还应定义服务所需的所有特征。 您还需要将至少一些 Characteristic 对象保存为命名变量，以便稍后在 `update()` 方法中引用它们。 所有 HomeSpan 特性的基类是`SpanCharacteristic`，因此创建一个变量来存储 HomeSpan 特性需要您将其定义为`SpanCharacteristic *`。 综上所述，到目前为止，我们有：
 
 ```C++
 struct TableLamp : Service::LightBulb{
@@ -274,30 +274,30 @@ struct TableLamp : Service::LightBulb{
   
 };
 
-//// INITIALIZE HOMESPAN AND CREATE THE HAP ACCESSORY ATTRIBUTE DATABASE ////
+//// 初始化 HOMESPAN 并创建 HAP 配件属性数据库 ////
 
 void setup() {     
  
-  Serial.begin(115200);       // start the Serial interface
+  Serial.begin(115200);       // 开启串口
   
-  homeSpan.begin();           // initialize HomeSpan
+  homeSpan.begin();           // 初始化HomeSpan
 
   new SpanAccessory();           // Table Lamp Accessory
   
-    new Service::AccessoryInformation();            // HAP requires every Accessory to implement an AccessoryInformation Service  
-      new Characteristic::Identify();               // HAP requires the Accessory Information Service to include the Identify Characteristic
+    new Service::AccessoryInformation();            // HAP要求每个 Accessory 实现 AccessoryInformation Service
+      new Characteristic::Identify();               // HAP要求配件信息服务包含识别特征
        
-   new TableLamp(17);                               // instantiate the TableLamp Service (defined below) with lampPin set to 17
+   new TableLamp(17);                               // 实例化 TableLamp 服务（定义如下），并将 lampPin 设置为 17
   
-} // end of setup()
+} // 结束设置
 
-//// RUN HOMESPAN ////
+////运行HOMESPAN ////
 
 void loop(){
 
  homeSpan.poll(); 
 
-} // end of loop()
+} // 结束循环
 ```
 
 这个完整的工作示例已准备好上传到您的 ESP32 设备，可用于操作通过继电器连接到引脚 17 的假想台灯。或者，您可以简单地将 LED 连接到引脚 17，看看它是如何工作的！ 恭喜，你已经创建了你的第一个 HomeSpan Sketch。
