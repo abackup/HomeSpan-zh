@@ -97,7 +97,7 @@ HomeSpan 库包括 16 个越来越复杂的教程草图，带您了解 HomeSpan 
 
 * 通过将构造函数的第二个参数设置为 `true` 来指示 HomeSpan 在 NVS 中存储 Characteristic 的值
 
-### [示例 19 - WebLog](../examples/19-WebLog)
+### [示例 19 - 网页日志](../examples/19-WebLog)
 示例 19 通过实现两个开/关 LED 说明如何将 Web 日志添加到 HomeSpan 草图中，如何使用 NTP 时间服务器同步设备的内部时钟，以及如何创建自己的 Web 日志消息。此示例中涵盖的新 HomeSpan API 主题包括：
 * 启用 HomeSpan Web 日志并使用 `homeSpan.enableWebLog()` 方法指定可选的 NTP 时间服务器
 * 使用`WEBLOG()`宏创建Web日志消息
