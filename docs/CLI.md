@@ -1,6 +1,11 @@
+<!---
+<p>时间：2023.7.21翻译</p>
+-->
+
+
 # HomeSpan 命令行界面 (CLI)
 
-HomeSpan 为开发人员提供了一个轻量级命令行界面 (CLI) . HomeSpan CLI 允许您查看实时 HomeSpan 诊断、查询设备的运行状态、检查其 HAP 数据库并执行一些基本功能，例如启动出厂重置。 最重要的是，CLI 可用于配置 HomeSpan 的网络连接及其 HomeKit 设置代码。
+HomeSpan 包括一个供开发人员使用的轻量级命令行界面 (CLI)，每当您的 Homespan 设备连接到计算机时，可以通过 Arduino 串行监视器进行访问，只需从 Arduino IDE 的顶部菜单栏中选择*工具 → 串行监视器*即可。 HomeSpan CLI 允许您查看实时 HomeSpan 诊断、查询设备的运行状态、检查其 HAP 数据库以及执行一些基本功能，例如启动恢复出厂设置。最重要的是，CLI 可用于配置 HomeSpan 的网络连接及其 HomeKit 设置代码。
 
 > :exclamation: 使用串行监视器时，请确保将波特率设置为与您在 HomeSpan 草图中的“Serial.begin()”函数中指定的任何值相匹配。 此外，您需要将串行监视器设置为传输 \<newline\> 作为行尾。
 
@@ -92,7 +97,7 @@ HomeSpan 为开发人员提供了一个轻量级命令行界面 (CLI) . HomeSpan
   * 该命令用于设置Log Level，控制HomeSpan输出的诊断信息的级别。有效值为：
   
     * 0（最小诊断），
-    * 1（所有诊断），和
+    * 1（所有诊断），以及
     * 2（所有诊断以及 HomeSpan 和任何连接的 HomeKit 控制器之间的所有 HAP 通信的实时流）。
 
 * **?** - 打印所有 CLI 命令的菜单
@@ -103,4 +108,4 @@ HomeSpan 为开发人员提供了一个轻量级命令行界面 (CLI) . HomeSpan
   
 ---
 
-[↩️](README.md) 返回欢迎页面
+[↩️](../README.md) 返回欢迎页面
