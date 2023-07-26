@@ -17,7 +17,7 @@
 
 HomeSpan 支持与 QR 码配对，并使用“HSPN”作为其默认 *设置ID*。但是，如果您打算将多个设备与 QR 码配对，则需要确保每个设备都有一个唯一的*设置 ID*。您可以通过以下两种方式之一更改设备上的 *设置ID*：
 
-* 通过在 HomeSpan [命令行界面](https://github.com/HomeSpan/HomeSpan/blob/master/docs/CLI.md) 中键入“O \<code\>”将新代码存储在设备 NVS 中;或者
+* 通过在 HomeSpan [命令行界面](./CLI.md) 中键入“O \<code\>”将新代码存储在设备 NVS 中;或者
 * 使用 `homeSpan.setQRID(const char *ID)` 方法直接在您的草图中指定 QR *设置ID*。
   
 优先顺序如下：如果您的草图包含对 `homeSpan.setQRID(const char *ID)` 的调用，则使用指定的 ID。如果没有，HomeSpan 将改为在 NVS 中搜索存储的 *设置ID*。如果未找到，HomeSpan 默认使用“HSPN”作为*设置ID*。
@@ -26,7 +26,7 @@ HomeSpan 支持与 QR 码配对，并使用“HSPN”作为其默认 *设置ID*�
 
 ### 创建可扫描的二维码
 
-就像您可以根据 HomeSpan 设备的 *设置代码* 创建自己的可扫描标签一样（请参阅 [HomeSpan 用户指南](/UserGuide.md#创建可扫描的二维码), 您还可以创建自己的可扫描二维码来配对HomeSpan设备。也许最简单的方法是使用 Apple 的 HomeKit 二维码生成器，包括其 [HomeKit Accessory Simulator](https://developer.apple.com/documentation/homekit/testing_your_app_with_the_homekit_accessory_simulator ) Xcode的附加组件。
+就像您可以根据 HomeSpan 设备的 *设置代码* 创建自己的可扫描标签一样（请参阅 [HomeSpan 用户指南](./UserGuide.md#创建可扫描的二维码), 您还可以创建自己的可扫描二维码来配对HomeSpan设备。也许最简单的方法是使用 Apple 的 HomeKit 二维码生成器，包括其 [HomeKit Accessory Simulator](https://developer.apple.com/documentation/homekit/testing_your_app_with_the_homekit_accessory_simulator ) Xcode的附加组件。
 
 ![二维码生成器](images/QRCode.png)
 
@@ -36,7 +36,7 @@ HomeSpan 支持与 QR 码配对，并使用“HSPN”作为其默认 *设置ID*�
 * **预订的**。始终将此设置为零，否则家庭应用程序将无法识别 QR 码。
 * **类别**。将此设置为与您的 HomeSpan 设备的类别相匹配（例如灯泡、风扇、门锁）。请注意，家庭应用程序仅在您首次扫描 QR 码时将其用于显示目的。家庭应用程序实际上不会检查 QR 码中列出的类别是否与您正在配对的设备的类别匹配。
 * **设置标志**。这些标志提供有关 HomeKit 设备支持哪些配对方法的信息。 HomeSpan 仅支持 IP 配对，因此您选中该框并将其他两个留空。但是，您检查哪个框（如果有）似乎并不重要，因为 Home 应用程序似乎没有将此信息用于任何事情。
-* **设置代码**。这是您使用 [HomeSpan 命令行界面 (CLI)](h/CLI.md) 为您的设备设置的 8 位 *设置代码* ) 或 [HomeSpan的WiFi设置网页](/UserGuide.md#HomeSpan的WiFi设置网页)。请注意，上面屏幕截图中显示的代码是 HomeSpan 使用的默认代码，如果您不设置自己的代码。
+* **设置代码**。这是您使用 [HomeSpan 命令行界面 (CLI)](./CLI.md) 为您的设备设置的 8 位 *设置代码* ) 或 [HomeSpan的WiFi设置网页].(./UserGuide.md#HomeSpan的WiFi设置网页)。请注意，上面屏幕截图中显示的代码是 HomeSpan 使用的默认代码，如果您不设置自己的代码。
 * **设置 ID**。这是您在草图中使用方法 `homeSpan.setQRID(const char *id)` 为 HomeSpan 设备设置的 4 字符 *设置ID*。如果您未在草图中指定 QR 设置 ID，HomeSpan 将使用默认值“HSPN”（如上例所示），除非您已通过 [CLI](CLI.md) 更新此设备的默认值使用“Q”命令。注意案例很重要！ HSPN 与“hspn”不同。
 * **设置有效负载**。这是由上述输入产生的输出，并且是由显示的 QR 码表示的文本。 HomeKit 设备的 Setup Payload 始终以“X-HM://”开头，后跟 9 个字母数字字符，并以纯文本形式的 *设置ID* 结尾。如果您没有更改 HomeSpan 的默认 *设置代码* 或 *设置ID*，您可以通过使用 Home App 扫描此图形来配对您的设备。更简单的是直接从您的相机扫描它 - 您的 iPhone 会识别出这是一个 HomeKit 二维码并为您打开 Home 应用程序。
 
