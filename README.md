@@ -65,7 +65,7 @@ HomeSpan 包括以下文档：
 * [ HomeSpan 配件类别 ](docs/Categories.md) —— HomeSpan 定义的所有 HAP 配件类别的列表
 * [ HomeSpan 命令行界面(CLI) ](docs/CLI.md) —— 配置 HomeSpan 设备的 WiFi 凭据，修改其 HomeKit 设置代码，监控并更新其状态，并从 Arduino IDE 串行监视器访问详细的实时设备诊断
 * [ HomeSpan 用户指南 ](docs/UserGuide.md) —— 关于如何配置已经编程的 HomeSpan 设备的 WiFi 凭据、修改其 HomeKit 设置的统包说明编码，并将设备与 HomeKit 配对。无需电脑！
-* [ HomeSpanAPI 参考 ](docs/Reference.md) —— HomeSpan 库 API 完整指南
+* [ HomeSpan API 参考 ](docs/Reference.md) —— HomeSpan 库 API 完整指南
 * [ HomeSpan 二维码 ](docs/QRCodes.md) —— 创建和使用二维码来配对 HomeSpan 设备
 * [ HomeSpan OTA ](docs/OTA.md) —— 直接从 Arduino IDE 无线更新您的草图，无需串行连接
 * [ HomeSpan PWM ](docs/PWM.md) —— 使用 ESP32 的片上 PWM 外设集成控制标准 LED 和伺服电机
@@ -85,7 +85,7 @@ HomeSpan 包括以下文档：
 
 # 外部资源
 
-除了 HomeSpan 资源之外，不熟悉 HomeKit 编程的开发人员还应下载 Apple 的 HomeKit Accessory Protocol Specification，Release R2(HAP-R2)下载是免费的（现在 Apple 已不再提供），但 Apple 要求您注册您的 Apple ID 才能访问该文档。
+除了 HomeSpan 资源之外，不熟悉 HomeKit 编程的开发人员还应下载 Apple 的 HomeKit Accessory Protocol Specification，Release R2(HAP-R2) 下载是免费的（现在 Apple 已不再提供），但 Apple 要求您注册您的 Apple ID 才能访问该文档。
 
 您***不需要***阅读整个文档。HomeSpan 的全部意义在于它在引擎盖下实现了所有必需的 HAP 操作，因此您可以专注于编程任何所需的逻辑，以使用该设备控制您的实际设备（灯、风扇、RF 遥控器等）。但是您会发现 HAP 指南的第 8 章和第 9 章是非常宝贵的参考，因为它列出并描述了 HomeSpan 中实现的所有服务和特征，其中许多您将在自己的 HomeSpan 草图中经常使用。
 
