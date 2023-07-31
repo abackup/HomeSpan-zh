@@ -77,7 +77,7 @@ HomeSpan 包括以下文档：
 * [ HomeSpan 设备克隆 ](docs/Cloning.md) —— 无缝地将损坏的设备更换为新设备，而无需重新配对并丢失 HomeKit 自动装置
 * [ HomeSpan 项目 ](https://github.com/topics/HomeSpan) —— HomeSpan 库的实际应用
 * [ HomeSpan FAQ ](docs/FAQ.md) —— 常见问题解答
-* [ 常见问题解决方法 ](docs/Solutions.md) —— 使用/编译 HomeSpan 时一些常见问题的解决方案
+* [ 常见问题解决方法 ](docs/Solutions.md) —— 使用或者编译 HomeSpan 时一些常见问题的解决方案
 * [ HomeSpan 推荐草图 ](https://github.com/HomeSpan/HomeSpanReferenceSketches) —— 一系列独立的参考草图，展示了一些更复杂的 HomeKit 服务，例如恒温器和灌溉系统
 
 请注意，所有文档都是受版本控制的，并且与每个分支相关联。*master* 分支通常指向最新版本。*dev* 分支（如果可用）将包含正在积极开发中的代码。
