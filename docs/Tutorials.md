@@ -1,6 +1,4 @@
-<!---
-<p>时间：2023.7.21翻译</p>
--->
+时间：2023.8.1 翻译
 
 # HomeSpan 教程
 
@@ -39,7 +37,7 @@ HomeSpan 库包括 16 个越来越复杂的教程草图，带您了解 HomeSpan 
 ### [示例 6 - 可调光指示灯](../examples/06-DimmableLED)
 示例 6 更改了示例 5，使得 LED #2 现在可以调光，而不仅仅是开/关。此示例中涵盖的新 HomeSpan API 主题包括：
 
-* 实现脉宽调制 (PWM) 以通过实例化`LedPin()`对象来控制连接到任何 ESP32 引脚的 LED
+* 实现脉宽调制 (PWM) 以通过实例化 `LedPin()` 对象来控制连接到任何 ESP32 引脚的 LED
 * 使用 LedPin `set()` 方法设置 LED 的亮度
 * 将类似的派生服务类存储在同一个 \*.h 文件中以便于使用
 
@@ -47,7 +45,7 @@ HomeSpan 库包括 16 个越来越复杂的教程草图，带您了解 HomeSpan 
 示例 7 演示了如何将示例 6 中创建的两个 LED 配件的名称从 Home App 生成的默认值更改为更有用和自定义的名称。
 
 ### [示例 8 - 桥梁](../examples/08-Bridges)
-示例 8 在功能上与示例 7 相同，只是我们没有定义两个附件（一个用于开/关 LED，一个用于可调光 LED），而是定义了三个附件，其中第一个充当 HomeKit 桥接器。
+示例 8 在功能上与示例 7 相同，只是我们没有定义两个附件（一个用于开/关 LED，一个用于可调光 LED ），而是定义了三个附件，其中第一个充当 HomeKit 桥接器。
 
 ### [示例 9 - 消息日志记录](../examples/09-MessageLogging)
 示例 9 说明了如何将日志消息添加到 HomeSpan 草图。除了包含新的日志消息外，该代码与示例 8 相同。此示例中涵盖的新 HomeSpan API 主题包括：
@@ -65,7 +63,7 @@ HomeSpan 库包括 16 个越来越复杂的教程草图，带您了解 HomeSpan 
 示例 11 演示了如何将多服务附件中不同服务的名称从 Home App 生成的默认值更改为更有用和自定义的名称。这些示例还探讨了 Home App 显示这些名称的方式和时间，以及当设备配置为 Bridge 时 Home App 如何为 Accessory Tile 选择适当的图标。
 
 ### [示例 12 - 服务循环](../examples/12-ServiceLoops)
-示例 12 引入了 HomeKit *Event Notifications* 来实现两个新附件 - 温度传感器和空气质量传感器。当然，出于本示例的目的，我们实际上不会将这些物理设备连接到 ESP32，但我们将模拟定期“读取”它们的属性，并通知 HomeKit 任何更改的值。此示例中涵盖的新 HomeSpan API 主题包括：
+示例 12 引入了 HomeKit **事件通知**来实现两个新附件 —— 温度传感器和空气质量传感器。当然，出于本示例的目的，我们实际上不会将这些物理设备连接到 ESP32，但我们将模拟定期“读取”它们的属性，并通知 HomeKit 任何更改的值。此示例中涵盖的新 HomeSpan API 主题包括：
 
 * 在派生服务中实现虚拟 `loop()` 方法
 * 使用 `timeVal()` 方法跟踪自上次更新特性以来经过的时间
@@ -98,12 +96,12 @@ HomeSpan 库包括 16 个越来越复杂的教程草图，带您了解 HomeSpan 
 * 通过将构造函数的第二个参数设置为 `true` 来指示 HomeSpan 在 NVS 中存储 Characteristic 的值
 
 ### [示例 19 - 网页日志](../examples/19-WebLog)
-示例 19 通过实现两个开/关 LED 说明如何将 Web 日志添加到 HomeSpan 草图中，如何使用 NTP 时间服务器同步设备的内部时钟，以及如何创建自己的 Web 日志消息。此示例中涵盖的新 HomeSpan API 主题包括：
-* 启用 HomeSpan Web 日志并使用 `homeSpan.enableWebLog()` 方法指定可选的 NTP 时间服务器
-* 使用`WEBLOG()`宏创建Web日志消息
+示例 19 通过实现两个开或者关 LED 说明如何将网页日志添加到 HomeSpan 草图中，如何使用 NTP 时间服务器同步设备的内部时钟，以及如何创建自己的 网页日志消息。此示例中涵盖的新 HomeSpan API 主题包括：
+* 启用 HomeSpan 网页日志并使用 `homeSpan.enableWebLog()` 方法指定可选的 NTP 时间服务器
+* 使用`WEBLOG()`宏创建网页日志消息
 
 ### [示例 20 - 高级技术](../examples/20-AdvancedTechniques)
-示例 20 通过实现“动态”桥接说明了许多高级技术，该桥接允许随时*交互地*添加和删除灯光配件，而无需重新启动设备。 此示例中涵盖的新 HomeSpan API 主题包括:
+示例 20 通过实现**动态**桥接说明了许多高级技术，该桥接允许随时**交互地**添加和删除灯光配件，而无需重新启动设备。 此示例中涵盖的新 HomeSpan API 主题包括:
 
 * 使用 `SpanUserCommand()` 创建自定义 CLI 命令
 * 使用 `homeSpan.deleteAccessory()` 动态删除附件
@@ -118,31 +116,31 @@ HomeSpan 库包括 16 个越来越复杂的教程草图，带您了解 HomeSpan 
 台灯配件的基本实现。用作 [HomeSpan API 概述](Overview.md) 中的教程
 
 ### [控制远程](../Other%20Examples/RemoteControl)
-一个独立的示例，展示了如何使用 HomeSpan 的 *RFControl* 类来生成自定义脉冲序列。出于说明目的，脉冲宽度非常长，适合输出到 LED，因此您可以“看到”脉冲序列。请参阅 [RF/IR Generation](RMT.md) 页面了解完整详情
+一个独立的示例，展示了如何使用 HomeSpan 的 *RFControl* 类来生成自定义脉冲序列。出于说明目的，脉冲宽度非常长，适合输出到 LED，因此您可以“看到”脉冲序列。请参阅 [HomeSpan 射频控制](RMT.md) 页面了解完整详情
 
 ### [控制舵机](../Other%20Examples/ServoControl)
-Window Shade 的实现，它使用 HomeSpan 的 *ServoPin* 类来控制板条的水平倾斜。有关完整详细信息，请参阅 [ServoPin](PWM.md#servopinuint8_t-pin-double-initdegrees-uint16_t-minmicros-uint16_t-maxmicros-double-mindegrees-double-maxdegrees)
+窗帘的实现，它使用 HomeSpan 的 *ServoPin* 类来控制板条的水平倾斜。有关完整详细信息，请参阅 [ServoPin](PWM.md#servopinuint8_t-pin-double-initdegrees-uint16_t-minmicros-uint16_t-maxmicros-double-mindegrees-double-maxdegrees)
 
 ### [电视](../Other%20Examples/Television)
-HomeKit *未认证* 电视服务的示例，展示了如何使用不同的特性来控制电视的电源、输入源和其他一些功能。请参阅 [电视服务和特征](TVServices.md) 页面了解完整详情
+HomeKit *未认证* 电视服务的示例，展示了如何使用不同的特性来控制电视的电源、输入源和其他一些功能。请参阅 [HomeSpan 电视服务 ](TVServices.md) 页面了解完整详情
 
 ### [像素](../Other%20Examples/Pixel)
-演示如何使用 HomeSpan 的 *Pixel* 和 *Dot* 类来控制单线和两线可寻址 RGB 和 RGBW LED。有关完整详细信息，请参阅 [Addressable RGB LED](Pixels.md) 页面
+演示如何使用 HomeSpan 的 *Pixel* 和 *Dot* 类来控制单线和两线可寻址 RGB 和 RGBW LED。有关完整详细信息，请参阅 [HomeSpan 灯带](Pixels.md) 页面
 
 ### [定制服务](../Other%20Examples/CustomService)
 演示如何在 HomeSpan 中创建自定义服务和自定义特征，以实现 *Eve for HomeKit* 应用程序识别的大气压力传感器。有关完整详细信息，请参阅 [自定义特征和自定义服务宏](Reference.md#custom-characteristics-and-custom-services-macros)
 
 ### [可编程集线器](../Other%20Examples/ProgrammableHub)
-演示如何实现一个完全可编程的灯光配件集线器，允许用户直接通过设备托管的*web 界面*或通过 HomeSpan 的*命令行界面*动态*添加/删除多达 12 个灯光配件。 每个灯都可以配置为可调光/非可调光，没有颜色控制、全 RGB 颜色控制或色温控制。 建立在许多使用的技术之上 [示例 20](../examples/20-AdvancedTechniques)
+演示如何实现一个完全可编程的灯光配件集线器，允许用户直接通过设备托管的**网页界面**或通过 HomeSpan 的**命令行界面动态**添加或者删除多达 12 个灯光配件。 每个灯都可以配置为可调光/非可调光，没有颜色控制、全 RGB 颜色控制或色温控制。 建立在许多使用的技术之上 [示例 20](../examples/20-AdvancedTechniques)
 
 ### [远程传感器](../examples/Other%20Examples/RemoteSensors)
-演示如何使用 SpanPoint 将消息从运行测量本地温度的轻量级草图的电池供电远程设备传输到运行实现温度传感器附件的完整 HomeSpan 草图的墙壁供电主设备。请参阅[SpanPoint:ESP32 设备之间的点对点通信](NOW.md) 有关 *SpanPoint* 类及其所有方法的完整详细信息
+演示如何使用 SpanPoint 将消息从运行测量本地温度的轻量级草图的电池供电远程设备传输到运行实现温度传感器附件的完整 HomeSpan 草图的墙壁供电主设备。请参阅 [HomeSpan Span 热点](NOW.md) 有关 *SpanPoint* 类及其所有方法的完整详细信息
 
 ### [淡入淡出指示灯](../examples/Other%20Examples/FadingLED)
 演示 *LedPin* 类如何使用 ESP32 的内置淡入淡出控件，在指定的时间段内自动将 LED 从一个亮度级别淡入另一个亮度级别。有关完整详细信息，请参阅 [LedPin](PWM.md#pulse-width-modulation-pwm) 页面
 
 ### [电动窗帘](../examples/Other%20Examples/MotorizedWindowShade)
-演示如何使用 *StepperControl* 类操作步进电机。实现基于上述[示例&nbsp;13](../examples/13-TargetStates)的电动窗帘。有关完整详细信息，请参阅 [步进电机控制](Stepper.md)页面
+演示如何使用 *StepperControl* 类操作步进电机。实现基于上述[示例 13](../examples/13-TargetStates)的电动窗帘。有关完整详细信息，请参阅 [HomeSpan 控制步进电机](Stepper.md)页面
  
 ---
 
