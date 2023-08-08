@@ -58,7 +58,7 @@ HomeSpan 需要 Arduino-ESP32 Board Manager 的 2.0.0 或更高版本，并且�
 HomeSpan 包括以下文档：
 
 * [ HomeSpan入门 ](docs/GettingStarted.md) —— 设置开发 HomeSpan 设备所需的软件和硬件
-* [ HomeSpan API 概述 ](docs/Overview.md) —— HomeSpanAPI 概述，包括开发您的第一个 API 的分步指南 HomeSpan 草图
+* [ HomeSpan API 概述 ](docs/Overview.md) —— HomeSpan API 概述，包括开发您的第一个 API 的分步指南 HomeSpan 草图
 * [ HomeSpan 教程 ](docs/Tutorials.md) —— HomeSpan 教程草图指南
 * [ HomeSpan 服务和特性 ](docs/ServiceList.md) —— HomeSpan 支持的所有 HAP 服务和特性的列表
 * [ HomeSpan 配件类别 ](docs/Categories.md) —— HomeSpan 定义的所有 HAP 配件类别的列表
@@ -86,13 +86,13 @@ HomeSpan 包括以下文档：
 
 除了 HomeSpan 资源之外，不熟悉 HomeKit 编程的开发人员还应下载 Apple 的 HomeKit Accessory Protocol Specification，Release R2(HAP-R2) 下载是免费的（现在 Apple 已不再提供），但 Apple 要求您注册您的 Apple ID 才能访问该文档。
 
-您***不需要***阅读整个文档。HomeSpan 的全部意义在于它在引擎盖下实现了所有必需的 HAP 操作，因此您可以专注于编程任何所需的逻辑，以使用该设备控制您的实际设备（灯、风扇、RF 遥控器等）。但是您会发现 HAP 指南的第 8 章和第 9 章是非常宝贵的参考，因为它列出并描述了 HomeSpan 中实现的所有服务和特征，其中许多您将在自己的 HomeSpan 草图中经常使用。
+您**不需要**阅读整个文档。HomeSpan 的全部意义在于它在引擎盖下实现了所有必需的 HAP 操作，因此您可以专注于编程任何所需的逻辑，以使用该设备控制您的实际设备（灯、风扇、RF 遥控器等）。但是您会发现 HAP 指南的第 8 章和第 9 章是非常宝贵的参考，因为它列出并描述了 HomeSpan 中实现的所有服务和特征，其中许多您将在自己的 HomeSpan 草图中经常使用。
 
 ---
 
 ### 反馈或提问？
 
-请考虑添加到HomeSpan讨论区或直接发送电子邮件至 HomeSpan@icloud.com
+请考虑添加到 HomeSpan 讨论区或直接发送电子邮件至 HomeSpan@icloud.com
 
 ### 关于作者（原文）
 HomeSpan was developed and continues to be maintained and supported by Gregg Berman. It was originally conceived to solve the pesky problem of not being able to operate an RF-controlled kitchen vent hood with Siri. I hope you find it useful as well as fun to use.
