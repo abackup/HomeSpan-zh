@@ -1,4 +1,4 @@
-时间：2023.8.8 翻译
+时间：2023.8.9 翻译
 
 # 欢迎！
 
@@ -58,7 +58,7 @@ HomeSpan 需要 Arduino-ESP32 Board Manager 的 2.0.0 或更高版本，并且�
 HomeSpan 包括以下文档：
 
 * [ HomeSpan入门 ](docs/GettingStarted.md) —— 设置开发 HomeSpan 设备所需的软件和硬件
-* [ HomeSpan API 概述 ](docs/Overview.md) —— HomeSpan API 概述，包括开发您的第一个 API 的分步指南 HomeSpan 草图
+* [ HomeSpan API 概述 ](docs/Overview.md) —— HomeSpanAPI 概述，包括开发您的第一个 API 的分步指南 HomeSpan 草图
 * [ HomeSpan 教程 ](docs/Tutorials.md) —— HomeSpan 教程草图指南
 * [ HomeSpan 服务和特性 ](docs/ServiceList.md) —— HomeSpan 支持的所有 HAP 服务和特性的列表
 * [ HomeSpan 配件类别 ](docs/Categories.md) —— HomeSpan 定义的所有 HAP 配件类别的列表
