@@ -1,4 +1,4 @@
-时间：2023.8.9 翻译
+时间：2023.9.19 翻译 原文：2023.9.12
 
 # 欢迎！
 
@@ -8,7 +8,7 @@
 
 HomeSpan 提供了一个以微控制器为中心符合 Apple 的 HomeKit 附件协议规范版本 R2(HAP-R2) 协议的实现，专为在 Arduino IDE 中运行的 ESP32 微控制器而设计。HomeSpan 无需任何外部网桥或组件，仅需通过您的家庭 WiFi 直接与 HomeKit 配对。借助 HomeSpan，您可以使用 ESP32 I/O 的全部功能来创建自定义控制软件或硬件，通过 iPhone、iPad 或 Mac 上的 Home App 或使用 Siri 自动操作外部设备。
 
-HomeSpan 需要 Arduino-ESP32 Board Manager 的 2.0.0 或更高版本，并且已经过版本 2.0.9 （推荐）的测试。HomeSpan 可以在原装 ESP32 以及乐鑫 ESP32-S2、ESP32-C3 和 ESP32-S3 芯片上运行。
+HomeSpan 需要 Arduino-ESP32 Board Manager 的 2.0.0 或更高版本，并且已经过版本 2.0.11 （推荐）的测试。HomeSpan 可以在原装 ESP32 以及乐鑫 ESP32-S2、ESP32-C3 和 ESP32-S3 芯片上运行。
 
 ### HomeSpan 亮点
 
