@@ -125,4 +125,4 @@ HomeSpan 包括两个专用类，可轻松控制“可寻址”RGB LED。 **Pixe
 
 ---
 
-[↩️](./README.md) 返回欢迎页面
+[↩️](../README.md) 返回欢迎页面
