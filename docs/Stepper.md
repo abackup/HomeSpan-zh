@@ -96,7 +96,7 @@ HomeSpan 类包含控制步进电机的所有方法，称为 **StepperControl**�
      * *accelSteps* - *accelSize* 因子呈指数衰减的步数，此时电机开始以 *msDelay* 参数指定的全速转动。 必须是大于或等于1的值。值越大，加减速周期越长
       
    * 步骤之间的总延迟（当 *stepsRemaining* 不为零时）由以下公式给出：
-   $$totalDelay = msDelay \times (1 + accelSize \times (e^{\frac{-\mid nSteps-stepsRemaining \mid}{accelSteps}} + e^{\frac{-(\mid stepsRemaining \mid - 1) {accelSteps}}))$$
+  $$totalDelay = msDelay \times (1 + accelSize \times (e^{\frac{-\mid nSteps-stepsRemaining \mid}{accelSteps}} + e^{\frac{-(\mid stepsRemaining \mid - 1)}{accelSteps}}))$$
     
    * 示例：`myMotor.setAccel(10,20); myMotor.move(200,5);`
      * 在第一步之后产生 55ms 的延迟，在第二步之后产生 52ms 的延迟，在第三步之后产生 50ms 的延迟，依此类推，直到在步骤 82 时附加延迟完全衰减，使得步骤之间的延迟保持固定在 5ms *msDelay* 参数指定。 然后，从步骤 118（剩余 82 个步骤）开始，延迟增加到 6ms； 在步骤134，它进一步增加到7ms，依此类推，直到在步骤199延迟再次达到其最大值55ms，就在电机在步骤200停止转动之前* 返回指向自身的指针，以便方法可以菊花链式连接
