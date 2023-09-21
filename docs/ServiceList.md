@@ -57,8 +57,9 @@ new Service::LightBulb();                           // 实例化一个灯泡服�
 | Speaker 扬声器 | Mute 静音 | Name 名称<br>Volume 音量 |
 | StatelessProgrammableSwitch 无状态可编程开关 | ProgrammableSwitchEvent 可编程开关事件 | Name 名称<br>ServiceLabelIndex 服务标签索引 |
 | Switch 开关 | On 开启| Name 名称 |
-| Television 电视 | Active 活跃 | ConfiguredName 名称<br>ActiveIdentifier 标识符<br>RemoteKey 遥控钥匙<br>PowerModeSelection 电源模式选择 | 
+| Television 电视 | Active 活跃 | ConfiguredName 配置名称<br>ActiveIdentifier 标识符<br>RemoteKey 遥控钥匙<br>PowerModeSelection 电源模式选择 | 
 |TelevisionSpeaker 电视音箱|VolumeControlType 音量控制类型<br>VolumeSelector 音量选择器|
+|TemperatureSensor 温度传感器|CurrentTemperature 当前温度|Name 名称<br>StatusActive 激活状态<br>StatusFault 错误状态<br>StatusTampered 状态被篡改<br>StatusLowBattery 状态低电量|
 | Thermostat 恒温器 | CurrentHeatingCoolingState 当前加热冷却状态<br>TargetHeatingCoolingState 目标加热冷却状态<br>CurrentTemperature 当前温度<br>TargetTemperature 目标温度<br>TemperatureDisplayUnits 温度显示单位 | CoolingThresholdTemperature 冷却阈值温度<br>CurrentRelativeHumidity 当前相对湿度<br>HeatingThresholdTemperature 加热阈值温度<br>Name 名称<br>TargetRelativeHumidity 目标相对湿度 | 
 | Valve 阀门 | Active 活跃<br>InUse 正在使用<br>ValveType 阀门类型 | SetDuration 设置持续时间<br>RemainingDuration 剩余时间<br>IsConfigured 已配置<br>ServiceLabelIndex 服务标签索引<br>StatusFault 状态故障<br>Name 名称 |
 | Window 窗 | CurrentPosition 当前位置<br>TargetPosition 目标位置<br>PositionState 位置状态 | Name 名称<br>HoldPosition 暂停位置<br>ObstructionDetected 检测到障碍物 |
