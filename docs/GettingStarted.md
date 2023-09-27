@@ -6,7 +6,7 @@
 
 #### 第 1 步：安装 Arduino IDE
 
-由于 HomeSpan 是为 Arduino 集成开发环境设计的库，因此第一步是从[ Arduino 官网 ](https://www.arduino.cc/en/software)下载并安装此 IDE 的最新版本。如果您有 Arduino 草图编程经验，您会发现 Homespan 对标准 Arduino `setup( ) `和 `loop( )` 函数的使用，以及非常熟悉一直存在的 *\*.ino* 文件。如果您从未编写过 Arduino，您可能希望首先查看 [ Arduino's IDE 指南 ](https://www.arduino.cc/en/Guide/Environment)(并尝试一些 Arduino 示例) 再继续使用 HomeSpan 进行编程。
+由于 HomeSpan 是为 Arduino 集成开发环境设计的库，因此第一步是从[ Arduino 官网 ](https://www.arduino.cc/en/software)下载并安装此 IDE 的最新版本。如果您有 Arduino 草图编程经验，您会发现 Homespan 对标准 Arduino `setup( ) `和 `loop( )` 函数的使用，以及非常熟悉一直存在的 *\*.ino* 文件。如果您从未编写过 Arduino，您可能希望首先查看 [ Arduino's IDE 指南 ](https://www.arduino.cc/en/Guide/Environment) （并尝试一些 Arduino 示例）再继续使用 HomeSpan 进行编程。
 
 #### 第 2 步：安装 Arduino-ESP32 内核
 
