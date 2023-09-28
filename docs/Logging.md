@@ -59,6 +59,6 @@ HomeSpan Web 日志页面本身包含两个部分：
  
 ---
 
-[↩️](README.md) 返回欢迎页面
+[↩️](../README.md) 返回欢迎页面
 
 
