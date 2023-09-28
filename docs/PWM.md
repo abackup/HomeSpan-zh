@@ -15,7 +15,7 @@ ESP32 拥有多达 16 个 PWM 通道，可用于驱动各种设备。 HomeSpan �
   * *pin* —— 输出 PWM 控制信号的引脚
   * *level* —— 将 PWM 的初始占空比百分比设置为从 0（LED 完全关闭）到 100（LED 完全打开）。默认值 = 0（LED 最初关闭）
   * *frequency* —— 设置 PWM 频率，单位为 Hz，范围为 1-65535（仅限 ESP32）或 5-65535（ESP32-S2 和 ESP32-C3）。如果未指定或设置为 0，则默认为 5000 Hz
- * *boolean* —— 如果为 true，PWM 信号的输出将反转。默认值 = 假
+  * *boolean* —— 如果为 true，PWM 信号的输出将反转。默认值 = 假
   
  支持以下方法：
 
@@ -38,10 +38,10 @@ ESP32 拥有多达 16 个 PWM 通道，可用于驱动各种设备。 HomeSpan �
 * `int fadeStatus()`
 
   * 返回 LedPin 的淡入淡出状态。返回值如下所示：
-    * **LedPin::NOT_FADING** - LedPin目前没有淡入淡出
-    * **LedPin::FADING** - 淡入淡出 - LedPin上的淡入淡出当前正在进行中，无法更改/停止f
+    * **LedPin::NOT_FADING** - LedPin 目前没有淡入淡出
+    * **LedPin::FADING** - 淡入淡出 - LedPin 上的淡入淡出当前正在进行中，无法更改/停止f
     * **LedPin::COMPLETED** - 淡入淡出刚刚完成
-      * 返回此值后，后续调用 `fadeStatus()` 将返回**LedPin::NOT_FADING**（除非您再次调用`fade()`）
+      * 返回此值后，后续调用 `fadeStatus()` 将返回 **LedPin::NOT_FADING**（除非您再次调用`fade()`）
       * 通过 `loop()` 检查方法，您可以在淡入淡出 `fadeStatus()==LedPin::COMPLETED` 完成后触发新操作（如果需要）
     
 * `int getPin()`
@@ -63,7 +63,7 @@ LedPin 还包括一个静态类函数，可将色调/饱和度/亮度值（通�
 
 ## *ServoPin(uint8_t pin [,double initDegrees [,uint16_t minMicros, uint16_t maxMicros, double minDegrees, double maxDegrees]])*
 
-创建这个 **class** 的实例将指定的 *pin* 配置为输出 50 Hz PWM 信号，适用于控制大多数伺服电机。构造函数有三种形式：一种只有一个参数；另一种只有一个参数。一个有两个参数；一个包含所有六个参数。参数及其默认值（如果未指定）如下：
+创建这个**类**的实例将指定的 *pin* 配置为输出 50 Hz PWM 信号，适用于控制大多数伺服电机。构造函数有三种形式：一种只有一个参数；另一种只有一个参数。一个有两个参数；一个包含所有六个参数。参数及其默认值（如果未指定）如下：
 
   * *pin* —— 输出 PWM 控制信号的引脚。伺服电机的控制线应连接此引脚
   * *initDegrees* —— 伺服电机应设置的初始位置（以度为单位）（默认 = 0°）
@@ -97,7 +97,7 @@ HomeSpan **自动**在实例化时将通道和计时器分配给 LedPin 和 Serv
 
 #### 诊断信息
 
-**LedPin** 和 **ServoPin**类根据使用 Arduino IDE 编译草图时选择的**核心调试级别**向串行监视器输出**信息\[I\]** 和 **警告\[W\]**消息。当通道或定时器资源不足阻止创建新的 LedPin 或 ServoPin 对象时，将生成非致命警告消息。对未能正确创建的对象的方法的调用 `set()` 将被静默忽略。
+**LedPin** 和 **ServoPin** 类根据使用 Arduino IDE 编译草图时选择的**核心调试级别**向串行监视器输出**信息\[I\]** 和**警告\[W\]** 消息。当通道或定时器资源不足阻止创建新的 LedPin 或 ServoPin 对象时，将生成非致命警告消息。对未能正确创建的对象的方法的调用 `set()` 将被静默忽略。
 
 ---
 
