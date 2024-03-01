@@ -1,8 +1,8 @@
-原文：2023.7.3， 翻译时间：2023.8.1
+原文：2024.2.18， 翻译时间：2023.8.1
 
 # HomeSpan 教程
 
-HomeSpan 库包括 16 个越来越复杂的教程草图，带您了解 HomeSpan 的所有功能和特性。这些草图带有大量注释，您甚至可以通过阅读所有示例来了解很多关于 HomeKit 本身的知识。如果您已经将 HomeSpan 加载到 Arduino IDE 中，则可以在 *File → Examples → HomeSpan* 下找到教程。每个草图都可以编译并上传到您的 ESP32 设备，这样您就可以看到它们的运行情况。或者，您可以通过单击下面的任何标题来探索 GitHub 中的代码。注意：在浏览教程之前，您可能需要先通读 [HomeSpan API 概述](Overview.md)。如果你这样做，它们可能会更有意义！
+HomeSpan 库包括许多越来越复杂的教程草图，带您了解 HomeSpan 的所有功能和特性。这些草图带有大量注释，您甚至可以通过阅读所有示例来了解很多关于 HomeKit 本身的知识。如果您已经将 HomeSpan 加载到 Arduino IDE 中，则可以在 *File → Examples → HomeSpan* 下找到教程。每个草图都可以编译并上传到您的 ESP32 设备，这样您就可以看到它们的运行情况。或者，您可以通过单击下面的任何标题来探索 GitHub 中的代码。注意：在浏览教程之前，您可能需要先通读 [HomeSpan API 概述](Overview.md)。如果你这样做，它们可能会更有意义！
 
 > :heavy_check_mark: 每个示例都设计为在将 ESP32 与 HomeKit 配对后进行操作，以便您可以从 iPhone、iPad 或 Mac 上的 Home App 控制 HomeSpan。原则上，一旦您配置设备并将其与 HomeKit 配对，您的 Home App 应该会在您上传不同的教程时自动反映配置中的所有更改。然而，实际上情况并非总是如此，因为 HomeKit 有时会缓存有关设备的信息，这意味着您在 Home App 中看到的内容可能与您的草图不完全同步。如果发生这种情况，取消配对然后重新配对 ESP32 设备通常可以解决问题。如果没有，您可能需要重置 ESP32 设备上的 ID，以便 HomeKit 认为它是新设备并且不会使用任何缓存数据。这很容易做到 - 请参阅 [HomeSpan 命令行界面 (CLI)](CLI.md) 页面了解详细信息。
 
@@ -141,7 +141,13 @@ HomeKit *未认证* 电视服务的示例，展示了如何使用不同的特性
 
 ### [电动窗帘](../examples/Other%20Examples/MotorizedWindowShade)
 演示如何使用 *StepperControl* 类操作步进电机。实现基于上述[示例 13](../examples/13-TargetStates)的电动窗帘。有关完整详细信息，请参阅 [HomeSpan 控制步进电机](Stepper.md)页面
- 
+
+### [自定义分区](../examples/Other%20Examples/CustomNVSPartition)
+演示如何通过将*分区.CSV*文件添加到草图文件夹来为草图创建自定义分区方案。可用于扩展非易失性存储（NVS）分区的大小，在创建具有许多附件的 HomeSpan 设备时可能需要该分区，你希望将这些附件的特性保存在 NVS 中
+
+### [外部引用](../examples/Other%20Examples/ExternalReference)
+演示如何从服务外部（例如从主 Arduino 内部）访问服务的特征 `loop()`。在此草图中，我们重新创建了示例 5 中的两个 LED，并在主 Arduino 中添加了一个功能 `loop()`，用于检查两个 LED 是否同时打开，如果是，则自动关闭
+
 ---
 
 [↩️](../README.md) 返回欢迎页面
