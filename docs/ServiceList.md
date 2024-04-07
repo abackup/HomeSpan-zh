@@ -35,7 +35,7 @@ HomeSpan 服务和特性实现为 C++ 类，其名称与 Apple 在 HAP-R2 的第
 <i>所需的标识信息。对于 HomeSpan 设备中的每个附件，必须将此其作为第一项服务。</i><br>
 <table>
 <tr><th>特征</th><th>格式</th><th>Perms</th><th>最小值</th><th>最大值</th><th>常量/默认值</th></tr>
-<tr><td><b>识别(14) 🔹</b><ul><li> 当 HomeKit 希望 HomeSpan 运行配件的识别例程时触发更新</li></ul></td><td align="center">bool</td><td align="center">PW</td><td align="center">1</td><td align="center">1</td><td><ul><li><span>RUN_ID&nbsp(1)&nbsp;</span></li></ul></td></tr>
+<tr><td><b>识别码(14) 🔹</b><ul><li> 当 HomeKit 希望 HomeSpan 运行配件的识别例程时触发更新</li></ul></td><td align="center">bool</td><td align="center">PW</td><td align="center">1</td><td align="center">1</td><td><ul><li><span>RUN_ID&nbsp(1)&nbsp;</span></li></ul></td></tr>
 <tr><td><b名称(23) </b><ul><li> default display name of the Accessory</li></ul></td><td align="center">string</td><td align="center">PR</td><td align="center">-</td><td align="center">-</td><td align="center">"未命名"</td></tr>
 <tr><td><b>固件版本(52) </b><ul><li> 必须采用 x[.y[.z]] 形式 - 仅供参考</li></ul></td><td align="center">string</td><td align="center">PR+EV</td><td align="center">-</td><td align="center">-</td><td align="center">"1.0.0"</td></tr>
 <tr><td><b>制造商(20) </b><ul><li>任何字符串 - 仅供参考</li></ul></td><td align="center">string</td><td align="center">PR</td><td align="center">-</td><td align="center">-</td><td align="center">"HomeSpan"</td></tr>
