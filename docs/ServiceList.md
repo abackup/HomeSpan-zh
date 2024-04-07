@@ -32,15 +32,16 @@ HomeSpan 服务和特性实现为 C++ 类，其名称与 Apple 在 HAP-R2 的第
 
 ##  强制性服务
 ### 附件信息（3E）
-<i>所需的标识信息。对于 HomeSpan 设备中的每个附件，必须将其作为第一项服务。</i><br>
-<table><th>特征</th><th>Format</th><th>Perms</th>Min<th></th><th>Max</th>Constants/Defaults</th></tr>
-<tr>当 HomeKit 希望 HomeSpan 为 AccessoryBoolPW11Run</li></ul></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td><ul><li><span>_ID（1&nbsp;</span></li></ul></td>）运行其标识例程时<td><b>，Identify（14）🔹</b><ul><li>触发更新。</tr>
-<tr><td><b>名称（23）</b><ul><li>AccessoryStringPr</li></ul></td><td align="center"></td><td align="center"></td><td align="center">-</td><td align="center">-</td><td align="center">“未命名”</td>的默认显示名称</tr>
-<tr><td><b>固件版本（52）</b><ul><li>的格式必须为 X[.Y[.Z]]-仅</li></ul></td><td align="center">供参考 StringPR</td><td align="center">+EV</td><td align="center">-</td><td align="center">-</td><td align="center">“1.0.0 ”</td></tr>
-<tr><td><b>制造商（20）</b><ul><li>任何字符串-仅</li></ul></td><td align="center">供参考 StringPR</td><td align="center"></td><td align="center">-</td><td align="center">-</td><td align="center">“HomeSpan ”</td></tr>
-<tr><td><b>模型（21）</b><ul><li>任何字符串-仅</li></ul></td><td align="center">供参考 StringPR</td><td align="center"></td><td align="center">-</td><td align="center">-</td><td align="center">“HomeSpan-ESP32 ”</td></tr>
-<tr><td><b>序列号（30）</b><ul><li>任何字符串-仅</li></ul></td><td align="center">供参考字符</td><td align="center">串 PR</td><td align="center">-</td><td align="center">-</td><td align="center">“HS-12345 ”</td></tr>
-<tr><td><b>硬件版本（53）</b><ul><li>必须为 X[.Y[.Z]]-仅</li></ul></td><td align="center">供参考 StringPr</td><td align="center"></td><td align="center">-</td><td align="center">-</td><td align="center">“1.0.0 ”</td></tr>
+<i>所需的标识信息。对于 HomeSpan 设备中的每个附件，必须将此其作为第一项服务。</i><br>
+<table>
+<tr><th>特征</th><th>格式</th><th>Perms</th><th>最小值</th><th>最大值</th><th>常量/默认值</th></tr>
+<tr><td><b>识别(14) 🔹</b><ul><li> 当 HomeKit 希望 HomeSpan 运行配件的识别例程时触发更新</li></ul></td><td align="center">bool</td><td align="center">PW</td><td align="center">1</td><td align="center">1</td><td><ul><li><span>RUN_ID&nbsp(1)&nbsp;</span></li></ul></td></tr>
+<tr><td><b名称(23) </b><ul><li> default display name of the Accessory</li></ul></td><td align="center">string</td><td align="center">PR</td><td align="center">-</td><td align="center">-</td><td align="center">"未命名"</td></tr>
+<tr><td><b>固件版本(52) </b><ul><li> 必须采用 x[.y[.z]] 形式 - 仅供参考</li></ul></td><td align="center">string</td><td align="center">PR+EV</td><td align="center">-</td><td align="center">-</td><td align="center">"1.0.0"</td></tr>
+<tr><td><b>制造商(20) </b><ul><li>任何字符串 - 仅供参考</li></ul></td><td align="center">string</td><td align="center">PR</td><td align="center">-</td><td align="center">-</td><td align="center">"HomeSpan"</td></tr>
+<tr><td><b>型号(21) </b><ul><li> any string - informational only</li></ul></td><td align="center">string</td><td align="center">PR</td><td align="center">-</td><td align="center">-</td><td align="center">"HomeSpan-ESP32"</td></tr>
+<tr><td><b>序列号(30) </b><ul><li> any string - informational only</li></ul></td><td align="center">string</td><td align="center">PR</td><td align="center">-</td><td align="center">-</td><td align="center">"HS-12345"</td></tr>
+<tr><td><b>硬件版本(53) </b><ul><li> must be in form x[.y[.z]] - informational only</li></ul></td><td align="center">string</td><td align="center">PR</td><td align="center">-</td><td align="center">-</td><td align="center">"1.0.0"</td></tr>
 </table><br>
 
 ##  照明、电源和开关
