@@ -63,7 +63,7 @@ HomeSpan Web 日志页面本身包含两个部分：
  
 请参阅 [示例 19 - WebLog](Tutorials.md#example-19---weblog) 以获得演示使用 `homeSpan.enableWebLog()` 和 WEBLOG() 宏的教程草图。
 
-### 自定义样式表 （CSS）
+## 自定义样式表 （CSS）
 
 HomeSpan 的 Web 日志通常由浅蓝色背景上的黑色文本组成。但是，您可以设置自定义样式表 （CSS） 以通过调用`homeSpan.setWebLogCSS(const char *css)` 来更改格式，其中 css 是使用包含一个或多个自定义样式元素的  [HTML 类](https://www.w3schools.com/html/html_classes.asp) 构造的。HomeSpan 为 Web 日志的不同部分实现以下三个类名：
  
@@ -83,7 +83,7 @@ HomeSpan 的 Web 日志通常由浅蓝色背景上的黑色文本组成。但是
  
 请注意，每当日志级别设置为 1 或更高时，HomeSpan 都会将 Web 日志 HTML 的全部内容（包括您在上面指定的任何 CSS）输出到串行监视器。在创建自己的 CSS 时，查看此输出会很有帮助。
 
-### 添加用户定义的数据和/或自定义 HTML
+## 添加用户定义的数据和/或自定义 HTML
 
 Homespan 提供了一个用于生成 Web 日志的文本钩子，您可以扩展该钩子以将自己的数据添加到初始表中，以及更普遍地添加任何自定义 HTML。
 
@@ -103,7 +103,7 @@ void extraData(String &r){
 
 若要在 Web 日志中嵌入此自定义 HTML 文本，请调用草图的`homeSpan.setWebLogCallback(extraData)`。
 
-### 从草图中访问 Web 日志 HTML
+## 从草图中访问 Web 日志 HTML
 
 除了让 HomeSpan 提供 HTML Web 日志页面以响应 HTTP 请求之外，用户还可以从其草图中直接访问 Web 日志页面的 HTML 文本，以便进行自定义操作和处理。由于 Web 日志页面的 HTML 可能非常大，因此 HomeSpan 仅在请求页面时生成 Web 日志页面的 HTML，并以 1024 字节的顺序块流式传输 HTML 以响应 Web 日志 HTTP 请求。因此，HomeSpan 不可能简单地为用户提供指向完整 Web 日志的 HTML 文本的 `char *` 指针。相反，HomeSpan 为用户提供了以下 homeSpan 方法来触发 Web 日志页的生成，并在需要时访问生成的 HTML 文本：
 
