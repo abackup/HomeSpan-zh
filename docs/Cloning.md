@@ -52,11 +52,13 @@ Connection #11 (unconnected)
 ```
 *** 用于克隆另一台设备的配对数据
 
-配件数据：ZzbH11I8uNx47Y3Bapq3axQfY5uPOrDfC8D2Q6ke2NwWqat/IGa/6ll8xyY8AShMYO2q6h8gZr/qWXzHJjwBKExg7arqFnNsfXUjy43HgNzc6RDI6RjY6OTk6Q0U6NjUb7m HwbmWzrEWca+5frayfmp=
-控制器数据：YaNJH5JYDAQE4NjI0NTAwNy02Mi1FRUY4ODNENTA2NjdDvTRGLTRBRDEtQjkwRXFM1On32PKvumS+0YgVMaEo53X/TYNzg==
-控制器数据：MEUwLTREMEUtODk3Ni0yMjBDREQ2RDUxMjjmah3s+Je0GkmAQE0NDQ1NUE2Ni1ExIUkujzeyWfCCRWol/xecsVkjAIYDRQ==
+*** Pairing Data used for Cloning another Device
 
-*** 结束配对数据
+Accessory data:  ZzbH11I8uNx47Y3Bapq3axQfY5uPOrDfC8D2Q6ke2NwWqat/IGa/6ll8xyY8AShMYO2q6h8gZr/qWXzHJjwBKExg7arqFnNsfXUjy43HgNzc6RDI6RjY6OTk6Q0U6NjUb7mHwbmWzrEWca+5frayfmp=
+Controller data: YaNJH5JYDAQE4NjI0NTAwNy02Mi1FRUY4ODNENTA2NjdDvTRGLTRBRDEtQjkwRXFM1On32PKvumS+0YgVMaEo53X/TYNzg==
+Controller data: MEUwLTREMEUtODk3Ni0yMjBDREQ2RDUxMjjmah3s+Je0GkmAQE0NDQ1NUE2Ni1ExIUkujzeyWfCCRWol/xecsVkjAIYDRQ==
+
+*** End Pairing Data
 ```
 
 第一行完整编码 HomeSpan 配件的配对数据。 后两行对 HomeKit 用于控制 HomeSpan 设备的两个控制器的配对数据进行编码。 请注意，您的系统可能只有一个控制器，也可能有两个以上。 控制器的数量取决于您的 HomeKit 网络、其配置方式、您拥有的设备（Apple TV、HomePod 等）以及您运行的 iOS 版本。
