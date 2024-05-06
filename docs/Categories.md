@@ -1,4 +1,4 @@
-原文：2023.3.19， 翻译时间：2023.8.2
+原文：2023.3.19， 翻译时间：2024.5.6
 
 # HomeSpan 配件类别
 
@@ -14,7 +14,7 @@ homeSpan.begin(Category::GarageDoorOpeners,"Acme Garage Door Lifts");
 
 * AirConditioners 空调
 * AirPurifiers 空气净化器
-* Bridges 桥
+* Bridges 桥接
 * Dehumidifiers 除湿机
 * Doors 门
 * Fans 风扇
