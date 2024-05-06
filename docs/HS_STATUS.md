@@ -1,6 +1,8 @@
-# HomeSpan Status
+原文时间：2022.11.6 ，翻译时间：2024.5.6
 
-The optional ***homeSpan*** method, `void setStatusCallback(void (*func)(HS_STATUS status))`, can be used to create a callback function, *func*, that HomeSpan calls whenever its status changes.  HomeSpan passes *func* a single argument, *status*, of type *HS_STATUS*, defined as follows:
+# HomeSpan 状态
+
+可选的 ***homeSpan*** 方法`void setStatusCallback(void (*func)(HS_STATUS status))` 可用于创建一个回调函数 func，每当 HomeSpan 的状态发生变化时，它就会调用该函数。HomeSpan 向 func 传递一个参数 status ，类型为 HS_STATUS，定义如下：
 
 ```C++
 enum HS_STATUS {
@@ -28,7 +30,7 @@ enum HS_STATUS {
 };
 ```
 
-The ***homeSpan*** method `char* statusString(HS_STATUS s)`, is a convenience function for converting any of the above enumerations to short, pre-defined character string messages as follows:
+ ***homeSpan*** 方法 `char* statusString(HS_STATUS s)` 是一个方便的函数，用于将上面的任何枚举转换为简短的预定义字符串消息，如下所示：
 
 ```C++
 const char* Span::statusString(HS_STATUS s){
@@ -59,7 +61,7 @@ const char* Span::statusString(HS_STATUS s){
 }
 ```
 
-### Example:
+### 例如:
 
 ```C++
 #include "HomeSpan.h"
@@ -78,7 +80,7 @@ void statusUpdate(HS_STATUS status){
 }
 ```
 
-You can of course create any alternative messsages, or take any actions desired, in *func* and do not need to use the pre-defined strings above.
+当然，你可以在 *func* 中创建任何替代消息，或者采取任何需要的操作，而不需要使用上面预定义的字符串。
 
 ---
 
