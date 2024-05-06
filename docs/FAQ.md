@@ -1,3 +1,5 @@
+原文时间：2024.2.19 ，翻译时间：2024.5.6
+
 # 常见问题
 
 *常见问题的答案列表，以及对各种感兴趣话题的讨论。*
@@ -63,13 +65,31 @@
 
 * 可以，前提是您使用标准 ESP32-Arduino 库（例如“WebServer.h”）实现 Web 服务器。请参阅 [ProgrammableHub](https://github.com/HomeSpan/ProgrammableHub)，了解如何轻松地将 Web 服务器集成到 HomeSpan 中的说明性示例。该项目还涵盖了其他各种高级主题，包括 TCP 插槽管理、附件的动态创建以及在 ESP32 的 NVS 中保存任意数据。
 
-#### 您可以将 *custom* 服务和特征添加到 HomeSpan 吗？
+#### 您可以将自定义服务和特征添加到 HomeSpan 吗？
 
 * 是的，HomeSpan 包含两个易于使用的宏来定义您自己的自定义服务和自定义特征，超出 HAP-R2 中指定的那些。有关详细信息和演示如何执行此操作的示例，请参阅 [HomeSpan API 参考](https://github.com/HomeSpan/HomeSpan/blob/master/docs/Reference.md)。请注意，您创建的任何新特征都将被 Home 应用程序*完全忽略*。同样，您创建的任何新服务都将显示在家庭应用程序中标有“不支持”的磁贴上。 Apple ***不***提供任何机制来扩展 Home App 本身的功能。但是，可以使用自定义服务和特征的地方是为这些额外功能设计的第三方应用程序。例如，*Eve for HomeKit* 应用程序可以正确处理 HAP-R2 中定义的所有服务和特征，*加上* 明确设计用于 Eve 产品的各种附加服务和特征。如果您知道这些额外服务和特征的 UUID 代码，您可以将它们添加到 HomeKit 并在 Eve 应用程序中使用它们，就像它们是 HAP-R2 服务和特征一样。
 
 #### HomeSpan 可以用于商业设备吗？
 
 * 不可以，创建商业设备需要 MFi 许可证。 HomeSpan 是使用 Apple 的 HAP-R2 规范开发的，Apple 为 [不会分发或销售的非商业设备] (https://developers.apple.com/homekit/faq/) 提供了该规范。尽管我相信商业规范在功能上是相同的，但 HAP-R2 和 MFi 之间的配对协议存在细微但关键的差异。请注意，当您配对 HomeSpan 设备（或任何基于 HAP-R2 的设备，例如 Apple 的 HAP-R2 ADK、Espressif 的非商业 ADK、HomeBridge 等）时，iPhone 上的 Home 应用程序会将设备标记为未经认证，并要求您授予其继续配对的权限。这条关于设备未经认证的警告信息不会出现在商业设备上，大概是因为 Apple 为被许可方提供了 iPhone 可以识别的自定义 MFi 授权码。
+
+#### 为什么家庭应用程序显示门铃服务不受支持？
+
+* 虽然HAP-R2中没有记录，但门铃服务似乎被设计为与另一个服务（如Lock Mechanism）结合使用。如果您添加第二个服务，家庭应用程序将显示相应的磁贴（如锁），门铃是第二个服务。然而，您仍然可以在独立的基础上使用门铃服务-即使家庭应用程序说它不受支持，但按下设备上的按钮将按预期在您的Home Pods上正确触发铃声。
+
+#### 如何从草图中读取当前日期和时间？
+
+* 当您使用 `homeSpan.enableWebLog()` 启用 HomeSpan Web 日志时，HomeSpan 可以自动获取您当地时区的当前日期和时间。请注意，即使不启用 Web 日志本身，此命令也可用于设置日期和时间（有关如何执行此操作的详细信息，请参阅 [HomeSpan API Reference](Reference.md)）。获取日期和时间后，您可以在需要时使用内置的 Arduino-ESP 32 `getLocalTime(struct tm *info)` 命令来填充当前日期和时间的信息。注释信息采用标准[standard Unix](https://man7.org/linux/man-pages/man0/time.h.0p.html) `struct tm` 格式，易于解析如下：
+
+```C++
+struct tm myTime;        // create a tm structure
+getLocalTime(&myTime);   // populate the tm structure with current date and time
+
+// print the individual elements of the tm structure (see standard Unix tm structure for details)
+
+Serial.printf("Current Date = %02d/%02d/%04d\n", myTime.tm_mon+1, myTime.tm_mday, myTime.tm_year+1900);
+Serial.printf("Current Time = %02d:%02d:%02d\n", myTime.tm_hour, myTime.tm_min, myTime.tm_sec);
+```
 
 ---
 
