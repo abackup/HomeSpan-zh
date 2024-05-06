@@ -1,10 +1,8 @@
-<!---
-<p>时间：2023.7.19翻译</p>
--->
+原文：2023.7.3 ，翻译时间：2024.5.6
 
 # 使用可闪烁接口创建自定义状态指示灯
 
-HomeSpan 通过状态 LED 不同的闪烁模式向用户传达有关 HomeSpan 状态的信息。  *HomeSpan* `setStatusPin()` and `setStatusPixel()` 方法允许您分别选择标准 LED 或 NeoPixel LED 作为状态指示灯。但是，可以使用 *homeSpan* 方法 `setStatusDevice(Blinkable *sDev)` 将状态指示设置为实现**闪烁**接口[^1]的任何对象，其中*sDev*  是闪烁对象。  
+HomeSpan 通过状态 LED 不同的闪烁模式向用户传达有关 HomeSpan 状态的信息。  *HomeSpan* 允许您使用 `setStatusPin()` and `setStatusPixel()` 方法分别选择标准 LED 或 NeoPixel LED 作为状态 LED。但是，可以使用 *homeSpan* 的`setStatusDevice(Blinkable *sDev)`方法 将状态指示设置为实现**闪烁**接口[^1]的任何对象，其中*sDev*  是闪烁对象。  
 
 要创建您自己的闪烁对象，请首先创建从 **Blinkable** 派生的子类。 接下来，添加一个定义引脚的构造函数并根据需要执行任何初始化。 最后，定义 **Blinkable** 调用以使设备闪烁的以下*必需*方法：
 
