@@ -1,26 +1,28 @@
+原文时间：2024.3.8 ，翻译时间：2024.5.
+
 # SpanPoint：ESP32 设备之间的点对点通信
 
-SpanPoint 是 HomeSpan 对 Espressif ESP-NOW 协议的易于使用的实现。 SpanPoint 根据 MAC 地址直接在 ESP32 设备之间提供小型、固定大小消息的双向点对点通信，无需中央 WiFi 网络。 当配置为远程设备时，SpanPoint 也可以在 ESP-8266 上使用。
+SpanPoint 是 HomeSpan 对乐鑫 ESP-NOW 协议的易于使用的实现。 SpanPoint 根据 MAC 地址直接在 ESP32 设备之间提供小型、固定大小消息的双向点对点通信，无需家庭 WiFi 网络。 当配置为远程设备时，SpanPoint 也可以在 ESP-8266 上使用。
 
-要在任意两个设备之间建立连接，只需在每个设备上实例化一个 SpanPoint 对象，该对象引用另一个设备的 MAC 地址，并指定每个设备预期发送到和接收的消息的（可能不同）大小 ， 另一个。
+要在任意两个设备之间建立连接，只需在每个设备上实例化一个 SpanPoint 对象，该对象引用另一个设备的 MAC 地址，并指定每个设备预期发送或接收到另一个设备的消息的大小（可能不同）。
 
-SpanPoint 创建管理消息流所需的所有内部数据队列，配置 ESP-NOW 以加密所有消息流量，并自动设置 ESP-NOW 用于传输的 WiFi 通道，以匹配也连接到的任何设备所需的任何内容 HomeKit 通过您的中央 WiFi 网络。
+SpanPoint 创建管理消息流所需的所有内部数据队列，配置 ESP-NOW 以加密所有消息流量，并自动设置 ESP-NOW 用于传输的 WiFi 通道，以匹配也连接到的任何设备所需的任何内容 HomeKit 通过您的家庭 WiFi 网络。
 
 SpanPoint 是主 HomeSpan 库的一部分，可以通过在草图顶部附近添加 `#include "HomeSpan.h"` 来访问。 下面提供了 SpanPoint 类及其所有方法的详细描述。
 
 ## *SpanPoint(const char \*macAddress, int sendSize, int receiveSize [, int queueDepth=1 [, boolean useAPaddress=false]])*
 
-创建此 **类** 的实例使设备能够向另一个 ESP32 设备上的 *SpanPoint* 的“补充”实例发送消息和/或从其接收消息。 参数及其默认值（如果未指定）如下：
+创建此**类**的实例使设备能够向另一个 ESP32 设备上的 *SpanPoint* 的“补充”实例发送消息和/或从其接收消息。 参数及其默认值（如果未指定）如下：
 
    * *macAddress* - 您想要向其发送数据和/或从中接收数据的*其他*设备的 MAC 地址，采用标准 6 字节格式“XX:XX:XX:XX:XX:XX” ，其中每个 XX 代表从 00 到 FF 的单个 2 位十六进制字节
    * *sendSize* - 将从该设备发送到*其他*设备的任何消息的大小（以字节为单位）。 允许的范围是 0 到 200，其中值 0 用于向 SpanPoint 指示您**不会**使用 `send()` 将任何消息从该设备传输到*其他*设备
    * *receiveSize* - 该设备将从*其他*设备接收的任何消息的大小（以字节为单位）。 允许的范围是 0 到 200，其中值 0 用于向 SpanPoint 指示您**不会**使用 `get()` 来检索由*其他*设备传输到此设备的任何消息
-   * *queueDepth* - 保留的队列深度，用于保存该设备从*其他*设备接收到的*receiveSize*字节的消息，但尚未使用“get()”检索。 如果未指定，则默认=1，这对于大多数应用程序来说应该足够了。 有关更多详细信息，请参阅下面的“get()”
-   * *useAPaddress* - SpanPoint 通常使用 STA MAC 地址通过 ESP32 的 WiFi 站 (STA) 接口进行通信。 将 *useAPaddress* 设置为 *true* 会导致 SpanPoint 使用 AP MAC 地址通过 ESP32 的 WiFi 接入点 (AP) 接口进行通信。 当使用 ESP-8266 作为远程设备时需要这样做（见下文）。 如果未指定，则默认=*false*
+   * *queueDepth* - 保留的队列深度，用于保存该设备从*其他*设备接收到的 *receiveSize* 字节的消息，但尚未使用 `get()` 检索。 如果未指定，则默认=1，这对于大多数应用程序来说应该足够了。 有关更多详细信息，请参阅下面的 `get()`
+   * *useAPaddress* - SpanPoint 通常使用 STA MAC 地址通过 ESP32 的 WiFi 站 (STA) 接口进行通信。 将 *useAPaddress* 设置为 *true* 会导致 SpanPoint 使用 AP MAC 地址通过 ESP32 的 WiFi 接入点 (AP) 接口进行通信。 当使用 ESP-8266 作为远程设备时需要这样做（见下文）。 如果未指定，则默认为 *false*
 
 通过在 CLI 中键入“i”，将在草图中实例化的所有 SpanPoint 对象的列表、上面指定的参数以及每个远程设备用于连接回主 HomeSpan 设备的特定 MAC 地址显示在串行监视器中
 
-> 如果每个 SpanPoint 对象中指定的 MAC 地址引用彼此的设备，并且一台设备上的 SpanPoint 对象的 *sendSize* 和 *receiveSize* 分别与 *receiveSize 匹配，则在两个单独设备上创建的 SpanPoint 对象被视为“互补” *其他*设备上的SpanPoint对象的*和*sendSize*，但无论*其他*设备上设置的值如何，始终可以将*sendSize*或*receiveSize*设置为零
+> 如果每个 SpanPoint 对象中指定的 MAC 地址引用彼此的设备，并且一台设备上的 SpanPoint 对象的 *sendSize* 和 *receiveSize* 分别与 *receiveSize* 匹配，则在两个单独设备上创建的 SpanPoint 对象被视为“互补” *其他*设备上的SpanPoint对象的 *sendSize* 和 *receiveSize* ，但无论*其他*设备上设置的值如何，始终可以将 *sendSize* 或 *receiveSize* 设置为零
 
 如果发生以下情况，SpanPoint 将在实例化期间抛出致命错误并停止草图：
    * 指定的 *macAddress* 格式不正确，或者
@@ -29,13 +31,13 @@ SpanPoint 是主 HomeSpan 库的一部分，可以通过在草图顶部附近添
    
 **以下 SpanPoint 方法用于从一个设备上的 SpanPoint 对象向*其他*设备上的互补 SpanPoint 对象传输和接收消息：**
 
-* `布尔发送(const void *data)`
+* `boolean send(const void *data)`
 
    * 使用 *data* 指向的数据（可以是标准数据类型，例如 *uint16_t* 或用户定义的 *struct*）向 *其他* 设备传输消息
    * 要传输的 *data* 元素的大小与创建 SpanPoint 对象时指定的 *sendSize* 参数非常匹配
    * 如果传输成功则返回**true**，如果传输失败则返回**false**。 请注意，只要设备可以根据其 MAC 地址找到并连接到*其他*设备，则传输被视为成功，无论其他设备是否具有相应的 SpanPoint 对象
   
-* `布尔值 get(void *dataBuf)`
+* `boolean get(void *dataBuf)`
 
    * 检查消息是否已从*其他*设备接收到 SpanPoint 的内部消息队列
    * 如果没有可用的消息，该方法返回 **false** 并且 *dataBuf* 未修改
@@ -48,7 +50,7 @@ SpanPoint 是主 HomeSpan 库的一部分，可以通过在草图顶部附近添
 
 **SpanPoint支持的其他方法如下：**
 
-* `uint32_t 时间()`
+* `uint32_t time()`
 
    * 返回自 SpanPoint 对象上次收到有效消息以来经过的时间（以毫秒为单位）
    * 有效消息是那些可以正确解密且大小与 *receiveSize* 参数匹配的消息，无论队列中是否有空间存储该消息
@@ -75,7 +77,7 @@ SpanPoint 是主 HomeSpan 库的一部分，可以通过在草图顶部附近添
 
 使用 SpanPoint 的主要原因之一是支持电池供电设备的部署。 由于 HomeKit 需要始终在线的 WiFi 连接，因此壁式电源是必须的。 但 ESP-NOW 不需要始终连接到中央 WiFi 网络，这使得只需电池即可为远程传感器设备等设备供电。 这种电池供电的“远程设备”可以定期进行本地测量，并通过 SpanPoint 消息将它们传输到墙上供电的“主设备”，该“主设备”正在运行通过中央 WiFi 网络连接到 HomeKit 的完整 HomeSpan 草图。
 
-显示此类配置的示例可以在 Arduino IDE 中的 [*File → Examples → HomeSpan → Other Examples → RemoteSensors*](../examples/Other%20Examples/RemoteSensors) 下找到。 该文件夹包含以下草图：
+显示此类配置的示例可以在 Arduino IDE 中的 [*文件 → 例子 → HomeSpan → Other Examples → RemoteSensors*](../examples/Other%20Examples/RemoteSensors) 下找到。 该文件夹包含以下草图：
 
 * *MainDevice.ino* - 一个完整的 HomeSpan 草图，实现了两个温度传感器附件，但它不是进行自己的温度测量，而是使用 SpanPoint 读取包含来自其他远程设备的温度更新的消息
 * *RemoteDevice.ino* - 一个轻量级草图，模拟定期进行温度测量，然后通过 SpanPoint 传输到主设备
