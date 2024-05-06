@@ -6,12 +6,12 @@
 
 欢迎使用 HomeSpan-一个强大且极其易于使用的 Arduino 库，用于完全在[Arduino IDE](http://www.arduino.cc)内创建你自己的[基于 ESP32](https://www.espressif.com/en/products/modules/esp32)HomeKit 设备。
 
-HomeSpan 提供以微控制器为中心的 Apple HomeKit 附件协议规范版本 R2（HAP-R2）实现，专为在 Arduino IDE 中运行的 Espressif ESP32 微控制器而设计。HomeSpan 通过家庭 WiFi 网络直接与 HomeKit 配对，无需任何外部网桥或组件。通过 HomeSpan，你可以使用 ESP32 的 I/O 功能的全部功能来创建自定义控制软件和/或硬件，以通过 iPhone、iPad 或 Mac 上的 Home 应用程序或 Siri 自动操作外部设备。
+HomeSpan 提供以微控制器为中心的 Apple HomeKit 附件协议规范版本 R2（HAP-R2）实现，专为在 Arduino IDE 中运行的乐鑫ESP32 微控制器而设计。HomeSpan 通过家庭 WiFi 网络直接与 HomeKit 配对，无需任何外部网桥或组件。通过 HomeSpan，你可以使用 ESP32 的 I/O 功能的全部功能来创建自定义控制软件和/或硬件，以通过 iPhone、iPad 或 Mac 上的 Home 应用程序或 Siri 自动操作外部设备。
 
-HomeSpan 需要 2.0.0 或更高版本的，并已通过 2.0.14 版的[Arduino-ESP32 主板管理器](https://github.com/espressif/arduino-esp32)测试（推荐）。HomeSpan 可以在原来的 ESP32 以及 Espressif 的 ESP32-S2、ESP32-C3 和 ESP32-S3 芯片上运行。
+HomeSpan 需要 2.0.0 或更高版本的，并已通过 2.0.14 版的[Arduino-ESP32 主板管理器](https://github.com/espressif/arduino-esp32)测试（推荐）。HomeSpan 可以在原来的 ESP32 以及乐鑫的 ESP32-S2、ESP32-C3 和 ESP32-S3 芯片上运行。
 
 > [!NOTE]
-> 苹果的新 HomeKit 架构[需要使用家庭集线器](https://support.apple.com/en-us/HT207057)（HomePod 或 Apple TV）可用于任何 HomeKit 设备的完整和正确操作，包括基于 HomeSpan 的设备。如果没有 Home Hub，HomeSpan 将无法向 Home 应用程序发送通知——按钮和温度传感器等将无法向 Home 应用程序发送更新。
+> 苹果的新 HomeKit 架构[需要使用家庭中心](https://support.apple.com/en-us/HT207057)（HomePod 或 Apple TV）可用于任何 HomeKit 设备的完整和正确操作，包括基于 HomeSpan 的设备。如果没有家庭中心，HomeSpan 将无法向 Home 应用程序发送通知——按钮和温度传感器等将无法向 Home 应用程序发送更新。
 
 ### HomeSpan 亮点
 
@@ -20,7 +20,7 @@ HomeSpan 需要 2.0.0 或更高版本的，并已通过 2.0.14 版的[Arduino-ES
 * 充分利用广受欢迎的 Arduino IDE
 * 100% 符合 HAP-R2
 * 38 集成 HomeKit 服务
-* 在辅助模式或桥接模式下运行
+* 在附件模式或桥接模式下运行
 * 支持与设置码或 QR 码配对
 
 ### 对于 HomeSpan 开发人员
@@ -72,7 +72,7 @@ HomeSpan 包括以下文档：
 * [HomeSpan OTA](docs/OTA.md)-直接从 Arduino IDE 无线更新草图，无需串行连接
 * [HomeSpan PWM](docs/PWM.md)-使用 ESP32 的片载 PWM 外设集成控制标准 LED 和伺服电机
 * [HomeSpan 射频控制](docs/RMT.md)-使用 ESP32 的片载 RMT 外设，轻松生成 RF 和 IR 遥控信号
-* [HomeSpan 灯带素](docs/Pixels.md)-可寻址的单线和双线 RGB 和 RGBW LED 和 LED 灯带的集成控制
+* [HomeSpan 灯带](docs/Pixels.md)-可寻址的单线和双线 RGB 和 RGBW LED 和 LED 灯带的集成控制
 * [HomeSpan 控制步进电机](docs/Stepper.md)-步进电机集成控制，包括 PWM 微步进
 * [HomeSpan Span 热点](docs/NOW.md)-使用 ESP-NOW 促进 ESP32 设备之间的点对点双向通信
 * [HomeSpan 电视服务](docs/TVServices.md)-如何使用 HomeKit 未记录的电视服务和特性
@@ -83,7 +83,7 @@ HomeSpan 包括以下文档：
 * [常见问题的解决方案](docs/Solutions.md)-解决使用/编译 HomeSpan 时的一些常见问题
 * [HomeSpan 推荐草图](https://github.com/HomeSpan/HomeSpanReferenceSketches)-一系列独立的参考草图，展示了一些更复杂的 HomeKit 服务，如恒温器和灌溉系统
 
-请注意，所有文档都是受版本控制的，并与每个分支相关联。*主人*分支机构通常指向最新版本。当可用时，该*戴夫*分支将包含正在开发的代码。
+请注意，所有文档都是受版本控制的，并与每个分支相关联。*master*分支通常指向最新版本。当可用时，该*dev*分支将包含正在开发的代码。
 
 # 外部资源
 
