@@ -1,22 +1,22 @@
-＃ 经常问的问题
+# 常见问题
 
-*常见问题的答案列表，以及对各种感兴趣主题的讨论。*
+*常见问题的答案列表，以及对各种感兴趣话题的讨论。*
 
 #### 如何设置我的 WiFi SSID 和密码（即 WiFi 凭据）？
 
-* 虽然商业 HomeKit 设备可以从 iPhone 自动检索 WiFi 凭据，但 Apple 并未在 HomeSpan 使用的非商业版本的 HomeKit 中提供此机制。 相反，您需要使用以下四种方法之一将您的 WiFi 凭据添加到 HomeSpan 设备：
+* 虽然商业 HomeKit 设备可以从 iPhone 自动检索 WiFi 凭据，但 Apple 并未在 HomeSpan 使用的非商业版本的 HomeKit 中提供此机制。 可选地，您需要使用以下四种方法之一将您的 WiFi 凭据添加到 HomeSpan 设备：
 
    * 在 Arduino IDE 中，只需使用 HomeSpan 命令行界面并在串行监视器中键入“W”。 HomeSpan 将提示您输入您的 WiFi SSID 和密码。 您只需执行一次，因为 HomeSpan 将您提供的 WiFi 凭据存储在设备的非易失性存储 (NVS) 中，以便在设备每次启动时使用。 有关完整的详细信息，请参阅 [HomeSpan CLI](CLI.md)。
   
 * 作为替代方案，特别是如果您的 HomeSpan 设备未连接到计算机，您可以启动 HomeSpan 的临时 WiFi 设置网络并将您的 WiFi 凭据直接输入到 HomeSpan 提供的临时 Web 表单中。与上面类似，这只需执行一次，因为 HomeSpan 同样存储您使用此方法输入的 WiFi 凭据。有关详细信息，请参阅 [HomeSpan 用户指南](UserGuide.md#setting-homespans-wifi-credentials-and-setup-code)。
 
-  * 如果您真的想要，您可以使用 HomeSpan 的 `setWifiCredentials()` 方法以编程方式直接在您的草图中设置您的 WiFi 凭据。但是，**不**建议这样做，因为将敏感密码硬编码到草图中会带来安全风险，并且通常不被认为是一种好的做法。有关详细信息，请参阅 [HomeSpan API 参考](Reference.md)。
+  * 如果您真的想，您可以使用 HomeSpan 的 `setWifiCredentials()` 方法以编程方式直接在您的草图中设置您的 WiFi 凭据。但是，**不**建议这样做，因为将敏感密码硬编码到草图中会带来安全风险，并且通常不被认为是一种好的做法。有关详细信息，请参阅 [HomeSpan API 参考](Reference.md)。
 
   * 最后，对于高级用户，HomeSpan 提供了一个 API 挂钩 `setApFunction()`，允许您创建自己的自定义方法来输入您的 WiFi 凭据。有关详细信息，请参阅 [HomeSpan API 参考](Reference.md)。
 
 #### 用于将 HomeSpan 设备与 HomeKit 配对的设置代码是什么？
 
-* HomeSpan 默认设置代码为 466-37-726。您可以（并且应该）使用 HomeSpan 命令行界面将此默认设置更改为每个设备唯一的密码。只需在串行监视器中键入“S \<code\>”，或在使用 HomeSpan 的临时 WiFi 设置网络配置 WiFi 凭据时一开始就指定所需的设置代码。或者，您可以使用 HomeSpan 的 `setPairingCode()` 方法以编程方式在草图中设置设置代码。但是，在草图中硬编码您的设置代码通常被认为存在安全风险，并且与 Apple 的 HomeKit 指南不一致。
+* HomeSpan 默认设置代码为 466-37-726。您可以（也应该）使用 HomeSpan 命令行界面将此默认设置更改为每个设备唯一的密码。只需在串行监视器中键入“S \<code\>”，或在使用 HomeSpan 的临时 WiFi 设置网络配置 WiFi 凭据时一开始就指定所需的设置代码。或者，您可以使用 HomeSpan 的 `setPairingCode()` 方法以编程方式在草图中设置设置代码。但是，在草图中硬编码您的设置代码通常被认为存在安全风险，并且与 Apple 的 HomeKit 指南推荐的不一致。
 
 #### 你可以在同一个 HomeKit 网络上使用多个 HomeSpan 设备吗？
 
@@ -28,15 +28,12 @@
 
 #### HomeSpan 是否与 PlatformIO 一起使用？
 
-* HomeSpan 不明确支持 PlatformIO，但多个用户报告成功使用带有 PlatformIO 的 HomeSpan 库。
+* HomeSpan 不明确支持 PlatformIO，但多个用户报告成功使用带有 PlatformIO 的 HomeSpan 库（译者注：可以与 PlatformIO 一起使用）。
 
 #### HomeSpan 可以在 ESP8266 设备上工作吗？
 
 * 不，HomeSpan 是专门为 ESP32 编码的，不能在 ESP8266 设备上运行。
 
-#### HomeSpan 能否在 ESP32-S2 或 ESP32-C3 上工作？
-
-* 是的！从 1.4.0 版本开始，HomeSpan 完全兼容乐鑫的 ESP32-S2 和 ESP32-C3 芯片，以及原始的 ESP32 芯片。请注意，要从 Arduino IDE 中选择 ESP32-S2 或 ESP32-C3 设备，您需要安装 [Arduino-ESP32 Board Manager] (https://github.com/espressif/arduino-esp32) 的第 2 版。
 
 #### 如何阅读 [OTA](OTA.md) 文档中提到的 HomeSpan 的 MDNS 广播？
 
@@ -56,7 +53,7 @@
 
 #### 您可以将 HomeSpan 与以太网连接而不是 WiFi 连接一起使用吗？
 
-* 不存在。尽管使用兼容的以太网板，ESP32 可以配置为作为以太网服务器运行，但由于以太网 UDP 堆栈存在一些明显的问题，使用以太网上的 MDNS 无法在 ESP32 上运行。不幸的是，HomeSpan 和 HAP-R2 需要 MDNS 才能运行。如果有人设法让 MDNS 的以太网版本在 ESP32 上运行，请告诉我 - 将以太网支持添加到 HomeSpan 会很棒。
+* 现在不行。尽管使用兼容的以太网板，ESP32 可以配置为作为以太网服务器运行，但由于以太网 UDP 堆栈存在一些明显的问题，使用以太网上的 MDNS 无法在 ESP32 上运行。不幸的是，HomeSpan 和 HAP-R2 需要 MDNS 才能运行。如果有人设法让 MDNS 的以太网版本在 ESP32 上运行，请告诉我 - 将以太网支持添加到 HomeSpan 会很棒。
 
 #### HomeSpan 是否适用于 SPI 和 I2C？
 
