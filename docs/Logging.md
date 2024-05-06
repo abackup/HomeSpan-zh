@@ -65,7 +65,6 @@ HomeSpan Web 日志页面本身包含两个部分：
 
 ### 自定义样式表 （CSS）
  
-HomeSpan's Web Log normally consists of black text on a light blue background.  However, you can set a Custom Style Sheet (CSS) to change the format by calling , where *css* is constructed using [HTML classes](https://www.w3schools.com/html/html_classes.asp) containing one or more custom style elements.  HomeSpan implements the following three class names for the different parts of the Web Log:
 HomeSpan 的 Web 日志通常由浅蓝色背景上的黑色文本组成。但是，您可以设置自定义样式表 （CSS） 以通过调用`homeSpan.setWebLogCSS(const char *css)` 来更改格式，其中 css 是使用包含一个或多个自定义样式元素的  [HTML 类](https://www.w3schools.com/html/html_classes.asp) 构造的。HomeSpan 为 Web 日志的不同部分实现以下三个类名：
  
  * *bod1* - 此类指定 Web 日志页面主体的样式元素，包括背景颜色和顶部的标题文本（其本身的格式为 <h2>）
@@ -106,7 +105,6 @@ void extraData(String &r){
 
 ### 从草图中访问 Web 日志 HTML
 
-In addition to (or as an alternative to) having HomeSpan serve HTML Web Log pages in response to HTTP requests, users can directly access the HTML text for a Web Log page from within their sketch for customized processing and handling.  Since the HTML for a Web Log page can be very large, HomeSpan only generates the HTML for a Web Log page when the page has been requested, and streams the HTML in sequential chunks of 1024 bytes in response to a Web Log HTTP request.  It is therefore not possible for HomeSpan to simply provide the user with a `char *` pointer to the HTML text for a complete Web Log.  Instead, HomeSpan provides the user with the following *homeSpan* method to trigger the production of a Web Log page and access the resulting HTML text whenever needed:
 除了让 HomeSpan 提供 HTML Web 日志页面以响应 HTTP 请求之外，用户还可以从其草图中直接访问 Web 日志页面的 HTML 文本，以便进行自定义操作和处理。由于 Web 日志页面的 HTML 可能非常大，因此 HomeSpan 仅在请求页面时生成 Web 日志页面的 HTML，并以 1024 字节的顺序块流式传输 HTML 以响应 Web 日志 HTTP 请求。因此，HomeSpan 不可能简单地为用户提供指向完整 Web 日志的 HTML 文本的 `char *` 指针。相反，HomeSpan 为用户提供了以下 homeSpan 方法来触发 Web 日志页的生成，并在需要时访问生成的 HTML 文本：
 
 `getWebLog(void (*f)(const char *htmlText, void *data), void *userData)`
