@@ -22,7 +22,7 @@ SpanPoint 是主 HomeSpan 库的一部分，可以通过在草图顶部附近添
 
 通过在 CLI 中键入“i”，将在草图中实例化的所有 SpanPoint 对象的列表、上面指定的参数以及每个远程设备用于连接回主 HomeSpan 设备的特定 MAC 地址显示在串行监视器中
 
-> 如果每个 SpanPoint 对象中指定的 MAC 地址引用彼此的设备，并且一台设备上的 SpanPoint 对象的 *sendSize* 和 *receiveSize* 分别与 *receiveSize* 匹配，则在两个单独设备上创建的 SpanPoint 对象被视为“互补” *其他*设备上的SpanPoint对象的 *sendSize* 和 *receiveSize* ，但无论*其他*设备上设置的值如何，始终可以将 *sendSize* 或 *receiveSize* 设置为零
+> 如果每个 SpanPoint 对象中指定的 MAC 地址引用彼此的设备，并且一台设备上的 SpanPoint 对象的 *sendSize* 和 *receiveSize* 分别与另一台设备上的 *sendSize* 和 *receiveSize* 匹配，则在两个单独设备上创建的 SpanPoint 对象被视为“互补” 。但是，无论另一个设备上的值如何设置，始终可以将 *sendSize* 和 *receiveSize* 设置为零。
 
 如果发生以下情况，SpanPoint 将在实例化期间抛出致命错误并停止草图：
    * 指定的 *macAddress* 格式不正确，或者
