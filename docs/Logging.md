@@ -63,15 +63,16 @@ HomeSpan Web 日志页面本身包含两个部分：
  
 请参阅 [示例 19 - WebLog](Tutorials.md#example-19---weblog) 以获得演示使用 `homeSpan.enableWebLog()` 和 WEBLOG() 宏的教程草图。
 
-### Custom Style Sheets (CSS)
+### 自定义样式表 （CSS）
  
-HomeSpan's Web Log normally consists of black text on a light blue background.  However, you can set a Custom Style Sheet (CSS) to change the format by calling `homeSpan.setWebLogCSS(const char *css)`, where *css* is constructed using [HTML classes](https://www.w3schools.com/html/html_classes.asp) containing one or more custom style elements.  HomeSpan implements the following three class names for the different parts of the Web Log:
+HomeSpan's Web Log normally consists of black text on a light blue background.  However, you can set a Custom Style Sheet (CSS) to change the format by calling , where *css* is constructed using [HTML classes](https://www.w3schools.com/html/html_classes.asp) containing one or more custom style elements.  HomeSpan implements the following three class names for the different parts of the Web Log:
+HomeSpan 的 Web 日志通常由浅蓝色背景上的黑色文本组成。但是，您可以设置自定义样式表 （CSS） 以通过调用`homeSpan.setWebLogCSS(const char *css)` 来更改格式，其中 css 是使用包含一个或多个自定义样式元素的  [HTML 类](https://www.w3schools.com/html/html_classes.asp) 构造的。HomeSpan 为 Web 日志的不同部分实现以下三个类名：
  
- * *bod1* - this class specifies style elements for the main body of the Web Log page, including the background color and the header text at the top (which itself is formatted as \<h2\>)
- * *tab1* - this class specifies style elements for the status table at the top of the Web Log page
- * *tab2* - this class specifies style elements for the log entry table at the botom of the Web Log page
+ * *bod1* - 此类指定 Web 日志页面主体的样式元素，包括背景颜色和顶部的标题文本（其本身的格式为 <h2>）
+ * *tab1* - 此类指定 Web 日志页顶部状态表的样式元素
+ * *tab2* - 此类指定 Web 日志页面的 botom 中的日志条目表的样式元素
  
-For example, the following CSS changes the background color of the Web Log page to light yellow, the color of the header text to blue, the color of the cells in the top table to light green, and the color of the cells in the botom table to light blue.  It also changes the color of the text in the header row (\<th\>) of the second table to red, the color of the data rows (\<td\>) in the second table to dark blue, and the alignment of the text in the data rows to be centered within each table cell:
+例如，以下 CSS 将 Web 日志页面的背景颜色更改为浅黄色，将标题文本的颜色更改为蓝色，将顶部表格中单元格的颜色更改为浅绿色，将 botom 表中的单元格颜色更改为浅蓝色。它还将第二个表的标题行 (\<th\>) 中的文本颜色更改为红色，将第二个表中数据行 (\<th\>) 的颜色更改为深蓝色，并将数据行中的文本对齐方式更改为在每个表单元格中居中：
  
  ```C++
  homeSpan.setWebLogCSS(".bod1 {background-color:lightyellow;}"
@@ -81,18 +82,18 @@ For example, the following CSS changes the background color of the Web Log page 
                        );
  ```
  
-Note that HomeSpan outputs the full content of the Web Log HTML, including whatever CSS you may have specified above, to the Serial Monitor whenever the Log Level is set to 1 or greater.  Reviewing this output can be helpful when creating your own CSS.
+请注意，每当日志级别设置为 1 或更高时，HomeSpan 都会将 Web 日志 HTML 的全部内容（包括您在上面指定的任何 CSS）输出到串行监视器。在创建自己的 CSS 时，查看此输出会很有帮助。
 
-### Adding User-Defined Data and/or Custom HTML
+### 添加用户定义的数据和/或自定义 HTML
 
-Homespan provides a hook into the text used to generate the Web Log that you can extend to add your own data to the initial table as well as more generally add any custom HTML.
+Homespan 提供了一个用于生成 Web 日志的文本钩子，您可以扩展该钩子以将自己的数据添加到初始表中，以及更普遍地添加任何自定义 HTML。
 
-To access this text, set a Web Log callback using `homeSpan.setWebLogCallback(void (*func)(String &htmlText))` where
+若要访问此文本，请使用 `homeSpan.setWebLogCallback(void (*func)(String &htmlText))` 设置 Web 日志回调：
 
-  * *func* is a function of type *void* that takes a single argument of type *String*, and
-  * *htmlText* will be set by HomeSpan to a String reference containing all the HTML text that the Web Log has already generated to produce the initial table.
+  * *func* 是 void 类型的函数，它采用 String 类型的单个参数，并且
+  * homeSpan 将 *htmlText* 设置为一个字符串引用，其中包含 Web 日志已生成的所有 HTML 文本，以生成初始表。
 
-To add your own data to the table, simply extend the String *htmlText* by adding as many `<tr>` and `<td>` HTML tags as needed.  If you wish to end the table and add any other HTML, simple include the `</table>` tag in *htmlText*, and then add any other custom HTML.  For example, the following function could be used to extend the initial Web Log table to show free DRAM, end the table, and provide a hot link to the HomeSpan Repo:
+要将自己的数据添加到表中，只需根据需要添加任意数量的 `<tr>` 和 `<td>`  HTML 标记来扩展字符串 *htmlText*。如果您希望结束表格并添加任何其他 HTML，只需在 *htmlText* 中包含标记 `</table>`，然后添加任何其他自定义 HTML。例如，可以使用以下函数扩展初始 Web 日志表以显示可用 DRAM、结束表并提供指向 HomeSpan 存储库的热链接：
 
 ```C++
 void extraData(String &r){
@@ -101,24 +102,25 @@ void extraData(String &r){
 }
 ```
 
-To embed this custom HTML text in the Web Log, call `homeSpan.setWebLogCallback(extraData)` in your sketch.
+若要在 Web 日志中嵌入此自定义 HTML 文本，请调用草图的`homeSpan.setWebLogCallback(extraData)`。
 
-### Accessing Web Log HTML from within your sketch
+### 从草图中访问 Web 日志 HTML
 
 In addition to (or as an alternative to) having HomeSpan serve HTML Web Log pages in response to HTTP requests, users can directly access the HTML text for a Web Log page from within their sketch for customized processing and handling.  Since the HTML for a Web Log page can be very large, HomeSpan only generates the HTML for a Web Log page when the page has been requested, and streams the HTML in sequential chunks of 1024 bytes in response to a Web Log HTTP request.  It is therefore not possible for HomeSpan to simply provide the user with a `char *` pointer to the HTML text for a complete Web Log.  Instead, HomeSpan provides the user with the following *homeSpan* method to trigger the production of a Web Log page and access the resulting HTML text whenever needed:
+除了让 HomeSpan 提供 HTML Web 日志页面以响应 HTTP 请求之外，用户还可以从其草图中直接访问 Web 日志页面的 HTML 文本，以便进行自定义操作和处理。由于 Web 日志页面的 HTML 可能非常大，因此 HomeSpan 仅在请求页面时生成 Web 日志页面的 HTML，并以 1024 字节的顺序块流式传输 HTML 以响应 Web 日志 HTTP 请求。因此，HomeSpan 不可能简单地为用户提供指向完整 Web 日志的 HTML 文本的 `char *` 指针。相反，HomeSpan 为用户提供了以下 homeSpan 方法来触发 Web 日志页的生成，并在需要时访问生成的 HTML 文本：
 
 `getWebLog(void (*f)(const char *htmlText, void *data), void *userData)`
 
- * *f()* - a user-defined function that returns `void` and takes two arguments:
-   * *htmlText* - a null-terminated `const char *` pointer to a chunk of HTML text (max 1024 bytes) provided by HomeSpan
-   * *data* - a `void *` pointer to any user-provided data, *userData*
- * *userData* - a `void *` pointer to any optional user-provided data that is passed to *f()* as its second argument, *data*
+ * *f()* - 一个用户定义的函数，返回 `void` 并接受两个参数：
+   * *htmlText* - 指向 HomeSpan 提供的 HTML 文本块（最大 1024 字节）的以 null 结尾的 `const char *` 指针
+   * *data* - 指向任何用户提供的数据 *userData* 的`void *`指针
+ * *userData* - 指向任何可选用户提供的数据的 `void *` 指针，该数据作为其第二个参数 data 传递给 *f()*
 
-When the above method is called from a sketch, HomeSpan will repeatedly call the user-defined function *f()* and provide sequential chunks of HTML text for the Web Log page as the first argument, *htmlText*.  Once all HTML chunks have been sent to the function *f()*, HomeSpan calls *f()* one final time with *htmlText* set to NULL to indicate there are no more HTML chunks to be sent.
+当从草图调用上述方法时，HomeSpan 将重复调用用户定义的函数 *f()*，并为 Web 日志页面提供连续的 HTML 文本块作为第一个参数 *htmlText*。一旦所有 HTML 块都发送到函数 *f()*，HomeSpan 将最后一次调用 *f()*，并将 *htmlText* 设置为 NULL，以指示不再发送 HTML 块。
 
-The primary purpose of this function is for the user to provide their own method of serving an HTML Web Log page, such as through a secure HTTPS channel.  Note this channel can be in addition to, or instead of, HomeSpan's normal serving of Web Log pages through HTTP requests depending on whether or not the URL argument used in the `homeSpan.enableWebLog()` method was set to NULL (disabling HomeSpan from serving Web Log pages in response to HTTP requests).
+此函数的主要目的是让用户提供自己的 HTML Web 日志页服务方法，例如通过安全的 HTTPS 通道。请注意，此通道可以是 HomeSpan 通过 HTTP 请求正常提供 Web 日志页面的补充，也可以代替 HomeSpan 的正常服务，具体取决于 `homeSpan.enableWebLog()` 方法中使用的 URL 参数是否设置为 NULL（禁用 HomeSpan 提供 Web 日志页面以响应 HTTP 请求）。
 
-The following psuedo-code snippet shows how `getWebLog()` can be used:
+以下 psuedo-code 代码片段显示了如何使用 `getWebLog()` ：
 
 ```C++
 ...
