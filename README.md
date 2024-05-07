@@ -4,21 +4,21 @@
 
 个人复制翻译的[ HomeSpan](https://github.com/HomeSpan/HomeSpan)，喜欢的请去[原地址](https://github.com/HomeSpan/HomeSpan)查看。
 
-欢迎使用 HomeSpan - 一个强大且极其易于使用的 Arduino 库，用于完全在[ Arduino IDE ](http://www.arduino.cc)内创建你自己的基于[ ESP32 ](https://www.espressif.com/en/products/modules/esp32)的 HomeKit 设备。
+欢迎使用 HomeSpan - 一个强大且极其易于使用的 Arduino 库，用于完全在[ Arduino IDE](http://www.arduino.cc) 内创建你自己的基于[ ESP32 ](https://www.espressif.com/en/products/modules/esp32)的 HomeKit 设备。
 
-HomeSpan 提供以微控制器为中心的 Apple HomeKit 配件协议规范版本 R2 (HAP - R2) 实现，专为在 Arduino IDE 中运行的乐鑫 ESP32 微控制器而设计。HomeSpan 通过家庭 WiFi 网络直接与 HomeKit 配对，无需任何外部网桥或组件。通过 HomeSpan，你可以使用 ESP32 的 I/O 功能的全部功能来创建自定义控制软件和 / 或硬件，以通过 iPhone、iPad 或 Mac 上的 家庭应用程序或 Siri 自动操作外部设备。
+HomeSpan 提供以微控制器为中心的 Apple HomeKit 配件协议规范版本 R2 (HAP-R2) 实现，专为在 Arduino IDE 中运行的乐鑫 ESP32 微控制器而设计。HomeSpan 通过家庭 WiFi 网络直接与 HomeKit 配对，无需任何外部网桥或组件。通过 HomeSpan，你可以使用 ESP32 的 I/O 功能的全部功能来创建自定义控制软件和 / 或硬件，以通过 iPhone、iPad 或 Mac 上的 家庭应用程序或 Siri 自动操作外部设备。
 
-HomeSpan 需要 2.0.0 或更高版本的，并已通过 2.0.14 版的[ Arduino - ESP32 Board Manager ](https://github.com/espressif/arduino - esp32)测试（推荐使用）。HomeSpan 可以在原来的 ESP32 以及乐鑫的 ESP32 - S2、ESP32 - C3 和 ESP32 - S3 芯片上运行。
+HomeSpan 需要 2.0.0 或更高版本的，并已通过 2.0.14 版的[ Arduino - ESP32 Board Manager ](https://github.com/espressif/arduino-esp32)测试（推荐使用）。HomeSpan 可以在原来的 ESP32 以及乐鑫的 ESP32-S2、ESP32-C3 和 ESP32-S3 芯片上运行。
 
 > [!NOTE]
-> 苹果的新 HomeKit 架构[需要使用家庭中心](https://support.apple.com/en - us/HT207057)（HomePod 或 Apple TV）可用于任何 HomeKit 设备的完整和正确操作，包括基于 HomeSpan 的设备。如果没有家庭中心，HomeSpan 将无法向家庭应用程序发送通知 —— 按钮和温度传感器等将无法向家庭应用程序发送更新。
+> 苹果的新 HomeKit 架构[需要使用家庭中心](https://support.apple.com/en-us/HT207057)（HomePod 或 Apple TV）可用于任何 HomeKit 设备的完整和正确操作，包括基于 HomeSpan 的设备。如果没有家庭中心，HomeSpan 将无法向家庭应用程序发送通知 —— 按钮和温度传感器等将无法向家庭应用程序发送更新。
 
 ### HomeSpan 亮点
 
 * 提供自然、直观且**非常**易于使用的框架
 * 利用独特*以服务为中心*的方法创建 HomeKit 设备
 * 充分利用广受欢迎的 Arduino IDE
-* 100% 符合 HAP - R2
+* 100% 符合 HAP-R2
 * 集成 38 个 HomeKit 服务
 * 在配件模式或桥接模式下运行
 * 支持与设置码或 QR 码配对
@@ -62,7 +62,7 @@ HomeSpan 包括以下文档：
 
 * [HomeSpan 入门](docs/GettingStarted.md) - 设置开发 HomeSpan 设备所需的软件和硬件
 * [HomeSpan API 概述](docs/Overview.md) - HomeSpan API 概述，包括开发第一个 HomeSpan 草图的分步指南
-* [HomeSpan 教程](docs/Tutorials.md) - HomeSpan 的草图指南教程
+* [HomeSpan 教程](docs/Tutorials.md) - HomeSpan 的草图指南
 * [HomeSpan 服务和特点](docs/ServiceList.md) - HomeSpan 支持的所有 HAP 服务和特性的列表
 * [HomeSpan 配件类别](docs/Categories.md) - HomeSpan 定义的所有 HAP 配件类别的列表
 * [HomeSpan 命令行界面（CLI）](docs/CLI.md) - 配置 HomeSpan 设备的 WiFi 凭据，修改其 HomeKit 设置代码，监控和更新其状态，并从 Arduino IDE 串行监控器访问详细的实时设备诊断
@@ -87,7 +87,7 @@ HomeSpan 包括以下文档：
 
 # 外部资源
 
-除了 HomeSpan 资源之外，刚接触 HomeKit 编程的开发人员可能会发现 Apple 的 HomeKit 配件协议规范非商业版本 R2 (HAP-R2)的第 8 章和第 9 章非常有用。不幸的是，苹果公司不再提供这份文件（也许是因为它最后一次更新是在 2019 年 7 月，现在已经有些过时了）。但是，你可以在 Web 上的其他地方找到此文档的副本。请注意，Apple 并未将 HAP-R2 文档替换为用于非商业用途的任何其他版本，并且 Apple 的开源[ HomeKit ADK](https://github.com/apple/HomeKitADK)仅反映了原始的 HAP-R2 规格（而不是用于商业设备的 HomeKit 中提供的所有最新服务和特性）。
+除了 HomeSpan 资源之外，刚接触 HomeKit 编程的开发人员可能会发现 Apple 的 HomeKit 配件协议规范非商业版本 R2 (HAP-R2) 的第 8 章和第 9 章非常有用。不幸的是，苹果公司不再提供这份文件（也许是因为它最后一次更新是在 2019 年 7 月，现在已经有些过时了）。但是，你可以在 Web 上的其他地方找到此文档的副本。请注意，Apple 并未将 HAP-R2 文档替换为用于非商业用途的任何其他版本，并且 Apple 的开源[ HomeKit ADK ](https://github.com/apple/HomeKitADK)仅反映了原始的 HAP-R2 规格（而不是用于商业设备的 HomeKit 中提供的所有最新服务和特性）。
 
  --- 
 
