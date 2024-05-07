@@ -8,7 +8,7 @@
 
 HomeSpan 提供以微控制器为中心的 Apple HomeKit 配件协议规范版本 R2 (HAP-R2) 实现，专为在 Arduino IDE 中运行的乐鑫 ESP32 微控制器而设计。HomeSpan 通过家庭 WiFi 网络直接与 HomeKit 配对，无需任何外部网桥或组件。通过 HomeSpan，你可以使用 ESP32 的 I/O 功能的全部功能来创建自定义控制软件和 / 或硬件，以通过 iPhone、iPad 或 Mac 上的 家庭应用程序或 Siri 自动操作外部设备。
 
-HomeSpan 需要 2.0.0 或更高版本的，并已通过 2.0.14 版的[ Arduino - ESP32 Board Manager ](https://github.com/espressif/arduino-esp32)测试（推荐使用）。HomeSpan 可以在原来的 ESP32 以及乐鑫的 ESP32-S2、ESP32-C3 和 ESP32-S3 芯片上运行。
+HomeSpan 需要 2.0.0 或更高版本的，并已通过 2.0.14 版的[ Arduino-ESP32 Board Manager ](https://github.com/espressif/arduino-esp32)测试（推荐使用）。HomeSpan 可以在原来的 ESP32 以及乐鑫的 ESP32-S2、ESP32-C3 和 ESP32-S3 芯片上运行。
 
 > [!NOTE]
 > 苹果的新 HomeKit 架构[需要使用家庭中心](https://support.apple.com/en-us/HT207057)（HomePod 或 Apple TV）可用于任何 HomeKit 设备的完整和正确操作，包括基于 HomeSpan 的设备。如果没有家庭中心，HomeSpan 将无法向家庭应用程序发送通知 —— 按钮和温度传感器等将无法向家庭应用程序发送更新。
@@ -39,7 +39,7 @@ HomeSpan 需要 2.0.0 或更高版本的，并已通过 2.0.14 版的[ Arduino -
 * 集成访问 ESP32 的片上远程控制外设，可轻松生成 IR 和 RF 信号
 * 控制单线和双线可寻址 RGB 和 RGBW LED 和 LED 灯带的专用类
 * 专门用于控制步进电机的类，可以在后台平稳运行，而不会干扰 HomeSpan
-* 使用 ESP - NOW 在 ESP32 设备之间实现无缝点对点通信的专用类
+* 使用 ESP-NOW 在 ESP32 设备之间实现无缝点对点通信的专用类
 * 用于用户定义的日志消息的集成 Web 日志
 * 广泛评论的教程草图将带你从 HomeSpan 的基础知识到高级 HomeKit 主题。
 * 展示 HomeSpan 实际实现的其他示例和项目
