@@ -1,4 +1,4 @@
-原文：2024.2.18， 翻译时间：2024.3.1
+原文时间：2024.2.18， 翻译时间：2024.5.7
 
 # HomeSpan 教程
 
@@ -124,7 +124,7 @@ HomeSpan 库包括许多越来越复杂的教程草图，带您了解 HomeSpan �
 ### [电视](../Other%20Examples/Television)
 HomeKit *未认证* 电视服务的示例，展示了如何使用不同的特性来控制电视的电源、输入源和其他一些功能。请参阅 [HomeSpan 电视服务 ](TVServices.md) 页面了解完整详情
 
-### [像素](../Other%20Examples/Pixel)
+### [灯带](../Other%20Examples/Pixel)
 演示如何使用 HomeSpan 的 *Pixel* 和 *Dot* 类来控制单线和两线可寻址 RGB 和 RGBW LED。有关完整详细信息，请参阅 [HomeSpan 灯带](Pixels.md) 页面
 
 ### [定制服务](../Other%20Examples/CustomService)
