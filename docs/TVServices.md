@@ -27,14 +27,14 @@ new Service::Television();
 
 * `Characteristic::RemoteKey()` - 这个只写的数字特性使 HomeSpan 能够从位于控制中心下的 iPhone 上的远程控制小部件中读取按钮按下。 这个小部件通常用于控制 Apple TV，但似乎上面创建的任何电视配件也可以通过远程控制小部件进行操作。 小部件的布局（不能修改）包括 4 个箭头、一个中央选择按钮、一个播放/暂停按钮、一个大的“后退”按钮和一个“信息”按钮。 当按下“键”时，Home App 会向 `Characteristic::RemoteKey()` 发送更新，HomeSpan 可以使用通常的 `update()` 方法读取该更新。 值如下：
 * 
-  * 4 = up arrow  
-  * 5 = down arrow
-  * 6 = left arrow
-  * 7 = right arrow
-  * 8 = center select button
-  * 9 = back button
-  * 11 = play/pause button
-  * 15 = info button
+  * 4 = 向上箭头
+  * 5 = 向下箭头
+  * 6 = 左箭头
+  * 7 = 右箭头
+  * 8 = 中心选择按钮
+  * 9 = 后退按钮
+  * 11 = 播放/暂停按钮
+  * 15 = 信息按钮
   
 * `Characteristic::PowerModeSelection()` - 这个只写的特性导致文本“查看电视设置”出现在电视配件设置页面下的家庭应用程序中。 当按下此文本时，Home App 会向 `Characteristic::PowerModeSelection()` 发送一个 value=0 的更新，HomeSpan 可以使用通常的 `update()` 方法读取该更新
 * 
