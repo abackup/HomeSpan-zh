@@ -55,7 +55,7 @@ new Service::Television();
 
 *  `Characteristic::IsConfigured()` -此特性决定是否允许输入源在 Home 应用程序的输入源选择器中显示为选项。如果定义了 isConfigured（）并将其设置为 0，则输入源将显示在设置页面中，但它将作为输入源选择器中的一个选项被排除。如果定义了 isConfigured（）并将其设置为 1，则输入源将显示在设置页面中，并且还将作为输入源选择器中的一个选项。如果 `Characteristic::IsConfigured()` 未为输入源定义，则该源仍将作为输入源选择器中的一个选项出现，但它将*不*出现在“设置”页面上的输入源列表中。这意味着你将无法从 Home 应用程序重命名输入源，也无法将其作为输入选择器中的允许选项进行切换（见下文）。
 *  
-* `Characteristic::CurrentVisibilityState()` 和 `Characteristic::TargetVisibilityState()` - 这两个特征协同工作，就像任何当前状态/目标状态对一样。当为输入源定义这些时，如果还定义了“Characteristic::IsConfigured()”，则设置页面上输入源名称旁边会出现一个复选框切换。单击该复选框会导致 Home App 在 0 到 1 之间切换 TargetVisibilityState，其中 0 具有讽刺意味的是，该复选框是*选中*，而 1 表示它是*未选中*（与您的预期相反！）。如果您在 HomeSpan 中阅读此更新，则可以使用 `setVal()` 更改 CurrentVisibiltyState() 以匹配 TargetVisibilityState()。将 CurrentVisibilityState() 设置为 0 意味着输入源在输入源选择器中显示为一个选项。将 CurrentVisibilityState() 设置为 1 意味着它不会显示为选择。请注意，这些功能仅在使用 `Characteristic::Identifier()` 为输入源设置 ID 并且 IsConfigured() 已定义并设置为 1 时才起作用。
+* `Characteristic::CurrentVisibilityState()` 和 `Characteristic::TargetVisibilityState()` - 这两个特征协同工作，就像任何当前状态/目标状态对一样。当为输入源定义这些时，如果还定义了 `Characteristic::IsConfigured()`，则设置页面上输入源名称旁边会出现一个复选框切换。单击该复选框会导致 Home App 在 0 到 1 之间切换 TargetVisibilityState，其中 0 具有讽刺意味的是，该复选框是*选中*，而 1 表示它是*未选中*（与您的预期相反！）。如果您在 HomeSpan 中阅读此更新，则可以使用 `setVal()` 更改 CurrentVisibiltyState() 以匹配 TargetVisibilityState()。将 CurrentVisibilityState() 设置为 0 意味着输入源在输入源选择器中显示为一个选项。将 CurrentVisibilityState() 设置为 1 意味着它不会显示为选择。请注意，这些功能仅在使用 `Characteristic::Identifier()` 为输入源设置 ID 并且 IsConfigured() 已定义并设置为 1 时才起作用。
 
 ###  `Service::TelevisionSpeaker()`
 
