@@ -36,8 +36,7 @@ new Service::Television();
   * 11 = 播放/暂停按钮
   * 15 = 信息按钮
   
-* `Characteristic::PowerModeSelection()` - 这个只写的特性导致文本“查看电视设置”出现在电视配件设置页面下的家庭应用程序中。 当按下此文本时，Home App 会向 `Characteristic::PowerModeSelection()` 发送一个 value=0 的更新，HomeSpan 可以使用通常的 `update()` 方法读取该更新
-* 
+* `Characteristic::PowerModeSelection()` - 这个只写的特性导致文本“查看电视设置”出现在电视配件设置页面下的家庭应用程序中。 当按下此文本时，Home App 会向 `Characteristic::PowerModeSelection()` 发送一个值为 0 的更新，HomeSpan 可以使用通常的 `update()` 方法读取该更新
 * `Characteristic::ActiveIdentifier()` - 此数字 Characteristic 用于控制电视的输入源（例如 HDMI-1、HDMI-2、Netflix 等）。 它仅在使用 `Service::InputSource()` 定义和链接输入源时使用（见下文），在这种情况下它是*必需*特性
 
 ### `Service::InputSource()`
