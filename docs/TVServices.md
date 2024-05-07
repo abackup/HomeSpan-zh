@@ -1,10 +1,10 @@
 # 电视服务和特点
 
-HomeSpan 包括许多不属于 HAP-R2 的未记录的电视服务和特征。尽管更广泛的 HomeKit 社区已经确定了每个电视服务和特性的 UUID 和规范，但只有通过反复试验才能确定正确的使用方法。本页记录了使用 iOS 15.1 中提供的 Home 应用程序在 HomeSpan 中试验不同电视服务和特性的结果。本文档应该被认为是可靠的，但 Apple 当然可以随时更改 Home App 中此类服务和特征的行为，恕不另行通知。
+HomeSpan 包括许多不属于 HAP-R2 的未记录的电视服务和特征。尽管更广泛的 HomeKit 社区已经确定了每个电视服务和特性的 UUID 和规范，但只有通过反复试验才能确定正确的使用方法。本页记录了使用 iOS 15.1 中提供的 Home 应用程序在 HomeSpan 中试验不同电视服务和特性的结果。本文档应该被认为是可靠的，但 Apple 当然可以随时更改 Home App 中此类服务和特征的行为，而无通知。
 
 ### `Category::Television`
 
-使用 `Category::Television` 作为 `homeSpan.begin()` 中的类别来指定电视配件。这会导致 Home App 在 Accessory Tile 中显示电视图标。然而，这似乎只适用于第一个实施的附件。如果您创建具有多个电视配件的设备，或将电视配件放置在桥接配件后面，则 TV Tile 的图标将转换为通用 HomeKit 符号。
+使用 `Category::Television` 作为 `homeSpan.begin()` 中的类别来指定电视配件。这会导致 Home App 在附件列表中显示电视图标。然而，这似乎只适用于第一个实施的附件。如果您创建具有多个电视配件的设备，或将电视配件放置在桥接配件后面，则 TV Tile 的图标将转换为通用 HomeKit 符号。
 
 ### `Service::Television()`
 
