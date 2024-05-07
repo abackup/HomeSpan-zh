@@ -1,28 +1,29 @@
-# Common Problems and Potential Solutions
+原文时间：2024.3.9 ，翻译时间：2024.5.7
 
-#### *HomeSpan works correctly when my ESP32 is plugged into a computer or separately powered through the USB port, but it fails to work when powered directly through the ESP32 5V pin without any USB connection*
+# 常见问题和可能的解决方案
 
-* On some ESP32 boards, the USB-UART chip only receives power if power is applied through the USB port, and thus remains unpowered if the ESP32 is powered solely through the ESP32 5V pin.  As a result, the Serial RX pin associated with UART0 on the ESP32, which is normally driven by the USB-UART chip, is free to float at any voltage.  If this pin floats low, the ESP32 thinks there is data to be read from the Serial Monitor, and HomeSpan falls into an infinite loop trying to read this non-existent data.
+#### *当我的 ESP32 插入计算机或通过 USB 端口单独供电时，HomeSpan 可以正常工作，但在没有任何 USB 连接的情况下，直接通过 ESP32 5V 引脚供电时，它无法正常工作*
 
-* **Resolution:**  Add a pull-up resistor (10 kΩ should be fine) connecting the UART0 RX pin on your board to +3.3V.  For most boards the default UART0 RX pin is as follows:
+* 在某些 ESP32 板上，USB-UART 芯片仅在通过 USB 端口供电时才接收电源，因此，如果 ESP32 仅通过 ESP32 5V 引脚供电，则保持不供电。因此，与 ESP32 上的 UART0 相关的串行 RX 引脚（通常由 USB-UART 芯片驱动）在任何电压下都可以自由浮动。如果此引脚浮空为低电平，则 ESP32 认为有数据要从串行监视器读取，而 HomeSpan 则陷入无限循环，试图读取此不存在的数据。
 
-  * Pin 3 for the ESP32
-  * Pin 44 for the ESP32-S2 and ESP32-S3
-  * Pin 20 for the ESP32-C3
+* **解决方法:**添加一个上拉电阻（10 k Ω即可），将电路板上的 UART0 RX 引脚连接到 +3.3V.对于大多数板，默认的 UART0 RX 引脚如下：
 
-* Note that adding this pull-up resistor should **not** interefere with normal serial operation of the board, such as using the Serial Monitor or uploading sketches.
+  * ESP32 的Pin 3
+  * ESP32-S2 和 ESP32-S3 的Pin 44
+  * ESP32-C3 的Pin 20
 
-* *As an alternative*, instead of adding a pull-up resistor, you can simply exclude (or comment out) the `Serial.begin()` line in your sketch.  This prevents the problem of HomeSpan hanging when you power it through the 5V pin, but it unfortunately means the Serial Monitor will not function when you connect the board to your computer, and you will need to add back `Serial.begin()` whenever you want to use the Serial Monitor.  
+* 请注意，添加此上拉电阻会**不**干扰电路板的正常串行操作，例如使用串行监视器或上传草图。
 
-#### *Compiler Error - `core_version.h` file not found*
+* *作为替代方案*，而不是添加上拉电阻，你可以简单地排除（或注释掉）草图中的 `Serial.begin()` 线。当你通过 5V 引脚为其供电时，这可以防止 HomeSpan 挂起的问题，但不幸的是，这意味着当你将主板连接到计算机时，串行显示器将无法正常工作，并且每当你想要使用串行显示器时，你都需要重新添加 `Serial.begin()`。
 
-* HomeSpan requires the file `core_version.h`.  This file is part of each Arduino-ESP32 release package and is properly installed if you use the Arduino Board Manager.  If you install the Arduino-ESP32 package manually by downloading the official release zip file (listed under the "Assets" section for each release), you will also find the `core_version.h` is included.
+#### * 编译器错误- `core_version.h` 找不到文件 *
 
-* If you receive the above error when you try to compile a HomeSpan sketch, that means the Arduino-ESP32 package was not properly installed.  This can occur if instead of using one of the two methods above, you've tried to manually install the Arduino-ESP32 package by downloading a zip file created live from a specific branch of the Arduino-ESP32 code (typically via the `<> Code` button on GitHub when browsing a particular branch).  The `core_version.h` file is usually not included in any of the branches, and thus will not be part of any zip files you request directly from a specific branch.
+* HomeSpan 需要文件 `core_version.h`。此文件是每个 Arduino-ESP32 发行包的一部分，如果你使用 Arduino Board Manager，则可以正确安装。如果你通过下载官方发行版 ZIP 文件（列在每个发行版的“Assets”部分下）手动安装 Arduino-ESP32 软件包，你还会发现 `core_version.h` 包含。
 
-* **Resolution:** Use the Arduino Board manager to install the Arduino-ESP32 package (recommended), or install manually using an *official release zip* file found under the "Assets" section of each release version shown on the Arduino-ESP32 GitHub site.
+* 如果你在尝试编译 HomeSpan 草图时收到上述错误，这意味着 Arduino-ESP32 软件包未正确安装。如果你尝试通过下载从 Arduino-ESP32 代码的特定分支实时创建的 ZIP 文件（通常在浏览特定分支时通过 GitHub 上的 `<> Code` 按钮）来手动安装 Arduino-ESP32 包，而不是使用上述两种方法之一，则可能会发生这种情况。该 `core_version.h` 文件通常不包含在任何分支中，因此不会成为你直接从特定分支请求的任何 zip 文件的一部分。
+
+* **解决方法:**使用 Arduino Board Manager 安装 Arduino-ESP32 软件包（推荐），或使用*官方发布的 zip*， Arduino-ESP32 GitHub 站点上显示的每个发布版本的“Assets ”部分下的文件手动安装。
 
 ---
 
-[↩️](../README.md) Back to the Welcome page
-
+[↩️](../README.md)返回欢迎页面
