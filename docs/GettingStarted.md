@@ -1,4 +1,4 @@
-原文时间：2023.7.11, 翻译时间：2024.5.6
+原文时间：2023.7.11, 翻译时间：2024.5.10
 
 # HomeSpan 入门
 
@@ -6,24 +6,24 @@
 
 #### 第 1 步：安装 Arduino IDE
 
-由于 HomeSpan 是为 Arduino 集成开发环境设计的库，因此第一步是从 [Arduino 官网](https://www.arduino.cc/en/software)下载并安装此 IDE 的最新版本。如果您有 Arduino 草图编程经验，您会发现 Homespan 对标准 Arduino `setup( ) `和 `loop( )` 函数的使用，以及非常熟悉一直存在的 *\*.ino* 文件。如果您从未编写过 Arduino，您可能希望首先查看 [Arduino's IDE 指南](https://www.arduino.cc/en/Guide/Environment) （并尝试一些 Arduino 示例）再继续使用 HomeSpan 进行编程。
+由于 HomeSpan 是为 Arduino 集成开发环境设计的库，因此第一步是从 [Arduino 官网](https://www.arduino.cc/en/software) 下载并安装此 IDE 的最新版本。如果您有 Arduino 草图编程经验，您会发现 Homespan 对标准 Arduino `setup( ) `和 `loop( )` 函数的使用，以及非常熟悉一直存在的 *\*.ino* 文件。如果您从未编写过 Arduino，您可能希望首先查看 [Arduino's IDE 指南](https://www.arduino.cc/en/Guide/Environment) （并尝试一些 Arduino 示例）再继续使用 HomeSpan 进行编程。
 
 #### 第 2 步：安装 Arduino-ESP32 内核
 
-Arduino IDE 带有内置编译器，并支持各种 Arduino 板，例如 Arduino Uno 和 Arduino Nano。但是 IDE 本身并不支持对 ESP32 进行编程。幸运的是，IDE 允许您为其他微控制器（包括 ESP32 ）下载和安装**核心**，因此它们可以在 Arduino 环境中进行编程。有关如何将 Arduino-ESP32 内核安装到使用 [Arduino IDE 开发板管理](https://github.com/espressif/arduino-esp32/blob/master/docs/arduino-ide/boards_manager.md) 的 Arduino IDE 请参阅 [ESP32 开发板管理](https://github.com/espressif/arduino-esp32/blob/master/docs/arduino-ide/boards_manager.md)。
+Arduino IDE 带有内置编译器，并支持各种 Arduino 板，例如 Arduino Uno 和 Arduino Nano。但是 IDE 本身并不支持对 ESP32 进行编程。幸运的是，IDE 允许您为其他微控制器（包括 ESP32 ）下载和安装**核心**，因此它们可以在 Arduino 环境中进行编程。有关如何将 Arduino-ESP32 内核安装到使用 [Arduino IDE 开发板管理](https://github.com/espressif/arduino-esp32/blob/master/docs/arduino-ide/boards_manager.md)的 Arduino IDE 请参阅 [ESP32 开发板管理](https://github.com/espressif/arduino-esp32/blob/master/docs/arduino-ide/boards_manager.md)。
 
 #### 第 3 步：安装 HomeSpan
 
 HomeSpan 打包为标准 Arduino 库，可以从 Arduino IDE 自动安装，也可以通过 GitHub 手动安装。
 
-* 自动安装，请从 Arduino IDE 中打开 Arduino 库管理，方法是从 Arduino 单栏中选择*草图→包含库→管理库...*。然后，在搜索框中输入 *HomeSpan*，从下拉框中选择最新版本，然后单击 `安装`按钮。Arduino 库管理将自动下载并安装您选择的版本。HomeSpan 和所有教程示例草图现在都可以使用了。
+* 自动安装，请从 Arduino IDE 中打开 Arduino 库管理，方法是从 Arduino 单栏中选择*草图→包含库→管理库...*。然后，在搜索框中输入 *HomeSpan*，从下拉框中选择最新版本，然后单击`安装`按钮。Arduino 库管理将自动下载并安装您选择的版本。HomeSpan 和所有教程示例草图现在都可以使用了。
 
 
 * 手动安装，请先将 *Source Code(zip)* 的最新版本下载到您的桌面。如果您的操作系统将包保存为 zip 格式，或者在保存到您的桌面时自动解压缩，无关紧要。 接下来，从 Arduino IDE 的顶部菜单栏中，选择 *草图 → 包含库 → 添加 .ZIP 库...* 并导航到桌面文件夹，您应该在该文件夹中看到刚刚下载的 HomeSpan 包（zip 文件，或文件夹）。选择包（不要打开它），然后单击`选择`。这指示 Arduino IDE 将 HomeSpan 包复制到其库子文件夹中。HomeSpan 现在可以用作标准 Arduino 库（您现在可以从桌面删除 HomeSpan 包，因为它不再需要）。
 
 #### 第 4 步：获取 ESP32 开发板
 
-ESP32 开发板在大多数电子爱好网站上提都供不同配置的 ESP32 开发板，例如 [Adafruit](https://www.adafruit.com) 和 [Sparkfun](https://www.sparkfun.com)。 HomeSpan 可与 [Arduino-ESP32核心](https://docs.espressif.com/projects/arduino-esp32/en/latest/getting_started.html#supported-soc-s) 支持的任何 ESP32 配合使用，包括原始 ESP32、ESP32-S2 和 ESP32-S3 以及 ESP32-C3。
+ESP32 开发板在大多数电子爱好网站上提都供不同配置的 ESP32 开发板，例如 [Adafruit](https://www.adafruit.com) 和 [Sparkfun](https://www.sparkfun.com)。 HomeSpan 可与 [Arduino-ESP32 核心](https://docs.espressif.com/projects/arduino-esp32/en/latest/getting_started.html#supported-soc-s)支持的任何 ESP32 配合使用，包括原始 ESP32、ESP32-S2 和 ESP32-S3 以及 ESP32-C3。
 
 
 #### 第 5 步：安装任何所需的 USB 驱动程序
@@ -51,12 +51,12 @@ ESP32 开发板在大多数电子爱好网站上提都供不同配置的 ESP32 �
 
 #### 第 7 步：配置和配对 HomeSpan 设备
 
-尽管该设备现在已编程并完全可操作，但需要先配置 WiFi 凭据和 HomeKit 设置代码，然后才能与您的 HomeKit 帐户配对。 有关如何通过 Arduino 串行监视器配置 HomeSpan 的详细信息，请参阅 [HomeSpan 命令行界面 (CLI)](CLI.md)  页面。一旦设备连接到您的 WiFi 网络，HomeSpa n现在就可以通过 iPhone 上的 Home App程序进行配对了！
+尽管该设备现在已编程并完全可操作，但需要先配置 WiFi 凭据和 HomeKit 设置代码，然后才能与您的 HomeKit 帐户配对。 有关如何通过 Arduino 串行监视器配置 HomeSpan 的详细信息，请参阅 [HomeSpan 命令行界面 (CLI)](CLI.md) 页面。一旦设备连接到您的 WiFi 网络，HomeSpa n现在就可以通过 iPhone 上的 Home App程序进行配对了！
 
 
 ## 添加控制按钮和状态 LED （*可选*）
 
-除了能够通过 Arduino 串行监视器使用 [HomeSpan 命令行界面 (CLI)](CLI.md)  配置 HomeSpan 设备外，HomeSpan 还为最终用户提供了一种替代方法来配置未连接到计算机的独立 HomeSpan 设备。 此方法需要安装两个外部组件：
+除了能够通过 Arduino 串行监视器使用 [HomeSpan 命令行界面 (CLI)](CLI.md) 配置 HomeSpan 设备外，HomeSpan 还为最终用户提供了一种替代方法来配置未连接到计算机的独立 HomeSpan 设备。 此方法需要安装两个外部组件：
 
 1. 一个常开单刀按钮，用作 HomeSpan 控制按钮，以及
 1. 一个 LED（带有限流电阻）用作 HomeSpan 状态的 LED。
@@ -66,7 +66,7 @@ ESP32 开发板在大多数电子爱好网站上提都供不同配置的 ESP32 �
 同样，状态 LED 可以连接到 ESP32 上任何可用作输出的引脚（并通过适当大小的限流电阻接地）。要通知 HomeSpan 您选择了哪个引脚，您必须在草图顶部附近调用方法 `homeSpan.setStatusPin(pin)`，否则 HomeSpan 将默认状态 LED **未**安装。请注意，一些 ESP32 板有一个内置 LED —— 如果它**不是**需要特殊驱动器的可寻址彩色 LED，而是一个简单的开或关 LED，则可以将其用于状态 LED。
 
 
-使用控制按钮和状态 LED 来配置独立的 HomeSpan 设备，包括启动 HomeSpan 的临时 WiFi 网络以配置设备的 WiFi 凭据和 HomeKit 设置代码，在 [HomeSpan 用户指南](UserGuide.md) 中有详细说明。
+使用控制按钮和状态 LED 来配置独立的 HomeSpan 设备，包括启动 HomeSpan 的临时 WiFi 网络以配置设备的 WiFi 凭据和 HomeKit 设置代码，在 [HomeSpan 用户指南](UserGuide.md)中有详细说明。
 
 
 ## 接下来是什么？
@@ -79,7 +79,7 @@ ESP32 开发板在大多数电子爱好网站上提都供不同配置的 ESP32 �
 
 在开发您的草图时，请记住使用 Arduino 串行监视器。HomeSpan 生成广泛的诊断程序，可帮助您调试草图并监控 HomeSpan 设备的各个方面。 您还可以使用 [HomeSpan 命令行界面 (CLI)](CLI.md) 从串行监视器控制 HomeSpan 的各个方面，包括配置设备的 WiFi 凭据和 HomeKit 设置代码。
 
-要访问更高级的功能，请查看 [HomeSpan PWM](PWM.md)、 [HomeSpan 射频控制](RMT.md) 和 [HomeSpan 灯带](Pixels.md) 页面获取教程和详细信息 关于如何使用 HomeSpan 通过 PWM 信号控制 LED、灯和伺服电机； 生成射频和红外遥控代码来操作电器和电视； 甚至控制多色 RGB LED 灯条。
+要访问更高级的功能，请查看 [HomeSpan PWM](PWM.md)、 [HomeSpan 射频控制](RMT.md) 和 [HomeSpan 灯带](Pixels.md)页面获取教程和详细信息 关于如何使用 HomeSpan 通过 PWM 信号控制 LED、灯和伺服电机； 生成射频和红外遥控代码来操作电器和电视； 甚至控制多色 RGB LED 灯条。
 
 最后，断开 HomeSpan 设备与计算机的连接，并直接从墙上的电源适配器为其供电。 毕竟 HomeSpan 设备旨在独立运行连接到现实世界的设备，如灯、风扇、门锁和窗帘。有关如何**无需将设备连接到计算机**的操作和配置独立 HomeSpan 设备的 WiFi 凭据和 HomeKit 设置代码，请参阅 [HomeSpan 用户指南](UserGuide.md)。
 
