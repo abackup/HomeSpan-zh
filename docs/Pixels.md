@@ -67,7 +67,7 @@ HomeSpan 包括两个专用类，可轻松控制“可寻址” RGB LED。**Pixe
 
  **Pixel** 类依赖 ESP32 的 RMT 外设来创建控制单线可寻址 RGB LED 所需的精确脉冲序列。由于 **Pixel** 的每个实例化都会消耗一个 RMT 通道，因此你可以实例化的 **Pixel** 对象的数量（每个对象控制连接到特定引脚的单独的多像素 RGB LED 设备）仅限于可用的 RMT 数量，如下所示：ESP32 - 8 个实例；ESP32-S2 - 4 个实例；ESP32-C3 - 2 个实例。
 
-此外， **Pixel** 类经过优化，可以处理包含数百个 RGB 或 RGBW 像素的任意长的 LED 灯条。为了有效地完成此操作， **Pixel** 类实现了自己的 RMT 驱动程序，该驱动程序与 HomeSpan 的**射频控制**库使用的默认 RMT 驱动程序冲突。不幸的是，这意味着你不能在同一个 HomeSpan 草图中同时使用 **Pixel** 类库和**射频控制**类库。
+此外， **Pixel** 类经过优化，可以处理包含数百个 RGB 或 RGBW 像素的任意长的 LED 灯条。为了有效地完成此操作， **Pixel** 类实现了自己的 RMT 驱动程序，该驱动程序与 HomeSpan 的 **RFControl** 库使用的默认 RMT 驱动程序冲突。不幸的是，这意味着你不能在同一个 HomeSpan 草图中同时使用 **Pixel** 类库和 **RFControl** 类库。
 
 ## *Dot(uint8_t dataPin, uint8_t clockPin)*
 
