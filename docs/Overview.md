@@ -1,4 +1,4 @@
-原文：2023.3.19， 翻译时间：2023.8.1
+原文：2023.3.19， 翻译时间：2024.5.13
 
 # HomeSpan API 概述
 
@@ -22,7 +22,7 @@ void loop(){
 } // 循环结束
 ```
 
-包含  HomeSpan.h 会创建一个名为 ` HomeSpan ` 的全局对象，它实现了各种方法。最重要的两个是 `begin()` 和 `poll()`。`begin()` 方法采用许多可选参数，初始化 HomeSpan 并放置在 `setup()` 部分的开头附近。不带参数的 `poll()` 方法被放置在 `loop()` 中，这也是 HomeSpan 运行其所有代码的原因。这通常是放在 `loop()` 部分中的唯一函数。我们的草图现在看起来像这样：
+包含  HomeSpan.h 会创建一个名为 `HomeSpan` 的全局对象，它实现了各种方法。最重要的两个是 `begin()` 和 `poll()`。`begin()` 方法采用许多可选参数，初始化 HomeSpan 并放置在 `setup()` 部分的开头附近。不带参数的 `poll()` 方法被放置在 `loop()` 中，这也是 HomeSpan 运行其所有代码的原因。这通常是放在 `loop()` 部分中的唯一函数。我们的草图现在看起来像这样：
 
 ```C++
 #include " HomeSpan.h"         // 包括 HomeSpan 库
@@ -45,7 +45,7 @@ void loop(){
 
 } // 循环结束
 ```
-请注意，作为**替代**，您可以指示 HomeSpan 创建单独的任务，在后台重复调用 ` HomeSpan.poll()`。为此，请将主 `loop()` 中对 ` HomeSpan.poll()` 的调用替换为 `setup()` 函数末尾对 ` HomeSpan.autoPoll()` 的调用：
+请注意，作为**替代**，您可以指示 HomeSpan 创建单独的任务，在后台重复调用 `HomeSpan.poll()`。为此，请将主 `loop()` 中对 `HomeSpan.poll()` 的调用替换为 `setup()` 函数末尾对 `HomeSpan.autoPoll()` 的调用：
 
 ```C++
 #include " HomeSpan.h"         // 包括 HomeSpan 库
@@ -79,9 +79,9 @@ void loop(){
 new SpanAccessory();
 ```
 
-SpanAccessory 可以在没有任何参数的情况下实例化，并且您不需要将对象保存在变量中，因为 HomeSpan 会自动在 ` HomeSpan ` 对象中注册 Accessory。
+SpanAccessory 可以在没有任何参数的情况下实例化，并且您不需要将对象保存在变量中，因为 HomeSpan 会自动在 `HomeSpan` 对象中注册 Accessory。
 
-创建 HAP 附件后，您可以通过实例化 HomeSpan 服务和特性对象开始添加 HAP 服务和 HAP 特性。HomeSpan 支持的每个 HAP 服务都在`Service`命名空间中定义。HomeSpan 支持的每个 HAP 特性都在 `Characteristic` 命名空间中定义。有关完整列表，请参阅 [HomeSpan 服务和特征](ServiceList.md)。
+创建 HAP 附件后，您可以通过实例化 HomeSpan 服务和特性对象开始添加 HAP 服务和 HAP 特性。HomeSpan 支持的每个 HAP 服务都在 `Service` 命名空间中定义。HomeSpan 支持的每个 HAP 特性都在 `Characteristic` 命名空间中定义。有关完整列表，请参阅 [HomeSpan 服务和特征](ServiceList.md)。
 
 例如，要将 HAP 二氧化碳传感器服务添加到附件，只需实例化相应的 HomeSpan 服务对象，如下所示：
 
@@ -136,7 +136,7 @@ void loop(){
 
 > :heavy_check_mark: HomeSpan 具有广泛的错误检查功能。在启动时 HomeSpan 将验证您实例化的 HAP 附件属性数据库的配置，以确保每个附件都具有所有必需的服务，并且每个服务都具有其所有必需的特征。如果 HomeSpan 发现 Accessory 缺少必需的 Service，Service 缺少必需的 Characteristic，或者既非必需也非可选的 Characteristic 已添加到不支持该Characteristic 的 Service，HomeSpan 将报告这些错误并停止程序。
 
-事实上，如果你尝试运行上面的草图，你会发现它无法验证。这是因为每个附件都缺少所需的服务和特性—— HAP 附件信息服务和识别特性。请参阅[ HomeSpan 教程 ](Tutorials.md) 以获取包含所有必需 HAP 元素的各种完整且有效的示例，例如简单台灯的此草图：
+事实上，如果你尝试运行上面的草图，你会发现它无法验证。这是因为每个附件都缺少所需的服务和特性—— HAP 附件信息服务和识别特性。请参阅 [HomeSpan 教程](Tutorials.md)以获取包含所有必需 HAP 元素的各种完整且有效的示例，例如简单台灯的此草图：
 
 ```C++
 /* HomeSpan Table Lamp 示例 */
@@ -310,7 +310,7 @@ void loop(){
 
 尽管上面的示例很好地说明了基本的 HomeSpan 草图，但它仅涉及 HomeSpan 功能的表面。了解全套 HomeSpan 功能的最佳方式是探索 [HomeSpan 教程](Tutorials.md)，可以在 GitHub 上在线查看，也可以在 Arduino IDE 中打开每个教程草图。后一种方法是首选，因为您还可以编译教程草图并将其上传到您的设备以查看它们的实际效果。
 
-此外，您应该通读 [HomeSpan API 参考](Reference.md) 页面以获取有关每个 HomeSpan 对象、结构、方法和函数的完整详细信息，包括任何教程中未涵盖的一些较少使用的函数。
+此外，您应该通读 [HomeSpan API 参考](Reference.md)页面以获取有关每个 HomeSpan 对象、结构、方法和函数的完整详细信息，包括任何教程中未涵盖的一些较少使用的函数。
 
 最后，别忘了访问 [HomeSpan 命令行界面(CLI)](CLI.md) 页面。HomeSpan CLI 是您可以找到实时诊断并能够监控设备状态的地方。最重要的是，HomeSpan CLI 用于使用家庭网络的 WiFi 凭据和 HomeKit 设置代码配置您的设备，以便您可以将设备与家庭配对。
 
