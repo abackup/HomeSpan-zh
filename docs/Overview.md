@@ -134,7 +134,7 @@ void loop(){
 
 如您所见，您不需要命名任何对象，或指定任何 HAP 参数，例如格式类型、UUID 代码等。但是，实例化对象的**顺序**至关重要。特征自动与最后实例化的服务相关联，服务自动与最后实例化的附件相关联。
 
-> :heavy_check_mark: HomeSpan 具有广泛的错误检查功能。在启动时 HomeSpan 将验证您实例化的 HAP 附件属性数据库的配置，以确保每个附件都具有所有必需的服务，并且每个服务都具有其所有必需的特征。如果 HomeSpan 发现 Accessory 缺少必需的 Service，Service 缺少必需的 Characteristic，或者既非必需也非可选的 Characteristic 已添加到不支持该Characteristic 的 Service，HomeSpan 将报告这些错误并停止程序。
+> :heavy_check_mark: HomeSpan 具有广泛的错误检查功能。在启动时 HomeSpan 将验证您实例化的 HAP 附件属性数据库的配置，以确保每个附件都具有所有必需的服务，并且每个服务都具有其所有必需的特征。如果 HomeSpan 发现 Accessory 缺少必需的 Service，Service 缺少必需的 Characteristic，或者既非必需也非可选的 Characteristic 已添加到不支持该 Characteristic 的 Service，HomeSpan 将报告这些错误并停止程序。
 
 事实上，如果你尝试运行上面的草图，你会发现它无法验证。这是因为每个附件都缺少所需的服务和特性—— HAP 附件信息服务和识别特性。请参阅 [HomeSpan 教程](Tutorials.md)以获取包含所有必需 HAP 元素的各种完整且有效的示例，例如简单台灯的此草图：
 
