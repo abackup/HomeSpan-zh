@@ -17,22 +17,22 @@ HomeSpan 包括两个专用类，可轻松控制“可寻址” RGB LED。**Pixe
 
 设置像素颜色的两种主要方法是：
 
-*  `void set(Color color, int nPixels=1)`
+* `void set(Color color, int nPixels=1)`
 
   * 将单像素设备中像素的颜色，或者等效地将多像素设备中第一个 *nPixels* 的颜色设置为 *color*，其中 *color* 是下面定义的 **color** 类型的对象。如果未指定，*nPixels* 默认为 1 （即单个像素）。如果为 *nPixels* 指定的值与设备中实际 RGB （或 RGBW ）像素总数不匹配，这不是问题；如果 *nPixels* 小于设备像素总数，则只有第一个 *nPixels* 将被设置为 *color*；如果 *nPixels* 大于设备像素总数，设备将忽略额外的输入
   
-*  `void set(Color *color, int nPixels)`
+* `void set(Color color, int nPixels)`
 
   * 将多像素设备中每个像素的颜色单独设置为 **color** 数组 *\*color*，大小为 *nPixels* 的 **color** 数组 *\*color* 中指定的颜色值，其中设备的第一个像素设置为中的值 *color\[0\]*，第二个像素设置为中的值 *color\[1\]*...最后一个像素设置为中的值 *color\[nPixels-1\]*。与上面类似，如果指定的值没有问题 *nPixels* 与设备中实际 RGB（或 RGBW）像素总数不匹配
 
 在上述两种方法中，颜色都存储在 32 位 **color** 对象中，该对象配置为保存四个 8 位 RGBW 值。**color** 对象可以实例化为单个变量（例如 `Pixel::Color myColor;` ）或数组（例如 `Pixel::Color myColors[8];` ）。请注意， **Pixel** 类使用的 **color** 对象的范围仅限于 **Pixel** 类本身，因此你需要使用完全限定的类名称 "Pixel::Color"。创建 **color** 对象后，可以使用以下两种方法之一设置它存储的颜色：
   
-  *  `Color RGB(uint8_t r, uint8_t g, uint8_t b, uint8_t w=0)`
+  * `Color RGB(uint8_t r, uint8_t g, uint8_t b, uint8_t w=0)`
 
     * 其中 *r* 、 *g* 和 *b* 表示 0-255 范围内的 8 位红色、绿色和蓝色值，*w* 代表白色 LED 的 8 位值 [0-255]。白色值可以未指定，在这种情况下它默认为 0。此外，白色值将被 *set()* 忽略，除非在构造函数中 *isRGBW* 标志被指定为 *true*
     * 示例： `myColor.RGB(255,255,0)` 将 myColor 设置为亮黄色
       
-  *  `Color HSV(float h, float s, float v, double w=0)`
+  * `Color HSV(float h, float s, float v, double w=0)`
     
     * 其中 *h* 为色调，范围为 0-360；*s* 为饱和度百分比，从 0-100；*v* 为 0-100 之间的亮度百分比。这些值将转换为等效的 8 位 RGB 值 (0-255)，以便存储在 *color* 对象中。请注意，*w* 值是单独处理的，代表白色 LED 的亮度百分比（从 0-100），该值也被转换为 0-255 的 8 位值，以便存储在 **color** 对象。与上面类似，白色值可以不指定，在这种情况下它默认为 0
     * 示例： `myColor.HSV(120,100,50)` 将 myColor 设置为亮度为 50% 的完全饱和绿色
@@ -41,23 +41,23 @@ HomeSpan 包括两个专用类，可轻松控制“可寻址” RGB LED。**Pixe
 
  **Pixel** 类还支持以下类级方法作为创建颜色的便捷替代方法：
   
-*  `static Color RGB(uint8_t r, uint8_t g, uint8_t b, uint8_t w=0)`
+* `static Color RGB(uint8_t r, uint8_t g, uint8_t b, uint8_t w=0)`
   * 相当于 `return(Color().RGB(r,g,b,w));`
   * 示例： `Pixel p(8);  p.set(Pixel::RGB(0,0,255),8);` 将 8 像素设备中每个像素的颜色设置为蓝色
 
-*  `static Color HSV(float h, float s, float v, double w=0)`
+* `static Color HSV(float h, float s, float v, double w=0)`
   * 相当于 `return(Color().HSV(h,s,v,w));`
   * 示例： `Pixel::Color c[]={Pixel::HSV(120,100,100),Pixel::HSV(60,100,100),Pixel::HSV(0,100,100)};` 创建红黄绿交通灯图案
 
 最后， **Pixel** 类支持这两个额外但很少需要的方法：
 
-*  `int getPin()`
+* `int getPin()`
 
   * 返回 pin 号，如果实例化由于缺乏资源而失败，则返回 -1
 
-*  `void setTiming(float high0, float low0, float high1, float low1, uint32_t lowReset)`
+* `void setTiming(float high0, float low0, float high1, float low1, uint32_t lowReset)`
 
-  *  **Pixel** 类用于生成设置 RGB LED 设备颜色所需的“数据”信号的默认时序参数应该适用于大多数基于 SK6812 或 WS2812 驱动器芯片的商业产品。如果你需要覆盖类默认值并将其替换为你自己的计时参数，请使用此方法**仅有的**，其中
+  * **Pixel** 类用于生成设置 RGB LED 设备颜色所需的“数据”信号的默认时序参数应该适用于大多数基于 SK6812 或 WS2812 驱动器芯片的商业产品。如果你需要覆盖类默认值并将其替换为你自己的计时参数，请使用此方法**仅有的**，其中
     * *high0* 和 *low0* 指定编码零位的脉冲的高相位和低相位的持续时间（以微秒为单位）；
     * *high1* 和 *low1* 指定编码一位的脉冲的高相位和低相位的持续时间（以微秒为单位）；和
     * *lowReset* 指定表示脉冲流结束的延迟（以微秒为单位）
@@ -78,23 +78,23 @@ HomeSpan 包括两个专用类，可轻松控制“可寻址” RGB LED。**Pixe
 
 设置像素颜色的两种主要方法是：
 
-*  `void set(Color color, int nPixels=1)`
+* `void set(Color color, int nPixels=1)`
 
   * 将单像素设备中像素的颜色设置为 *color*，或者等效地将多像素设备中第一个 *nPixels* 的颜色设置为 *color*，其中 *color* 是下面定义的 **color** 类型的对象。如果未指定，*nPixels* 默认为 1（即单个像素）。如果为 *nPixels* 指定的值与设备中的实际 RGB 像素总数不匹配，这不是问题；如果 *nPixels* 小于设备像素总数，则仅第一个*nPixels* 将被设置为 *color*；如果 *nPixels* 大于设备像素总数，设备将忽略额外的输入
   
-*  `void set(Color *color, int nPixels)`
+* `void set(Color *color, int nPixels)`
 
   * 将多像素设备中每个像素的颜色单独设置为 **color** 数组 *\*color*，大小为 *nPixels* 的 **color** 数组 *\*color* 中指定的颜色值，其中设备的第一个像素设置为中的值 *color\[0\]*，第二个像素设置为中的值 *color\[1\]*...最后一个像素设置为中的值 *color\[nPixels-1\]*。与上面类似，如果指定的值没有问题 *nPixels* 与设备中实际 RGB 像素总数不匹配
 
 在上述两种方法中，颜色都存储在 32 位 **color** 对象中，该对象配置为保存三个 8 位 RGB 值以及一个可用于限制 LED 电流的 5 位值。**color** 对象可以实例化为单个变量（例如 `Dot::Color myColor;` ）或数组（例如 `Dot::Color myColors\[8\];` ）。请注意， **Dot** 类使用的 **color** 对象的范围仅限于 **Dot** 类本身，因此你需要使用 full-合格的类名称“Dot::Color”。创建 **color** 对象后，可以使用以下两种方法之一设置它存储的颜色：
   
-  *  `Color RGB(uint8_t r, uint8_t g, uint8_t b, uint8_t driveLevel=31)`
+  * `Color RGB(uint8_t r, uint8_t g, uint8_t b, uint8_t driveLevel=31)`
 
     * 其中 *r*、*g* 和 *b* 表示 0-255 范围内的 8 位红色、绿色和蓝色值，*driveLevel* 表示 5 位值 [0-31]，用于限制 LED 电流从 0（无电流）到 31（最大电流，这是默认值）。通过将 *driveLevel* 设置为小于 31 的值来限制 LED 电流，可以提供一种控制每个像素 RGB LED 亮度的无闪烁方式。
     * 示例： `myColor.RGB(128,128,0)` 使用红色和绿色 LED 的 50% 占空比将 myColor 设置为半亮度黄色（即 128/256）
     * 示例： `myColor.RGB(255,255,0,16)` 通过将像素的 LED 电流限制为其最大值的 50%（即 16/32），将 myColor 设置为半亮度黄色
       
-  *  `Color HSV(float h, float s, float v, double drivePercent=100)`
+  * `Color HSV(float h, float s, float v, double drivePercent=100)`
     
     * 其中*h* 为色调，范围为 0-360；*s* 为饱和度百分比从 0-100；*v* 为 0-100 之间的亮度百分比。这些值将转换为等效的 8 位 RGB 值 (0-255)，以便存储在 *color* 对象中。*drivePercen* 参数以与上面 *driveLevel* 相同的方式控制电流，不同之处在于它不是指定为 0-31 的绝对值，而是指定为百分比从 0 到 100（默认）
     * 示例： `myColor.HSV(120,100,50)` 使用 50% 占空比将 myColor 设置为半亮度、完全饱和的绿色
@@ -104,11 +104,11 @@ HomeSpan 包括两个专用类，可轻松控制“可寻址” RGB LED。**Pixe
 
  **Pixel** 类还支持以下类级方法作为创建颜色的便捷替代方法：
   
-*  `static Color RGB(uint8_t r, uint8_t g, uint8_t b, uint8_t driveLevel=31)`
+* `static Color RGB(uint8_t r, uint8_t g, uint8_t b, uint8_t driveLevel=31)`
   * 相当于 `return(Color().RGB(r,g,b,driveLevel));`
   * 示例： `Dot p(8,11);  p.set(Dot::RGB(0,0,255),8);` 将 8 像素设备中每个像素的颜色设置为蓝色
 
-*  `static Color HSV(float h, float s, float v, double drivePercent=100)`
+* `static Color HSV(float h, float s, float v, double drivePercent=100)`
   * 相当于 `return(Color().HSV(h,s,v,drivePercent));`
   * 示例： `Dot::Color c[]={Dot::HSV(120,100,100),Dot::HSV(60,100,100),Dot::HSV(0,100,100)};` 创建红黄绿交通灯图案
 
