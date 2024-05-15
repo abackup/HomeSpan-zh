@@ -10,7 +10,8 @@ HomeSpan 提供以微控制器为中心的 Apple HomeKit 配件协议规范版�
 
 HomeSpan 需要 2.0.0 或更高版本的，并已通过 2.0.14 版的 [Arduino-ESP32 Board Manager](https://github.com/espressif/arduino-esp32) 测试（推荐使用）。HomeSpan 可以在原来的 ESP32 以及乐鑫的 ESP32-S2、ESP32-C3 和 ESP32-S3 芯片上运行。
 
-> [!NOTE] 苹果的新 HomeKit 架构[需要使用家庭中心](https://support.apple.com/en-us/HT207057)（HomePod 或 Apple TV）可用于任何 HomeKit 设备的完整和正确操作，包括基于 HomeSpan 的设备。如果没有家庭中心，HomeSpan 将无法向家庭应用程序发送通知 —— 按钮和温度传感器等将无法向家庭应用程序发送更新。
+> [!NOTE]
+> 苹果的新 HomeKit 架构[需要使用家庭中心](https://support.apple.com/en-us/HT207057)（HomePod 或 Apple TV）可用于任何 HomeKit 设备的完整和正确操作，包括基于 HomeSpan 的设备。如果没有家庭中心，HomeSpan 将无法向家庭应用程序发送通知 —— 按钮和温度传感器等将无法向家庭应用程序发送更新。
 
 ### HomeSpan 亮点
 
