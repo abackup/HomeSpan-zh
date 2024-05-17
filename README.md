@@ -63,7 +63,7 @@ HomeSpan 包括以下文档：
 * [HomeSpan 入门](docs/GettingStarted.md) - 设置开发 HomeSpan 设备所需的软件和硬件
 * [HomeSpan API 概述](docs/Overview.md) - HomeSpan API 概述，包括开发第一个 HomeSpan 草图的分步指南
 * [HomeSpan 教程](docs/Tutorials.md) - HomeSpan 的草图指南
-* [HomeSpan 服务和特征](docs/ServiceList.md) - HomeSpan 支持的所有 HAP 服务和特性的列表
+* [HomeSpan 服务和特征](docs/ServiceList.md) - HomeSpan 支持的所有 HAP 服务和特征的列表
 * [HomeSpan 配件类别](docs/Categories.md) - HomeSpan 定义的所有 HAP 配件类别的列表
 * [HomeSpan 命令行界面（CLI）](docs/CLI.md) - 配置 HomeSpan 设备的 WiFi 凭据，修改其 HomeKit 设置代码，监控和更新其状态，并从 Arduino IDE 串行监控器访问详细的实时设备诊断
 * [HomeSpan 用户指南](docs/UserGuide.md) - 有关如何配置已编程的 HomeSpan 设备的 WiFi 凭据、修改其 HomeKit 设置代码以及将设备与 HomeKit 配对的交钥匙式说明。不需要电脑！
@@ -75,7 +75,7 @@ HomeSpan 包括以下文档：
 * [HomeSpan 灯带](docs/Pixels.md) - 可寻址的单线和双线 RGB 和 RGBW LED 和 LED 灯带的集成控制
 * [HomeSpan 控制步进电机](docs/Stepper.md) - 步进电机集成控制，包括 PWM 微步进
 * [HomeSpan Span 热点](docs/NOW.md) - 使用 ESP-NOW 促进 ESP32 设备之间的点对点双向通信
-* [HomeSpan 电视服务](docs/TVServices.md) - 如何使用 HomeKit 未记录的电视服务和特性
+* [HomeSpan 电视服务](docs/TVServices.md) - 如何使用 HomeKit 未记录的电视服务和特征
 * [HomeSpan 消息记录](docs/Logging.md) - 如何生成在 Arduino 串行监视器上显示的日志消息，以及可选地发布到集成的 Web 日志页面
 * [HomeSpan 设备克隆](docs/Cloning.md) - 将损坏的设备无缝更换为新设备，而无需重新配对和丢失 HomeKit 自动化
 * [HomeSpan 项目](https://github.com/topics/homespan) - HomePan 库的实际应用
@@ -87,7 +87,7 @@ HomeSpan 包括以下文档：
 
 # 外部资源
 
-除了 HomeSpan 资源之外，刚接触 HomeKit 编程的开发人员可能会发现 Apple 的 HomeKit 配件协议规范非商业版本 R2 (HAP-R2) 的第 8 章和第 9 章非常有用。不幸的是，苹果公司不再提供这份文件（也许是因为它最后一次更新是在 2019 年 7 月，现在已经有些过时了）。但是，你可以在 Web 上的其他地方找到此文档的副本。请注意，Apple 并未将 HAP-R2 文档替换为用于非商业用途的任何其他版本，并且 Apple 的开源 [HomeKit ADK](https://github.com/apple/HomeKitADK) 仅反映了原始的 HAP-R2 规格（而不是用于商业设备的 HomeKit 中提供的所有最新服务和特性）。
+除了 HomeSpan 资源之外，刚接触 HomeKit 编程的开发人员可能会发现 Apple 的 HomeKit 配件协议规范非商业版本 R2 (HAP-R2) 的第 8 章和第 9 章非常有用。不幸的是，苹果公司不再提供这份文件（也许是因为它最后一次更新是在 2019 年 7 月，现在已经有些过时了）。但是，你可以在 Web 上的其他地方找到此文档的副本。请注意，Apple 并未将 HAP-R2 文档替换为用于非商业用途的任何其他版本，并且 Apple 的开源 [HomeKit ADK](https://github.com/apple/HomeKitADK) 仅反映了原始的 HAP-R2 规格（而不是用于商业设备的 HomeKit 中提供的所有最新服务和特征）。
 
  --- 
 
