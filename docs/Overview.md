@@ -1,4 +1,4 @@
-原文：2023.3.19， 翻译时间：2024.5.13
+原文：2023.3.19，翻译时间：2024.5.13，校对时间：2024.5.17
 
 # HomeSpan API 概述
 
@@ -45,7 +45,7 @@ void loop(){
 
 } // 循环结束
 ```
-请注意，作为**替代**，您可以指示 HomeSpan 创建单独的任务，在后台重复调用 `HomeSpan.poll()`。为此，请将主 `loop()` 中对 `HomeSpan.poll()` 的调用替换为 `setup()` 函数末尾对 `HomeSpan.autoPoll()` 的调用：
+请注意，作为**替代**方法，您可以指示 HomeSpan 创建单独的任务，在后台重复调用 `HomeSpan.poll()`。为此，请将主 `loop()` 中对 `HomeSpan.poll()` 的调用替换为 `setup()` 函数末尾对 `HomeSpan.autoPoll()` 的调用：
 
 ```C++
 #include " HomeSpan.h"         // 包括 HomeSpan 库
@@ -71,7 +71,7 @@ void loop(){
 
 ## 创建 HAP 附件属性数据库
 
-下一步是实现定义 HAP 附件属性数据库的代码，该数据库不是真正的数据库，而只是此 HomeSpan 设备实现的所有 HAP 附件对象、服务对象和特性对象的列表。
+下一步是实现定义 HAP 附件属性数据库的代码，该数据库不是真正的数据库，而只是此 HomeSpan 设备实现的所有 HAP 附件对象、服务对象和特征对象的列表。
 
 您可以通过实例化一个新的 `SpanAccessory` 对象来创建一个新的 HAP 附件，如下所示：
 
@@ -79,9 +79,9 @@ void loop(){
 new SpanAccessory();
 ```
 
-SpanAccessory 可以在没有任何参数的情况下实例化，并且您不需要将对象保存在变量中，因为 HomeSpan 会自动在 `HomeSpan` 对象中注册 Accessory。
+SpanAccessory 可以在没有任何参数的情况下实例化，并且您不需要将对象保存在变量中，因为 HomeSpan 会自动在 `HomeSpan` 对象中注册附件。
 
-创建 HAP 附件后，您可以通过实例化 HomeSpan 服务和特性对象开始添加 HAP 服务和 HAP 特性。HomeSpan 支持的每个 HAP 服务都在 `Service` 命名空间中定义。HomeSpan 支持的每个 HAP 特性都在 `Characteristic` 命名空间中定义。有关完整列表，请参阅 [HomeSpan 服务和特征](ServiceList.md)。
+创建 HAP 附件后，您可以通过实例化 HomeSpan 服务和特征对象开始添加 HAP 服务和 HAP 特征。HomeSpan 支持的每个 HAP 服务都在 `Service` 命名空间中定义。HomeSpan 支持的每个 HAP 特征都在 `Characteristic` 命名空间中定义。有关完整列表，请参阅 [HomeSpan 服务和特征](ServiceList.md)。
 
 例如，要将 HAP 二氧化碳传感器服务添加到附件，只需实例化相应的 HomeSpan 服务对象，如下所示：
 
@@ -97,7 +97,7 @@ HAP 特征以类似的方式添加到服务中。例如要添加 HAP 检测到�
 new Characteristic::CarbonDioxideDetected();
 ```
 
-HomeSpan 将自动注册此特性并将其附加到您定义的最后一个服务。但是与附件和服务对象不同，特性确实采用单个可选参数（上面未显示），该参数在启动时初始化特性的值。如果您不指定参数，HomeSpan 将使用合理的默认值。
+HomeSpan 将自动注册此特征并将其附加到您定义的最后一个服务。但是与附件和服务对象不同，特征确实采用单个可选参数（上面未显示），该参数在启动时初始化特征的值。如果您不指定参数，HomeSpan 将使用合理的默认值。
 
 因此，通过简单地实例化一个或多个 SpanAccessory 对象来定义一个完整的 HAP 附件属性数据库，每个 SpanAccessory 对象具有一个或多个 Service 对象，而这些对象又包含一个或多个 Characteristic 对象。例如一个 HomeSpan 设备支持一个带有非可调光吸顶灯的变速、可逆吊扇和一个带有可调光灯泡的台灯，可以按如下方式实现：
 
@@ -134,9 +134,9 @@ void loop(){
 
 如您所见，您不需要命名任何对象，或指定任何 HAP 参数，例如格式类型、UUID 代码等。但是，实例化对象的**顺序**至关重要。特征自动与最后实例化的服务相关联，服务自动与最后实例化的附件相关联。
 
-> :heavy_check_mark: HomeSpan 具有广泛的错误检查功能。在启动时 HomeSpan 将验证您实例化的 HAP 附件属性数据库的配置，以确保每个附件都具有所有必需的服务，并且每个服务都具有其所有必需的特征。如果 HomeSpan 发现 Accessory 缺少必需的 Service，Service 缺少必需的 Characteristic，或者既非必需也非可选的 Characteristic 已添加到不支持该 Characteristic 的 Service，HomeSpan 将报告这些错误并停止程序。
+> :heavy_check_mark: HomeSpan 具有广泛的错误检查功能。在启动时 HomeSpan 将验证您实例化的 HAP 附件属性数据库的配置，以确保每个附件都具有所有必需的服务，并且每个服务都具有其所有必需的特征。如果 HomeSpan 发现附件缺少必需的服务，服务缺少必需的特征，或者既非必需也非可选的特征已添加到不支持该特征的服务中，HomeSpan 将报告这些错误并停止程序。
 
-事实上，如果你尝试运行上面的草图，你会发现它无法验证。这是因为每个附件都缺少所需的服务和特性—— HAP 附件信息服务和识别特性。请参阅 [HomeSpan 教程](Tutorials.md)以获取包含所有必需 HAP 元素的各种完整且有效的示例，例如简单台灯的此草图：
+事实上，如果你尝试运行上面的草图，你会发现它无法验证。这是因为每个附件都缺少所需的服务和特征—— HAP 附件信息服务和识别特征。请参阅 [HomeSpan 教程](Tutorials.md) 以获取包含所有必需 HAP 元素的各种完整且有效的示例，例如简单台灯的此草图：
 
 ```C++
 /* HomeSpan Table Lamp 示例 */
@@ -155,7 +155,7 @@ void setup() {
       new Characteristic::Identify();               // HAP 要求附件信息服务包括识别 Characteristic
         
     new Service::LightBulb();                       // 创建灯泡服务
-      new Characteristic::On();                     // 存储灯泡状态的特性：开或关
+      new Characteristic::On();                     // 存储灯泡状态的特征：开或关
   
 } // end of setup()
 
@@ -168,11 +168,11 @@ void loop(){
 
 ## 将 HomeSpan 连接到真实世界的电器
 
-上面的台灯示例是一个功能齐全的 HomeSpan 草图。如果您将其上传到您的 ESP32 设备并将设备与 HomeKit 配对，您会发现 Home App 中出现一个标有“我的台灯”的新磁贴。瓷砖是可操作的。按一次，它显示灯打开。再按一次，指示灯熄灭。当然，现实世界中什么也没有发生—— HomeSpan 还没有被编程来打开一个实际的灯。
+上面的台灯示例是一个功能齐全的 HomeSpan 草图。如果您将其上传到您的 ESP32 设备并将设备与 HomeKit 配对，您会发现家庭应用中出现一个标有“我的台灯”的新图块。图块是可操作的。按一次，它显示灯打开。再按一次，指示灯熄灭。当然，现实世界中什么也没有发生—— HomeSpan 还没有被编程来打开一个实际的灯。
 
-当您按下 Home App 中的磁贴时，HomeKit 会向 HomeSpan 发送请求以 **更新** 一个或多个特性。在上面的示例中，按下磁贴会导致 HomeKit 专门请求将灯泡服务的 On Characteristic 更新为 true（on）或 false（off）。当 HomeSpan 收到更新一个或多个特性的请求时，而不是顺序调用代码来分别更新每个特性，HomeSpan 而是根据它们的服务对请求进行分组，并为该服务调用 `update()` 方法。这是因为许多服务支持物理相关的多个特征。例如，打开一盏灯并将其亮度设置为 50% 需要更新两个特性（开和亮度）。在这些按顺序处理的系统中，用户需要编写复杂的代码来保存中间状态，并确定当它收到打开灯的请求时要做什么，如果还不知道设置亮度的请求是否会紧随其后。
+当您按下家庭应用中的图块时，HomeKit 会向 HomeSpan 发送请求以**更新**一个或多个特征。在上面的示例中，按下图块会导致 HomeKit 专门请求将灯泡服务的开关特征更新为 true (on) 或 false (off)。当 HomeSpan 收到更新一个或多个特征的请求时，而不是顺序调用代码来分别更新每个特征，HomeSpan 而是根据它们的服务对请求进行分组，并为该服务调用 `update()` 方法。这是因为许多服务支持物理相关的多个特征。例如，打开一盏灯并将其亮度设置为 50% 需要更新两个特征（开和亮度）。在这些按顺序处理的系统中，用户需要编写复杂的代码来保存中间状态，并确定当它收到打开灯的请求时要做什么，如果还不知道设置亮度的请求是否会紧随其后。
 
-HomeSpan 使用的**以服务为中心**方法使得实现代码来处理更新变得更加容易。您无需编写代码来响应单个特性的更新，而是编写代码来响应整个服务的更新，并使用方法通知您请求更新哪些特性，以及它们的新对应值。
+HomeSpan 使用的**以服务为中心**方法使得实现代码来处理更新变得更加容易。您无需编写代码来响应单个特征的更新，而是编写代码来响应整个服务的更新，并使用方法通知您请求更新哪些特征，以及它们的新对应值。
 
 每个 HomeSpan 服务都实现了一个虚拟的 `update()` 方法，默认情况下什么都不做。要实现您自己的逻辑，您可以使用自己的代码覆盖 `update()`。最简单的方法是创建一个新服务，该服务派生自您要使用自己的 `update()` 方法自定义的服务。例如，我们可以从 LightBulb 派生一个名为 TableLamp 的新服务，如下所示：
 
@@ -180,17 +180,17 @@ HomeSpan 使用的**以服务为中心**方法使得实现代码来处理更新�
 struct TableLamp : Service::LightBulb {};
 ```
 
-在这个新结构中，我们可以创建自己的构造函数，可能带有一个或多个参数。构造函数可以存储一些特定于设备的参数，例如将用于驱动打开和关闭台灯的继电器的 ESP32 引脚的编号。构造函数还应定义服务所需的所有特征。您还需要将至少一些 Characteristic 对象保存为命名变量，以便稍后在 `update()` 方法中引用它们。所有 HomeSpan 特性的基类是 `SpanCharacteristic`，因此创建一个变量来存储 HomeSpan 特性需要您将其定义为 `SpanCharacteristic *`。综上所述，到目前为止，我们有：
+在这个新结构中，我们可以创建自己的构造函数，可能带有一个或多个参数。构造函数可以存储一些特定于设备的参数，例如将用于驱动打开和关闭台灯的继电器的 ESP32 引脚的编号。构造函数还应定义服务所需的所有特征。您还需要将至少一些特征对象保存为命名变量，以便稍后在 `update()` 方法中引用它们。所有 HomeSpan 特征的基类是 `SpanCharacteristic`，因此创建一个变量来存储 HomeSpan 特征需要您将其定义为 `SpanCharacteristic *`。综上所述，到目前为止，我们有：
 
 ```C++
 struct TableLamp : Service::LightBulb{
 
   int lampPin;                               // 存储连接到转动表的假设继电器的引脚号 Lamp on/off
-  SpanCharacteristic *lampPower;             // 存储对 On 特性的引用
+  SpanCharacteristic *lampPower;             // 存储对 On 特征的引用
   
   TableLamp(int lampPin) : Service::LightBulb(){       // 使用一个参数定义的 TableLamp 的 constructor() 方法。请注意，我们还调用了 LightBulb Service 的 constructor() 方法。
 
-    lampPower=new Characteristic::On();      // 实例化 On Characteristic 并将其保存为 lampPower
+    lampPower=new Characteristic::On();      // 实例化开关特征并将其保存为 lampPower
     this->lampPin=lampPin;                   // 保存假设继电器的引脚号
     pinMode(lampPin,OUTPUT);                 // 使用标准 Arduino pinMode 函数将引脚配置为输出                    
     
@@ -198,17 +198,17 @@ struct TableLamp : Service::LightBulb{
 };
 ```
 
-现在我们准备好实现我们的 `update()` 方法了。虽然 `update()` 没有参数，但它确实有一个布尔返回值，它让 HomeKit 知道它更新台灯的请求是成功（true）还是不成功（false）。在 `update()` 方法中，您将可以访问服务中的所有特性，在这种情况下，就是我们命名为 lampPower 的 On Characterisrtic。HomeSpan 特性实现了多种方法，这些方法提供了有关特性状态、是否有更新它们的请求以及更新值应该是什么的信息。由于我们的 TableLamp 服务只定义了一个特性，这意味着每当调用 update() 时，HomeKit 都必须请求更新 On Characteristic，我们不必检查它是否正在更新。但是，我们确实需要知道 HomeKit 请求的值。要检索此值，我们使用 getNewVal() 方法，如下所示：`lampPower->getNewVal()`。这将返回 HomeKit 请求的 On Characteristic 的新值。这将是真 (1) 或假 (0)，具体取决于 HomeKit 是否希望打开或关闭灯。因此，我们可以使用这个值来相应地更新 lampPin。我们完整的 TableLamp 服务现在看起来像这样：
+现在我们准备好实现我们的 `update()` 方法了。虽然 `update()` 没有参数，但它确实有一个布尔返回值，它让 HomeKit 知道它更新台灯的请求是成功（true）还是不成功（false）。在 `update()` 方法中，您将可以访问服务中的所有特征，在这种情况下，就是我们命名为 lampPower 的 On Characterisrtic。HomeSpan 特征实现了多种方法，这些方法提供了有关特征状态、是否有更新它们的请求以及更新值应该是什么的信息。由于我们的 TableLamp 服务只定义了一个特征，这意味着每当调用 update() 时，HomeKit 都必须请求更新 On Characteristic，我们不必检查它是否正在更新。但是，我们确实需要知道 HomeKit 请求的值。要检索此值，我们使用 getNewVal() 方法，如下所示：`lampPower->getNewVal()`。这将返回 HomeKit 请求的开关特征的新值。这将是真 (1) 或假 (0)，具体取决于 HomeKit 是否希望打开或关闭灯。因此，我们可以使用这个值来相应地更新 lampPin。我们完整的 TableLamp 服务现在看起来像这样：
 
 ```C++
 struct TableLamp : Service::LightBulb{
 
   int lampPin;                               // 存储连接到打开/关闭台灯的假设继电器的引脚号
-  SpanCharacteristic *lampPower;             // 存储对 On 特性的引用
+  SpanCharacteristic *lampPower;             // 存储对 On 特征的引用
   
   TableLamp(int lampPin) : Service::LightBulb(){       // 使用一个参数定义的 TableLamp 的 constructor() 方法。请注意，我们还调用了 LightBulb Service 的 constructor() 方法。
 
-    lampPower=new Characteristic::On();      // 实例化 On Characteristic 并将其保存为 lampPower
+    lampPower=new Characteristic::On();      // 实例化开关特征并将其保存为 lampPower
     this->lampPin=lampPin;                   // 保存假设继电器的引脚号
     pinMode(lampPin,OUTPUT);                 // 使用标准 Arduino pinMode 函数将引脚配置为输出                       
     
@@ -218,18 +218,18 @@ struct TableLamp : Service::LightBulb{
 
     digitalWrite(lampPin,lampPower->getNewVal());      // 使用标准 Arduino digitalWrite 函数根据 HomeKit 请求的值将 ledPin 更改为高或低
    
-    return(true);                            // 返回 true 让 HomeKit（和 Home App Client）知道更新成功
+    return(true);                            // 返回 true 让 HomeKit（和家庭应用Client）知道更新成功
   
   } // 结束更新
   
 };
 ```
 
-最后，我们将派生的 TableLamp 服务添加到原始草图中，并替换我们的通用灯泡服务和 On Characteristic 的实例化：
+最后，我们将派生的 TableLamp 服务添加到原始草图中，并替换我们的通用灯泡服务和开关特征的实例化：
 
 ```C++
 new Service::LightBulb();                       // 创建灯泡服务
-  new Characteristic::On();                       // 存储灯泡状态的特性：开或关
+  new Characteristic::On();                       // 存储灯泡状态的特征：开或关
 ```
 
 TableLamp 服务的实例化如下：
@@ -252,11 +252,11 @@ new TableLamp(17);
 struct TableLamp : Service::LightBulb{
 
   int lampPin;                               // 存储连接到打开/关闭台灯的假设继电器的引脚号
-  SpanCharacteristic *lampPower;             // 存储对 On 特性的引用
+  SpanCharacteristic *lampPower;             // 存储对 On 特征的引用
   
   TableLamp(int lampPin) : Service::LightBulb(){       // 使用一个参数定义的 TableLamp 的 constructor() 方法。请注意，我们还调用了 LightBulb Service 的 constructor() 方法。
 
-    lampPower=new Characteristic::On();      // 实例化 On Characteristic 并将其保存为 lampPower
+    lampPower=new Characteristic::On();      // 实例化开关特征并将其保存为 lampPower
     this->lampPin=lampPin;                   // 保存假设继电器的引脚号
     pinMode(lampPin,OUTPUT);                 // 使用标准 Arduino pinMode 函数将引脚配置为输出                  
     
@@ -266,7 +266,7 @@ struct TableLamp : Service::LightBulb{
 
     digitalWrite(lampPin,lampPower->getNewVal());      // 使用标准 Arduino digitalWrite 函数根据 HomeKit 请求的值将 ledPin 更改为高或低
    
-    return(true);                            // 返回 true 让 HomeKit（和 Home App Client）知道更新成功
+    return(true);                            // 返回 true 让 HomeKit（和家庭应用Client）知道更新成功
   
   } // 结束更新
   
@@ -298,7 +298,7 @@ void loop(){
 } // 结束循环
 ```
 
-这个完整的工作示例已准备好上传到您的 ESP32 设备，可用于操作通过继电器连接到引脚 17 的假想台灯。或者，您可以简单地将 LED 连接到引脚 17，看看它是如何工作的！ 恭喜，你已经创建了你的第一个 HomeSpan 草图。
+这个完整的工作示例已准备好上传到您的 ESP32 设备，可用于操作通过继电器连接到引脚 17 的虚拟台灯。或者，您可以简单地将 LED 连接到引脚 17，看看它是如何工作的！ 恭喜，你已经创建了你的第一个 HomeSpan 草图。
 
 ## 多文件草图
 
@@ -310,7 +310,7 @@ void loop(){
 
 尽管上面的示例很好地说明了基本的 HomeSpan 草图，但它仅涉及 HomeSpan 功能的表面。了解全套 HomeSpan 功能的最佳方式是探索 [HomeSpan 教程](Tutorials.md)，可以在 GitHub 上在线查看，也可以在 Arduino IDE 中打开每个教程草图。后一种方法是首选，因为您还可以编译教程草图并将其上传到您的设备以查看它们的实际效果。
 
-此外，您应该通读 [HomeSpan API 参考](Reference.md)页面以获取有关每个 HomeSpan 对象、结构、方法和函数的完整详细信息，包括任何教程中未涵盖的一些较少使用的函数。
+此外，您应该通读 [HomeSpan API 参考](Reference.md) 页面以获取有关每个 HomeSpan 对象、结构、方法和函数的完整详细信息，包括任何教程中未涵盖的一些较少使用的函数。
 
 最后，别忘了访问 [HomeSpan 命令行界面(CLI)](CLI.md) 页面。HomeSpan CLI 是您可以找到实时诊断并能够监控设备状态的地方。最重要的是，HomeSpan CLI 用于使用家庭网络的 WiFi 凭据和 HomeKit 设置代码配置您的设备，以便您可以将设备与家庭配对。
 
