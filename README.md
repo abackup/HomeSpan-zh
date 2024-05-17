@@ -63,7 +63,7 @@ HomeSpan 包括以下文档：
 * [HomeSpan 入门](docs/GettingStarted.md) - 设置开发 HomeSpan 设备所需的软件和硬件
 * [HomeSpan API 概述](docs/Overview.md) - HomeSpan API 概述，包括开发第一个 HomeSpan 草图的分步指南
 * [HomeSpan 教程](docs/Tutorials.md) - HomeSpan 的草图指南
-* [HomeSpan 服务和特点](docs/ServiceList.md) - HomeSpan 支持的所有 HAP 服务和特性的列表
+* [HomeSpan 服务和特征](docs/ServiceList.md) - HomeSpan 支持的所有 HAP 服务和特性的列表
 * [HomeSpan 配件类别](docs/Categories.md) - HomeSpan 定义的所有 HAP 配件类别的列表
 * [HomeSpan 命令行界面（CLI）](docs/CLI.md) - 配置 HomeSpan 设备的 WiFi 凭据，修改其 HomeKit 设置代码，监控和更新其状态，并从 Arduino IDE 串行监控器访问详细的实时设备诊断
 * [HomeSpan 用户指南](docs/UserGuide.md) - 有关如何配置已编程的 HomeSpan 设备的 WiFi 凭据、修改其 HomeKit 设置代码以及将设备与 HomeKit 配对的交钥匙式说明。不需要电脑！
