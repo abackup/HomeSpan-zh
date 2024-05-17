@@ -75,7 +75,7 @@ ESP32 开发板在大多数电子爱好网站上提都供不同配置的 ESP32 �
 
 接下来，探索教程草图，上传一些，看看它们是如何工作的。 这些示例从简单开始逐渐复杂化，带您了解 HomeSpan 的所有功能和特性。 在此过程中，您还将学习很多 HomeKit 提示和技巧。 有关所有包含示例的摘要，请参阅 [HomeSpan 教程](Tutorials.md)。 在草图中找到你不理解的东西？ 有关所有 HomeSpan 对象、函数和方法的详细信息，请访问 [HomeSpan API 参考](Reference.md)。有更一般的问题吗？ 查看是否已在 [HomeSpan FAQ](FAQ.md) 页面或任何 [Disussion](https://github.com/HomeSpan/HomeSpan/discussions) 或 [Issues](https://github.com/HomeSpan/HomeSpan/issues) 页面。如果没有，请随时通过添加新问题来加入讨论。
 
-准备好开始创建自己的 HomeSpan 草图了吗？ 查看 [HomeSpan 服务和特性](ServiceList.md)页面以获取 HomeSpan 支持的所有HomeKit服务和特性的完整列表，以及 [HomeSpan 类别](Categories.md)页面以获取所有支持的列表 HomeKit 类别。 并且不要忘记使用 [Apple (HAP-R2)](https://developer.apple.com/homekit/specification/) 作为您对每项服务和详细信息的参考特征。
+准备好开始创建自己的 HomeSpan 草图了吗？ 查看 [HomeSpan 服务和特性](ServiceList.md) 页面以获取 HomeSpan 支持的所有HomeKit服务和特性的完整列表，以及 [HomeSpan 类别](Categories.md) 页面以获取所有支持的列表 HomeKit 类别。 并且不要忘记使用 [Apple (HAP-R2)](https://developer.apple.com/homekit/specification/) 作为您对每项服务和详细信息的参考特征。
 
 在开发您的草图时，请记住使用 Arduino 串行监视器。HomeSpan 生成广泛的诊断程序，可帮助您调试草图并监控 HomeSpan 设备的各个方面。 您还可以使用 [HomeSpan 命令行界面 (CLI)](CLI.md) 从串行监视器控制 HomeSpan 的各个方面，包括配置设备的 WiFi 凭据和 HomeKit 设置代码。
 
