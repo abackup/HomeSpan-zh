@@ -1,4 +1,4 @@
-原文时间：2024.2.18，翻译时间：2024.5.7，校对时间：2024.5.13；文件版本号：1.9.0
+原文时间：2024.2.18，翻译时间：2024.5.7，校对时间：2024.5.17；文件版本号：1.9.0
 
 # 欢迎！
 
@@ -93,7 +93,7 @@ HomeSpan 包括以下文档：
 
 ### 反馈或问题？
 
-请将 HomeSpan 的错误报告或其他问题发布到 [Issues](https://github.com/HomeSpan/HomeSpan/issues) 板块。请将有关 HomeSpan 的所有其他问题（使用、功能、规格、示例等）或你对新功能的任何想法或建议，或有关 HomeSpan 或 HomeKit 的任何一般反馈发布到 [Discussion](https://github.com/HomeSpan/HomeSpan/discussions) 板块。对于与特定 HomeSpan 问题或功能无关的更一般的问题或反馈，你可以直接 [homespan@icloud.com](mailto:homespan@icloud.com) 给我发电子邮件。
+请将 HomeSpan 的错误报告或其他问题发布到 [Issues](https://github.com/HomeSpan/HomeSpan/issues) 页面。请将有关 HomeSpan 的所有其他问题（使用、功能、规格、示例等）或你对新功能的任何想法或建议，或有关 HomeSpan 或 HomeKit 的任何一般反馈发布到 [Discussion](https://github.com/HomeSpan/HomeSpan/discussions) 页面。对于与特定 HomeSpan 问题或功能无关的更一般的问题或反馈，你可以直接 [homespan@icloud.com](mailto:homespan@icloud.com) 给我发电子邮件。
 
 ### 关于作者
 
