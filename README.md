@@ -8,7 +8,7 @@
 
 HomeSpan 提供以微控制器为中心的 Apple HomeKit 配件协议规范版本 R2 (HAP-R2) 实现，专为在 Arduino IDE 中运行的乐鑫 ESP32 微控制器而设计。HomeSpan 通过家庭 WiFi 网络直接与 HomeKit 配对，无需任何外部网桥或组件。通过 HomeSpan，你可以使用 ESP32 的 I/O 功能的全部功能来创建自定义控制软件和 / 或硬件，以通过 iPhone、iPad 或 Mac 上的 家庭应用程序或 Siri 自动操作外部设备。
 
-HomeSpan 需要 2.0.0 或更高版本的，并已通过 2.0.14 版的 [Arduino-ESP32 Board Manager](https://github.com/espressif/arduino-esp32) 测试（推荐使用）。HomeSpan 可以在原来的 ESP32 以及乐鑫的 ESP32-S2、ESP32-C3 和 ESP32-S3 芯片上运行。
+HomeSpan 需要 2.0.0 或更高版本的，并已通过 2.0.14 版的 [Arduino-ESP32 Board Manager](https://github.com/espressif/arduino-esp32) 测试（推荐使用）。HomeSpan 可以在原始的 ESP32 以及乐鑫的 ESP32-S2、ESP32-C3 和 ESP32-S3 芯片上运行。
 
 > [!NOTE] 
 苹果的新 HomeKit 架构 [需要使用家庭中心](https://support.apple.com/en-us/HT207057)（HomePod 或 Apple TV）可用于任何 HomeKit 设备的完整和正确操作，包括基于 HomeSpan 的设备。如果没有家庭中心，HomeSpan 将无法向家庭应用程序发送通知 —— 按钮和温度传感器等将无法向家庭应用程序发送更新。
@@ -33,7 +33,7 @@ HomeSpan 需要 2.0.0 或更高版本的，并已通过 2.0.14 版的 [Arduino-E
 * 利用 ESP32 的 16 通道 PWM 外设的专用类，可轻松控制：
   * LED 亮度（包括自动衰减）
   * 伺服电机
-* 集成按钮和拨动开关功能，支持单次、两次和长时间按下：
+* 集成按钮和拨动开关功能，支持单击、双击和长按：
   * 将 ESP32 引脚连接到地或 VCC 的物理按钮
   * 连接到 ESP32 引脚的触摸板/传感器（用于支持触摸板的 ESP32 设备）
 * 集成访问 ESP32 的片上远程控制外设，可轻松生成 IR 和 RF 信号
