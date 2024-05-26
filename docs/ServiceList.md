@@ -39,8 +39,8 @@ HomeSpan 服务和特征实现为 C++ 类，其名称与苹果在 HAP - R2 的�
 <tr><td><b>Name 名称(23) </b><ul><li> 配件默认显示名称</li></ul></td><td align="center">string</td><td align="center">读</td><td align="center"> - </td><td align="center"> - </td><td align="center">"unnamed"</td></tr>
 <tr><td><b>FirmwareRevision 固件版本(52) </b><ul><li> 必须采用 x[.y[.z]] 形式 - 仅供参考</li></ul></td><td align="center">string</td><td align="center">读+通知</td><td align="center"> - </td><td align="center"> - </td><td align="center">"1.0.0"</td></tr>
 <tr><td><b>Manufacturer 制造商(20) </b><ul><li>任何字符串 - 仅供参考</li></ul></td><td align="center">string</td><td align="center">读</td><td align="center"> - </td><td align="center"> - </td><td align="center">"HomeSpan"</td></tr>
-<tr><td><b>Model 型号(21) </b><ul><li> 任何字符串 - 仅供参考</li></ul></td><td align="center">string</td><td align="center">读</td><td align="center"> - </td><td align="center"> - </td><td align="center">"HomeSpan - ESP32"</td></tr>
-<tr><td><b>SerialNumber 序列号(30) </b><ul><li> 任何字符串 - 仅供参考</li></ul></td><td align="center">string</td><td align="center">读</td><td align="center"> - </td><td align="center"> - </td><td align="center">"HS - 12345"</td></tr>
+<tr><td><b>Model 型号(21) </b><ul><li> 任何字符串 - 仅供参考</li></ul></td><td align="center">string</td><td align="center">读</td><td align="center"> - </td><td align="center"> - </td><td align="center">"HomeSpan-ESP32"</td></tr>
+<tr><td><b>SerialNumber 序列号(30) </b><ul><li> 任何字符串 - 仅供参考</li></ul></td><td align="center">string</td><td align="center">读</td><td align="center"> - </td><td align="center"> - </td><td align="center">"HS-12345"</td></tr>
 <tr><td><b>HardwareRevision 硬件版本(53) </b><ul><li> 必须是 x[.y[.z]] 格式 - 仅供参考</li></ul></td><td align="center">string</td><td align="center">读</td><td align="center"> - </td><td align="center"> - </td><td align="center">"1.0.0"</td></tr>
 </table><br>
 
@@ -328,7 +328,7 @@ HomeSpan 服务和特征实现为 C++ 类，其名称与苹果在 HAP - R2 的�
 ### Doorbell 门铃 (121)
 <i> 定义门铃。可以单独使用，也可以与 <b>LockMechanism</b> 服务结合使用。</i><br><table>
 <tr><th>特征</th><th>格式</th><th>权限</th><th>最小值</th><th>最大值</th><th>常量 / 默认值</th></tr>
-<tr><td><b>ProgrammableSwitchEvent 可编程开关事件 (73)🔹</b><ul><li> 指定按钮按下的类型</li></ul></td><td align="center">uint8</td><td align="center">读+通知+NV</td><td align="center">0</td><td align="center">2</td><td><ul><li><span>SINGLE_读ESS&nbsp(0)&nbsp;</span>✔️</li><li><span>DOUBLE_读ESS&nbsp(1)&nbsp;</span></li><li><span>LONG_读ESS&nbsp(2)&nbsp;</span></li></ul></td></tr>
+<tr><td><b>ProgrammableSwitchEvent 可编程开关事件 (73)🔹</b><ul><li> 指定按钮按下的类型</li></ul></td><td align="center">uint8</td><td align="center">读+通知+NV</td><td align="center">0</td><td align="center">2</td><td><ul><li><span>SINGLE_PRESS&nbsp(0)&nbsp;</span>✔️</li><li><span>DOUBLE_PRESS&nbsp(1)&nbsp;</span></li><li><span>LONG_PRESS&nbsp(2)&nbsp;</span></li></ul></td></tr>
 <tr><td><b>ConfiguredName 配置名称(E3) </b><ul><li> 此服务的默认显示名称</li></ul></td><td align="center">string</td><td align="center">写+读+通知</td><td align="center"> - </td><td align="center"> - </td><td align="center">"unnamed"</td></tr>
 </table><br>
 
