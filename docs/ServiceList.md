@@ -419,7 +419,7 @@ HomeSpan 服务和特征实现为 C++ 类，其名称与 Apple 在 HAP - R2 的�
 <tr><td><b>ConfiguredName 配置名称(E3) </b><ul><li> 此服务的默认显示名称</li></ul></td><td align="center">string</td><td align="center">写+读+通知</td><td align="center"> - </td><td align="center"> - </td><td align="center">"unnamed"</td></tr>
 </table><br>
 
-##  TEL通知ISIONS 电视
+##  TELEVISIONS 电视
 ### InputSource 输入源 (D9)
 <i> 定义电视的输入源。仅用作 <b>Television</b> 服务的链接服务。</i><br><table>
 <tr><th>特征</th><th>格式</th><th>权限</th><th>最小值</th><th>最大值</th><th>常量 / 默认值</th></tr>
