@@ -29,13 +29,13 @@ ESP32 开发板在大多数电子爱好网站上提都供不同配置的 ESP32 �
 #### 第 5 步：安装所需的 USB 驱动程序
 
 
-对 ESP32 板进行编程通常通过 USB 串口完成。大多数 ESP32 开发板都包含一个专用芯片，该 ESP32 使用的串口 UART 信号转换为可以在计算机之间传输的 USB 信号，通常通过标准 USB 数据线传输。根据 ESP32 上使用的他不同的 USB-UART 芯片，您可能需要安装单独的驱动程序。您的主板制造商可能会提供有关如何下载和安装操作系统所需的驱动程序的说明。
+对 ESP32 板进行编程通常通过 USB 串口完成。大多数 ESP32 开发板都包含一个专用芯片，该 ESP32 使用的串口 UART 信号转换为可以在电脑之间传输的 USB 信号，通常通过标准 USB 数据线传输。根据 ESP32 上使用的他不同的 USB-UART 芯片，您可能需要安装单独的驱动程序。您的主板制造商可能会提供有关如何下载和安装操作系统所需的驱动程序的说明。
 
 #### 第 6 步：编程您的第一个 HomeSpan 设备
 
-在继续之前，您可能需要先通读 [HomeSpan 概述](Overview.md) 页面。 或者您可以直接进入并使用 HomeSpan 的内置教程草图之一对您的设备进行编程：
+在继续之前，您可能需要先通读 [HomeSpan 概述](Overview.md)。 或者您可以直接进入并使用 HomeSpan 的内置教程草图之一对您的设备进行编程：
 
-* 将 ESP32 连接到计算机上的空闲 USB 端口
+* 将 ESP32 连接到电脑上的空闲 USB 端口
 
 * 启动 Arduino IDE
 
@@ -51,12 +51,12 @@ ESP32 开发板在大多数电子爱好网站上提都供不同配置的 ESP32 �
 
 #### 第 7 步：配置和配对 HomeSpan 设备
 
-尽管该设备现在已编程并完全可操作，但需要先配置 WiFi 凭据和 HomeKit 设置代码，然后才能与您的 HomeKit 帐户配对。 有关如何通过 Arduino 串行监视器配置 HomeSpan 的详细信息，请参阅 [HomeSpan 命令行界面 (CLI)](CLI.md) 页面。一旦设备连接到您的家庭 WiFi 网络，HomeSpan 现在就可以通过 iPhone 上的家庭应用进行配对了！
+尽管该设备现在已编程并完全可操作，但需要先配置 WiFi 凭据和 HomeKit 设置代码，然后才能与您的 HomeKit 帐户配对。 有关如何通过 Arduino 串口监视器配置 HomeSpan 的详细信息，请参阅 [HomeSpan 命令行界面 (CLI)](CLI.md)。一旦设备连接到您的家庭 WiFi 网络，HomeSpan 现在就可以通过 iPhone 上的家庭应用进行配对了！
 
 
 ## 添加控制按钮和状态 LED （*可选*）
 
-除了能够通过 Arduino 串行监视器使用 [HomeSpan 命令行界面 (CLI)](CLI.md) 配置 HomeSpan 设备外，HomeSpan 还为最终用户提供了一种替代方法来配置未连接到计算机的独立 HomeSpan 设备。 此方法需要安装两个外部组件：
+除了能够通过 Arduino 串口监视器使用 [HomeSpan 命令行界面 (CLI)](CLI.md) 配置 HomeSpan 设备外，HomeSpan 还为最终用户提供了一种替代方法来配置未连接到电脑的独立 HomeSpan 设备。 此方法需要安装两个外部组件：
 
 1. 一个常开按钮，用作 HomeSpan 的控制按钮，以及
 1. 一个 LED（带有限流电阻）用作表示 HomeSpan 状态的 LED。
@@ -77,11 +77,11 @@ ESP32 开发板在大多数电子爱好网站上提都供不同配置的 ESP32 �
 
 准备好开始创建自己的 HomeSpan 草图了吗？ 查看 [HomeSpan 服务和特征](ServiceList.md) 以获取 HomeSpan 支持的所有 HomeKit 服务和特征的完整列表，以及 [HomeSpan 类别](Categories.md) 以获取所有支持的 HomeKit 类别列表。 并且不要忘记使用 [Apple (HAP-R2)](https://developer.apple.com/homekit/specification/) 作为您对每项服务和详细信息的参考特征。
 
-在开发您的草图时，请记住使用 Arduino 串行监视器。HomeSpan 生成广泛的诊断程序，可帮助您调试草图并监控 HomeSpan 设备的各个方面。 您还可以使用 [HomeSpan 命令行界面 (CLI)](CLI.md) 从串行监视器控制 HomeSpan 的各个方面，包括配置设备的 WiFi 凭据和 HomeKit 设置代码。
+在开发您的草图时，请记住使用 Arduino 串口监视器。HomeSpan 生成广泛的诊断程序，可帮助您调试草图并监控 HomeSpan 设备的各个方面。 您还可以使用 [HomeSpan 命令行界面 (CLI)](CLI.md) 从串口监视器控制 HomeSpan 的各个方面，包括配置设备的 WiFi 凭据和 HomeKit 设置代码。
 
 要访问更高级的功能，请查看 [HomeSpan PWM](PWM.md)、 [HomeSpan 射频控制](RMT.md) 和 [HomeSpan 灯带](Pixels.md) 以获取关于如何使用 HomeSpan 通过 PWM 信号控制 LED、灯和步进电机；生成射频和红外遥控代码来操作电器和电视；甚至控制多色 RGB LED 灯条的教程和详细信息。
 
-最后，断开 HomeSpan 设备与计算机的连接，并直接从家庭电源适配器为其供电。毕竟 HomeSpan 设备旨在独立运行连接到现实世界的设备，如灯、风扇、门锁和窗帘。有关如何**无需将设备连接到计算机**就可操作和配置独立 HomeSpan 设备的 WiFi 凭据和 HomeKit 设置代码，请参阅 [HomeSpan 用户指南](UserGuide.md)。
+最后，断开 HomeSpan 设备与电脑的连接，并直接从家庭电源适配器为其供电。毕竟 HomeSpan 设备旨在独立运行连接到现实世界的设备，如灯、风扇、门锁和窗帘。有关如何**无需将设备连接到电脑**就可操作和配置独立 HomeSpan 设备的 WiFi 凭据和 HomeKit 设置代码，请参阅 [HomeSpan 用户指南](UserGuide.md)。
 
 ---
 
