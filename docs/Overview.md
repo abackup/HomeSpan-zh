@@ -312,7 +312,7 @@ void loop(){
 
 此外，您应该通读 [HomeSpan API 参考](Reference.md) 以获取有关每个 HomeSpan 对象、结构、方法和函数的完整详细信息，包括任何教程中未涵盖的一些较少使用的函数。
 
-最后，别忘了访问 [HomeSpan 命令行界面(CLI)](CLI.md)。HomeSpan CLI 是您可以找到实时诊断并能够监视设备状态的地方。最重要的是，HomeSpan CLI 可用于使用家庭网络配置您的设备的 WiFi 凭据和 HomeKit 设置代码，以便您可以将设备与家庭应用配对。
+最后，别忘了访问 [HomeSpan 命令行界面(CLI)](CLI.md)。HomeSpan CLI 是您可以找到实时诊断并能够监视设备状态的地方。最重要的是，HomeSpan CLI 可用于使用家庭网络配置您设备的 WiFi 凭据和 HomeKit 设置代码，以便您可以将设备与家庭应用配对。
 
 ---
 
