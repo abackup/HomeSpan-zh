@@ -78,7 +78,7 @@ HomeSpan 服务和特征实现为 C++ 类，其名称与苹果在 HAP - R2 的�
 ### StatelessProgrammableSwitch 无状态可编程开关（89）
 <i>定义“无状态”可编程开关，可用于触发 Home 应用程序中的操作。</i><br><table>
 <tr><th>特征</th><th>格式</th><th>权限</th><th>最小值</th><th>最大值</th><th>常量 / 默认值</th></tr>
-<tr><td><b>ProgrammableSwitchEvent 可编程开关事件(73)🔹</b><ul><li> 指定按钮按下类型</li></ul></td><td align="center">uint8</td><td align="center">读+通知+NV</td><td align="center">0</td><td align="center">2</td><td><ul><li><span>SINGLE_读ESS&nbsp(0)&nbsp;</span>✔️</li><li><span>DOUBLE_读ESS&nbsp(1)&nbsp;</span></li><li><span>LONG_读ESS&nbsp(2)&nbsp;</span></li></ul></td></tr>
+<tr><td><b>ProgrammableSwitchEvent 可编程开关事件(73)🔹</b><ul><li> 指定按钮按下类型</li></ul></td><td align="center">uint8</td><td align="center">读+通知+NV</td><td align="center">0</td><td align="center">2</td><td><ul><li><span>SINGLE_PRESS&nbsp(0)&nbsp;</span>✔️</li><li><span>DOUBLE_PRESS&nbsp(1)&nbsp;</span></li><li><span>LONG_PRESS&nbsp(2)&nbsp;</span></li></ul></td></tr>
 <tr><td><b>ServiceLabelIndex 服务标签索引(CB) </b><ul><li> 用于区分附件中同一服务的多个副本的数字索引</li></ul></td><td align="center">uint8</td><td align="center">读</td><td align="center">1</td><td align="center">255</td><td align="center">1</td></tr>
 </table><br>
 
