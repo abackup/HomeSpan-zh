@@ -56,7 +56,7 @@ LedPin 还包括一个静态类函数，可将色调/饱和度/亮度值（通�
   * *g* - 输出绿色值，范围 0 - 1
   * *b* - 输出蓝色值，范围 0 - 1
 
-有关使用 LedPin 控制 RGB LED 的示例，请参见教程草图[#10（RGB_LED）](../examples/10 - RGB_LED)。有关使用 ESP32 的内置淡入淡出控件的示例，另请参见[* 文件→示例→ HOMESPAN →其他示例→ FadingLED*](../examples/Other%20Examples/FadingLED)。
+有关使用 LedPin 控制 RGB LED 的示例，请参见教程草图[#10（RGB_LED）](../examples/10 - RGB_LED)。有关使用 ESP32 的内置淡入淡出控件的示例，另请参见 [*文件 → 示例 →  HOMESPAN → 其他示例 → FadingLED*](../examples/Other%20Examples/FadingLED)。
 
 ## *ServoPin(uint8_t pin [,double initDegrees [,uint16_t minMicros, uint16_t maxMicros, double minDegrees, double maxDegrees]])*
 
