@@ -1,4 +1,4 @@
-原文：2023.9.16， 翻译时间：2023.9.28
+原文时间：2023.9.16， 翻译时间：2023.9.28，校对时间：2024.5.26
 
 # HomeSpan API 参考
 
@@ -14,7 +14,7 @@
 
 * `void begin(Category catID, const char *displayName, const char *hostNameBase, const char *modelName)`
    * 初始化 HomeSpan
-   * **必须**在任何其他 HomeSpan 函数之前在每个草图的开头调用，并且通常放置在 Arduino `setup()` 方法的顶部附近，但位于  `Serial.begin()` **之后**以使初始化诊断可以输出到串行监视器
+   * **必须**在任何其他 HomeSpan 函数之前在每个草图的开头调用，并且通常放置在 Arduino `setup()` 方法的顶部附近，但位于  `Serial.begin()` **之后**以使初始化诊断可以输出到串口监视器
    * 所有参数都是**可选的**
   
      * *catID* —— HAP 类别 HomeSpan 广播用于与 HomeKit 配对。 默认为 Category::Lighting。 有关完整列表，请参阅 [HomeSpan 附件类别](Categories.md)
@@ -56,7 +56,7 @@
    * 如果既没有调用此方法也没有调用任何等效方法，HomeSpan 将假定没有状态指示灯
 
 * `void setStatusDevice(Blinkable *sDev)`
-   * 将状态指示灯设置为用户指定的可闪烁设备*sDev*
+   * 将状态指示灯设置为用户指定的可闪烁设备 *sDev*
    * 此方法是使用上面的 `setStatusPin()` 或 `setStatusPixel()` 的**替代方法**
    * 有关如何创建通用可闪烁设备的详细信息，请参阅 [Blinkable](Blinkable.md)
    * 当使用连接到引脚扩展器或其他专用驱动器的 LED 作为状态指示灯时很有用
@@ -90,7 +90,7 @@
      * 2 = 所有 HomeSpan 状态消息加上所有进出 HomeSpan 设备的 HAP 通信数据包，以及用户在草图中指定的所有 `LOG1()` 和 `LOG2()` 消息
      * -1 = 禁止所有 HomeSpan 状态消息，包括用户在草图中指定的所有 `LOG0()`、`LOG1()` 和 `LOG2()` 消息，从而释放串行端口以供其他用途
    * 日志级别设置对草图中可能使用的任何 `Serial.print()` 或 `Serial.printf()` 语句没有影响。 如果您想通过设置 HomeSpan 日志级别来控制输出，请使用 `LOG()` 宏之一而不是 `Serial.print()` 或 `Serial.printf()`
-   * 日志级别设置对 ESP32 操作系统本身输出的任何 ESP32 诊断消息没有影响。 要抑制这些消息，请确保在 Arduino IDE 的 "工具" 菜单中将 "核心调试级别" 设置为 "无" 来编译您的草图
+   * 日志级别设置对 ESP32 操作系统本身输出的任何 ESP32 诊断消息没有影响。 要抑制这些消息，请确保在 Arduino IDE 的 "工具" 菜单中将 "内核调试级别" 设置为 "无" 来编译您的草图
    * 请注意，日志级别也可以在运行时通过 [HomeSpan CLI](CLI.md) 使用 "L" 命令进行更改
    * 请参阅[消息日志记录](Logging.md)了解完整详细信息
 
@@ -122,7 +122,7 @@
   
 ---
 
-以下**可选** `homeSpan` 方法启用附加功能并提供 HomeSpan 环境的进一步自定义。 除非另有说明，调用**应该**在`begin()`之前进行才能生效：
+以下**可选** `homeSpan` 方法启用附加功能并提供 HomeSpan 环境的进一步自定义。 除非另有说明，调用**应该**在 `begin()` 之前进行才能生效：
 
 * `int enableOTA(boolean auth=true, boolean safeLoad=true)`
    * 启用 HomeSpan 设备的 [无线 (OTA) 更新](OTA.md)，否则该功能将被禁用
@@ -134,7 +134,7 @@
    * 如果启用 OTA 成功，则返回 0，否则返回 -1 ；并向串行监视器报告错误
 
 * `int enableOTA(const char *pwd, boolean safeLoad=true)`
-* * `enableOTA()` 的替代形式，允许您以编程方式将 OTA 密码更改为指定的 *pwd*
+   * `enableOTA()` 的替代形式，允许您以编程方式将 OTA 密码更改为指定的 *pwd*
    * *pwd* 必须包含 1 至 32 个字符
    * 此命令使 HomeSpan 忽略但不更改使用 "O" 命令存储的任何密码
    * 如果启用 OTA 成功，则返回 0，否则返回 -1 ；并向串行监视器报告错误
