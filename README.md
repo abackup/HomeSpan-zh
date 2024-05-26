@@ -4,9 +4,9 @@
 
 个人复制翻译的 [HomeSpan](https://github.com/HomeSpan/HomeSpan)，喜欢的请去 [原地址](https://github.com/HomeSpan/HomeSpan) 查看。
 
-欢迎使用 HomeSpan - 一个强大且极其易于使用的 Arduino 库，用于完全在 [Arduino IDE](http://www.arduino.cc) 内创建你自己的基于 [ESP32](https://www.espressif.com/en/products/modules/esp32) 的 HomeKit 设备。
+欢迎使用 HomeSpan - 一个强大且极其易于使用的 Arduino 库，用于完全在 [Arduino IDE](http://www.arduino.cc) 内创建您自己的基于 [ESP32](https://www.espressif.com/en/products/modules/esp32) 的 HomeKit 设备。
 
-HomeSpan 提供以微控制器为中心的 Apple HomeKit 配件协议规范版本 R2 (HAP-R2) 实现，专为在 Arduino IDE 中运行的乐鑫 ESP32 微控制器而设计。HomeSpan 通过家庭 WiFi 网络直接与 HomeKit 配对，无需任何外部网桥或组件。通过 HomeSpan，你可以使用 ESP32 I/O 的全部功能来创建自定义控制软件和 / 或硬件，以通过 iPhone、iPad 或 Mac 上的家庭应用程序或 Siri 自动操作外部设备。
+HomeSpan 提供以微控制器为中心的 Apple HomeKit 配件协议规范版本 R2 (HAP-R2) 实现，专为在 Arduino IDE 中运行的乐鑫 ESP32 微控制器而设计。HomeSpan 通过家庭 WiFi 网络直接与 HomeKit 配对，无需任何外部网桥或组件。通过 HomeSpan，您可以使用 ESP32 I/O 的全部功能来创建自定义控制软件和 / 或硬件，以通过 iPhone、iPad 或 Mac 上的家庭应用程序或 Siri 自动操作外部设备。
 
 HomeSpan 需要 2.0.0 或更高版本，并已通过 2.0.14 版的 [Arduino-ESP32 Board Manager](https://github.com/espressif/arduino-esp32) 测试（推荐使用）。HomeSpan 可以在原版的乐鑫 ESP32 以及 ESP32-S2、ESP32-C3 和 ESP32-S3 芯片上运行。
 
@@ -25,11 +25,11 @@ HomeSpan 需要 2.0.0 或更高版本，并已通过 2.0.14 版的 [Arduino-ESP3
 
 ### 对于 HomeSpan 开发人员
 
-* Arduino 串口监控器的广泛使用
+* Arduino 串口监视器的广泛使用
   * 实时、易于理解的诊断
   * 对每个底层 HomeKit 操作、数据请求和数据响应完全透明
   * 具有各种信息、调试和配置命令的命令行界面
-* 内置数据库验证，确保你的配置满足所有 HAP 要求
+* 内置数据库验证，确保您的配置满足所有 HAP 要求
 * 利用 ESP32 的 16 通道 PWM 外设的专用类，可轻松控制：
   * LED 亮度（包括自动衰减）
   * 步进电机
@@ -41,7 +41,7 @@ HomeSpan 需要 2.0.0 或更高版本，并已通过 2.0.14 版的 [Arduino-ESP3
 * 专门用于控制步进电机的类，可以在后台平稳运行，而不会干扰 HomeSpan
 * 使用 ESP-NOW 在 ESP32 设备之间实现无缝点对点通信的专用类
 * 用于用户定义的日志消息的集成 Web 日志
-* 大量注释的教程草图将带你从 HomeSpan 的基础知识到高级 HomeKit 主题。
+* 大量注释的教程草图将带您从 HomeSpan 的基础知识到高级 HomeKit 主题。
 * 展示 HomeSpan 实际实现的其他示例和项目
 * 一套完整的文档，解释了 HomeSpan API 的各个方面
 
@@ -65,7 +65,7 @@ HomeSpan 包括以下文档：
 * [HomeSpan 教程](docs/Tutorials.md) - HomeSpan 的草图指南
 * [HomeSpan 服务和特征](docs/ServiceList.md) - HomeSpan 支持的所有 HAP 服务和特征的列表
 * [HomeSpan 配件类别](docs/Categories.md) - HomeSpan 定义的所有 HAP 配件类别的列表
-* [HomeSpan 命令行界面（CLI）](docs/CLI.md) - 配置 HomeSpan 设备的 WiFi 凭据，修改其 HomeKit 设置代码，监控和更新其状态，并从 Arduino IDE 串口监控器访问详细的实时设备诊断
+* [HomeSpan 命令行界面（CLI）](docs/CLI.md) - 配置 HomeSpan 设备的 WiFi 凭据，修改其 HomeKit 设置代码，监控和更新其状态，并从 Arduino IDE 串口监视器访问详细的实时设备诊断
 * [HomeSpan 用户指南](docs/UserGuide.md) - 有关如何配置已编程的 HomeSpan 设备的 WiFi 凭据、修改其 HomeKit 设置代码以及将设备与 HomeKit 配对的交钥匙式说明。不需要电脑！
 * [HomeSpan API 参考](docs/Reference.md) - HomeSpan 库 API 的完整指南
 * [HomeSpan 二维码](docs/QRCodes.md) - 创建并使用 QR 码来配对 HomeSpan 设备
@@ -87,16 +87,16 @@ HomeSpan 包括以下文档：
 
 # 外部资源
 
-除了 HomeSpan 资源之外，刚接触 HomeKit 编程的开发人员可能会发现苹果的 HomeKit 配件协议规范非商业版本 R2 (HAP-R2) 的第 8 章和第 9 章非常有用。不幸的是，苹果公司不再提供这份文件（也许是因为它最后一次更新是在 2019 年 7 月，现在已经有些过时了）。但是，你可以在 Web 上的其他地方找到此文档的副本。请注意，Apple 并未将 HAP-R2 文档替换为用于非商业用途的任何其他版本，并且苹果的开源 [HomeKit ADK](https://github.com/apple/HomeKitADK) 仅反映了原始的 HAP-R2 规格（而不是用于商业设备的 HomeKit 中提供的所有最新服务和特征）。
+除了 HomeSpan 资源之外，刚接触 HomeKit 编程的开发人员可能会发现苹果的 HomeKit 配件协议规范非商业版本 R2 (HAP-R2) 的第 8 章和第 9 章非常有用。不幸的是，苹果公司不再提供这份文件（也许是因为它最后一次更新是在 2019 年 7 月，现在已经有些过时了）。但是，您可以在 Web 上的其他地方找到此文档的副本。请注意，Apple 并未将 HAP-R2 文档替换为用于非商业用途的任何其他版本，并且苹果的开源 [HomeKit ADK](https://github.com/apple/HomeKitADK) 仅反映了原始的 HAP-R2 规格（而不是用于商业设备的 HomeKit 中提供的所有最新服务和特征）。
 
  --- 
 
 ### 反馈或问题？
 
-请将 HomeSpan 的错误报告或其他问题发布到 [Issues](https://github.com/HomeSpan/HomeSpan/issues) 页面。请将有关 HomeSpan 的所有其他问题（使用、功能、规格、示例等）或你对新功能的任何想法、建议或有关 HomeSpan 或 HomeKit 的任何反馈发布到 [Discussion](https://github.com/HomeSpan/HomeSpan/discussions) 页面。对于与特定 HomeSpan 问题或与功能无关的更一般的问题或反馈，你可以直接 [homespan@icloud.com](mailto:homespan@icloud.com) 给我发电子邮件。
+请将 HomeSpan 的错误报告或其他问题发布到 [Issues](https://github.com/HomeSpan/HomeSpan/issues) 页面。请将有关 HomeSpan 的所有其他问题（使用、功能、规格、示例等）或您对新功能的任何想法、建议或有关 HomeSpan 或 HomeKit 的任何反馈发布到 [Discussion](https://github.com/HomeSpan/HomeSpan/discussions) 页面。对于与特定 HomeSpan 问题或与功能无关的更一般的问题或反馈，您可以直接 [homespan@icloud.com](mailto:homespan@icloud.com) 给我发电子邮件。
 
 ### 关于作者
 
-HomeSpan 由 Gregg Berman 开发并继续维护和支持。它最初是为了解决无法用 Siri 操作射频控制的厨房通风罩的麻烦问题。我希望你会发现它很有用，而且使用起来很有趣。
+HomeSpan 由 Gregg Berman 开发并继续维护和支持。它最初是为了解决无法用 Siri 操作射频控制的厨房通风罩的麻烦问题。我希望您会发现它很有用，而且使用起来很有趣。
 
 这是我的第二个大型开源项目 —— 我的第一个项目是设计一个开源系统，用于操作模型铁路，仅使用 Arduino Uno 和 Arduino Motor Shield 来生成数字命令和控制 (DCC) 信号。虽然我已经多年没有参与模型铁路爱好的建设，但展示我的原始系统（称为 DCC++）的视频，以及它如何工作的详细教程，仍然可以在 [DCC++YouTube 频道](https://www.youtube.com/@dcc2840/videos) 上找到。
