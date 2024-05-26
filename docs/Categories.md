@@ -2,7 +2,7 @@
 
 # HomeSpan 配件类别
 
-每个 HomeSpan 设备都必须分配一个 HomeKit 配件类别。 HomeSpan 将这些类别实现为 C++ 类，其名称与 Apple 在 [HAP-R2](https://developer.apple.com/homekit/specification/) 的第 13 节中指定的拼写和大小写完全匹配，但没有任何空格。 HomeSpan 附件类别在 HomeSpan 的 `Category` 命名空间中定义。 例如，HomeSpan 将**车库门开启器**类别（HAP 类别 4）定义为 `Category::GarageDoorOpeners`，可以在初始化 HomeSpan 时使用，如下所示：
+每个 HomeSpan 设备都必须分配一个 HomeKit 配件类别。 HomeSpan 将这些类别实现为 C++ 类，其名称与苹果在 [HAP-R2](https://developer.apple.com/homekit/specification/) 的第 13 节中指定的拼写和大小写完全匹配，但没有任何空格。 HomeSpan 附件类别在 HomeSpan 的 `Category` 命名空间中定义。 例如，HomeSpan 将**车库门开启器**类别（HAP 类别 4）定义为 `Category::GarageDoorOpeners`，可以在初始化 HomeSpan 时使用，如下所示：
 
 ```C++
 homeSpan.begin(Category::GarageDoorOpeners,"Acme Garage Door Lifts");
@@ -39,7 +39,7 @@ homeSpan.begin(Category::GarageDoorOpeners,"Acme Garage Door Lifts");
 * WindowCoverings 窗帘
 * Television 电视
 
-请注意，HomeKit 主要使用设备的附件类别来确定在设备配对时在 Home App 中显示的图标。 除了这个纯粹的装饰功能外，分配给设备的类别不会以任何方式限制可以在该设备上实现的服务或特性。
+请注意，HomeKit 主要使用设备的附件类别来确定在设备配对时在家庭应用中显示的图标。 除了这个纯粹的装饰功能外，分配给设备的类别不会以任何方式限制可以在该设备上实现的服务或特性。
 
 ---
 
