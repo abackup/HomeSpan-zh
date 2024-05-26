@@ -60,7 +60,7 @@ HomeSpan 需要 2.0.0 或更高版本的，并已通过 2.0.14 版的 [Arduino-E
 
 HomeSpan 包括以下文档：
 
-* [HomeSpan 入门](../../wiki/GettingStarted) - 设置开发 HomeSpan 设备所需的软件和硬件
+* [HomeSpan 入门](docs/GettingStarted) - 设置开发 HomeSpan 设备所需的软件和硬件
 * [HomeSpan API 概述](docs/Overview.md) - HomeSpan API 概述，包括开发第一个 HomeSpan 草图的分步指南
 * [HomeSpan 教程](docs/Tutorials.md) - HomeSpan 的草图指南
 * [HomeSpan 服务和特征](docs/ServiceList.md) - HomeSpan 支持的所有 HAP 服务和特征的列表
