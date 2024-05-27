@@ -5,7 +5,7 @@
 2. [入门](#入门)
 3. [HomeSpan 设备状态](#homespan-设备状态)
 4. [设备配置模式](#设备配置模式)
-5. [设置HomeSpan 的 WiFi 凭据和设置代码](#设置homespan-的-wifi-凭据和设置代码)
+5. [设置 HomeSpan 的 WiFi 凭据和设置代码](#设置-homespan-的-wifi-凭据和设置代码)
 6. [与 homekit 配对](#与-homekit-配对)
 7. [恢复出厂设置](#恢复出厂设置)
 8. [创建可扫描标签](#创建可扫描标签)
