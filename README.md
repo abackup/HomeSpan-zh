@@ -32,7 +32,7 @@ HomeSpan 需要 2.0.0 或更高版本，并已通过 2.0.14 版的 [Arduino-ESP3
 * 内置数据库验证，确保您的配置满足所有 HAP 要求
 * 利用 ESP32 的 16 通道 PWM 外设的专用类，可轻松控制：
   * LED 亮度（包括自动衰减）
-  * 步进电机
+  * 伺服电机
 * 集成按钮和拨动开关功能，支持单击、双击和长按：
   * 将 ESP32 引脚连接到地或 VCC 的物理按钮
   * 连接到 ESP32 引脚的触摸板 / 传感器（用于支持触摸板的 ESP32 设备）
@@ -70,7 +70,7 @@ HomeSpan 包括以下文档：
 * [HomeSpan API 参考](docs/Reference.md) - HomeSpan 库 API 的完整指南
 * [HomeSpan 二维码](docs/QRCodes.md) - 创建并使用 QR 码来配对 HomeSpan 设备
 * [HomeSpan OTA](docs/OTA.md) - 直接从 Arduino IDE 无线更新草图，无需串口连接
-* [HomeSpan PWM](docs/PWM.md) - 使用 ESP32 的片载 PWM 外设集成控制标准 LED 和步进电机
+* [HomeSpan PWM](docs/PWM.md) - 使用 ESP32 的片载 PWM 外设集成控制标准 LED 和伺服电机
 * [HomeSpan 射频控制](docs/RMT.md) - 使用 ESP32 的片载 RMT 外设，轻松生成 RF 和 IR 遥控信号
 * [HomeSpan 灯带](docs/Pixels.md) - 可寻址的单线和双线 RGB 和 RGBW LED 和 LED 灯带的集成控制
 * [HomeSpan 控制步进电机](docs/Stepper.md) - 步进电机集成控制，包括 PWM 微步进
