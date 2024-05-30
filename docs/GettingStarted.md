@@ -85,4 +85,4 @@ ESP32 开发板在大多数电子爱好网站上提都供不同配置的 ESP32 �
 
 ---
 
-[↩️](../README.md#Resources) 返回欢迎页面
+[↩️](../README.md#resources) 返回欢迎页面
