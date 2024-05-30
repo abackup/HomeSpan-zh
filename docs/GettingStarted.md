@@ -10,7 +10,7 @@
 
 #### 第 2 步：安装 Arduino-ESP32 内核
 
-Arduino IDE 带有内置编译器，并支持各种 Arduino 板，例如 Arduino Uno 和 Arduino Nano。但是 IDE 本身并不支持对 ESP32 进行编程。幸运的是，IDE 允许你为其他微控制权（包括 ESP32 ）下载和安装**内核**，以使它们可以在 Arduino 环境中进行编程。有关如何将 Arduino-ESP32 内核安装到使用 [Arduino IDE 开发板管理](https://github.com/espressif/arduino-esp32/blob/master/docs/arduino-ide/boards_manager.md) 的 Arduino IDE 中，请参阅 [ESP32 开发板管理](https://github.com/espressif/arduino-esp32/blob/master/docs/arduino-ide/boards_manager.md)。
+Arduino IDE 带有内置编译器，并支持各种 Arduino 板，例如 Arduino Uno 和 Arduino Nano。但是 IDE 本身并不支持对 ESP32 进行编程。幸运的是，IDE 允许你为其他微控制器（包括 ESP32 ）下载和安装**内核**，以使它们可以在 Arduino 环境中进行编程。有关如何将 Arduino-ESP32 内核安装到使用 [Arduino IDE 开发板管理](https://github.com/espressif/arduino-esp32/blob/master/docs/arduino-ide/boards_manager.md) 的 Arduino IDE 中，请参阅 [ESP32 开发板管理](https://github.com/espressif/arduino-esp32/blob/master/docs/arduino-ide/boards_manager.md)。
 
 #### 第 3 步：安装 HomeSpan
 
@@ -23,7 +23,7 @@ HomeSpan 打包为标准 Arduino 库，可以从 Arduino IDE 自动安装，也�
 
 #### 第 4 步：获取 ESP32 开发板
 
-ESP32 开发板在大多数电子爱好网站上提都供不同配置的 ESP32 开发板，例如 [Adafruit](https://www.adafruit.com) 和 [Sparkfun](https://www.sparkfun.com)。HomeSpan 可与 [Arduino-ESP32 内核](https://docs.espressif.com/projects/arduino-esp32/en/latest/getting_started.html#supported-soc-s) 支持的任何 ESP32 配合使用，包括原始 ESP32、ESP32-S2 和 ESP32-S3 以及 ESP32-C3。
+ESP32 开发板在大多数电子爱好网站上提都供不同配置的 ESP32 开发板，例如 [Adafruit](https://www.adafruit.com) 和 [Sparkfun](https://www.sparkfun.com)。HomeSpan 可与 [Arduino-ESP32 内核](https://docs.espressif.com/projects/arduino-esp32/en/latest/getting_started.html#supported-soc-s) 支持的任何 ESP32 配合使用，包括原版的 ESP32、ESP32-S2、ESP32-S3 以及 ESP32-C3。
 
 
 #### 第 5 步：安装所需的 USB 驱动程序
@@ -51,7 +51,7 @@ ESP32 开发板在大多数电子爱好网站上提都供不同配置的 ESP32 �
 
 #### 第 7 步：配置和配对 HomeSpan 设备
 
-尽管该设备现在已编程并完全可操作，但需要先配置 WiFi 凭据和 HomeKit 设置代码，然后才能与你的 HomeKit 帐户配对。有关如何通过 Arduino 串口监视器配置 HomeSpan 的详细信息，请参阅 [HomeSpan 命令行界面 (CLI)](CLI.md)。一旦设备连接到你的家庭 WiFi 网络，HomeSpan 现在就可以通过 iPhone 上的“家庭”应用进行配对了！
+尽管该设备现在已编程并完全可操作，但需要先配置 WiFi 凭据和 HomeKit 设置代码，然后才能与你的 HomeKit 账户配对。有关如何通过 Arduino 串口监视器配置 HomeSpan 的详细信息，请参阅 [HomeSpan 命令行界面 (CLI)](CLI.md)。一旦设备连接到你的家庭 WiFi ，HomeSpan 现在就可以通过 iPhone 上的“家庭”应用进行配对了！
 
 
 ## 添加控制按钮和状态 LED （*可选*）
@@ -61,9 +61,9 @@ ESP32 开发板在大多数电子爱好网站上提都供不同配置的 ESP32 �
 1. 一个常开按钮，用作 HomeSpan 的控制按钮，以及
 1. 一个 LED（带有限流电阻）用作表示 HomeSpan 状态的 LED。
 
-控制按钮应安装在接地和 ESP32 上任何可用作输入的引脚之间。要通知 HomeSpan 你选择了哪个引脚，你必须在你的草图顶部附近调用方法 `homeSpan.setControlPin(pin)`（有关详细信息，请参阅 [HomeSpan API 参考](Reference.md)，否则 HomeSpan 将默认**未**安装控制按钮。
+控制按钮应安装在接地和 ESP32 上任何可用作输入的引脚之间。要告知 HomeSpan 你选择了哪个引脚，你必须在你的草图顶部附近调用方法 `homeSpan.setControlPin(pin)`，有关详细信息，请参阅 [HomeSpan API 参考](Reference.md)，否则 HomeSpan 将默认**未**安装控制按钮。
 
-同样，状态 LED 可以连接到 ESP32 上任何可用作输出的引脚（并通过适当大小的限流电阻接地）。要通知 HomeSpan 你选择了哪个引脚，你必须在草图顶部附近调用方法 `homeSpan.setStatusPin(pin)`，否则 HomeSpan 将默认状态 LED **未**安装。请注意，一些 ESP32 板有一个内置 LED—如果它**不是**需要特殊驱动器的可寻址全彩 LED，而是一个简单的开关 LED，则可以将其用于状态 LED。
+同样，状态 LED 可以连接到 ESP32 上任何可用作输出的引脚（并通过适当大小的限流电阻接地）。要告知 HomeSpan 你选择了哪个引脚，你必须在草图顶部附近调用方法 `homeSpan.setStatusPin(pin)`，否则 HomeSpan 将默认**未**安装状态 LED。请注意，一些 ESP32 板有一个内置 LED — 如果它**不是**需要特殊驱动器的可寻址全彩 LED，而是一个简单的开关 LED，则可以将其用于状态 LED。
 
 
 使用控制按钮和状态 LED 来配置独立的 HomeSpan 设备，包括启动 HomeSpan 的临时 WiFi 网络以配置设备的 WiFi 凭据和 HomeKit 设置代码，在 [HomeSpan 用户指南](UserGuide.md) 中有详细说明。
@@ -77,12 +77,12 @@ ESP32 开发板在大多数电子爱好网站上提都供不同配置的 ESP32 �
 
 准备好开始创建自己的 HomeSpan 草图了吗？ 查看 [HomeSpan 服务和特征](ServiceList.md) 以获取 HomeSpan 支持的所有 HomeKit 服务和特征的完整列表，以及 [HomeSpan 类别](Categories.md) 以获取所有支持的 HomeKit 类别列表。并且不要忘记使用 [苹果 (HAP-R2)](https://developer.apple.com/homekit/specification/) 作为你对每项服务和详细信息的参考特征。
 
-在开发你的草图时，请记住使用 Arduino 串口监视器。HomeSpan 生成广泛的诊断程序，可帮助你调试草图并监控 HomeSpan 设备的各个方面。你还可以使用 [HomeSpan 命令行界面 (CLI)](CLI.md) 从串口监视器控制 HomeSpan 的各个方面，包括配置设备的 WiFi 凭据和 HomeKit 设置代码。
+在开发你的草图时，请记住使用 Arduino 串口监视器。HomeSpan 生成广泛的调试信息，可帮助你调试草图并监控 HomeSpan 设备的各个方面。你还可以使用 [HomeSpan 命令行界面 (CLI)](CLI.md) 从串口监视器控制 HomeSpan 的各个方面，包括配置设备的 WiFi 凭据和 HomeKit 设置代码。
 
-要访问更高级的功能，请查看 [HomeSpan PWM](PWM.md)、 [HomeSpan 射频控制](RMT.md) 和 [HomeSpan 灯带](Pixels.md) 以获取关于如何使用 HomeSpan 通过 PWM 信号控制 LED、灯和步进电机；生成射频和红外遥控代码来操作电器和电视；甚至控制多色全彩 LED 灯条的教程和详细信息。
+要访问更高级的功能，请查看 [HomeSpan PWM](PWM.md)、 [HomeSpan 射频控制](RMT.md) 和 [HomeSpan 灯带](Pixels.md) 以获取关于如何使用 HomeSpan 通过 PWM 信号控制 LED、灯和步进电机；生成射频和红外遥控代码来操作电器和电视；甚至控制全彩 LED 灯带的教程和详细信息。
 
-最后，断开 HomeSpan 设备与电脑的连接，并直接从家庭电源适配器为其供电。毕竟 HomeSpan 设备旨在独立运行连接到现实世界的设备，如灯、风扇、门锁和窗帘。有关如何**无需将设备连接到电脑**就可操作和配置独立 HomeSpan 设备的 WiFi 凭据和 HomeKit 设置代码，请参阅 [HomeSpan 用户指南](UserGuide.md)。
+最后，断开 HomeSpan 设备与电脑的连接，并直接从电源适配器为其供电。毕竟 HomeSpan 设备旨在独立运行连接到现实世界的设备，如灯、风扇、门锁和窗帘。有关如何**无需将设备连接到电脑**就可操作和配置独立 HomeSpan 设备的 WiFi 凭据和 HomeKit 设置代码，请参阅 [HomeSpan 用户指南](UserGuide.md)。
 
 ---
 
-[↩️](../README.md#target) 返回欢迎页面
+[↩️](../README.md#Resources) 返回欢迎页面
