@@ -24,7 +24,7 @@ HomeSpan 支持与 QR 码配对，并使用 "HSPN" 作为其默认*设置 ID*。
 
 ### 创建可扫描的二维码
 
-就像你可以根据 HomeSpan 设备的*设置代码*创建自己的可扫描标签一样（请参阅 [HomeSpan 用户指南](./UserGuide.md#创建可扫描的二维码), 你还可以创建自己的可扫描二维码来配对 HomeSpan 设备。也许最简单的方法是使用苹果公司的 HomeKit 二维码生成器，包括其 [HomeKit Accessory Simulator](https://developer.apple.com/documentation/homekit/testing_your_app_with_the_homekit_accessory_simulator ) Xcode的附加组件。
+就像你可以根据 HomeSpan 设备的*设置代码*创建自己的可扫描标签一样（请参阅 [HomeSpan 用户指南](./UserGuide.md#创建可扫描的二维码), 你还可以创建自己的可扫描二维码来配对 HomeSpan 设备。也许最简单的方法是使用苹果公司的 HomeKit 二维码生成器，包括其 [HomeKit Accessory Simulator](https://developer.apple.com/documentation/homekit/testing_your_app_with_the_homekit_accessory_simulator ) 的附加组件 Xcode。
 
 ![二维码生成器](images/QRCode.png)
 
