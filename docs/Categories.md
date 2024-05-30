@@ -12,7 +12,7 @@ homeSpan.begin(Category::GarageDoorOpeners,"Acme Garage Door Lifts");
 
 ### 配件类别
 |类别|中文|
-| --------------------------- | ------------------------------ |
+| :---------------------------: | :------------------------------: |
 | AirConditioners | 空调 |
 | AirPurifiers | 空气净化器 |
 | Bridges |桥接|
