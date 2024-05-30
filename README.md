@@ -57,7 +57,7 @@ HomeSpan 需要 2.0.0 或更高版本，并已通过 2.0.14 版的 [Arduino-ESP3
   * 启动 WiFi 接入点
 * 独立、详细的最终用户指南
 
-# HomeSpan 资源
+# HomeSpan 资源<a name="target"></a>
 
 HomeSpan 包括以下文档：
 
