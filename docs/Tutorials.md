@@ -2,12 +2,12 @@
 
 # HomeSpan 教程
 
-HomeSpan 库包括许多逐渐复杂的教程草图，带你了解 HomeSpan 的所有功能和特征。这些草图带有大量注释，你甚至可以通过阅读所有示例来了解很多关于 HomeKit 本身的知识。如果你已经将 HomeSpan 加载到 Arduino IDE 中，则可以在 *文件→Examples→HomeSpan* 下找到教程。每个草图都可以编译并上传到你的 ESP32，这样你就可以看到它们的运行情况。或者你可以通过单击下面的任何标题来探索 GitHub 中的代码。注意：在浏览教程之前，你可能需要先通读 [HomeSpan API 概述](Overview.md)。如果你这样做，它们可能会更有意义！
+HomeSpan 库包括许多逐渐复杂的教程草图，带你了解 HomeSpan 的所有功能和特征。这些草图带有大量注释，你甚至可以通过阅读所有示例来了解很多关于 HomeKit 本身的知识。如果你已经将 HomeSpan 加载到 Arduino IDE 中，则可以在 *文件→示例→HomeSpan* 下找到教程。每个草图都可以编译并上传到你的 ESP32，这样你就可以看到它们的运行情况。或者你可以通过点击下面的任何标题来探索 GitHub 中的代码。注意：在浏览教程之前，你可能需要先通读 [HomeSpan API 概述](Overview.md)。如果你这样做，它们可能会更有意义！
 
-> :heavy_check_mark: 每个示例都设计为在将 ESP32 与 HomeKit 配对后进行操作，以便你可以从 iPhone、iPad 或 Mac 上的“家庭”应用控制 HomeSpan。理论上，一旦你配置设备并将其与 HomeKit 配对，你的“家庭”应用应该会在你上传不同的教程时自动更新配置中的所有更改。然而实际上情况并非总是如此，因为 HomeKit 有时会缓存有关设备的信息，这意味着你在“家庭”应用中看到的内容可能与你的草图不完全同步。如果发生这种情况，取消配对然后重新配对 ESP32 通常可以解决问题。如果没有，你可能需要重置 ESP32 上的 ID，以便 HomeKit 认为它是新设备并且不会使用任何缓存数据。这很容易做到——请参阅 [HomeSpan 命令行界面 (CLI)](CLI.md) 了解详细信息。
+> :heavy_check_mark: 每个示例都设计为在将 ESP32 与 HomeKit 配对后进行操作，以便你可以从 iPhone、iPad 或 Mac 上的“家庭”应用控制 HomeSpan。理论上，一旦你配置设备并将其与 HomeKit 配对，你的“家庭”应用应该会在你上传不同的教程时自动更新配置中的所有更改。**然而实际上情况并非总是如此**，因为 HomeKit 有时会缓存有关设备的信息，这意味着你在“家庭”应用中看到的内容可能与你的草图不完全同步。如果发生这种情况，取消配对然后重新配对 ESP32 通常可以解决问题。如果没有，你可能需要重置 ESP32 上的 ID，以便 HomeKit 认为它是新设备并且不会使用任何缓存数据。这很容易做到——请参阅 [HomeSpan 命令行界面 (CLI)](CLI.md) 了解详细信息。
 
 ### [示例 1 - 简单灯泡](../examples/01-SimpleLightBulb)
-第一个示例介绍了 HomeSpan 库，并演示了如何使用 HomeSpan 附件、服务和特征对象的组合来实现简单的开/关灯控制。将此草图上传到你的 HomeSpan 设备并且设备与你的“家庭”应用配对后，你的 iPhone、iPad 或 Mac 的“家庭”应用中将出现一个新的“灯泡”图块。虽然图块将完全可操作（即你可以将灯泡的状态从“开”或“关”更改），但我们尚未将实际的灯或 LED 连接到 HomeSpan 设备，因此不会亮起任何真实的东西。相反，在这个和接下来的几个示例中，我们将专注于了解配置 HomeKit 控件的不同方式。从示例 5 开始，我们将把 LED 连接到设备，并介绍在“家庭”应用中实际打开和关闭 LED 的方法。此示例中涵盖的 HomeSpan API 主题包括：
+第一个示例介绍了 HomeSpan 库，并演示了如何使用 HomeSpan 附件、服务和特征对象的组合来实现简单的开/关灯控制。将此草图上传到你的 HomeSpan 设备并且与你的“家庭”应用配对后，你的 iPhone、iPad 或 Mac 的“家庭”应用中将出现一个新的“灯泡”图块。虽然图块完全可操作（即你可以将灯泡的状态从“开”或“关”更改），但我们尚未将实际的灯或 LED 连接到 HomeSpan 设备，因此不会亮起任何真实的东西。相反，在这个和接下来的几个示例中，我们将专注于了解配置 HomeKit 控件的不同方式。从示例 5 开始，我们将把 LED 连接到设备，并介绍在“家庭”应用中实际打开和关闭 LED 的方法。此示例中涵盖的 HomeSpan API 主题包括：
 
 * 全局对象 `homeSpan`，还有它的 `begin()` 和 `poll()` 方法
 * 引用在 `Categories::` 命名空间中定义的 HomeSpan 类别
@@ -32,7 +32,7 @@ HomeSpan 库包括许多逐渐复杂的教程草图，带你了解 HomeSpan 的�
 * 将派生的服务类放在它们自己的 \*.h 文件中以提高可读性和可移植性
 * 为你的派生服务实现虚拟 `update()` 方法
 * 使用 `SpanCharacteristic *` 指针保存对特征对象的引用
-* 使用 `getVal()` 和 `getNewVal()` 方法检索当前和更新的特征值
+* 使用 `getVal()` 和 `getNewVal()` 方法检索当前和新的特征值
 
 ### [示例 6 - 可调光指示灯](../examples/06-DimmableLED)
 示例 6 更改了示例 5，使得 LED #2 现在可以调光，而不仅仅是开/关。此示例中涵盖的新 HomeSpan API 主题包括：
@@ -42,7 +42,7 @@ HomeSpan 库包括许多逐渐复杂的教程草图，带你了解 HomeSpan 的�
 * 将类似的派生服务类存储在同一个 \*.h 文件中以便于使用
 
 ### [示例 7 - 附件名称](../examples/07-附件名称)
-示例 7 演示了如何将示例 6 中创建的两个 LED 配件的名称从“家庭”应用生成的默认值更改为更有用和自定义的名称。
+示例 7 演示了如何将示例 6 中创建的两个 LED 配件的名称从“家庭”应用生成的默认值更改为更实用和自定义的名称。
 
 ### [示例 8 - 桥接](../examples/08-Bridges)
 示例 8 在功能上与示例 7 相同，只是我们没有定义两个附件（一个用于开/关 LED，一个用于可调光 LED ），而是定义了三个附件，其中第一个充当 HomeKit 桥接器。
@@ -56,14 +56,14 @@ HomeSpan 库包括许多逐渐复杂的教程草图，带你了解 HomeSpan 的�
 ### [示例 10 - 全彩 LED](../examples/10-RGB_LED)
 示例 10 说明了如何控制全彩 LED 来设置任何颜色和亮度。此示例中涵盖的新 HomeSpan API 主题包括：
 
-* 使用 `PwmPin::HSVtoRGB()` 将 HomeKit 色相/饱和度/亮度转换为红/绿/蓝
+* 使用 `PwmPin::HSVtoRGB()` 将 HomeKit 的色相/饱和度/亮度转换为红/绿/蓝
 * 使用 `getVal()` 的可选模板功能，例如 `getVal<float>()`
 
 ### [示例 11 - 服务名称](../examples/11-ServiceNames)
-示例 11 演示了如何将多服务附件中不同服务的名称从“家庭”应用生成的默认值更改为更有用和自定义的名称。这些示例还探讨了“家庭”应用显示这些名称的方式和时间，以及当设备配置为桥接时“家庭”应用如何为附件图块选择适当的图标。
+示例 11 演示了如何将多服务附件中不同服务的名称从“家庭”应用生成的默认值更改为更实用和自定义的名称。这些示例还探讨了“家庭”应用显示这些名称的方式和时间，以及当设备配置为桥接时“家庭”应用如何为附件图块选择适当的图标。
 
 ### [示例 12 - 服务循环](../examples/12-ServiceLoops)
-示例 12 引入了 HomeKit **事件通知**来实现两个新附件——温度传感器和空气质量传感器。当然，出于本示例的目的，我们实际上不会将这些物理设备连接到 ESP32，但我们将模拟定期“读取”它们的属性，并通知 HomeKit 更改的值。此示例中涵盖的新 HomeSpan API 主题包括：
+示例 12 引入了 HomeKit **事件通知**来实现两个新附件——温度传感器和空气质量传感器。当然，出于本示例的目的，我们实际上不会将这些物理设备连接到 ESP32，但我们将模拟定期“读取”它们的属性，并通知 HomeKit 更新的值。此示例中涵盖的新 HomeSpan API 主题包括：
 
 * 在派生服务中实现虚拟 `loop()` 方法
 * 使用 `timeVal()` 方法跟踪自上次更新特征以来经过的时间
@@ -73,7 +73,7 @@ HomeSpan 库包括许多逐渐复杂的教程草图，带你了解 HomeSpan 的�
 示例 13 我们通过实现两个新服务来演示同时使用 `update()` 和 `loop()` 方法：车库门开启器和电动窗帘。这两个示例都展示了 HomeKit 的目标状态/当前状态的框架。
 
 ### [示例 14 - 模拟按钮](../examples/14-EmulatedPushButtons)
-示例 14 演示了如何使用 Service 的 `loop()` 方法中的 `setVal()` 和 `timeVal()` 方法在“家庭”应用中创建一个模拟按钮开关的图块。在此示例中，按下“家庭”应用中的图块将使其打开，LED 闪烁 3 次，然后关闭（就像真正的按钮可能会做的那样）。
+示例 14 演示了如何使用服务的 `loop()` 方法中的 `setVal()` 和 `timeVal()` 方法在“家庭”应用中创建一个模拟按钮开关的图块。在此示例中，按下“家庭”应用中的图块将使其打开，LED 闪烁 3 次，然后关闭（就像真正的按钮可能会做的那样）。
 
 ### [示例 15 - 真实按钮](../examples/15-RealPushButtons)
 此示例介绍了 HomeSpan 功能，可让你轻松地将真正的按钮连接到 ESP32 上的任何引脚。然后，这些按钮可用于手动控制连接到设备的任何设备，例如灯或风扇。在此示例中，我们实现了 3 个按钮来控制 LED 的开关、亮度和“收藏”设置，使用单击、双击和长按按钮的组合。每次按下按钮后，使用 `setVal()` 方法将事件通知发送回 HomeKit，以便“家庭”应用图块立即反映你对 LED 功率和亮度的手动更改。此示例中涵盖的新 HomeSpan API 主题包括：
@@ -83,7 +83,7 @@ HomeSpan 库包括许多逐渐复杂的教程草图，带你了解 HomeSpan 的�
 * 解析单击、双击和长按按钮按下
 
 ### [示例 16 - 可编程开关](../examples/16-ProgrammableSwitches)
-示例 16 没有引入任何新的 HomeSpan 功能，而是展示了 HomeKit 的一个独特功能，你可以使用 HomeSpan 轻松访问该功能。在之前的所有示例中，我们使用 ESP32 来控制本地设备 -- 直接连接到 ESP32 的设备。然后我们了解了如何通过 HomeKit 的 iOS 或 MacOS “家庭”应用或通过添加直接连接到 ESP32 的本地按钮来控制设备。在这个例子中，我们做相反的事情，并使用连接到 ESP32 的按钮来控制任何类型的其他 HomeKit 设备。为此，我们使用 HomeKit 的可编程开关。
+示例 16 没有引入任何新的 HomeSpan 功能，而是展示了 HomeKit 的一个独特功能，你可以使用 HomeSpan 轻松访问该功能。在之前的所有示例中，我们使用 ESP32 来控制本地设备——直接连接到 ESP32 的设备。然后我们了解了如何通过 iOS 或 MacOS 的 HomeKit “家庭”应用或通过添加直接连接到 ESP32 的本地按钮来控制设备。在这个例子中，我们做相反的事情，并使用连接到 ESP32 的按钮来控制任何类型的其他 HomeKit 设备。为此，我们使用 HomeKit 的可编程开关。
 
 ### [示例 17 - 链接服务](../examples/17-LinkedServices)
 示例 17 介绍了链接服务的 HAP 概念，并演示了如何通过实现多头淋浴来使用它们。此示例还说明了一些不同的编码风格，展示了 HomeSpan 的 C++ *基于结构*设计范例的强大功能和灵活性。此示例中涵盖的新 HomeSpan API 主题包括：
@@ -110,7 +110,7 @@ HomeSpan 库包括许多逐渐复杂的教程草图，带你了解 HomeSpan 的�
 
 ## 其他示例
 
-以下示例展示了 HomeSpan 文档的不同部分中引用的各种 HomeSpan 和 HomeKit 功能。这些草图可以在 Arduino IDE 中的 *文件→Examples→HomeSpan→Other Examples* 下找到
+以下示例展示了 HomeSpan 文档的不同部分中引用的各种 HomeSpan 和 HomeKit 功能。这些草图可以在 Arduino IDE 中的 *文件→示例→HomeSpan→Other Examples* 下找到
 
 ### [台灯](../Other%20Examples/TableLamp)
 台灯配件的基本实现。用作 [HomeSpan API 概述](Overview.md) 中的教程
@@ -119,16 +119,16 @@ HomeSpan 库包括许多逐渐复杂的教程草图，带你了解 HomeSpan 的�
 一个独立的示例，展示了如何使用 HomeSpan 的 *RFControl* 类来生成自定义脉冲序列。出于说明目的，脉冲宽度非常长，适合输出到 LED，因此你可以“看到”脉冲序列。请参阅 [HomeSpan 射频控制](RMT.md) 了解完整详情
 
 ### [控制舵机](../Other%20Examples/ServoControl)
-窗帘的实现，它使用 HomeSpan 的 *ServoPin* 类来控制窗条的水平倾斜。有关完整详细信息，请参阅 [ServoPin](PWM.md#servopinuint8_t-pin-double-initdegrees-uint16_t-minmicros-uint16_t-maxmicros-double-mindegrees-double-maxdegrees)
+窗帘的实现，它使用 HomeSpan 的 *ServoPin* 类来控制窗条的水平倾斜。有关完整详细信息，请参阅 [ServoPin](PWM.md#servopin)
 
 ### [电视](../Other%20Examples/Television)
 HomeKit *未认证*电视服务的示例，展示了如何使用不同的特征来控制电视的电源、输入源和其他一些功能。请参阅 [HomeSpan 电视服务 ](TVServices.md) 了解完整详情
 
 ### [灯带](../Other%20Examples/Pixel)
-演示如何使用 HomeSpan 的 *Pixel* 和 *Dot* 类来控制单线和两线可寻址 RGB 和 RGBW LED。有关完整详细信息，请参阅 [HomeSpan 灯带](Pixels.md) 
+演示如何使用 HomeSpan 的 *Pixel* 和 *Dot* 类来控制单线和两线可寻址全彩和 RGBW LED。有关完整详细信息，请参阅 [HomeSpan 灯带](Pixels.md) 
 
 ### [自定义服务](../Other%20Examples/CustomService)
-演示如何在 HomeSpan 中创建自定义服务和自定义特征，以实现 *Eve for HomeKit* 应用程序识别的大气压力传感器。有关完整详细信息，请参阅 [自定义特征和自定义服务宏](Reference.md#自定义特征和自定义服务宏)
+演示如何在 HomeSpan 中创建自定义服务和自定义特征，以实现 *Eve for HomeKit* 应用程序识别的大气压力传感器。有关完整详细信息，请参阅 [自定义特征和自定义服务宏](Reference.md#custom)
 
 ### [可编程集线器](../Other%20Examples/ProgrammableHub)
 演示如何实现一个完全可编程的灯光配件集线器，允许用户直接通过设备托管的**网页界面**或通过 HomeSpan 的**命令行界面动态**添加或者删除多达 12 个灯光配件。每个灯都可以配置为可调光/非可调光，没有颜色控制、全彩颜色控制或色温控制。建立在许多使用的技术之上 [示例 20](../examples/20-AdvancedTechniques)
@@ -143,11 +143,11 @@ HomeKit *未认证*电视服务的示例，展示了如何使用不同的特征�
 演示如何使用 *StepperControl* 类操作步进电机。实现基于上述 [示例 13](../examples/13-TargetStates) 的电动窗帘。有关完整详细信息，请参阅 [HomeSpan 控制步进电机](Stepper.md)
 
 ### [自定义分区](../examples/Other%20Examples/CustomNVSPartition)
-演示如何通过将 *Partition.csv* 文件添加到草图文件夹来为草图创建自定义分区方案。可用于扩展非易失性存储（NVS）分区的大小，在创建具有许多附件的 HomeSpan 设备时可能需要该分区，你希望将这些附件的特征保存在 NVS 中
+演示如何通过将 *Partition.csv* 文件添加到草图文件夹来为草图创建自定义分区方案。可用于扩展非易失性存储（NVS）分区的大小，在创建具有许多附件的 HomeSpan 设备时可能需要该分区，当你想将这些附件的特征保存在 NVS 中时
 
 ### [外部引用](../examples/Other%20Examples/ExternalReference)
-演示如何从这些服务外部访问服务的特征（例如从主 Arduino 内部访问 `loop()`）。在此草图中，我们重新创建了示例 5 中的两个 LED，并在主 Arduino `loop()` 中添加一个新功能，用于检查两个 LED 是否同时打开，如果是，则自动关闭
+演示如何从这些服务外部访问服务的特征（例如在 Arduino 的 `loop()` 中访问）。在此草图中，我们重新创建了示例 5 中的两个 LED，并在 Arduino `loop()` 部分添加一个新功能，用于检查两个 LED 是否同时打开，如果是，则自动关闭
 
 ---
 
-[↩️](../README.md) 返回欢迎页面
+[↩️](../README.md#resources) 返回欢迎页面
