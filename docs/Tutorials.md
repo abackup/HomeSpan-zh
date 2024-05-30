@@ -128,7 +128,7 @@ HomeKit *未认证*电视服务的示例，展示了如何使用不同的特征�
 演示如何使用 HomeSpan 的 *Pixel* 和 *Dot* 类来控制单线和两线可寻址 RGB 和 RGBW LED。有关完整详细信息，请参阅 [HomeSpan 灯带](Pixels.md) 
 
 ### [自定义服务](../Other%20Examples/CustomService)
-演示如何在 HomeSpan 中创建自定义服务和自定义特征，以实现 *Eve for HomeKit* 应用程序识别的大气压力传感器。有关完整详细信息，请参阅 [自定义特征和自定义服务宏](Reference.md#custom-characteristics-and-custom-services-macros)
+演示如何在 HomeSpan 中创建自定义服务和自定义特征，以实现 *Eve for HomeKit* 应用程序识别的大气压力传感器。有关完整详细信息，请参阅 [自定义特征和自定义服务宏](Reference.md#自定义特征和自定义服务宏)
 
 ### [可编程集线器](../Other%20Examples/ProgrammableHub)
 演示如何实现一个完全可编程的灯光配件集线器，允许用户直接通过设备托管的**网页界面**或通过 HomeSpan 的**命令行界面动态**添加或者删除多达 12 个灯光配件。每个灯都可以配置为可调光/非可调光，没有颜色控制、全彩颜色控制或色温控制。建立在许多使用的技术之上 [示例 20](../examples/20-AdvancedTechniques)
