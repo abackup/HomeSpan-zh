@@ -5,14 +5,14 @@
 # 欢迎！
 
 
-欢迎使用 HomeSpan - 一个强大且极其易于使用的 Arduino 库，用于完全在 [Arduino IDE](http://www.arduino.cc) 内创建你自己的基于 [ESP32](https://www.espressif.com/en/products/modules/esp32) 的 HomeKit 设备。
+欢迎使用 HomeSpan - 一个强大且极易使用的 Arduino 库，用于完全在 [Arduino IDE](http://www.arduino.cc) 内创建你自己的基于 [ESP32](https://www.espressif.com/en/products/modules/esp32) 的 HomeKit 设备。
 
-HomeSpan 提供以微控制器为中心的 Apple HomeKit 配件协议规范版本 R2 (HAP-R2) 实现，专为在 Arduino IDE 中运行的乐鑫 ESP32 微控制器而设计。HomeSpan 通过家庭 WiFi 网络直接与 HomeKit 配对，无需任何外部网桥或组件。通过 HomeSpan，你可以使用 ESP32 I/O 的全部功能来创建自定义控制软件和/或硬件，以通过 iPhone、iPad 或 Mac 上的“家庭”应用或 Siri 自动操作外部设备。
+HomeSpan 提供以微控制器为中心的苹果 HomeKit 配件协议规范版本 R2 (HAP-R2) 的实现，专门为在 Arduino IDE 中运行的乐鑫 ESP32 微控制器而设计。HomeSpan 通过家庭 WiFi 直接与 HomeKit 配对，无需任何外部网桥或组件。通过 HomeSpan，你可以使用 ESP32 I/O 的全部功能来创建自定义控制软件和/或硬件，以通过 iPhone、iPad 或 Mac 上的“家庭”应用或 Siri 自动操作外部设备。
 
-HomeSpan 需要 2.0.0 或更高版本，并已通过 2.0.14 版的 [Arduino-ESP32 Board Manager](https://github.com/espressif/arduino-esp32) 测试（推荐使用）。HomeSpan 可以在原版的乐鑫 ESP32 以及 ESP32-S2、ESP32-C3 和 ESP32-S3 芯片上运行。
+HomeSpan 需要 2.0.0 或更高版本，并已通过 2.0.14 版本的 [Arduino-ESP32 Board Manager](https://github.com/espressif/arduino-esp32) 测试（推荐使用）。HomeSpan 可以在原版的乐鑫 ESP32 以及 ESP32-S2、ESP32-C3 和 ESP32-S3 芯片上运行。
 
 > [!NOTE] 
-苹果公司的新 HomeKit 架构 [需要使用家庭中心](https://support.apple.com/en-us/HT207057)（HomePod 或 Apple TV）才可用于任何 HomeKit 设备的完整和正确操作，包括基于 HomeSpan 的设备。如果没有家庭中心，HomeSpan 将无法向“家庭”应用发送通知——按钮和温度传感器等将无法向“家庭”应用发送更新。
+苹果公司的新 HomeKit 架构 [需要使用家庭中心](https://support.apple.com/en-us/HT207057)（HomePod 或 Apple TV）才可用于任何 HomeKit 设备的完整地和正确地操作，包括基于 HomeSpan 的设备。如果没有家庭中心，HomeSpan 将无法向“家庭”应用发送通知——按钮和温度传感器等将无法向“家庭”应用发送更新。
 
 ### HomeSpan 亮点
 
@@ -21,7 +21,7 @@ HomeSpan 需要 2.0.0 或更高版本，并已通过 2.0.14 版的 [Arduino-ESP3
 * 充分利用广受欢迎的 Arduino IDE
 * 100% 符合 HAP-R2 标准
 * 集成 38 个 HomeKit 服务
-* 在配件模式或桥接模式下运行
+* 在附件模式或桥接模式下运行
 * 支持与设置码或 QR 码配对
 
 ### 对于 HomeSpan 开发人员
@@ -32,7 +32,7 @@ HomeSpan 需要 2.0.0 或更高版本，并已通过 2.0.14 版的 [Arduino-ESP3
   * 具有各种信息、调试和配置命令的命令行界面
 * 内置数据库验证，确保你的配置满足所有 HAP 要求
 * 利用 ESP32 的 16 通道 PWM 外设的专用类，可轻松控制：
-  * LED 亮度（包括自动衰减）
+  * LED 亮度（包括自动淡化）
   * 伺服电机
 * 集成按钮和拨动开关功能，支持单击、双击和长按：
   * 将 ESP32 引脚连接到地或 VCC 的物理按钮
@@ -42,22 +42,22 @@ HomeSpan 需要 2.0.0 或更高版本，并已通过 2.0.14 版的 [Arduino-ESP3
 * 专门用于控制步进电机的类，可以在后台平稳运行，而不会干扰 HomeSpan
 * 使用 ESP-NOW 在 ESP32 设备之间实现无缝点对点通信的专用类
 * 用于用户定义的日志消息的集成网络日志
-* 大量注释的教程草图将带你从 HomeSpan 的基础知识到高级 HomeKit 主题。
+* 大量注释的教程草图将带你从 HomeSpan 的基础知识到高级 HomeKit 主题
 * 展示 HomeSpan 实际实现的其他示例和项目
-* 一套完整的文档，解释了 HomeSpan API 的各个方面
+* 一套完整的文档，全面解释了 HomeSpan 的各种 API 
 
 ### 对于 HomeSpan 最终用户
 
-* 嵌入式 WiFi 接入点和 Web 界面，允许最终用户（非开发人员）：
+* 嵌入式 WiFi 接入点和网络界面，允许最终用户（非开发人员）：
   * 使用自己的家庭 WiFi 凭据设置 HomeSpan
   * 创建自己的 HomeKit 配对设置代码
 * 状态 LED 和控制按钮，允许最终用户：
   * 强制解除设备与 HomeKit 的配对
-  * 执行出厂重置
+  * 执行恢复出厂设置
   * 启动 WiFi 接入点
 * 独立、详细的最终用户指南
 
-# HomeSpan 资源<a name="target"></a>
+# HomeSpan 资源<a name="Resources"></a>
 
 HomeSpan 包括以下文档：
 
@@ -88,7 +88,7 @@ HomeSpan 包括以下文档：
 
 # 外部资源
 
-除了 HomeSpan 资源之外，刚接触 HomeKit 编程的开发人员可能会发现苹果公司的 HomeKit 配件协议规范非商业版本 R2 (HAP-R2) 的第 8 章和第 9 章非常有用。不幸的是，苹果公司不再提供这份文件（也许是因为它最后一次更新是在 2019 年 7 月，现在已经有些过时了）。但是，你可以在网络上的其他地方找到此文档的副本。请注意，Apple 并未将 HAP-R2 文档替换为用于非商业用途的任何其他版本，并且苹果公司的开源 [HomeKit ADK](https://github.com/apple/HomeKitADK) 仅反映了原始的 HAP-R2 规格（而不是用于商业设备的 HomeKit 中提供的所有最新服务和特征）。
+除了 HomeSpan 资源之外，刚接触 HomeKit 编程的开发人员可能会发现苹果公司的 HomeKit 配件协议规范非商业版本 R2 (HAP-R2) 的第 8 章和第 9 章非常有用。不幸的是，苹果公司不再提供这份文件（也许是因为它最后一次更新是在 2019 年 7 月，现在已经有些过时了）。但是，你可以在网络上的其他地方找到此文档的副本。请注意，苹果并未将 HAP-R2 文档替换为用于非商业用途的任何其他版本，并且苹果公司的开源 [HomeKit ADK](https://github.com/apple/HomeKitADK) 仅反映了原始的 HAP-R2 规格（而不是用于商业设备的 HomeKit 中提供的所有最新服务和特征）。
 
  --- 
 
