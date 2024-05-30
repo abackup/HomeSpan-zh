@@ -45,7 +45,12 @@ void loop(){
 
 } // 循环结束
 ```
-请注意，作为**替代**方法，你可以指示 HomeSpan 创建单独的任务，在后台重复调用 `HomeSpan.poll()`。为此，**请将 `loop()` 中对 `HomeSpan.poll()` 的调用替换为 `setup()` 函数末尾对 `HomeSpan.autoPoll()` 的调用：**```javascript var s = "请将 `loop()` 中对 `HomeSpan.poll()` 的调用替换为 `setup()` 函数末尾对 `HomeSpan.autoPoll()` 的调用："; alert(s);```
+请注意，作为**替代**方法，你可以指示 HomeSpan 创建单独的任务，在后台重复调用 `HomeSpan.poll()`。为此，**请将 `loop()` 中对 `HomeSpan.poll()` 的调用替换为 `setup()` 函数末尾对 `HomeSpan.autoPoll()` 的调用：**
+```
+javascript
+ var s = "请将 `loop()` 中对 `HomeSpan.poll()` 的调用替换为 `setup()` 函数末尾对 `HomeSpan.autoPoll()` 的调用：";
+alert(s);
+```
 
 ```C++
 #include " HomeSpan.h"         // 包括 HomeSpan 库
