@@ -93,4 +93,4 @@ Serial.printf("Current Time = %02d:%02d:%02d\n", myTime.tm_hour, myTime.tm_min, 
 
 ---
 
-[↩️](README.md#resources) 返回欢迎页面
+[↩️](../README.md#resources) 返回欢迎页面
