@@ -22,7 +22,7 @@ HomeSpan 需要 2.0.0 或更高版本，并已通过 2.0.14 版本的 [Arduino-E
 * 100% 符合 HAP-R2 标准
 * 集成 38 个 HomeKit 服务
 * 在附件模式或桥接模式下运行
-* 支持与设置码或 QR 码配对
+* 支持与设置码或二维码配对
 
 ### 对于 HomeSpan 开发人员
 
@@ -69,7 +69,7 @@ HomeSpan 包括以下文档：
 * [HomeSpan 命令行界面（CLI）](docs/CLI.md) - 配置 HomeSpan 设备的 WiFi 凭据，修改其 HomeKit 设置代码，监控和更新其状态，并从 Arduino IDE 串口监视器访问详细的实时设备诊断
 * [HomeSpan 用户指南](docs/UserGuide.md) - 有关如何配置已编程的 HomeSpan 设备的 WiFi 凭据、修改其 HomeKit 设置代码以及将设备与 HomeKit 配对的交钥匙式说明。不需要电脑！
 * [HomeSpan API 参考](docs/Reference.md) - HomeSpan 库 API 的完整指南
-* [HomeSpan 二维码](docs/QRCodes.md) - 创建并使用 QR 码来配对 HomeSpan 设备
+* [HomeSpan 二维码](docs/QRCodes.md) - 创建并使用二维码来配对 HomeSpan 设备
 * [HomeSpan OTA](docs/OTA.md) - 直接从 Arduino IDE 无线更新草图，无需串口连接
 * [HomeSpan PWM](docs/PWM.md) - 使用 ESP32 的片载 PWM 外设集成控制标准 LED 和伺服电机
 * [HomeSpan 射频控制](docs/RMT.md) - 使用 ESP32 的片载 RMT 外设，轻松生成 RF 和 IR 遥控信号
