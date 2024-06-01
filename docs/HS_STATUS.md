@@ -84,4 +84,4 @@ void statusUpdate(HS_STATUS status){
 
 ---
 
-[↩️](Reference.md) Back to the Reference API page
+[↩️](Reference.md) 返回 API 页面
