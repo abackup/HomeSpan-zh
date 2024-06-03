@@ -1,4 +1,4 @@
-<!--   原文时间：2024.2.18 ，翻译时间：2024.5.6，校对时间：2024.5.31   -->
+<!--   原文时间：2024.2.18，翻译时间：2024.5.6，校对时间：2024.5.31   -->
 
 # 消息日志记录
 
@@ -63,9 +63,9 @@ HomeSpan网络日志页面本身包含两个部分：
  
 请参阅 [示例 19 - WebLog](Tutorials.md#example-19---weblog) 以获得演示使用 `homeSpan.enableWebLog()` 和 WEBLOG() 宏的教程草图。
 
-## 自定义样式表 （CSS）
+## 自定义样式表（CSS）
 
-HomeSpan 的网络日志通常由浅蓝色背景上的黑色文本组成。但是，你可以设置自定义样式表 （CSS） 以通过调用`homeSpan.setWebLogCSS(const char *css)` 来更改格式，其中 css 是使用包含一个或多个自定义样式元素的  [HTML 类](https://www.w3schools.com/html/html_classes.asp) 构造的。HomeSpan 为网络日志的不同部分实现以下三个类名：
+HomeSpan 的网络日志通常由浅蓝色背景上的黑色文本组成。但是，你可以设置自定义样式表（CSS） 以通过调用`homeSpan.setWebLogCSS(const char *css)` 来更改格式，其中 css 是使用包含一个或多个自定义样式元素的  [HTML 类](https://www.w3schools.com/html/html_classes.asp) 构造的。HomeSpan 为网络日志的不同部分实现以下三个类名：
  
  * *bod1* - 此类指定网络日志页面主体的样式元素，包括背景颜色和顶部的标题文本（其本身的格式为 \<h2\>）
  * *tab1* - 此类指定网络日志页顶部状态表的样式元素
