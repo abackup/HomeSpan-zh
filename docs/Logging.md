@@ -1,6 +1,6 @@
 <!--   原文时间：2024.2.18，翻译时间：2024.5.6，校对时间：2024.5.31   -->
 
-# 消息日志记录
+# 消息记录
 
 HomeSpan 包括各种具有不同详细级别的消息日志，以及用于创建你自己的日志消息和网络日志的内置方法。
 
@@ -14,9 +14,9 @@ HomeSpan 日志消息通常以三种可能的详细级别直接输出到 Arduino
 |1级|0 级中的所有内容以及其他更详细的状态消息|
 |2级|1 级的所有内容以及发送到 HomeSpan 设备和从 HomeSpan 设备发送的所有 HAP 通信包|
 
-你可以使用方法 `homeSpan.setLogLevel(uint8_t level)` 在草图中设置 *Log Level*，如 [HomeSpan API Reference](API.md) 中所述。始终输出 0 级消息； 仅当 *Log Level* 设置为 1 或更高时才输出级别 1 消息； 和级别 2 消息仅在 *Log Level* 设置为 2 时输出。*Log Level* 也可以随时通过串口监视器动态更改，方法是键入“L0”、“L1”或“ L2' 如 [HomeSpan CLI](CLI.md) 中所述。
+你可以使用方法 `homeSpan.setLogLevel(uint8_t level)` 在草图中设置 *Log Level*，如 [HomeSpan API 参考](Reference.md) 中所述。始终输出 0 级消息； 仅当 *Log Level* 设置为 1 或更高时才输出级别 1 消息； 和级别 2 消息仅在 *Log Level* 设置为 2 时输出。*Log Level* 也可以随时通过串口监视器动态更改，方法是键入 "L0" 、"L1" 或 "L2",如 [HomeSpan 命令行界面（CLI）](CLI.md) 中所述。
 
-你还可以通过在 HomeSpan CLI 中键入“L-1”或在草图中调用 `homeSpan.setLogLevel(-1)` 将日志级别设置为-1，完全抑制 HomeSpan 生成的所有日志消息（以及所有用户定义的日志消息-参见下文）。在 ESP 32 控制单独的串口外设的情况下，禁止将所有日志消息输出到串口监视器可能很有用。在这种情况下，你可能希望在设备上实现一个物理开关，自动将日志级别设置为0或-1，这样你就不必在每次要启用/禁用 HomeSpan 日志消息时重新编译草图。
+你还可以通过在 HomeSpan 命令行界面中键入 "L-1" 或在草图中调用 `homeSpan.setLogLevel(-1)` 将日志级别设置为-1，完全抑制 HomeSpan 生成的所有日志消息（以及所有用户定义的日志消息-参见下文）。在 ESP 32 控制单独的串口外设的情况下，禁止将所有日志消息输出到串口监视器可能很有用。在这种情况下，你可能希望在设备上实现一个物理开关，自动将日志级别设置为0或-1，这样你就不必在每次要启用/禁用 HomeSpan 日志消息时重新编译草图。
 
 请注意，“日志级别”设置对草图中使用的任何 `Serial.print()` 或 `Serial.printf()` 语句输出的消息没有影响。要确保你可以通过日志级别设置控制此类消息，请使用下面的` LOG() `宏。另请注意，日志级别设置对 ESP32 操作系统本身生成的任何 ESP32 诊断消息没有影响。这些消息根据 Arduino IDE 的工具菜单下编译时指定的内核编译级别进行控制。
 
@@ -28,11 +28,11 @@ HomeSpan 日志消息通常以三种可能的详细级别直接输出到 Arduino
 
 * `LOGn(const char *fmt, ...)` - 当指定多个参数时，HomeSpan 使用 ESP32 `Serial.printf(fmt, ...)` 方法输出消息，该方法允许你格式化消息使用标准 C++ *printf* 约定具有可变数量的参数。例如，`int n=255; LOG2("The value is 0x%X",n);` 向 Arduino 串口监视器输出消息 "The value is 0xFF"，前提是 *Log Level* 设置为 2。
 
-有关演示这些宏的教程草图，请参阅 [示例 9 - MessageLogging](Tutorials.md#example-9---messagelogging)。
+有关演示这些宏的教程草图，请参阅 [示例 9 - 消息日志](Tutorials.md#示例-9---消息日志)。
  
 ## 网络日志
 
-除了将消息记录到 Arduino 串口监视器之外，HomeSpan 还可以选择在你选择的任何页面地址提供网络日志页面。由于网络日志作为 HomeSpan 的 HAP 服务器的一部分托管，因此其基地址和端口将与你的设备相同。例如，如果你的设备名称是 *http<nolink>://homespan-4e8eb8504e59.local*（假设端口为 80）并且你选择“myLog”作为网络日志页面地址，它将托管在 *http<nolink> ://homespan-4e8eb8504e59.local/myLog*。
+除了将消息记录到 Arduino 串口监视器之外，HomeSpan 还可以选择在你选择的任何页面地址提供网络日志页面。由于网络日志作为 HomeSpan 的 HAP 服务器的一部分托管，因此其基地址和端口将与你的设备相同。例如，如果你的设备名称是 *http<nolink>://homespan-4e8eb8504e59.local*（假设端口为 80）并且你选择 "myLog" 作为网络日志页面地址，它将托管在 *http<nolink> ://homespan-4e8eb8504e59.local/myLog*。
 
 HomeSpan 的网络日志功能还嵌入了调用 NTP 时间服务器来设置设备时钟的能力。此可选功能允许 HomeSpan 创建基于时钟的时间戳（例如 *Sat Apr 16 19:48:41 2022*）。
 
@@ -46,8 +46,8 @@ HomeSpan网络日志页面本身包含两个部分：
 * *Entry Number* - HomeSpan 为每条消息编号，从 1 开始表示重启后的第一条消息
 * *Up Time* - 相对消息时间，格式为 DDD:HH:MM:SS，从重启后的 000:00:00:00 开始
 * *Log Time* - 标准 UNIX 格式的绝对消息时间，前提是网络日志已通过 NTP 时间服务器启用（见下文）
-* *Client* - 创建 WEBLOG() 消息时连接到 HomeSpan 的客户端的 IP 地址。仅适用于在服务中的 `update()` 方法中产生的消息。客户端在所有其他实例中设置为“0.0.0.0”
-* *Message* - 格式化消息的文本。例如，`int ledNumber=5; WEBLOG("Request to turn LED %d OFF\n",ledNumber);` 会产生消息“Request to turn LED 5 OFF”
+* *Client* - 创建 WEBLOG() 消息时连接到 HomeSpan 的客户端的 IP 地址。仅适用于在服务中的 `update()` 方法中产生的消息。客户端在所有其他实例中设置为 "0.0.0.0"
+* *Message* - 格式化消息的文本。例如，`int ledNumber=5; WEBLOG("Request to turn LED %d OFF\n",ledNumber);` 会产生消息 "Request to turn LED 5 OFF"
 
 要启用网络日志记录（默认情况下关闭），请调用方法 `homeSpan.enableWebLog()`，如在草图顶部附近的 [HomeSpan API 参考](Reference.md) 中更全面地描述。此方法允许你设置：
 
@@ -61,7 +61,7 @@ HomeSpan网络日志页面本身包含两个部分：
   * 可以在你的草图中包含 WEBLOG() 消息，即使网络日志*未*启用。在这种情况下，HomeSpan 不会提供网络日志页面，但如果 *Log Level* 设置为 1 或更高，WEBLOG() 消息仍将输出到 Arduino 串口监视器
   * 消息**不**存储在 NVS 中，因此在重新启动之间**不**保存
  
-请参阅 [示例 19 - WebLog](Tutorials.md#example-19---weblog) 以获得演示使用 `homeSpan.enableWebLog()` 和 WEBLOG() 宏的教程草图。
+请参阅 [示例 19 - WebLog](Tutorials.md#示例-19---网页日志) 以获得演示使用 `homeSpan.enableWebLog()` 和 WEBLOG() 宏的教程草图。
 
 ## 自定义样式表（CSS）
 
@@ -110,25 +110,25 @@ void extraData(String &r){
 `getWebLog(void (*f)(const char *htmlText, void *data), void *userData)`
 
  * *f()* - 一个用户定义的函数，返回 `void` 并接受两个参数：
-   * *htmlText* - 指向 HomeSpan 提供的 HTML 文本块（最大 1024 字节）的以 null 结尾的 `const char *` 指针
+   * *htmlText* - 指向 HomeSpan 提供的 HTML 文本块（最大 1024 字节）的以空 结尾的 `const char *` 指针
    * *data* - 指向任何用户提供的数据 *userData* 的`void *`指针
  * *userData* - 指向任何可选用户提供的数据的 `void *` 指针，该数据作为其第二个参数 data 传递给 *f()*
 
-当从草图调用上述方法时，HomeSpan 将重复调用用户定义的函数 *f()*，并为网络日志页面提供连续的 HTML 文本块作为第一个参数 *htmlText*。一旦所有 HTML 块都发送到函数 *f()*，HomeSpan 将最后一次调用 *f()*，并将 *htmlText* 设置为 NULL，以指示不再发送 HTML 块。
+当从草图调用上述方法时，HomeSpan 将重复调用用户定义的函数 *f()*，并为网络日志页面提供连续的 HTML 文本块作为第一个参数 *htmlText*。一旦所有 HTML 块都发送到函数 *f()*，HomeSpan 将最后一次调用 *f()*，并将 *htmlText* 设置为空，以指示不再发送 HTML 块。
 
-此函数的主要目的是让用户提供自己的 HTML网络日志页服务方法，例如通过安全的 HTTPS 通道。请注意，此通道可以是 HomeSpan 通过 HTTP 请求正常提供网络日志页面的补充，也可以代替 HomeSpan 的正常服务，具体取决于 `homeSpan.enableWebLog()` 方法中使用的 URL 参数是否设置为 NULL（禁用 HomeSpan 提供网络日志页面以响应 HTTP 请求）。
+此函数的主要目的是让用户提供自己的 HTML网络日志页服务方法，例如通过安全的 HTTPS 通道。请注意，此通道可以是 HomeSpan 通过 HTTP 请求正常提供网络日志页面的补充，也可以代替 HomeSpan 的正常服务，具体取决于 `homeSpan.enableWebLog()` 方法中使用的 URL 参数是否设置为空（禁用 HomeSpan 提供网络日志页面以响应 HTTP 请求）。
 
 以下 psuedo-code 代码片段显示了如何使用 `getWebLog()` ：
 
 ```C++
 ...
-homeSpan.enableWebLog(50,"pool.ntp.org","UTC",NULL);      // 这会启用 50 个条目的 Web 日志并设置时钟，但会阻止 HomeSpan 响应 Web 日志页面的任何 HTTP 请求
+homeSpan.enableWebLog(50,"pool.ntp.org","UTC",NULL);      // 这会启用 50 个条目的网络日志并设置时钟，但会阻止 HomeSpan 响应网络日志页面的任何 HTTP 请求
 ...
 IF WEBLOG NEEDED THEN{
-  homeSpan.getWebLog(myWebLogHandler,NULL);               // 这会触发 HomeSpan 生成 Web 日志页面的 HTML 文本并将数据流式传输到 myWebLogHandler，无需任何额外的用户数据
+  homeSpan.getWebLog(myWebLogHandler,NULL);               // 这会触发 HomeSpan 生成网络日志页面的 HTML 文本并将数据流式传输到 myWebLogHandler，无需任何额外的用户数据
 }
 ...
-void myWebLogHandler(const char *htmlText, void *args){   // 这是用户定义的 Web 日志处理程序（请注意，本示例中未使用可选的 *arg 参数）
+void myWebLogHandler(const char *htmlText, void *args){   // 这是用户定义的网络日志处理程序（请注意，本示例中未使用可选的 *arg 参数）
   if(htmlText!=NULL){
     DO SOMETHING WITH htmlText (e.g. transmit it to the user via an HTTPS connection)
   }
