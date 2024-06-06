@@ -20,6 +20,7 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
      * *displayName* - HomeSpan 广播的 MDNS 显示名称。默认为 "HomeSpan Server"
      * *hostNameBase* - 完整的 MDNS 主机名由 HomeSpan 作为 *hostNameBase-DeviceID*.local 广播，其中 DeviceID 是 HomeSpan 自动生成的唯一的 6 字节代码。默认为 "HomeSpan"
      * *modelName* - 与 HomeKit 配对的 HomeSpan 广播 HAP 模型名称。默认为 "HomeSpan-ESP32"
+  * 例：`homeSpan.begin(Category::Fans, "Living Room Ceiling Fan");`
 * `void poll()`
   * 检查 HAP 请求、本地命令和设备活动
   * **必须**在每个草图中重复调用，并且通常放在 Arduino `loop()` 方法的顶部（*除非*使用下面进一步描述的 `autoPoll()`）
@@ -38,18 +39,18 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
       * 适用于将 *pin* 连接到 VCC（通常为 3.3V）的按钮
     * `PushButton::TRIGGER_ON_TOUCH` - 使用设备的触摸传感器外设在触摸 *pin* 时触发
       * ESP32-C3 上不可用
-  * 或者，您可以将 *triggerType* 设置为任何用户定义的 `boolean(int arg)` 形式的函数，以将任何设备用作控制按钮。有关详细信息，请参阅下面的 **SpanButton**
+  * 或者，你可以将 *triggerType* 设置为任何用户定义的 `boolean(int arg)` 形式的函数，以将任何设备用作控制按钮。有关详细信息，请参阅下面的 **[SpanButton](#spanbutton)**
 
 * `int getControlPin()`
   * 返回由 `setControlPin(pin)` 设置的 HomeSpan 控制按钮的引脚号，如果未设置引脚，则返回 -1
 
 * `Span& setStatusPin(uint8_t pin)`
-  * 设置用于 HomeSpan 状态 LED 的 ESP32 *pin*
+  * 设置用于 HomeSpan 状态指示灯的 ESP32 *pin*
   * 假设标准 LED 将连接到 *pin*
-  * 如果未调用此方法或任何等效方法，HomeSpan 将假定没有状态 LED
+  * 如果未调用此方法或任何等效方法，HomeSpan 将假定没有状态指示灯
 
 * `Span& setStatusPixel(uint8_t pin, float h=0, float s=100, float v=100)`
-  * 设置用于 HomeSpan 状态 LED 的 ESP32 *pin*
+  * 设置用于 HomeSpan 状态指示灯的 ESP32 *pin*
   * 此方法是使用上述 `setStatusPin()` 的*替代方法*
   * 假设 RGB NeoPixel（或等效物）将连接到 *pin*
   * 适用于 ESP32 板有内置 NeoPixel LED，但添加外部 NeoPixel 也可以
@@ -58,23 +59,23 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
     * s = 饱和度百分比，范围从 0-100
     * v = 亮度百分比，范围从 0-100
   * 如果未指定，颜色默认为*红色*
-* 示例：`homeSpan.setStatusPixel(8,120,100,20)` 使用连接到引脚 8 的 NeoPixel 将状态 LED 设置为浅绿色
-  * 如果未调用此方法或任何等效方法，HomeSpan 将假定没有状态 LED
+  * 示例：`homeSpan.setStatusPixel(8,120,100,20)` 使用连接到引脚 8 的 NeoPixel 将状态指示灯设置为浅绿色
+  * 如果未调用此方法或任何等效方法，HomeSpan 将假定没有状态指示灯
 
 * `Span& setStatusDevice(Blinkable *sDev)`
-  * 将状态 LED 设置为用户指定的可闪烁设备 *sDev*
+  * 将状态指示灯设置为用户指定的可闪烁设备 *sDev*
   * 此方法是使用上述 `setStatusPin()` 或 `setStatusPixel()` 的*替代方法*
   * 参见 [Blinkable](Blinkable.md) 详细了解如何创建通用的 Blinkable 设备
-  * 在使用连接到引脚扩展器或其他专用驱动器的 LED 作为状态 LED 时很有用
-  * 如果未调用此方法或任何等效方法，HomeSpan 将假定没有状态 LED
+  * 在使用连接到引脚扩展器或其他专用驱动器的 LED 作为状态指示灯时很有用
+  * 如果未调用此方法或任何等效方法，HomeSpan 将假定没有状态指示灯
 
 * `Span& setStatusAutoOff(uint16_t duration)`
-  * 将状态 LED 设置为在 *duration* 秒后自动关闭
-  * 每当 HomeSpan 激活新的闪烁模式时，状态 LED 将自动打开，并且持续时间计时器将重置
-  * 如果 *duration* 设置为零，则自动关闭将被禁用（状态 LED 将无限期保持打开状态）
+  * 将状态指示灯设置为在 *duration* 秒后自动关闭
+  * 每当 HomeSpan 激活新的闪烁模式时，状态指示灯将自动打开，并且持续时间计时器将重置
+  * 如果 *duration* 设置为零，则自动关闭将被禁用（状态指示灯将无限期保持打开状态）
 
 * `int getStatusPin()`
-  * 返回由 `setStatusPin(pin)` 设置的状态 LED 的引脚号，如果未设置引脚，则返回 -1
+  * 返回由 `setStatusPin(pin)` 设置的状态指示灯的引脚号，如果未设置引脚，则返回 -1
 
 * `Span& setApSSID(const char *ssid)`
   * 设置 HomeSpan 设置接入点的 SSID（网络名称）（默认为 "HomeSpan-Setup"）
@@ -94,7 +95,7 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
     * 1 = 所有 HomeSpan 状态消息，以及用户在草图中指定的任何 `LOG1()` 消息
     * 2 = 所有 HomeSpan 状态消息以及往返于 HomeSpan 设备的所有 HAP 通信数据包，以及用户在草图中指定的所有 `LOG1()` 和 `LOG2()` 消息
     * -1 = 抑制所有消息HomeSpan 状态消息，包括用户在草图中指定的所有 `LOG0()`、`LOG1()` 和 `LOG2()` 消息，释放串行端口以用于其他用途
-  * 日志级别设置对草图中可能使用的任何 `Serial.print()` 或 `Serial.printf()` 语句没有影响。如果您想通过设置 HomeSpan 日志级别来控制输出，请使用其中一个 `LOG()` 宏，而不是 `Serial.print()` 或 `Serial.printf()`
+  * 日志级别设置对草图中可能使用的任何 `Serial.print()` 或 `Serial.printf()` 语句没有影响。如果你想通过设置 HomeSpan 日志级别来控制输出，请使用其中一个 `LOG()` 宏，而不是 `Serial.print()` 或 `Serial.printf()`
   * 日志级别设置对 ESP32 操作系统本身输出的任何 ESP32 诊断消息没有影响。要隐藏这些消息，请确保在编译草图时将 Arduino IDE 的工具菜单中的*核心调试级别*设置为“无”
   * 注意，也可以在运行时通过 [HomeSpan CLI](CLI.md) 使用 "L" 命令更改日志级别
   * 有关完整详细信息，请参阅 [消息日志记录](Logging.md)
@@ -105,10 +106,10 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
 * `Span& reserveSocketConnections(uint8_t nSockets)`
   * 保留 *nSockets* 个网络套接字，供 HomeSpan HAP 服务器用于 HomeKit 控制器连接以外的用途
     * 对于在 Arduino-ESP32 v2.0.1 或更高版本下编译的草图，HomeSpan 为 HAP 控制器连接保留 14 个套接字
-    * 每次调用 `reserveSocketConnections(nSockets)` 都会将此数字减少 *nSockets*
-    * 如果您向需要的草图添加代码，请使用此方法它自己的套接字连接（例如，单独的 Web 服务、MQTT 服务器等）
+    * 每次调用 `reserveSocketConnections(nSockets)` 都会将此数字减少 *nSockets* 个
+    * 如果你向需要的草图添加代码，请使用此方法它自己的套接字连接（例如，单独的 Web 服务、MQTT 服务器等）
   * 允许多次调用此方法 - 保留的套接字数量将是所有调用中 *nSockets* 的总和
-  * 请注意，您不需要为内置 HomeSpan 功能单独保留套接字
+  * 请注意，你不需要为内置 HomeSpan 功能单独保留套接字
     * 例如，`enableOTA()` 已经包含对 `reserveSocketConnections(1)` 的嵌入式调用，因为 HomeSpan 知道必须保留一个套接字才能支持 OTA
 
 * `Span& setPortNum(uint16_t port)`
@@ -164,10 +165,10 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
   * 设置 HomeSpan 将连接的 WiFi 网络的 SSID (*ssid*) 和密码 (*pwd*)
   * *ssid* 和 *pwd* 会自动保存在 HomeSpan 的非易失性存储器 (NVS) 中，以便在设备重启时检索
   * 请注意，如果保存的值超过允许的最大字符数 (ssid=32; pwd=64)，则会被截断
-  * :warning: 安全警告：此函数的目的是允许高级用户使用由 `setApFunction(func)` 指定的自定义接入点函数 *动态* 设置设备的 WiFi 凭据。不建议使用此函数将您的 WiFi SSID 和密码直接硬编码到您的草图中。相反，使用 HomeSpan 提供的更安全的方法之一，例如从 CLI 输入 "W"，或启动 HomeSpan 的接入点，来设置您的 WiFi 凭据，而无需将它们硬编码到您的草图中
+  * :warning: 安全警告：此函数的目的是允许高级用户使用由 `setApFunction(func)` 指定的自定义接入点函数 *动态* 设置设备的 WiFi 凭据。不建议使用此函数将你的 WiFi SSID 和密码直接硬编码到你的草图中。相反，使用 HomeSpan 提供的更安全的方法之一，例如从 CLI 输入 "W"，或启动 HomeSpan 的接入点，来设置你的 WiFi 凭据，而无需将它们硬编码到你的草图中
 
 * `Span& setVerboseWifiReconnect(bool verbose)`
-  * 尝试连接到 WiFi 时，HomeSpan 通常会将“尝试连接到...”消息记录到串口监视器和 Web 日志
+  * 尝试连接到 WiFi 时，HomeSpan 通常会将“尝试连接到...”消息记录到串口监视器和网络日志
   * 调用此方法并将 *verbose* 设置为 *false* 会抑制这些消息
   * 第二次调用此方法并将 *verbose* 设置为 *true* 会重新激活这些消息（默认行为）
 
@@ -184,8 +185,8 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
   * 函数 *func* 必须是 *void* 类型并接受一个 *boolean* 参数
 
 * `Span& setStatusCallback(void (*func)(HS_STATUS status))`
-  * 设置一个可选的用户定义回调函数 *func*，每当 HomeSpan 的运行状态（例如 WiFi 连接、需要配对...）发生变化时，该函数将被调用，从而改变（可选）状态 LED 的闪烁模式
-  * 如果设置了 *func*，则无论是否实际定义了状态 LED，都会调用它
+  * 设置一个可选的用户定义回调函数 *func*，每当 HomeSpan 的运行状态（例如 WiFi 连接、需要配对...）发生变化时，该函数将被调用，从而改变（可选）状态指示灯的闪烁模式
+  * 如果设置了 *func*，则无论是否实际定义了状态指示灯，都会调用它
   * 这允许用户使用替代方法反映 HomeSpan 当前状态的变化，例如将消息输出到嵌入式 LCD 或 E-Ink 显示器
   * 函数 *func* 必须是 *void* 类型并接受一个枚举类型 [HS_STATUS](HS_STATUS.md) 的参数
 
@@ -198,54 +199,54 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
   * 示例：`homeSpan.setPairingCode("46637726");`
   * 配对代码的哈希版本将保存到设备的非易失性存储器中，覆盖任何当前存储的配对代码
   * 如果 *s* 包含无效代码，则会报告错误，并且不会保存代码。相反，将使用当前存储的配对代码（如果未存储任何代码，则使用 HomeSpan 默认配对代码）
-  * :warning: 安全警告：将设备的配对代码硬编码到您的草图中被视为安全风险，不建议这样做。相反，请使用 HomeSpan 提供的更安全的方法之一来设置您的配对代码，例如从 CLI 输入 "S \<code\>"，或启动 HomeSpan 的接入点，而无需将其硬编码到您的草图中
+  * :warning: 安全警告：将设备的配对代码硬编码到你的草图中被视为安全风险，不建议这样做。相反，请使用 HomeSpan 提供的更安全的方法之一来设置你的配对代码，例如从 CLI 输入 "S \<code\>"，或启动 HomeSpan 的接入点，而无需将其硬编码到你的草图中
 * `Span& setSketchVersion(const char *sVer)`
 * 将 HomeSpan 草图的版本设置为 *sVer*，可以是任意字符串
   * 如果未指定，HomeSpan 将使用 "n/a" 作为默认版本文本
   * HomeSpan 在启动时在 Arduino IDE 串口监视器中显示草图的版本
-  * HomeSpan 还包括草图的版本以及用于编译草图的 HomeSpan 库的版本，作为其 HAP MDNS 广播的一部分。HAP *不*使用此数据。相反，它仅用于提供信息，并允许您识别通过 [OTA](OTA.md) 更新的设备的草图版本，而不是连接到计算机
+  * HomeSpan 还包括草图的版本以及用于编译草图的 HomeSpan 库的版本，作为其 HAP MDNS 广播的一部分。HAP *不*使用此数据。相反，它仅用于提供信息，并允许你识别通过 [OTA](OTA.md) 更新的设备的草图版本，而不是连接到计算机
 
 * `const char *getSketchVersion()`
-  * 返回 HomeSpan 草图的版本，使用 `void setSketchVersion(const char *sVer)` 设置，如果未设置则返回“n/a”
+  * 返回 HomeSpan 草图的版本，使用 `void setSketchVersion(const char *sVer)` 设置，如果未设置则返回 "n/a"
   * 可以从草图中的任何位置调用
 
 * `Span& enableWebLog(uint16_t maxEntries, const char *timeServerURL, const char *timeZone, const char *logURL)`
-  * 启用滚动 Web 日志，显示用户使用 `WEBLOG()` 宏创建的最近 *maxEntries* 条目。参数及其默认值（如果未指定）如下：
+  * 启用滚动网络日志，显示用户使用 `WEBLOG()` 宏创建的最近 *maxEntries* 条目。参数及其默认值（如果未指定）如下：
     * *maxEntries* - 要保存的最大（最近）条目数。如果未指定，则默认为 0，在这种情况下，Web 日志将仅显示状态而没有任何日志条目
-    * *timeServerURL* - 时间服务器的 URL，HomeSpan 在建立 WiFi 连接后将使用该时间服务器在启动时设置其时钟。指定时间服务器后，HomeSpan 将保留一个额外的套接字连接。如果未指定，则默认为 NULL，在这种情况下，HomeSpan 将跳过设置设备时钟
-    * *timeZone* - 指定用于设置时钟的时区。仅使用 POSIX.1 格式，不支持 *Time Zone Database* 或 *tzdata*。根据 [TZ 的 GNU libc 文档](https://www.gnu.org/software/libc/manual/html_node/TZ-Variable.html)，*偏移量指定您必须 **添加到本地时间** 才能获得协调世界时值的时间值*。“UTC+5:00”表示本地时间 + 5 小时为 UTC 时间。请参阅 GNU libc 文档以获取一些示例，包括如何指定北美东部标准时间 (EST) 和东部夏令时间 (EDT)，开始日期和结束日期为 EDT。如果 *serverURL=NULL*，则忽略此字段；如果 *serverURL!=NULL*，则必须填写此字段
-    * *logURL* - 此设备的 Web 日志页面的 URL。如果未指定，则默认为 "status" 。如果 *logURL* 设置为 NULL，HomeSpan 将使用 *timeServerURL* 和 *timeZone* 参数来设置时钟，但它不会响应任何 HTTP 请求来提供任何 Web 日志页面。但是，Web 日志数据仍在内部累积，并且可以通过调用 `homeSpan.getWebLog()` 方法随时访问生成的 HTML（见下文）
-  * 示例：`homeSpan.enableWebLog(50,"pool.ntp.org","UTC-1:00","myLog");` 在 URL *http<nolink>://HomeSpan-\[DEVICE-ID\].local:\[TCP-PORT\]/myLog* 处创建一个 Web 日志，该日志将显示使用 WEBLOG() 宏生成的 50 条最新日志消息。启动时（建立 WiFi 连接后），HomeSpan 将尝试通过调用服务器“pool.ntp.org”并将时间调整为比 UTC 早 1 小时来设置设备时钟。
+    * *timeServerURL* - 时间服务器的 URL，HomeSpan 在建立 WiFi 连接后将使用该时间服务器在启动时设置其时钟。指定时间服务器后，HomeSpan 将保留一个额外的套接字连接。如果未指定，则默认为空，在这种情况下，HomeSpan 将跳过设置设备时钟
+    * *timeZone* - 指定用于设置时钟的时区。仅使用 POSIX.1 格式，不支持 *Time Zone Database* 或 *tzdata*。根据 [TZ 的 GNU libc 文档](https://www.gnu.org/software/libc/manual/html_node/TZ-Variable.html)，*偏移量指定你必须 **添加到本地时间** 才能获得协调世界时值的时间值*。"UTC+5:00" 表示本地时间 + 5 小时为 UTC 时间。请参阅 GNU libc 文档以获取一些示例，包括如何指定北美东部标准时间 (EST) 和东部夏令时间 (EDT)，开始日期和结束日期为 EDT。如果 *serverURL=NULL*，则忽略此字段；如果 *serverURL!=NULL*，则必须填写此字段
+    * *logURL* - 此设备的网络日志页面的 URL。如果未指定，则默认为 "status" 。如果 *logURL* 设置为空，HomeSpan 将使用 *timeServerURL* 和 *timeZone* 参数来设置时钟，但它不会响应任何 HTTP 请求来提供任何网络日志页面。但是，Web 日志数据仍在内部累积，并且可以通过调用 `homeSpan.getWebLog()` 方法随时访问生成的 HTML（见下文）
+  * 示例：`homeSpan.enableWebLog(50,"pool.ntp.org","UTC-1:00","myLog");` 在 URL *http<nolink>://HomeSpan-\[DEVICE-ID\].local:\[TCP-PORT\]/myLog* 处创建一个网络日志，该日志将显示使用 WEBLOG() 宏生成的 50 条最新日志消息。启动时（建立 WiFi 连接后），HomeSpan 将尝试通过调用服务器 "pool.ntp.org" 并将时间调整为比 UTC 早 1 小时来设置设备时钟。
   * 尝试连接到 *timeServerURL* 时，HomeSpan 会等待 120 秒以获得响应。这是在后台完成的，在 HomeSpan 尝试设置时间时不会阻止其照常运行。如果 120 秒超时期限后仍未收到任何响应，HomeSpan 将假定服务器无法访问并跳过时钟设置程序。使用 `setTimeServerTimeout()` 将 120 秒超时时间重新配置为其他值
-  * 有关完整详细信息，请参阅 [Message Logging](Logging.md)
+  * 有关完整详细信息，请参阅 [消息日志](Logging.md)
 
 * `Span& setTimeServerTimeout(uint32_t tSec)`
   * 将 HomeSpan 在 `enableWebLog()` 尝试将设备时钟从互联网时间服务器设置为 *tSec* 秒时使用的默认 120 秒超时时间更改为
 
 * `Span& setWebLogCSS(const char *css)`
-  * 将 HomeSpan Web 日志的格式设置为 *css* 指定的自定义样式表
-  * 有关如何构造 *css* 的详细信息，请参阅 [Message Logging](Logging.md)
+  * 将 HomeSpan网络日志的格式设置为 *css* 指定的自定义样式表
+  * 有关如何构造 *css* 的详细信息，请参阅 [消息日志](Logging.md)
 
 * `Span& setWebLogCallback(void (*func)(String &htmlText))`
-  * 设置可选的用户定义回调函数 *func*，每当生成 Web 日志时 HomeSpan 都会调用该函数
-  * 允许用户向通过**扩展**字符串 *htmlText* 来构造 Web 日志的初始表，该字符串作为引用传递给 *func*
+  * 设置可选的用户定义回调函数 *func*，每当生成网络日志时 HomeSpan 都会调用该函数
+  * 允许用户向通过**扩展**字符串 *htmlText* 来构造网络日志的初始表，该字符串作为引用传递给 *func*
   * 函数 *func* 必须是 *void* 类型，并接受一个 *String* 类型的参数
-  * 有关如何构造 *htmlText* 的详细信息，请参阅 [Message Logging](Logging.md)
+  * 有关如何构造 *htmlText* 的详细信息，请参阅 [消息日志](Logging.md)
 
 * `void getWebLog(void (*f)(const char *htmlBuf, void *args), void *userData)`
-  * 调用时，HomeSpan *流式传输*当前 Web 日志 HTML 文本以及任何可选指定的 *userData*，直接发送到用户定义的函数 *f()*，该函数应返回一个 *void* 并接受以下两个参数：
-    * *htmlBuf* - 指向 Web 日志页面 HTML 文本部分的指针
+  * 调用时，HomeSpan *流式传输*当前网络日志 HTML 文本以及任何可选指定的 *userData*，直接发送到用户定义的函数 *f()*，该函数应返回一个 *void* 并接受以下两个参数：
+    * *htmlBuf* - 指向网络日志页面 HTML 文本部分的指针
     * *args* - *userData* 参数的传递
-  * 如果不需要用户定义的数据，请将 *userData* 设置为 NULL
-  * 为避免创建单个大型文本缓冲区，HomeSpan 将 Web 日志的 HTML 拆分为 1024 字节的块并重复调用 *f()* 直到所有 HTML 都已流式传输；然后 HomeSpan 最后调用 *f()*，并将 *htmlBuf* 设置为 NULL，向用户指示已到达 HTML 文本的末尾
-  * 此命令主要用于将 Web 日志页面重定向到用户定义的进程，以进行其他处理、显示或传输
+  * 如果不需要用户定义的数据，请将 *userData* 设置为空
+  * 为避免创建单个大型文本缓冲区，HomeSpan 将网络日志的 HTML 拆分为 1024 字节的块并重复调用 *f()* 直到所有 HTML 都已流式传输；然后 HomeSpan 最后调用 *f()*，并将 *htmlBuf* 设置为空，向用户指示已到达 HTML 文本的末尾
+  * 此命令主要用于将网络日志页面重定向到用户定义的进程，以进行其他处理、显示或传输
   * 有关更多详细信息，请参阅 [消息日志](Logging.md)
 * `void processSerialCommand(const char *CLIcommand)`
   * 处理 *CLIcommand*，就像输入到串口监视器中一样
   * 允许以编程方式访问所有 CLI 命令，包括用户定义的任何自定义命令
   * 无​​论设备是否连接到计算机，都可以工作
   * 示例：`homeSpan.processSerialCommand("A");` 启动 HomeSpan 设置接入点
-  * 示例：`homeSpan.processSerialCommand("Q HUB3");` 将 QR 码的 HomeKit 设置 ID 更改为“HUB3”
+  * 示例：`homeSpan.processSerialCommand("Q HUB3");` 将 QR 码的 HomeKit 设置 ID 更改为 "HUB3"
 
 * `Span& setRebootCallback(void (*func)(uint8_t count), uint32_t upTime)`
   * 设置可选的用户定义回调函数 *func*，在重启后经过 *upTime* 毫秒时调用（仅一次）（如果未指定，则默认 *upTime*=5000 毫秒）
@@ -254,8 +255,8 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
   * 这允许用户通过快速打开/关闭设备电源指定次数来向草图提供通用形式的输入，通常用于提供重置远程设备某些方面的方法
   * 使用 lamba 函数的示例：
     * `homeSpan.setRebootCallback( [](uint8_t c) {if(c==3) homeSpan.processSerialCommand("X");} );`
-    * 如果设备“短”重启恰好 3 次，每次重启时间少于 5 秒，则导致 HomeSpan 运行“X”串行命令，该命令将擦除 WiFi 数据
-    * 请注意，创建 3 次短重启意味着您实际上总共循环电源（或按下重置按钮）4 次，自上次允许草图运行而无需重新启动以来
+    * 如果设备“短”重启恰好 3 次，每次重启时间少于 5 秒，则导致 HomeSpan 运行 "X" 串行命令，该命令将擦除 WiFi 数据
+    * 请注意，创建 3 次短重启意味着你实际上总共循环电源（或按下重置按钮）4 次，自上次允许草图运行而无需重新启动以来
 
 * `Span& setSerialInputDisable(boolean val)`
   * 如果 *val* 为 true，则禁用 HomeSpan 从串行端口读取输入
@@ -272,7 +273,7 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
 
 * `void deleteStoredValues()`
   * 删除所有存储特性的值设置来自 NVS
-  * 执行的功能与在 CLI 中输入“V”相同
+  * 执行的功能与在 CLI 中输入 "V" 相同
 
 * `boolean deleteAccessory(uint32_t aid)`
   * 如果找到，则删除附件 ID 为 *aid* 的附件
@@ -285,10 +286,10 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
 * `boolean updateDatabase()`
   * 重新计算数据库配置编号，如果发生更改，则通过 MDNS 重新广播新编号，以便所有连接的 HomeKit 控制器（如 Home App）可以请求完全刷新以准确反映新配置
   * 如果配置编号已更改，则返回 true，否则返回 false
-  * *仅*在您想要对设备的附件数据库进行运行时（即 Arduino `setup()` 函数完成后）更改时才需要
+  * *仅*在你想要对设备的附件数据库进行运行时（即 Arduino `setup()` 函数完成后）更改时才需要
   * 在动态添加一个或多个附件（使用 `new SpanAccessory(aid)`）或删除一个或多个附件（使用`homeSpan.deleteAccessory(aid)`)
-  * **重要**：删除配件后，您不能在添加新配件时（在同一设备上）重复使用相同的 *aid*，除非新配件配置了与已删除配件完全相同的服务和特性
-  * 注意：如果您有一个在草图的 Arduino `setup()` 函数中完全定义的静态配件数据库，则**不需要**此方法
+  * **重要**：删除配件后，你不能在添加新配件时（在同一设备上）重复使用相同的 *aid*，除非新配件配置了与已删除配件完全相同的服务和特性
+  * 注意：如果你有一个在草图的 Arduino `setup()` 函数中完全定义的静态配件数据库，则**不需要**此方法
 
 ---
 
@@ -303,11 +304,11 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
     * *cpu* - 指定轮询任务将在其上运行的 CPU。有效值为 0 和 1。在单 CPU 板上，此参数将被忽略。如果未指定，则默认为 0
   * 如果使用，**必须**将其放在草图中作为 Arduino `setup()` 方法的最后一行
   * 如果在同一个草图中同时使用 `poll()` 和 `autoPoll()`，HomeSpan 将抛出错误并停止 - 将 `poll()` 放在 Arduino `loop()` 方法中**或**将 `autoPoll()` 放在 Arduino `setup()` 方法的末尾
-  * 如果使用此方法，并且您不需要将自己的代码添加到主 Arduino `loop()`，则可以安全地跳过在草图中定义空白的 `void loop(){}` 函数
-  * 警告：如果您添加到 Arduino `loop()` 方法的任何代码试图更改任何 HomeSpan 设置或在后台 `poll()` 任务中运行的函数，竞争条件可能会产生未定义的结果
+  * 如果使用此方法，并且你不需要将自己的代码添加到主 Arduino `loop()`，则可以安全地跳过在草图中定义空白的 `void loop(){}` 函数
+  * 警告：如果你添加到 Arduino `loop()` 方法的任何代码试图更改任何 HomeSpan 设置或在后台 `poll()` 任务中运行的函数，竞争条件可能会产生未定义的结果
 
 * `TaskHandle_t getAutoPollTask​​()`
-  * 返回自动轮询任务的任务句柄，如果未使用自动轮询，则返回 NULL
+  * 返回自动轮询任务的任务句柄，如果未使用自动轮询，则返回空
 
 ## *SpanAccessory(uint32_t aid)*
 
@@ -323,7 +324,7 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
   * 实例化的第一个附件必须始终具有 ID=1（如果未指定 *aid*，则为默认值）。
   * 将第一个附件的 *aid* 设置为 1 以外的任何值都会在初始化期间引发错误。
 
-* 您必须在实例化任何附件之前调用 `homeSpan.begin()`
+* 你必须在实例化任何附件之前调用 `homeSpan.begin()`
 * 示例：`new SpanAccessory();`
 
 ## *SpanService()*
@@ -377,7 +378,7 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
 
 * 实例化的特性将添加到 HomeSpan HAP 数据库并与最后实例化的服务相关联
 * 在没有先实例化服务的情况下实例化特性会在初始化期间引发错误
-* 第一个参数可选地允许您在启动时设置特性的初始 *值*。如果未指定 *value*，HomeSpan 将为 Characteristic 提供合理的默认值
+* 第一个参数可选地允许你在启动时设置特性的初始 *值*。如果未指定 *value*，HomeSpan 将为 Characteristic 提供合理的默认值
 * 如果 *value* 超出 Characteristic 的最小/最大范围，则抛出运行时警告，其中最小/最大是 HAP 默认值，或通过调用 `setRange()` 设置的任何新值
 * 如果将第二个可选参数设置为 `true`，则指示 HomeSpan 将此 Characteristic 值的更新保存在设备的非易失性存储器 (NVS) 中，以便在设备断电时在启动时恢复。如果未指定，*nvsStore* 将默认为 `false`（无存储）
 * 示例：
@@ -396,7 +397,7 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
   * 模板方法，返回 HomeKit 控制器请求更新特性所需的 **新** 值。与 `getVal<>()` 相同的转换规则
 
 * `void setVal(value [,boolean notify])`
-  * 将基于数值的特征的值设置为 *value*，并且，如果 *notify* 设置为 true，则通知所有 HomeKit 控制器此更改。*notify* 标志是可选的，如果未指定，则将设置为 true。将 *notify* 标志设置为 false 允许您在不通知任何 HomeKit 控制器的情况下更新特性，这对于 HomeKit 自动调整的特性（例如倒计时器）很有用，但如果 Home App 关闭然后重新打开，则会从附件请求
+  * 将基于数值的特征的值设置为 *value*，并且，如果 *notify* 设置为 true，则通知所有 HomeKit 控制器此更改。*notify* 标志是可选的，如果未指定，则将设置为 true。将 *notify* 标志设置为 false 允许你在不通知任何 HomeKit 控制器的情况下更新特性，这对于 HomeKit 自动调整的特性（例如倒计时器）很有用，但如果 Home App 关闭然后重新打开，则会从附件请求
   * 适用于任何整数、布尔值或基于浮点的数值 *value*，但 HomeSpan 会将 *value* 转换为每个特性的适当类型（例如，在基于整数的特性上调用 `setValue(5.5)` 会导致 *value*=5）
   * 如果 *value* 超出特性的最小/最大范围，则会引发运行时警告，其中最小/最大是 HAP 默认值，或者通过之前调用 `setRange()` 设置的任何新的最小/最大范围
   * *value* **不**限于步长的增量；例如，在基于浮点的特性上调用 `setRange(0,100,5)` 后调用 `setVal(43.5)` 是完全有效的，即使 43.5 与指定的步长不一致。Home App 将正确保留该值为 43.5，但在滑块图形中使用时（例如设置恒温器的温度），它将四舍五入到最接近的步长增量（在本例中为 45）
@@ -436,7 +437,7 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
   * 用指定大小 *len* 的字节数组 *data* 填充所有字节“编码”为特征的当前值
   * 返回特征中编码的总字节数
   * 如果 *len* 小于编码的总字节数，则不会提取任何数据（即 *data* 未修改），并会抛出一条警告消息，表明 *data* 数组的大小不足以提取特征中编码的所有字节
-  * 将 *data* 设置为 NULL 会返回编码的总字节数，但不提取任何数据。这可用于在提取数据之前帮助创建足够大小的 *data* 数组
+  * 将 *data* 设置为空 会返回编码的总字节数，但不提取任何数据。这可用于在提取数据之前帮助创建足够大小的 *data* 数组
 
 * `size_t getNewData(uint8_t *data, size_t len)`
   * 类似于 `getData()`，但会根据 HomeKit 控制器要求更新特征所需的 **new** 值，用字节填充指定大小 *len* 的字节数组 *data*
@@ -480,7 +481,7 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
   * 返回指向 Characteristic 本身的指针，以便在实例化期间可以链接该方法
   * 示例：`(new Characteristic::RotationSpeed())->setUnit("percentage");`
 
-### *SpanButton(int pin, uint16_t longTime, uint16_t singleTime, uint16_t doubleTime, boolean (\*triggerType)(int))*
+### *SpanButton(int pin, uint16_t longTime, uint16_t singleTime, uint16_t doubleTime, boolean (\*triggerType)(int))*<a name="spanbutton"></a>
 
 创建此 **类** 的实例会将按钮处理程序附加到指定的 ESP32 *pin*。
 
@@ -493,7 +494,7 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
 * *longTime* - 按下并按住按钮以触发长按所需的最短时间（以毫秒为单位）（默认值 = 2000 毫秒）
 * *singleTime* - 按下按钮以触发单击所需的最短时间（以毫秒为单位）（默认值 = 5 毫秒）
 * *doubleTime* - 两次单击之间允许的最大时间（以毫秒为单位）以符合双击的条件（默认值 = 200 毫秒）
-* *triggerType* - 指向布尔函数的指针，该函数接受单个 *int* 参数并返回 `true` 或 `false`，具体取决于传递给 *int* 参数的 *pin* 编号是否触发了“按下”。为方便使用，您可以从以下内置函数中进行选择：
+* *triggerType* - 指向布尔函数的指针，该函数接受单个 *int* 参数并返回 `true` 或 `false`，具体取决于传递给 *int* 参数的 *pin* 编号是否触发了“按下”。为方便使用，你可以从以下内置函数中进行选择：
   * `SpanButton::TRIGGER_ON_LOW` - 当 *pin* 驱动为低电平时触发。适用于将 *pin* 连接到 GROUND 的按钮（当未指定 *triggerType* 时，这是默认值）
 
   * `SpanButton::TRIGGER_ON_HIGH` - 当 *pin* 驱动为高电平时触发。适用于将 *pin* 连接到 VCC（通常为 3.3V）的按钮
@@ -501,11 +502,11 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
 
 当选择任何这些内置函数时（或 *triggerType* 未指定并使用默认值），SpanButton 将在实例化时根据需要自动配置 *pin*。
 
-或者，您可以将 *triggerType* 设置为任何用户定义的函数，形式为 `boolean(int arg)`，并提供您自己的逻辑来确定在指定的 *pin* 上是否发生了触发，该逻辑将作为 *arg* 传递给您的函数。在这种情况下，*arg* 可以表示实际的设备引脚，也可以只是您的函数使用的任意 *int*，例如多路复用器上的虚拟引脚号。注意：如果您为 *triggerType* 指定自己的函数，您还必须在草图中包含初始化逻辑或配置 *triggerType* 正在使用的任何资源（例如引脚多路复用器）所需的任何代码。
+或者，你可以将 *triggerType* 设置为任何用户定义的函数，形式为 `boolean(int arg)`，并提供你自己的逻辑来确定在指定的 *pin* 上是否发生了触发，该逻辑将作为 *arg* 传递给你的函数。在这种情况下，*arg* 可以表示实际的设备引脚，也可以只是你的函数使用的任意 *int*，例如多路复用器上的虚拟引脚号。注意：如果你为 *triggerType* 指定自己的函数，你还必须在草图中包含初始化逻辑或配置 *triggerType* 正在使用的任何资源（例如引脚多路复用器）所需的任何代码。
 
 为方便起见，还提供了 *SpanButton()* 构造函数的第二种形式：
 * `SpanButton(int pin, boolean (*triggerType)(int), uint16_t longTime=2000, uint16_t singleTime=5, uint16_t doubleTime=200)`
-  * 这允许您仅设置 *pin* 和 *triggerType*，同时将其余参数保留为默认值
+  * 这允许你仅设置 *pin* 和 *triggerType*，同时将其余参数保留为默认值
 
 #### 触发规则 ###
 * 如果按下按钮并持续按住，则每隔 longTime 毫秒将触发一次长按，直到按钮被释放
@@ -521,7 +522,7 @@ HomeSpan 会在与该服务关联的任何 SpanButton 中触发事件时自动�
 
 如果用户没有覆盖包含一个或多个按钮的服务的虚拟 button() 方法，则 HomeSpan 将在初始化期间报告警告，但不会报告错误；这些按钮的触发器将被忽略。
 
-使用一个或多个触摸传感器时，HomeSpan 会在实例化第一个类型为“SpanButton::TRIGGER_ON_TOUCH”的 SpanButton 时轮询基线传感器读数，从而自动校准触发触摸传感器的阈值。对于 ESP32 设备，阈值设置为基线值的 50%，因为当传感器值低于阈值水平时会发生触发。对于 ESP32-S2 和 ESP32-S3 设备，阈值设置为基线值的 200%，因为当传感器值高于阈值水平时会发生触发。通常，HomeSpan 的自动校准功能可以准确检测触摸传感器的单次、双击和长按。但是，如果需要，您可以使用以下类级方法覆盖校准并设置自己的阈值：
+使用一个或多个触摸传感器时，HomeSpan 会在实例化第一个类型为 "SpanButton::TRIGGER_ON_TOUCH" 的 SpanButton 时轮询基线传感器读数，从而自动校准触发触摸传感器的阈值。对于 ESP32 设备，阈值设置为基线值的 50%，因为当传感器值低于阈值水平时会发生触发。对于 ESP32-S2 和 ESP32-S3 设备，阈值设置为基线值的 200%，因为当传感器值高于阈值水平时会发生触发。通常，HomeSpan 的自动校准功能可以准确检测触摸传感器的单次、双击和长按。但是，如果需要，你可以使用以下类级方法覆盖校准并设置自己的阈值：
 
 * `void SpanButton::setTouchThreshold(uintXX_t thresh)`
   * 将阈值设置为高于（对于 ESP32 设备）或低于（对于 ESP32-S2 和 ESP32-S3 设备）触发触摸传感器的 *thresh*
@@ -529,7 +530,7 @@ HomeSpan 会在与该服务关联的任何 SpanButton 中触发事件时自动�
   * 指定的阈值被视为全局的，用于 *所有* 类型为 `SpanButton::TRIGGER_ON_TOUCH` 的 SpanButton 实例
   * 此方法可以在创建 SpanButton 之前或之后调用
 
-此外，您还可以使用以下类级方法覆盖 ESP32 的触摸传感器时序参数：
+此外，你还可以使用以下类级方法覆盖 ESP32 的触摸传感器时序参数：
 
 * `void SpanButton::setTouchCycles(uint16_t measureTime, uint16_t sleepTime)`
   * 将测量时间和睡眠时间时钟周期分别更改为 *measureTime* 和 *sleepTime*。这只是对 Arduino-ESP32 库 `touchSetCycles()` 函数的传递调用
@@ -537,11 +538,11 @@ HomeSpan 会在与该服务关联的任何 SpanButton 中触发事件时自动�
 
 ### *SpanToggle(int pin, boolean (\*triggerType)(int)=PushButton::TRIGGER_ON_LOW, uint16_32 toggleTime=5)*
 
-创建此 **类** 的实例会将拨动开关处理程序附加到指定的 ESP32 *pin*。这是 *SpanButton* 的子类，因此派生了所有相同的功能。例如，您可以将 *triggerType* 设置为 PushButton::TRIGGER_ON_HIGH，创建自己的触发器函数等。但是，当按钮被“按下”时，HomeSpan 不会调用 `button(int pin, int pressType)`，而是在开关从一个位置“切换”到另一个位置时，HomeSpan 会调用相同的 `button()` 方法。在这种情况下，传递给 `button()` 的参数 *pressType* 具有一组不同的枚举：
+创建此 **类** 的实例会将拨动开关处理程序附加到指定的 ESP32 *pin*。这是 *SpanButton* 的子类，因此派生了所有相同的功能。例如，你可以将 *triggerType* 设置为 PushButton::TRIGGER_ON_HIGH，创建自己的触发器函数等。但是，当按钮被“按下”时，HomeSpan 不会调用 `button(int pin, int pressType)`，而是在开关从一个位置“切换”到另一个位置时，HomeSpan 会调用相同的 `button()` 方法。在这种情况下，传递给 `button()` 的参数 *pressType* 具有一组不同的枚举：
 * 3=开关已关闭（`SpanToggle::CLOSED`）
 * 4=开关已打开（`SpanToggle::OPEN`）
 
-请注意，构造函数中没有 *singleTime*、*longTime* 或 *doubleTime* 参数，因为您不能单击、双击或长按切换开关。相反，构造函数支持单个参数 *toggleTime*（如果未指定，则默认值为 5ms），该参数设置开关需要移动到关闭位置才能触发对 `button()` 方法的调用的最短时间。这有效地“消除了”拨动开关的抖动。
+请注意，构造函数中没有 *singleTime*、*longTime* 或 *doubleTime* 参数，因为你不能单击、双击或长按切换开关。相反，构造函数支持单个参数 *toggleTime*（如果未指定，则默认值为 5ms），该参数设置开关需要移动到关闭位置才能触发对 `button()` 方法的调用的最短时间。这有效地“消除了”拨动开关的抖动。
 
 SpanToggle 还支持以下附加方法：
 
@@ -556,13 +557,13 @@ SpanToggle 还支持以下附加方法：
 创建此 **类** 的实例会将用户定义的命令添加到HomeSpan 命令行界面 (CLI)，其中：
 
 * *c* 是用户定义命令的单字母名称
-* *desc* 是用户定义命令的描述，当用户在 CLI 中键入“？”时显示
+* *desc* 是用户定义命令的描述，当用户在 CLI 中键入 "？" 时显示
 * *f* 是指向用户定义函数的指针，当 com调用 mand。*f* 的允许形式为：
   1. `void f(const char *buf)`，或
   1. `void f(const char *buf, void *obj)`
 * *userObject* 是指向 HomeSpan 传递给函数 *f* 的任意对象的指针，当使用 *f* 的第二种形式时，该对象作为第二个参数。请注意，当使用 *f* 的第一种形式时，包含 *userObject* 是错误的，当使用 *f* 的第二种形式时，排除 *userObject* 也是错误的
 
-要从 CLI 调用自定义命令，请在单字母名称 *c* 前面加上“@”。这允许 HomeSpan 区分用户定义的命令和其内置命令。例如，
+要从 CLI 调用自定义命令，请在单字母名称 *c* 前面加上 "@"。这允许 HomeSpan 区分用户定义的命令和其内置命令。例如，
 
 ```C++
 new SpanUserCommand('s', "save current configuration", saveConfig);
@@ -570,7 +571,7 @@ new SpanUserCommand('s', "save current configuration", saveConfig);
 void saveConfig(const char *buf){ ... };
 ```
 
-将向 CLI 添加一个新命令 '@s'，其描述为“保存当前配置”，该命令将在调用时调用用户定义函数 `void saveConfig(const char *buf)`。参数 *buf* 指向在 '@' 后输入到 CLI 中的所有字符的数组。这允许用户将参数从 CLI 传递给用户定义函数。例如，在调用 saveConfig 时，在 CLI 中输入 '@s123' 会将 *buf* 设置为“s123”。
+将向 CLI 添加一个新命令 '@s'，其描述为“保存当前配置”，该命令将在调用时调用用户定义函数 `void saveConfig(const char *buf)`。参数 *buf* 指向在 '@' 后输入到 CLI 中的所有字符的数组。这允许用户将参数从 CLI 传递给用户定义函数。例如，在调用 saveConfig 时，在 CLI 中输入 '@s123' 会将 *buf* 设置为 "s123"。
 
 在参数的第二种形式中，HomeSpan 将向函数 *f* 传递一个附加对象。例如，
 
@@ -602,7 +603,7 @@ void saveConfig(const char *buf, void *obj){ ... do something with myConfigurati
 * *minValue* - 指定有效值的默认最小范围，可以通过调用 `setRange()` 进行覆盖。不适用于 STRING 或 DATA 特征宏
 * *staticRange* - 如果 *minValue* 和 *maxValue* 是静态的并且无法通过调用 `setRange()` 进行覆盖，则设置为 *true*。如果允许调用 `setRange()`，则设置为 *false*。不适用于 STRING 或 DATA 特征宏
 
-例如，下面的第一行创建了一个名为“Voltage”的自定义特征，其 UUID 代码可被 *Eve for HomeKit* 应用识别。参数显示该特征是只读的 (PR) 并启用通知 (EV)。允许值的默认范围是 0-240，默认值为 120。随后调用 `setRange()` 可以覆盖该范围。下面的第二行创建了一个自定义的只读字符串型特性：
+例如，下面的第一行创建了一个名为 "Voltage" 的自定义特征，其 UUID 代码可被 *Eve for HomeKit* 应用识别。参数显示该特征是只读的 (PR) 并启用通知 (EV)。允许值的默认范围是 0-240，默认值为 120。随后调用 `setRange()` 可以覆盖该范围。下面的第二行创建了一个自定义的只读字符串型特性：
 
 ```C++
 CUSTOM_CHAR(Voltage, E863F10A-079E-48FF-8F27-9C2605A29F52, PR+EV, UINT16, 120, 0, 240, false);
@@ -618,11 +619,11 @@ new Characteristic::UserTag(); // 添加用户标签特征并保留默认初始�
 
 请注意，必须在全局级别（即不在 `setup()` 内）创建自定义特征，并在调用 `homeSpan.begin()` 之前创建
 
-> 高级提示 1：当出现无法识别的自定义特征时，*Eve for HomeKit* 会显示一个 *通用控件*，允许您与在 HomeSpan 中创建的任何自定义特征进行交互。但是，由于 Eve 无法识别该特征，因此只有在特征包含 **description** 字段时，它才会呈现通用控件，您可以使用上述 `setDescription()` 方法将其添加到任何特征中。您可能还想使用 `setUnit()` 和 `setRange()`，以便 Eve App 显示具有适合您的自定义特征范围的控件。
+> 高级提示 1：当出现无法识别的自定义特征时，*Eve for HomeKit* 会显示一个 *通用控件*，允许你与在 HomeSpan 中创建的任何自定义特征进行交互。但是，由于 Eve 无法识别该特征，因此只有在特征包含 **description** 字段时，它才会呈现通用控件，你可以使用上述 `setDescription()` 方法将其添加到任何特征中。你可能还想使用 `setUnit()` 和 `setRange()`，以便 Eve App 显示具有适合你的自定义特征范围的控件。
 
 > 高级提示 2：尽管 DATA 格式是 HAP-R2 规范的一部分，但目前任何原生 Home App 特性均未使用该格式。HomeSpan 中包含此格式是因为其他应用程序（例如 *Eve for HomeKit*）确实使用这些类型的特性来创建 Home App 之外的功能，因此可供高级用户进行实验。
 
-> 高级提示 3：使用多文件草图时，如果您在多个文件中定义相同的自定义特性，编译器将抛出“重新定义错误”。为避免此错误并允许在多个文件中使用相同的自定义特性，请在包含先前定义的自定义特性的 *重复* 定义的每个文件中的 *#define CUSTOM_CHAR_HEADER` *之前*添加行 `#define CUSTOM_CHAR_HEADER`。
+> 高级提示 3：使用多文件草图时，如果你在多个文件中定义相同的自定义特性，编译器将抛出“重新定义错误”。为避免此错误并允许在多个文件中使用相同的自定义特性，请在包含先前定义的自定义特性的 *重复* 定义的每个文件中的 *#define CUSTOM_CHAR_HEADER` *之前*添加行 `#define CUSTOM_CHAR_HEADER`。
 
 ### *CUSTOM_SERV(name,uuid)*
 
@@ -633,7 +634,7 @@ new Characteristic::UserTag(); // 添加用户标签特征并保留默认初始�
 
 自定义服务可能包含自定义特性和标准 HAP 特性的混合，但由于服务本身是自定义的，因此即使服务包含一些标准 HAP 特性，Home App 也会忽略整个服务。请注意，必须在调用 `homeSpan.begin()` 之前创建自定义服务
 
-可以在 Arduino IDE 下的 [*File → Examples → HomeSpan → Other Examples → CustomService*](../examples/Other%20Examples/CustomService) 下找到一个完整的示例，该示例展示了如何使用 ***CUSTOM_SERV()*** 和 ***CUSTOM_CHAR()*** 宏来创建 *Eve for HomeKit* 识别的压力传感器配件。
+可以在 Arduino IDE 下的 [*文件→示例→HomeSpan→其他示例→CustomService*](../examples/Other%20Examples/CustomService) 下找到一个完整的示例，该示例展示了如何使用 ***CUSTOM_SERV()*** 和 ***CUSTOM_CHAR()*** 宏来创建 *Eve for HomeKit* 识别的压力传感器配件。
 
 ## 其他宏
 
