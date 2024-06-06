@@ -8,7 +8,7 @@
 
 * 虽然商业 HomeKit 设备可以从 iPhone 自动检索 WiFi 凭据，但苹果并未在 HomeSpan 使用的非商业版本的 HomeKit 中提供此机制。可选地，你需要使用以下四种方法之一将你的 WiFi 凭据添加到 HomeSpan 设备：
 
-   * 在 Arduino IDE 中，只需使用 HomeSpan 命令行界面并在串口监视器中键入 "W"。HomeSpan 将提示你输入你的 WiFi 网络名称和密码。你只需执行一次，因为 HomeSpan 将你提供的 WiFi 凭据存储在设备的非易失性存储 (NVS) 中，以便在设备每次启动时使用。有关完整的详细信息，请参阅 [HomeSpan CLI](CLI.md)。
+   * 在 Arduino IDE 中，只需使用 HomeSpan 命令行界面并在串口监视器中键入 "W"。HomeSpan 将提示你输入你的 WiFi 网络名称和密码。你只需执行一次，因为 HomeSpan 将你提供的 WiFi 凭据存储在设备的非易失性存储 (NVS) 中，以便在设备每次启动时使用。有关完整的详细信息，请参阅 [HomeSpan 命令行界面（CLI）](CLI.md)。
   
 * 作为替代方案，特别是如果你的 HomeSpan 设备未连接到电脑，你可以启动 HomeSpan 的临时 WiFi 设置网络并将你的 WiFi 凭据直接输入到 HomeSpan 提供的临时 Web 表单中。与上面类似，这只需执行一次，因为 HomeSpan 同样存储你使用此方法输入的 WiFi 凭据。有关详细信息，请参阅 [HomeSpan 用户指南](UserGuide.md#设置-homespan-的-wifi-凭据和设置代码)。
 
@@ -61,13 +61,13 @@
 
 * 是的，标准 Arduino 库 `SPI.h` 和 `Wire.h` 在 HomeSpan 环境中都可以正常工作。通常，从 SPI 或 I2C 设备读取的代码是在 HomeSpan 服务的 `loop()` 方法中实现的，任何初始化都在该服务的构造函数中完成。有关说明性示例，请参阅 [TemperatureSensorI2C](https://github.com/HomeSpan/TempSensorI2C)。
 
-#### 可以在 HomeSpan 中添加 Web 服务器吗？
+#### 可以在 HomeSpan 中添加网页服务器吗？
 
-* 可以，前提是你使用标准 ESP32-Arduino 库（例如 “WebServer.h”）实现 Web 服务器。请参阅 [ProgrammableHub](https://github.com/HomeSpan/ProgrammableHub)，了解如何轻松地将 Web 服务器集成到 HomeSpan 中的说明性示例。该项目还涵盖了其他各种高级主题，包括 TCP 插槽管理、附件的动态创建以及在 ESP32 的 NVS 中保存任意数据。
+* 可以，前提是你使用标准 ESP32-Arduino 库（例如 "WebServer.h"）实现网页服务器。请参阅 [ProgrammableHub](https://github.com/HomeSpan/ProgrammableHub)，了解如何轻松地将网页服务器集成到 HomeSpan 中的说明性示例。该项目还涵盖了其他各种高级主题，包括 TCP 插槽管理、附件的动态创建以及在 ESP32 的 NVS 中保存任意数据。
 
 #### 你可以将自定义服务和特征添加到 HomeSpan 吗？
 
-* 是的，HomeSpan 包含两个易于使用的宏来定义你自己的自定义服务和自定义特征，超出 HAP-R2 中指定的那些。有关详细信息和演示如何执行此操作的示例，请参阅 [HomeSpan API 参考](https://github.com/HomeSpan/HomeSpan/blob/master/docs/Reference.md)。请注意，你创建的任何新特征都将被 家庭 应用*完全忽略*。同样，你创建的任何新服务都将显示在“家庭”应用中标有“不支持”的磁贴上。Apple ***不***提供任何机制来扩展“家庭”应用本身的功能。但是，可以使用自定义服务和特征的地方是为这些额外功能设计的第三方应用。例如，*Eve for HomeKit* 应用可以正确处理 HAP-R2 中定义的所有服务和特征，*加上* 明确设计用于 Eve 产品的各种附加服务和特征。如果你知道这些额外服务和特征的 UUID 代码，你可以将它们添加到 HomeKit 并在 Eve 应用中使用它们，就像它们是 HAP-R2 服务和特征一样。
+* 是的，HomeSpan 包含两个易于使用的宏来定义你自己的自定义服务和自定义特征，超出 HAP-R2 中指定的那些。有关详细信息和演示如何执行此操作的示例，请参阅 [HomeSpan API 参考](https://github.com/HomeSpan/HomeSpan/blob/master/docs/Reference.md)。请注意，你创建的任何新特征都将被 家庭 应用*完全忽略*。同样，你创建的任何新服务都将显示在“家庭”应用中标有“不支持”的磁贴上。Apple ***不***提供任何机制来扩展“家庭”应用本身的功能。但是，可以使用自定义服务和特征的地方是为这些额外功能设计的第三方应用。例如，*Eve 应用*可以正确处理 HAP-R2 中定义的所有服务和特征，*加上* 明确设计用于 Eve 产品的各种附加服务和特征。如果你知道这些额外服务和特征的 UUID 代码，你可以将它们添加到 HomeKit 并在 Eve 应用中使用它们，就像它们是 HAP-R2 服务和特征一样。
 
 #### HomeSpan 可以用于商业设备吗？
 
