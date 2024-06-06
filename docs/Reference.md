@@ -94,7 +94,7 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
     * 0 = 顶级 HomeSpan 状态消息，以及用户在草图中指定的任何 `LOG0()` 消息（默认值）
     * 1 = 所有 HomeSpan 状态消息，以及用户在草图中指定的任何 `LOG1()` 消息
     * 2 = 所有 HomeSpan 状态消息以及往返于 HomeSpan 设备的所有 HAP 通信数据包，以及用户在草图中指定的所有 `LOG1()` 和 `LOG2()` 消息
-    * -1 = 抑制所有消息HomeSpan 状态消息，包括用户在草图中指定的所有 `LOG0()`、`LOG1()` 和 `LOG2()` 消息，释放串行端口以用于其他用途
+    * -1 = 抑制所有消息HomeSpan 状态消息，包括用户在草图中指定的所有 `LOG0()`、`LOG1()` 和 `LOG2()` 消息，释放串口以用于其他用途
   * 日志级别设置对草图中可能使用的任何 `Serial.print()` 或 `Serial.printf()` 语句没有影响。如果你想通过设置 HomeSpan 日志级别来控制输出，请使用其中一个 `LOG()` 宏，而不是 `Serial.print()` 或 `Serial.printf()`
   * 日志级别设置对 ESP32 操作系统本身输出的任何 ESP32 诊断消息没有影响。要隐藏这些消息，请确保在编译草图时将 Arduino IDE 的工具菜单中的*核心调试级别*设置为“无”
   * 注意，也可以在运行时通过 [HomeSpan 命令行界面(CLI)](CLI.md) 使用 "L" 命令更改日志级别
@@ -214,7 +214,7 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
   * 启用滚动网络日志，显示用户使用 `WEBLOG()` 宏创建的最近 *maxEntries* 条目。参数及其默认值（如果未指定）如下：
     * *maxEntries* - 要保存的最大（最近）条目数。如果未指定，则默认为 0，在这种情况下，Web 日志将仅显示状态而没有任何日志条目
     * *timeServerURL* - 时间服务器的 URL，HomeSpan 在建立 WiFi 连接后将使用该时间服务器在启动时设置其时钟。指定时间服务器后，HomeSpan 将保留一个额外的套接字连接。如果未指定，则默认为空，在这种情况下，HomeSpan 将跳过设置设备时钟
-    * *timeZone* - 指定用于设置时钟的时区。仅使用 POSIX.1 格式，不支持 *Time Zone Database* 或 *tzdata*。根据 [TZ 的 GNU libc 文档](https://www.gnu.org/software/libc/manual/html_node/TZ-Variable.html)，*偏移量指定你必须 **添加到本地时间** 才能获得协调世界时值的时间值*。"UTC+5:00" 表示本地时间 + 5 小时为 UTC 时间。请参阅 GNU libc 文档以获取一些示例，包括如何指定北美东部标准时间 (EST) 和东部夏令时间 (EDT)，开始日期和结束日期为 EDT。如果 *serverURL=NULL*，则忽略此字段；如果 *serverURL!=NULL*，则必须填写此字段
+    * *timeZone* - 指定用于设置时钟的时区。仅使用 POSIX.1 格式，不支持 *Time Zone Database* 或 *tzdata*。根据 [TZ 的 GNU libc 文档](https://www.gnu.org/software/libc/manual/html_node/TZ-Variable.html)，*偏移量指定你必须**添加到本地时间**才能获得协调世界时值的时间值*。"UTC+5:00" 表示本地时间 + 5 小时为 UTC 时间。请参阅 GNU libc 文档以获取一些示例，包括如何指定北美东部标准时间 (EST) 和东部夏令时间 (EDT)，开始日期和结束日期为 EDT。如果 *serverURL=NULL*，则忽略此字段；如果 *serverURL!=NULL*，则必须填写此字段
     * *logURL* - 此设备的网络日志页面的 URL。如果未指定，则默认为 "status" 。如果 *logURL* 设置为空，HomeSpan 将使用 *timeServerURL* 和 *timeZone* 参数来设置时钟，但它不会响应任何 HTTP 请求来提供任何网络日志页面。但是，Web 日志数据仍在内部累积，并且可以通过调用 `homeSpan.getWebLog()` 方法随时访问生成的 HTML（见下文）
   * 示例：`homeSpan.enableWebLog(50,"pool.ntp.org","UTC-1:00","myLog");` 在 URL *http<nolink>://HomeSpan-\[DEVICE-ID\].local:\[TCP-PORT\]/myLog* 处创建一个网络日志，该日志将显示使用 WEBLOG() 宏生成的 50 条最新日志消息。启动时（建立 WiFi 连接后），HomeSpan 将尝试通过调用服务器 "pool.ntp.org" 并将时间调整为比 UTC 早 1 小时来设置设备时钟。
   * 尝试连接到 *timeServerURL* 时，HomeSpan 会等待 120 秒以获得响应。这是在后台完成的，在 HomeSpan 尝试设置时间时不会阻止其照常运行。如果 120 秒超时期限后仍未收到任何响应，HomeSpan 将假定服务器无法访问并跳过时钟设置程序。使用 `setTimeServerTimeout()` 将 120 秒超时时间重新配置为其他值
@@ -259,12 +259,12 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
     * 请注意，创建 3 次短重启意味着你实际上总共循环电源（或按下重置按钮）4 次，自上次允许草图运行而无需重新启动以来
 
 * `Span& setSerialInputDisable(boolean val)`
-  * 如果 *val* 为 true，则禁用 HomeSpan 从串行端口读取输入
-  * 如果 *val* 为 false，则重新启用 HomeSpan 从串行端口读取输入
-  * 当需要主 USB 串行端口从外部串行外围设备读取数据而不是用于从 Arduino 串口监视器读取输入时很有用
+  * 如果 *val* 为 true，则禁用 HomeSpan 从串口读取输入
+  * 如果 *val* 为 false，则重新启用 HomeSpan 从串口读取输入
+  * 当需要主 USB 串口从外部串行外围设备读取数据而不是用于从 Arduino 串口监视器读取输入时很有用
 
 * `boolean getSerialInputDisable()`
-  * 如果 HomeSpan 从串行端口读取当前被禁用，则返回 *true*
+  * 如果 HomeSpan 从串口读取当前被禁用，则返回 *true*
   * 如果 HomeSpan 正常运行并将读取输入到 Arduino 串口监视器的任何 CLI 命令，则返回 *false*
 
 ---
@@ -340,12 +340,12 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
 * `SpanService *setPrimary()`
   * 指定这是附件的主要服务。返回指向服务本身的指针，以便可以在实例化期间链接该方法
   * 示例：`(new Service::Fan)->setPrimary();`
-  * 注意，尽管此功能由 Apple 在 HAP-R2 中定义，但它似乎已被弃用，不再有任何用途或对 Home App 有任何影响
+  * 注意，尽管此功能由 Apple 在 HAP-R2 中定义，但它似乎已被弃用，不再有任何用途或对 “家庭”应用有任何影响
 
 * `SpanService *setHidden()`
   * 指定这是配件的隐藏服务。返回指向服务本身的指针，以便可以在实例化期间链接该方法。
   * 示例：`(new Service::Fan)->setHidden();`
-  * 注意，尽管此功能由 Apple 在 HAP-R2 中定义，但它似乎已被弃用，不再有任何用途或对 Home App 有任何影响
+  * 注意，尽管此功能由 Apple 在 HAP-R2 中定义，但它似乎已被弃用，不再有任何用途或对 “家庭”应用有任何影响
 
 * `SpanService *addLink(SpanService *svc)`
 * 将 *svc* 添加为链接服务。返回指向调用服务本身的指针，以便可以在实例化期间链接该方法
@@ -389,22 +389,22 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
 #### 以下方法支持基于数值的特性（例如 *int*、*float*...）：
 
 * `type T getVal<T>()`
-  * 模板方法，在转换为指定的类型 *T*（例如 *int*、*double* 等）后返回基于数值的特性的 **当前** 值。如果排除模板参数，值将转换为 *int*。
+  * 模板方法，在转换为指定的类型 *T*（例如 *int*、*double* 等）后返回基于数值的特性的**当前**值。如果排除模板参数，值将转换为 *int*。
   * 指定模板的示例：`double temp = Characteristic::CurrentTemperature->getVal<double>();`
   * 排除模板的示例：`int tilt = Characteristic::CurrentTiltAngle->getVal();`
 
 * `type T getNewVal<T>()`
-  * 模板方法，返回 HomeKit 控制器请求更新特性所需的 **新** 值。与 `getVal<>()` 相同的转换规则
+  * 模板方法，返回 HomeKit 控制器请求更新特性所需的**新**值。与 `getVal<>()` 相同的转换规则
 
 * `void setVal(value [,boolean notify])`
-  * 将基于数值的特征的值设置为 *value*，并且，如果 *notify* 设置为 true，则通知所有 HomeKit 控制器此更改。*notify* 标志是可选的，如果未指定，则将设置为 true。将 *notify* 标志设置为 false 允许你在不通知任何 HomeKit 控制器的情况下更新特性，这对于 HomeKit 自动调整的特性（例如倒计时器）很有用，但如果 Home App 关闭然后重新打开，则会从附件请求
+  * 将基于数值的特征的值设置为 *value*，并且，如果 *notify* 设置为 true，则通知所有 HomeKit 控制器此更改。*notify* 标志是可选的，如果未指定，则将设置为 true。将 *notify* 标志设置为 false 允许你在不通知任何 HomeKit 控制器的情况下更新特性，这对于 HomeKit 自动调整的特性（例如倒计时器）很有用，但如果 “家庭”应用关闭然后重新打开，则会从附件请求
   * 适用于任何整数、布尔值或基于浮点的数值 *value*，但 HomeSpan 会将 *value* 转换为每个特性的适当类型（例如，在基于整数的特性上调用 `setValue(5.5)` 会导致 *value*=5）
   * 如果 *value* 超出特性的最小/最大范围，则会引发运行时警告，其中最小/最大是 HAP 默认值，或者通过之前调用 `setRange()` 设置的任何新的最小/最大范围
-  * *value* **不**限于步长的增量；例如，在基于浮点的特性上调用 `setRange(0,100,5)` 后调用 `setVal(43.5)` 是完全有效的，即使 43.5 与指定的步长不一致。Home App 将正确保留该值为 43.5，但在滑块图形中使用时（例如设置恒温器的温度），它将四舍五入到最接近的步长增量（在本例中为 45）
+  * *value* **不**限于步长的增量；例如，在基于浮点的特性上调用 `setRange(0,100,5)` 后调用 `setVal(43.5)` 是完全有效的，即使 43.5 与指定的步长不一致。“家庭”应用将正确保留该值为 43.5，但在滑块图形中使用时（例如设置恒温器的温度），它将四舍五入到最接近的步长增量（在本例中为 45）
 
 * `SpanCharacteristic *setRange(min, max, step)`
   * 覆盖指定了 *min*、*max* 和 *step* 参数的特性的默认 HAP 范围
-  * *step* 是可选的；如果未指定（或设置为非正数），则 de故障 HAP 步长保持不变
+  * *step* 是可选的；如果未指定（或设置为非正数），则默认 HAP 步长保持不变
   * 适用于任何整数或浮点型参数，但 HomeSpan 会将参数重铸为每个特征的适当类型（例如，在基于整数的特征上调用 `setRange(50.5,70.3,0.5)` 会导致 *min*=50、*max*=70 和 *step*=0）
   * 如果出现以下情况，则会抛出错误：
     * 在不支持范围更改的特征上调用，或者
@@ -413,11 +413,11 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
   * 示例：`(new Characteristic::Brightness(50))->setRange(10,100,5);`
 
 * `SpanCharacteristic *setValidValues(int n, [int v1, int v2 ...])`
-  * 使用可变长度的 *n* 值列表覆盖具有特定枚举有效值的特征的默认 HAP 有效值*v1*、*v2* 等。
+  * 使用可变长度的 *n* 值列表覆盖具有特定枚举有效值的特征的默认 HAP 有效值 *v1*、*v2* 等。
   * 仅适用于 UINT8、UINT16、UINT32 和 INT 格式的特性
     * 如果在任何其他格式的特性上调用此方法，则会抛出警告消息并忽略请求
   * 返回指向特性本身的指针，以便可以在实例化期间链接该方法
-  * 示例：`(new Characteristic::SecuritySystemTargetState())->setValidValues(3,0,1,3);` 创建一个长度为 3 的新有效值列表，其中包含值 0、1 和 3。这会通知 HomeKit，SecuritySystemTargetState 值为 2（夜间布防）无效，不应在 Home App 中显示为选项
+  * 示例：`(new Characteristic::SecuritySystemTargetState())->setValidValues(3,0,1,3);` 创建一个长度为 3 的新有效值列表，其中包含值 0、1 和 3。这会通知 HomeKit，SecuritySystemTargetState 的值为 2（夜间布防）无效，不应在 “家庭”应用中显示为选项
 
 #### 以下方法支持基于字符串的特性（即以空字符结尾的 C 风格字符数组)：
 
@@ -440,7 +440,7 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
   * 将 *data* 设置为空 会返回编码的总字节数，但不提取任何数据。这可用于在提取数据之前帮助创建足够大小的 *data* 数组
 
 * `size_t getNewData(uint8_t *data, size_t len)`
-  * 类似于 `getData()`，但会根据 HomeKit 控制器要求更新特征所需的 **new** 值，用字节填充指定大小 *len* 的字节数组 *data*
+  * 类似于 `getData()`，但会根据 HomeKit 控制器要求更新特征所需的**新**值，用字节填充指定大小 *len* 的字节数组 *data*
 
 * `void setData(uint8_t *data, size_t len)`
   * 类似于 `setVal()`，但专门用于字节数组特征
@@ -457,28 +457,28 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
 
 * `SpanCharacteristic *setPerms(uint8_t perms)`
   * 将特性的默认权限更改为 *perms*，其中 *perms* 是附加权限列表，如 HAP-R2 表 6-4 中所述。有效值为 PR、PW、EV、AA、TW、HD 和 WR
-  * 返回指向 Characteristic 本身的指针，以便可以在实例化期间链接该方法
+  * 返回指向特征本身的指针，以便可以在实例化期间链接该方法
   * 示例：`(new Characteristic::IsConfigured(1))->setPerms(PW+PR+EV);`
 
 * `SpanCharacteristic *addPerms(uint8_t perms)`
-  * 将新权限 *perms* 添加到 Characteristic 的默认权限中，其中 *perms* 是附加权限权限列表，如 HAP-R2 表 6-4 中所述。有效值为 PR、PW、EV、AA、TW、HD 和 WR
-  * 返回指向 Characteristic 本身的指针，以便可以在实例化期间链接该方法
+  * 将新权限 *perms* 添加到特征的默认权限中，其中 *perms* 是附加权限权限列表，如 HAP-R2 表 6-4 中所述。有效值为 PR、PW、EV、AA、TW、HD 和 WR
+  * 返回指向特征本身的指针，以便可以在实例化期间链接该方法
   * 示例：`(new Characteristic::IsConfigured(1))->addPerms(PW);`
 
 * `SpanCharacteristic *removePerms(uint8_t perms)`
   * 从 Characteristic 的默认权限中删除权限 *perms*，其中 *perms* 是权限的附加列表，如 HAP-R2 表 6-4 中所述。有效值为 PR、PW、EV、AA、TW、HD 和 WR
-  * 返回指向 Characteristic 本身的指针，以便可以在实例化期间链接该方法
+  * 返回指向特征本身的指针，以便可以在实例化期间链接该方法
   * 示例：`(new Characteristic::ConfiguredName("HDMI 1"))->removePerms(PW);`
 
 * `SpanCharacteristic *setDescription(const char *desc)`
-  * 向 Characteristic 添加可选描述 *desc*，如 HAP-R2 表 6-3 中所述
-  * 此字段通常用于提供有关自定义 Characteristics 的信息，但 Home App 似乎并未以任何方式使用
-  * 返回指向 Characteristic 本身的指针，以便可以在实例化期间链接该方法
+  * 向特征添加可选描述 *desc*，如 HAP-R2 表 6-3 中所述
+  * 此字段通常用于提供有关自定义特征的信息，但 “家庭”应用似乎并未以任何方式使用
+  * 返回指向特征本身的指针，以便可以在实例化期间链接该方法
   * 示例：`(new Characteristic::MyCustomChar())->setDescription("Tuner Frequency");`
 
 * `SpanCharacteristic *setUnit(const char *unit)`
-  * 添加或覆盖 Characteristic 的 *unit*，如 HAP-R2 表 6-3 中所述HAP-R2 表 6-6
-  * 返回指向 Characteristic 本身的指针，以便在实例化期间可以链接该方法
+  * 添加或覆盖特征的 *unit*，如 HAP-R2 表 6-3 中所述HAP-R2 表 6-6
+  * 返回指向特征本身的指针，以便在实例化期间可以链接该方法
   * 示例：`(new Characteristic::RotationSpeed())->setUnit("percentage");`
 
 ### *SpanButton(int pin, uint16_t longTime, uint16_t singleTime, uint16_t doubleTime, boolean (\*triggerType)(int))*<a name="spanbutton"></a>
@@ -512,7 +512,7 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
 * 如果按下按钮并持续按住，则每隔 longTime 毫秒将触发一次长按，直到按钮被释放
 * 如果按下按钮的时间超过 singleTime 毫秒但少于 longTime 毫秒，然后释放，将触发一次单击，除非在 doubleTime 毫秒内第二次按下按钮并再次按住至少 singleTime 毫秒，在这种情况下将触发一次双击；直到按钮被释放，才会发生其他事件
 * 如果 singleTime>longTime，则只能发生长按触发
-* 如果 doubleTime=0，则不能发生双击ur
+* 如果 doubleTime=0，则不能发生双击效果
 
 #### 用法 ####
 HomeSpan 会在与该服务关联的任何 SpanButton 中触发事件时自动调用服务的 `button(int pin, int pressType)` 方法，其中 *pin* 是按钮所连接的 ESP32 引脚，而 *pressType* 是一个整数，也可以用以下枚举常量表示：
@@ -522,7 +522,7 @@ HomeSpan 会在与该服务关联的任何 SpanButton 中触发事件时自动�
 
 如果用户没有覆盖包含一个或多个按钮的服务的虚拟 button() 方法，则 HomeSpan 将在初始化期间报告警告，但不会报告错误；这些按钮的触发器将被忽略。
 
-使用一个或多个触摸传感器时，HomeSpan 会在实例化第一个类型为 "SpanButton::TRIGGER_ON_TOUCH" 的 SpanButton 时轮询基线传感器读数，从而自动校准触发触摸传感器的阈值。对于 ESP32 设备，阈值设置为基线值的 50%，因为当传感器值低于阈值水平时会发生触发。对于 ESP32-S2 和 ESP32-S3 设备，阈值设置为基线值的 200%，因为当传感器值高于阈值水平时会发生触发。通常，HomeSpan 的自动校准功能可以准确检测触摸传感器的单次、双击和长按。但是，如果需要，你可以使用以下类级方法覆盖校准并设置自己的阈值：
+使用一个或多个触摸传感器时，HomeSpan 会在实例化第一个类型为 "SpanButton::TRIGGER_ON_TOUCH" 的 SpanButton 时轮询基线传感器读数，从而自动校准触发触摸传感器的阈值。对于 ESP32 设备，阈值设置为基线值的 50%，因为当传感器值低于阈值水平时会发生触发。对于 ESP32-S2 和 ESP32-S3 设备，阈值设置为基线值的 200%，因为当传感器值高于阈值水平时会发生触发。通常，HomeSpan 的自动校准功能可以准确检测触摸传感器的单击、双击和长按。但是，如果需要，你可以使用以下类级方法覆盖校准并设置自己的阈值：
 
 * `void SpanButton::setTouchThreshold(uintXX_t thresh)`
   * 将阈值设置为高于（对于 ESP32 设备）或低于（对于 ESP32-S2 和 ESP32-S3 设备）触发触摸传感器的 *thresh*
@@ -592,7 +592,7 @@ void saveConfig(const char *buf, void *obj){ ... do something with myConfigurati
 ### *CUSTOM_CHAR_STRING(name,uuid,perms,defaultValue)*
 ### *CUSTOM_CHAR_DATA(name,uuid,perms)*
 
-创建可添加到任何服务的自定义特性。自定义特性通常被 Home App 忽略，但可能被其他第三方应用程序使用（例如 *Eve for HomeKit*）。第一种形式应该用于创建数值特性（例如，UINT8、BOOL...）。第二种形式用于基于字符串的特性。第三种形式用于基于数据（即字节数组）的特性。参数如下（请注意，任何宏参数都不应使用引号，但应用于基于字符串的特性时的 *defaultValue* 除外）：
+创建可添加到任何服务的自定义特性。自定义特性通常被 “家庭”应用忽略，但可能被其他第三方应用程序使用（例如 *Eve 应用*）。第一种形式应该用于创建数值特性（例如，UINT8、BOOL...）。第二种形式用于基于字符串的特性。第三种形式用于基于数据（即字节数组）的特性。参数如下（请注意，任何宏参数都不应使用引号，但应用于基于字符串的特性时的 *defaultValue* 除外）：
 
 * *name* - 自定义特性的名称。这将被添加到 Characteristic 命名空间，以便可以像任何 HomeSpan Characteristic 一样对其进行访问。对非 ASCII 字符使用 UTF-8 编码字符串。
 * *uuid* - 制造商定义的 Characteristic 的 UUID。必须 *正好* 为 36 个字符，格式为 XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX，其中 *X* 代表有效的十六进制数字。如果需要，则需要前导零，如 HAP-R2 第 6.6.1 节中更详细地描述的那样
@@ -603,7 +603,7 @@ void saveConfig(const char *buf, void *obj){ ... do something with myConfigurati
 * *minValue* - 指定有效值的默认最小范围，可以通过调用 `setRange()` 进行覆盖。不适用于 STRING 或 DATA 特征宏
 * *staticRange* - 如果 *minValue* 和 *maxValue* 是静态的并且无法通过调用 `setRange()` 进行覆盖，则设置为 *true*。如果允许调用 `setRange()`，则设置为 *false*。不适用于 STRING 或 DATA 特征宏
 
-例如，下面的第一行创建了一个名为 "Voltage" 的自定义特征，其 UUID 代码可被 *Eve for HomeKit* 应用识别。参数显示该特征是只读的 (PR) 并启用通知 (EV)。允许值的默认范围是 0-240，默认值为 120。随后调用 `setRange()` 可以覆盖该范围。下面的第二行创建了一个自定义的只读字符串型特性：
+例如，下面的第一行创建了一个名为 "Voltage" 的自定义特征，其 UUID 代码可被 *Eve 应用*识别。参数显示该特征是只读的 (PR) 并启用通知 (EV)。允许值的默认范围是 0-240，默认值为 120。随后调用 `setRange()` 可以覆盖该范围。下面的第二行创建了一个自定义的只读字符串型特性：
 
 ```C++
 CUSTOM_CHAR(Voltage, E863F10A-079E-48FF-8F27-9C2605A29F52, PR+EV, UINT16, 120, 0, 240, false);
@@ -619,22 +619,22 @@ new Characteristic::UserTag(); // 添加用户标签特征并保留默认初始�
 
 请注意，必须在全局级别（即不在 `setup()` 内）创建自定义特征，并在调用 `homeSpan.begin()` 之前创建
 
-> 高级提示 1：当出现无法识别的自定义特征时，*Eve for HomeKit* 会显示一个 *通用控件*，允许你与在 HomeSpan 中创建的任何自定义特征进行交互。但是，由于 Eve 无法识别该特征，因此只有在特征包含 **description** 字段时，它才会呈现通用控件，你可以使用上述 `setDescription()` 方法将其添加到任何特征中。你可能还想使用 `setUnit()` 和 `setRange()`，以便 Eve App 显示具有适合你的自定义特征范围的控件。
+> 高级提示 1：当出现无法识别的自定义特征时，*Eve 应用*会显示一个 *通用控件*，允许你与在 HomeSpan 中创建的任何自定义特征进行交互。但是，由于 Eve 无法识别该特征，因此只有在特征包含 **description** 字段时，它才会呈现通用控件，你可以使用上述 `setDescription()` 方法将其添加到任何特征中。你可能还想使用 `setUnit()` 和 `setRange()`，以便 Eve App 显示具有适合你的自定义特征范围的控件。
 
-> 高级提示 2：尽管 DATA 格式是 HAP-R2 规范的一部分，但目前任何原生 Home App 特性均未使用该格式。HomeSpan 中包含此格式是因为其他应用程序（例如 *Eve for HomeKit*）确实使用这些类型的特性来创建 Home App 之外的功能，因此可供高级用户进行实验。
+> 高级提示 2：尽管 DATA 格式是 HAP-R2 规范的一部分，但目前任何原生 “家庭”应用特性均未使用该格式。HomeSpan 中包含此格式是因为其他应用程序（例如 *Eve 应用*）确实使用这些类型的特性来创建 “家庭”应用之外的功能，因此可供高级用户进行实验。
 
 > 高级提示 3：使用多文件草图时，如果你在多个文件中定义相同的自定义特性，编译器将抛出“重新定义错误”。为避免此错误并允许在多个文件中使用相同的自定义特性，请在包含先前定义的自定义特性的 *重复* 定义的每个文件中的 *#define CUSTOM_CHAR_HEADER` *之前*添加行 `#define CUSTOM_CHAR_HEADER`。
 
 ### *CUSTOM_SERV(name,uuid)*
 
-创建自定义服务以用于第三方应用程序（例如 *Eve for HomeKit*）。自定义服务将在原生 Apple Home 应用中显示，其 Tile 标记为“不支持”，否则 Home 应用将安全地忽略该服务。参数如下（请注意，任何宏参数中都不应使用引号）：
+创建自定义服务以用于第三方应用程序（例如 *Eve 应用*）。自定义服务将在原生 Apple Home 应用中显示，其 Tile 标记为“不支持”，否则 Home 应用将安全地忽略该服务。参数如下（请注意，任何宏参数中都不应使用引号）：
 
 * *name* - 自定义服务的名称。这将添加到服务命名空间，以便像任何 HomeSpan 服务一样对其进行访问。例如，如果 *name*="Vent"，HomeSpan 会将 `Service::Vent` 识别为新服务类
 * *uuid* - 制造商定义的服务的 UUID。必须 *正好* 为 36 个字符，格式为 XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX，其中 *X* 代表有效的十六进制数字。如果需要，则需要前导零，如 HAP-R2 第 6.6.1 节中更详细地描述的那样
 
-自定义服务可能包含自定义特性和标准 HAP 特性的混合，但由于服务本身是自定义的，因此即使服务包含一些标准 HAP 特性，Home App 也会忽略整个服务。请注意，必须在调用 `homeSpan.begin()` 之前创建自定义服务
+自定义服务可能包含自定义特性和标准 HAP 特性的混合，但由于服务本身是自定义的，因此即使服务包含一些标准 HAP 特性，“家庭”应用也会忽略整个服务。请注意，必须在调用 `homeSpan.begin()` 之前创建自定义服务
 
-可以在 Arduino IDE 下的 [*文件→示例→HomeSpan→其他示例→CustomService*](../examples/Other%20Examples/CustomService) 下找到一个完整的示例，该示例展示了如何使用 ***CUSTOM_SERV()*** 和 ***CUSTOM_CHAR()*** 宏来创建 *Eve for HomeKit* 识别的压力传感器配件。
+可以在 Arduino IDE 下的 [*文件→示例→HomeSpan→其他示例→CustomService*](../examples/Other%20Examples/CustomService) 下找到一个完整的示例，该示例展示了如何使用 ***CUSTOM_SERV()*** 和 ***CUSTOM_CHAR()*** 宏来创建 *Eve 应用*识别的压力传感器配件。
 
 ## 其他宏
 
