@@ -74,7 +74,7 @@ void setup(){
   ...
 }
 
-// 创建一个回调函数，每当 HomeSpan 状态发生变化时，该函数就会在串行监视器上打印预定义的短消息
+// 创建一个回调函数，每当 HomeSpan 状态发生变化时，该函数就会在串口监视器上打印预定义的短消息
 
 void statusUpdate(HS_STATUS status){
   Serial.printf("\n*** HOMESPAN STATUS CHANGE: %s\n",homeSpan.statusString(status));
