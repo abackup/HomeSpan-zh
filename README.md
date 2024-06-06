@@ -1,4 +1,4 @@
- <!--原文时间：2024.2.18，翻译时间：2024.5.7，校对时间：2024.5.26；文件版本号：1.9.0 -->
+<!--原文时间：2024.2.18，翻译时间：2024.5.7，校对时间：2024.5.26；文件版本号：1.9.0 -->
 
 个人翻译的 [HomeSpan](https://github.com/HomeSpan/HomeSpan)，喜欢的请去 [原地址](https://github.com/HomeSpan/HomeSpan) 查看。
 
@@ -37,7 +37,7 @@ HomeSpan 需要 2.0.0 或更高版本，并已通过 2.0.14 版本的 [Arduino-E
 * 集成按钮和拨动开关功能，支持单击、双击和长按：
   * 将 ESP32 引脚连接到地或 VCC 的物理按钮
   * 连接到 ESP32 引脚的触摸板/传感器（用于支持触摸板的 ESP32 设备）
-* 集成访问 ESP32 的片上远程控制外设，可轻松生成 IR 和 RF 信号
+* 集成访问 ESP32 的片上远程控制外设，可轻松生成红外和射频信号
 * 控制单线和双线可寻址 RGB 和 RGBW LED 和 LED 灯带的专用类
 * 专门用于控制步进电机的类，可以在后台平稳运行，而不会干扰 HomeSpan
 * 使用 ESP-NOW 在 ESP32 设备之间实现无缝点对点通信的专用类
@@ -51,7 +51,7 @@ HomeSpan 需要 2.0.0 或更高版本，并已通过 2.0.14 版本的 [Arduino-E
 * 嵌入式 WiFi 接入点和网络界面，允许最终用户（非开发人员）：
   * 使用自己的家庭 WiFi 凭据设置 HomeSpan
   * 创建自己的 HomeKit 配对设置代码
-* 状态 LED 和控制按钮，允许最终用户：
+* 状态指示灯和控制按钮，允许最终用户：
   * 强制解除设备与 HomeKit 的配对
   * 执行恢复出厂设置
   * 启动 WiFi 接入点
@@ -72,7 +72,7 @@ HomeSpan 包括以下文档：
 * [HomeSpan 二维码](docs/QRCodes.md) - 创建并使用二维码来配对 HomeSpan 设备
 * [HomeSpan OTA](docs/OTA.md) - 直接从 Arduino IDE 无线更新草图，无需串口连接
 * [HomeSpan PWM](docs/PWM.md) - 使用 ESP32 的片载 PWM 外设集成控制标准 LED 和伺服电机
-* [HomeSpan 射频控制](docs/RMT.md) - 使用 ESP32 的片载 RMT 外设，轻松生成 RF 和 IR 遥控信号
+* [HomeSpan 射频控制](docs/RMT.md) - 使用 ESP32 的片载 RMT 外设，轻松生成射频和红外遥控信号
 * [HomeSpan 灯带](docs/Pixels.md) - 可寻址的单线和双线 RGB 和 RGBW LED 和 LED 灯带的集成控制
 * [HomeSpan 控制步进电机](docs/Stepper.md) - 步进电机集成控制，包括 PWM 微步进
 * [HomeSpan Span 热点](docs/NOW.md) - 使用 ESP-NOW 促进 ESP32 设备之间的点对点双向通信
