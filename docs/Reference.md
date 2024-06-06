@@ -97,8 +97,8 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
     * -1 = 抑制所有消息HomeSpan 状态消息，包括用户在草图中指定的所有 `LOG0()`、`LOG1()` 和 `LOG2()` 消息，释放串行端口以用于其他用途
   * 日志级别设置对草图中可能使用的任何 `Serial.print()` 或 `Serial.printf()` 语句没有影响。如果你想通过设置 HomeSpan 日志级别来控制输出，请使用其中一个 `LOG()` 宏，而不是 `Serial.print()` 或 `Serial.printf()`
   * 日志级别设置对 ESP32 操作系统本身输出的任何 ESP32 诊断消息没有影响。要隐藏这些消息，请确保在编译草图时将 Arduino IDE 的工具菜单中的*核心调试级别*设置为“无”
-  * 注意，也可以在运行时通过 [HomeSpan CLI](CLI.md) 使用 "L" 命令更改日志级别
-  * 有关完整详细信息，请参阅 [消息日志记录](Logging.md)
+  * 注意，也可以在运行时通过 [HomeSpan 命令行界面(CLI)](CLI.md) 使用 "L" 命令更改日志级别
+  * 有关完整详细信息，请参阅 [消息日志](Logging.md)
 
 * `int getLogLevel()`
   * 返回由 `setLogLevel(level)` 设置的当前日志级别
@@ -107,8 +107,8 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
   * 保留 *nSockets* 个网络套接字，供 HomeSpan HAP 服务器用于 HomeKit 控制器连接以外的用途
     * 对于在 Arduino-ESP32 v2.0.1 或更高版本下编译的草图，HomeSpan 为 HAP 控制器连接保留 14 个套接字
     * 每次调用 `reserveSocketConnections(nSockets)` 都会将此数字减少 *nSockets* 个
-    * 如果你向需要的草图添加代码，请使用此方法它自己的套接字连接（例如，单独的 Web 服务、MQTT 服务器等）
-  * 允许多次调用此方法 - 保留的套接字数量将是所有调用中 *nSockets* 的总和
+    * 如果你向需要的草图添加代码，请使用此方法它自己的套接字连接（例如，单独的网页服务、MQTT 服务器等）
+  * 允许多次调用此方法——保留的套接字数量将是所有调用中 *nSockets* 的总和
   * 请注意，你不需要为内置 HomeSpan 功能单独保留套接字
     * 例如，`enableOTA()` 已经包含对 `reserveSocketConnections(1)` 的嵌入式调用，因为 HomeSpan 知道必须保留一个套接字才能支持 OTA
 
@@ -122,8 +122,8 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
   * 示例：`homeSpan.begin(Category::Fans, "Living Room Ceiling Fan", "LivingRoomFan");` 将产生一个默认的 *hostName*，形式为 *LivingRoomFan-A1B2C3D4E5F6.local*。在 `homeSpan.begin()` 之前调用 `homeSpan.setHostNameSuffix("v2")` 将产生 *LivingRoomFanv2.local* 的 *hostName*
 
 * `Span& setQRID(const char *id)`
-  * 将用于将设备与 [QR 码](QRCodes.md) 配对的设置 ID 从 HomeSpan 默认值更改为 *id*
-  * 除非通过 [HomeSpan CLI](CLI.md) 使用 "Q" 命令永久更改设备，否则 HomeSpan 默认值为 "HSPN"
+  * 将用于将设备与 [HomeSpan 二维码](QRCodes.md) 配对的设置 ID 从 HomeSpan 默认值更改为 *id*
+  * 除非通过 [HomeSpan 命令行界面（CLI）](CLI.md) 使用 "Q" 命令永久更改设备，否则 HomeSpan 默认值为 "HSPN"
   * *id* 必须正好是 4 个字母数字字符（0-9、A-Z 和 a-z）。如果不是，更改设置 ID 的请求将被默默忽略，并使用默认值
 
 ---
@@ -134,7 +134,7 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
    * 启用 HomeSpan 设备的 [无线 (OTA) 更新](OTA.md)，否则该功能将被禁用
    * HomeSpan OTA 需要授权密码，除非指定 *auth* 并将其设置为 *false*
    * 新 HomeSpan 设备的默认 OTA 密码是 "homespan-ota" 
-   * 这可以通过 [HomeSpan CLI](CLI.md) 使用 "O" 命令进行更改
+   * 这可以通过 [HomeSpan 命令行界面（CLI）](CLI.md) 使用 "O" 命令进行更改
    * 注意启用 OTA 会使 HAP 套接字连接数减少 1
    * 除非指定第二个参数并将其设置为 *false*，否则默认情况下将启用 OTA 安全加载。HomeSpan OTA 安全加载检查以确保上传到现有 HomeSpan 设备的草图本身就是 HomeSpan 草图，并且它们也启用了 OTA。详情请参见 [HomeSpan OTA 安全加载](OTA.md#ota-安全加载)
    * 如果启用 OTA 成功，则返回 0，否则返回 -1；并向串口监视器报告错误
@@ -246,7 +246,7 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
   * 允许以编程方式访问所有 CLI 命令，包括用户定义的任何自定义命令
   * 无​​论设备是否连接到计算机，都可以工作
   * 示例：`homeSpan.processSerialCommand("A");` 启动 HomeSpan 设置接入点
-  * 示例：`homeSpan.processSerialCommand("Q HUB3");` 将 QR 码的 HomeKit 设置 ID 更改为 "HUB3"
+  * 示例：`homeSpan.processSerialCommand("Q HUB3");` 将 二维码的 HomeKit 设置 ID 更改为 "HUB3"
 
 * `Span& setRebootCallback(void (*func)(uint8_t count), uint32_t upTime)`
   * 设置可选的用户定义回调函数 *func*，在重启后经过 *upTime* 毫秒时调用（仅一次）（如果未指定，则默认 *upTime*=5000 毫秒）
@@ -329,7 +329,7 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
 
 ## *SpanService()*
 
-这是一个 **基类**，所有 HomeSpan 服务都从中派生，不应直接实例化。相反，要创建新服务，请实例化 [Service](ServiceList.md) 命名空间中定义的 HomeSpan 服务之一。不需要任何参数。
+这是一个 **基类**，所有 HomeSpan 服务都从中派生，不应直接实例化。相反，要创建新服务，请实例化 [HomeSpan 服务和特征](ServiceList.md) 命名空间中定义的 HomeSpan 服务之一。不需要任何参数。
 
 * 实例化的服务将添加到 HomeSpan HAP 数据库并与最后实例化的附件相关联
 * 在没有先实例化附件的情况下实例化服务会在初始化期间引发错误
@@ -374,7 +374,7 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
 
 ## *SpanCharacteristic(value [,boolean nvsStore])*
 
-这是一个 **基类**，所有 HomeSpan 特性都从中派生而来，不应直接实例化。相反，要创建新的特性，请实例化 [Characteristic](ServiceList.md) 命名空间中定义的 HomeSpan 特性之一。
+这是一个 **基类**，所有 HomeSpan 特性都从中派生而来，不应直接实例化。相反，要创建新的特性，请实例化 [HomeSpan 服务和特征](ServiceList.md) 命名空间中定义的 HomeSpan 特性之一。
 
 * 实例化的特性将添加到 HomeSpan HAP 数据库并与最后实例化的服务相关联
 * 在没有先实例化服务的情况下实例化特性会在初始化期间引发错误
@@ -586,7 +586,7 @@ void saveConfig(const char *buf, void *obj){ ... do something with myConfigurati
 
 要创建多个用户定义的命令，只需创建 SpanUserCommand 的多个实例，每个实例都有自己的单字母名称。请注意，在 SpanUserCommand 实例中重复使用相同的单字母名称会覆盖任何使用相同字母的先前实例。
 
-## 自定义特性和自定义服务宏
+## 自定义特性和自定义服务宏<a name="custom"></a>
 
 ### *CUSTOM_CHAR(name,uuid,perms,format,defaultValue,minValue,maxValue,staticRange)*
 ### *CUSTOM_CHAR_STRING(name,uuid,perms,defaultValue)*
