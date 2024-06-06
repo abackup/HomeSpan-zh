@@ -1,32 +1,32 @@
 # Stepper_A3967
 
-This is a derived class of **StepperControl** designed to operate stepper motors driven by an [Allegro A3967](https://cdn.sparkfun.com/datasheets/Robotics/A3967-Datasheet.pdf) chip.  To use, add `#include "extras/Stepper_A3967.h"` to the top of your sketch.
+这是 **StepperControl** 的衍生类，旨在操作由 [Allegro A3967](https://cdn.sparkfun.com/datasheets/Robotics/A3967-Datasheet.pdf)（或同等芯片）驱动的步进电机。
 
-The Allegro A3967 is a specialized driver designed for stepper motors. It contains a built-in PWM generator and pre-programmed stepping modes.  Wiring for the [Sparkfun EasyDriver Stepper Motor Board](https://learn.sparkfun.com/tutorials/easy-driver-hook-up-guide?_ga=2.152816825.1841726212.1688220137-156607829.1686369274) that uses this chip is as follows:
+Allegro A3967 是一款专为步进电机设计的驱动器。它包含一个内置的 PWM 发生器和预编程的步进模式。使用此芯片的[Sparkfun EasyDriver 步进电机板](https://learn.sparkfun.com/tutorials/easy-driver-hook-up-guide?_ga=2.152816825.1841726212.1688220137-156607829.1686369274) 的接线如下：
 
-#### **Power Connections**
-  * *GND* - connect to GND on the ESP32, and to ground of external DC power supply
-  * *M+* - connect to external DC power supply that will drive stepper motor.  An on-board regulator also uses this supply to provide VCC to the rest of the board. For use with an ESP32, you must short the 3.3V/5V jumper with a blob of solder to select 3.3V
-#### **Motor Connections**
-  *  *Motor A* - connect to the "A" coil of the stepper motor
-  *  *Motor B* - connect to the "B" coil of the stepper motor
-#### **Control Connections**
-  * *ENABLE* - connect to a digital pin on the ESP32 - used to enable/disable to motor driver
-  * *STEP, DIR* - connect to two digital pins on the ESP32 - used to step the motor and set the direction
-  * *MS1, MS2* - connect to two digital pins on the ESP32 - used to set the step type mode
-  * *SLEEP, RESET* - already pulled high on the EasyDriver board, so no connection neeed.  If using a different driver board, ensure these pins are pulled high, else connect to VCC
-  * *PFD* - not used
+#### **电源连接**
+  * *GND* - 连接到 ESP32 上的 GND，以及外部 DC 电源的接地
+  * *M+* - 连接到驱动步进电机的外部直流电源。板载稳压器还使用此电源为电路板的其余部分提供 VCC。要与 ESP32 一起使用，你必须用一团焊料将 3.3V/5V 跳线短接以选择 3.3V
+#### **电机连接**
+  *  *Motor A* - 连接到步进电机的 "A" 线圈
+  *  *Motor B* - 连接到步进电机的 "B" 线圈
+#### **控制连接**
+  * *MS1, MS2* - 连接到 ESP32 上的两个数字引脚 - 用于设置步进类型模式
+  * *STEP, DIR* - 连接到 ESP32 上的两个数字引脚 - 用于步进电机并设置方向
+  * *ENABLE* - 连接到 ESP32 上的数字引脚 - 用于启用/禁用电机驱动器
+  * *SLEEP, RESET* - 已经在 EasyDriver 板上拉得很高，所以没有连接。如果使用不同的驱动板，请确保这些引脚被拉高，否则连接到 VCC
+  * *PFD* - 未使用
  
-The **Stepper_A3967** class includes the following constructor:
-  * `Stepper_A3967(int M1, int M2, int STEP, int DIR, int ENABLE)`
-    * controls the driver board using 5 digital pins from the ESP32, where the parameters specify the pin numbers.  Supports the following step type modes:
+**Stepper_A3967** 类包括以下构造函数：
+  * `Stepper_A3967(int MS1, int MS2, int STEP, int DIR, int ENABLE)`
+    * 使用 ESP32 的 5 个数字引脚控制驱动板，其中参数指定引脚编号。支持以下步骤类型模式：
           
       * FULL_STEP_TWO_PHASE
       * HALF_STEP
       * QUARTER_STEP
       * EIGHTH_STEP
 
-❗Note: The A3967 chip does not support a short brake state.  Calls to the `brake()` method, as well as setting the *endAction* parameter in the `move()` and `moveTo()` methods to **StepperControl::BRAKE** have no effect on the motor driver.
+❗注意: A3967芯片不支持短制动状态。调用该 `brake()` 方法以及将 `move()` 和 `moveTo()` 方法中的 endAction 参数设置为 **StepperControl::BRAKE** 对电机驱动程序没有影响。
 
 ---
 
