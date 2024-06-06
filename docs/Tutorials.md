@@ -1,5 +1,3 @@
-<!--原文时间：2024.2.18，翻译时间：2024.5.7，校对时间：2024.5.29 -->
-
 # HomeSpan 教程
 
 HomeSpan 库包括许多逐渐复杂的教程草图，带你了解 HomeSpan 的所有功能和特征。这些草图带有大量注释，你甚至可以通过阅读所有示例来了解很多关于 HomeKit 本身的知识。如果你已经将 HomeSpan 加载到 Arduino IDE 中，则可以在 *文件→示例→HomeSpan* 下找到教程。每个草图都可以编译并上传到你的 ESP32，这样你就可以看到它们的运行情况。或者你可以通过点击下面的任何标题来探索 GitHub 中的代码。注意：在浏览教程之前，你可能需要先通读 [HomeSpan API 概述](Overview.md)。如果你这样做，它们可能会更有意义！
@@ -41,7 +39,7 @@ HomeSpan 库包括许多逐渐复杂的教程草图，带你了解 HomeSpan 的�
 * 使用 LedPin `set()` 方法设置 LED 的亮度
 * 将类似的派生服务类存储在同一个 \*.h 文件中以便于使用
 
-### [示例 7 - 附件名称](../examples/07-附件名称)
+### [示例 7 - 附件名称](../examples/07-AccessoryNames)
 示例 7 演示了如何将示例 6 中创建的两个 LED 配件的名称从“家庭”应用生成的默认值更改为更实用和自定义的名称。
 
 ### [示例 8 - 桥接](../examples/08-Bridges)
@@ -110,7 +108,7 @@ HomeSpan 库包括许多逐渐复杂的教程草图，带你了解 HomeSpan 的�
 
 ## 其他示例
 
-以下示例展示了 HomeSpan 文档的不同部分中引用的各种 HomeSpan 和 HomeKit 功能。这些草图可以在 Arduino IDE 中的 *文件→示例→HomeSpan→Other Examples* 下找到
+以下示例展示了 HomeSpan 文档的不同部分中引用的各种 HomeSpan 和 HomeKit 功能。这些草图可以在 Arduino IDE 中的 *文件→示例→HomeSpan→其他示例* 下找到
 
 ### [台灯](../Other%20Examples/TableLamp)
 台灯配件的基本实现。用作 [HomeSpan API 概述](Overview.md) 中的教程
@@ -122,13 +120,13 @@ HomeSpan 库包括许多逐渐复杂的教程草图，带你了解 HomeSpan 的�
 窗帘的实现，它使用 HomeSpan 的 *ServoPin* 类来控制窗条的水平倾斜。有关完整详细信息，请参阅 [ServoPin](PWM.md#servopin)
 
 ### [电视](../Other%20Examples/Television)
-HomeKit *未认证*电视服务的示例，展示了如何使用不同的特征来控制电视的电源、输入源和其他一些功能。请参阅 [HomeSpan 电视服务 ](TVServices.md) 了解完整详情
+HomeKit *未认证*电视服务的示例，展示了如何使用不同的特征来控制电视的电源、输入源和其他一些功能。请参阅 [HomeSpan 电视服务](TVServices.md) 了解完整详情
 
 ### [灯带](../Other%20Examples/Pixel)
 演示如何使用 HomeSpan 的 *Pixel* 和 *Dot* 类来控制单线和两线可寻址全彩和 RGBW LED。有关完整详细信息，请参阅 [HomeSpan 灯带](Pixels.md) 
 
 ### [自定义服务](../Other%20Examples/CustomService)
-演示如何在 HomeSpan 中创建自定义服务和自定义特征，以实现 *Eve for HomeKit* 应用程序识别的大气压力传感器。有关完整详细信息，请参阅 [自定义特征和自定义服务宏](Reference.md#custom)
+演示如何在 HomeSpan 中创建自定义服务和自定义特征，以实现 *Eve 应用*识别的大气压力传感器。有关完整详细信息，请参阅 [自定义特征和自定义服务宏](Reference.md#custom)
 
 ### [可编程集线器](../Other%20Examples/ProgrammableHub)
 演示如何实现一个完全可编程的灯光配件集线器，允许用户直接通过设备托管的**网页界面**或通过 HomeSpan 的**命令行界面动态**添加或者删除多达 12 个灯光配件。每个灯都可以配置为可调光/非可调光，没有颜色控制、全彩颜色控制或色温控制。建立在许多使用的技术之上 [示例 20](../examples/20-AdvancedTechniques)
