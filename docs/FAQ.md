@@ -79,7 +79,7 @@
 
 #### 如何从草图中读取当前日期和时间？
 
-* 当你使用 `homeSpan.enableWebLog()` 启用 HomeSpan 网络日志时，HomeSpan 可以自动获取你当地时区的当前日期和时间。请注意，即使不启用网络日志本身，此命令也可用于设置日期和时间（有关如何执行此操作的详细信息，请参阅 [HomeSpan API Reference](Reference.md)）。获取日期和时间后，你可以在需要时使用内置的 Arduino-ESP 32 `getLocalTime(struct tm *info)` 命令来填充当前日期和时间的信息。注释信息采用标准 [standard Unix](https://man7.org/linux/man-pages/man0/time.h.0p.html) `struct tm` 格式，易于解析如下：
+* 当你使用 `homeSpan.enableWebLog()` 启用 HomeSpan 网络日志时，HomeSpan 可以自动获取你当地时区的当前日期和时间。请注意，即使不启用网络日志本身，此命令也可用于设置日期和时间（有关如何执行此操作的详细信息，请参阅 [HomeSpan API 参考](Reference.md)）。获取日期和时间后，你可以在需要时使用内置的 Arduino-ESP 32 `getLocalTime(struct tm *info)` 命令来填充当前日期和时间的信息。注释信息采用标准 [standard Unix](https://man7.org/linux/man-pages/man0/time.h.0p.html) `struct tm` 格式，易于解析如下：
 
 ```C++
 struct tm myTime;        // 创建一个tm结构
