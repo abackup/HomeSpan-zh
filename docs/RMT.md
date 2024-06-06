@@ -46,7 +46,7 @@ HomeSpan 提供了两种简单的方法来创建、存储和传输脉冲序列�
 
 *  `void enableCarrier(uint32_t freq, float duty=0.5)`
 
-    * 能够使用“方波”载波调制脉冲串。实际上，这仅用于 IR 信号（不是 RF）
+    * 能够使用“方波”载波调制脉冲串。实际上，这仅用于红外信号（不是 RF）
   
       * *freq* - 载波的频率（以 Hz 为单位）。如果 freq=0，则禁用载波
     
@@ -84,11 +84,11 @@ rf.start(pulseTrain,3,4,1000);  // 使用相同的参数开始传输
 ```
 #### 诊断信息
 
-**RFControl** 类根据使用 Arduino IDE 编译草图时选择的 *Core Debug Level* 将 *Warning \[W\]* 消息输出到串口监视器。当通道资源不足阻止创建新的 RFControl 对象时，会生成非致命警告消息。对于未能正确创建的对象，对 `start()` 方法的调用将被静默忽略。
+**RFControl** 类根据使用 Arduino IDE 编译草图时选择的*核心调试级别*将 *Warning \[W\]* 消息输出到串口监视器。当通道资源不足阻止创建新的 RFControl 对象时，会生成非致命警告消息。对于未能正确创建的对象，对 `start()` 方法的调用将被静默忽略。
 
 ## 射频控制草图示例
 
-下面是一个完整的草图，它产生两个不同的脉冲序列，信号输出链接到 ESP32 设备的内置 LED（而不是 RF 或 IR 发射器）。出于说明目的，滴答持续时间已设置为非常长的 100𝛍s，脉冲时间范围为 1000-10,000 滴答，以便在 LED 上轻松辨别各个脉冲。请注意，此示例草图也可以在 Arduino IDE 中的 [*文件→示例→HomeSpan→其他示例→远程控制*](../examples/Other%20Examples/RemoteControl) 下找到。
+下面是一个完整的草图，它产生两个不同的脉冲序列，信号输出链接到 ESP32 设备的内置 LED（而不是射频或红外发射器）。出于说明目的，滴答持续时间已设置为非常长的 100𝛍s，脉冲时间范围为 1000-10,000 滴答，以便在 LED 上轻松辨别各个脉冲。请注意，此示例草图也可以在 Arduino IDE 中的 [*文件→示例→HomeSpan→其他示例→远程控制*](../examples/Other%20Examples/RemoteControl) 下找到。
 
 ```C++
 /* HomeSpan Remote Control Example */
