@@ -2,7 +2,7 @@
 
 这是 **StepperControl** 的衍生类，旨在操作由 [Allegro A3967](https://cdn.sparkfun.com/datasheets/Robotics/A3967-Datasheet.pdf)（或同等芯片）驱动的步进电机。
 
-Allegro A3967 是一款专为步进电机设计的驱动器。它包含一个内置的 PWM 发生器和预编程的步进模式。使用此芯片的[Sparkfun EasyDriver 步进电机板](https://learn.sparkfun.com/tutorials/easy-driver-hook-up-guide?_ga=2.152816825.1841726212.1688220137-156607829.1686369274) 的接线如下：
+Allegro A3967 是一款专为步进电机设计的驱动器。它包含一个内置的 PWM 发生器和预编程的步进模式。使用此芯片的 [Sparkfun EasyDriver 步进电机板](https://learn.sparkfun.com/tutorials/easy-driver-hook-up-guide?_ga=2.152816825.1841726212.1688220137-156607829.1686369274) 的接线如下：
 
 #### **电源连接**
   * *GND* - 连接到 ESP32 上的 GND，以及外部 DC 电源的接地
