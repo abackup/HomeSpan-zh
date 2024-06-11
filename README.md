@@ -1,4 +1,4 @@
-<!--原文时间：2024.2.18，翻译时间：2024.5.7，校对时间：2024.5.26；文件版本号：1.9.0 -->
+<!--原文时间：2024.5.31，翻译时间：2024.6.11，校对时间：2024.6.11；文件版本号：1.9.0 -->
 
 个人翻译的 [HomeSpan](https://github.com/HomeSpan/HomeSpan)，喜欢的请去 [原地址](https://github.com/HomeSpan/HomeSpan) 查看。
 
@@ -10,6 +10,8 @@
 HomeSpan 提供以微控制器为中心的苹果 HomeKit 配件协议规范版本 R2 (HAP-R2) 的实现，专门为在 Arduino IDE 中运行的乐鑫 ESP32 微控制器而设计。HomeSpan 通过家庭 WiFi 直接与 HomeKit 配对，无需任何外部网桥或组件。通过 HomeSpan，你可以使用 ESP32 I/O 的全部功能来创建自定义控制软件和/或硬件，以通过 iPhone、iPad 或 Mac 上的“家庭”应用或 Siri 自动操作外部设备。
 
 HomeSpan 需要 2.0.0 或更高版本，并已通过 2.0.14 版本的 [Arduino-ESP32 Board Manager](https://github.com/espressif/arduino-esp32) 测试（推荐使用）。HomeSpan 可以在原版的乐鑫 ESP32 以及 ESP32-S2、ESP32-C3 和 ESP32-S3 芯片上运行。
+
+HomeSpan 目前与 Arduino-ESP32 Board Manager 的 3.X 版本不兼容，因为版本 3 包含许多重大更改，并且不向后兼容 Arduino-ESP32 Board Manager 的版本 2.X。目前 HomeSpan 只能在 Board Manager 的 2.X 版本下编译。
 
 > [!NOTE] 
 苹果公司的新 HomeKit 架构 [需要使用家庭中心](https://support.apple.com/en-us/HT207057)（HomePod 或 Apple TV）才可用于任何 HomeKit 设备的完整地和正确地操作，包括基于 HomeSpan 的设备。如果没有家庭中心，HomeSpan 将无法向“家庭”应用发送通知——按钮和温度传感器等将无法向“家庭”应用发送更新。
