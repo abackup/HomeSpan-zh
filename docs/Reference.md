@@ -269,7 +269,7 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
 
 ---
 
-以下 **可选** `homeSpan` 方法为更高级的用例提供了额外的运行时功能：
+以下**可选** `homeSpan` 方法为更高级的用例提供了额外的运行时功能：
 
 * `void deleteStoredValues()`
   * 删除所有存储特性的值设置来自 NVS
