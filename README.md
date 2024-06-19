@@ -102,4 +102,4 @@ HomeSpan 包括以下文档：
 
 HomeSpan 由 Gregg Berman 开发并继续维护和支持。它最初是为了解决无法用 Siri 操作射频控制的厨房通风罩的麻烦问题。我希望你会发现它很有用，而且使用起来很有趣。
 
-这是我的第二个大型开源项目——我的第一个项目是设计一个开源系统，用于操作模型铁路，仅使用 Arduino Uno 和 Arduino Motor Shield 来生成数字命令和控制 (DCC) 信号。虽然我已经多年没有参与模型铁路爱好的建设，但展示我的原始系统（称为 DCC++）的视频，以及它如何工作的详细教程，仍然可以在 [DCC++YouTube 频道](https://www.youtube.com/@dcc2840/videos) 上找到。
+这是我的第二个大型开源项目——我的第一个项目是设计一个开源系统，用于操作模型铁路，仅使用 Arduino Uno 和 Arduino Motor Shield 来生成数字命令和控制 (DCC) 信号。虽然我已经多年没有参与模型铁路爱好的建设，但展示我的原始系统（称为 DCC++）的视频，以及它如何工作的详细教程，仍然可以在 [DCC++ YouTube 频道](https://www.youtube.com/@dcc2840/videos) 上找到。
