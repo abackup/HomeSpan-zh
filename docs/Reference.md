@@ -165,7 +165,7 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
   * 设置 HomeSpan 将连接的 WiFi 网络的 SSID (*ssid*) 和密码 (*pwd*)
   * *ssid* 和 *pwd* 会自动保存在 HomeSpan 的非易失性存储器 (NVS) 中，以便在设备重启时检索
   * 请注意，如果保存的值超过允许的最大字符数 (ssid=32; pwd=64)，则会被截断
-  * :warning: 安全警告：此函数的目的是允许高级用户使用由 `setApFunction(func)` 指定的自定义接入点函数 *动态* 设置设备的 WiFi 凭据。不建议使用此函数将你的 WiFi SSID 和密码直接硬编码到你的草图中。相反，使用 HomeSpan 提供的更安全的方法之一，例如从 CLI 输入 "W"，或启动 HomeSpan 的接入点，来设置你的 WiFi 凭据，而无需将它们硬编码到你的草图中
+  * :warning: 安全警告：此函数的目的是允许高级用户使用由 `setApFunction(func)` 指定的自定义接入点函数*动态*设置设备的 WiFi 凭据。不建议使用此函数将你的 WiFi SSID 和密码直接硬编码到你的草图中。相反，使用 HomeSpan 提供的更安全的方法之一，例如从 CLI 输入 "W"，或启动 HomeSpan 的接入点，来设置你的 WiFi 凭据，而无需将它们硬编码到你的草图中
 
 * `Span& setVerboseWifiReconnect(bool verbose)`
   * 尝试连接到 WiFi 时，HomeSpan 通常会将“尝试连接到...”消息记录到串口监视器和网络日志
