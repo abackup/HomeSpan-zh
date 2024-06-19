@@ -67,7 +67,7 @@ HomeSpan 提供了两种简单的方法来创建、存储和传输脉冲序列�
    
    * *tickTime* - *tick* 的持续时间，以 ***clock units*** 为单位。这是一个可选参数，如果未指定，则默认值为 1  *clock units*。有效范围为 1-255 *clock units*，或设置为 0 表示 256 *clock units*。*clock units* 的持续时间由 *refClock* 参数（上述 RFControl 构造函数中的第二个可选参数）确定。如果 *refClock* 设置为 true（默认），RFControl 使用 ESP32 的 1MHz 参考时钟进行计时，以便每个 *clock units* 等于 1𝛍s。如果 *refClock* 设置为 false，RFControl 使用 ESP32 更快的 80MHz APB 时钟，以便每个 *clock units* 等于 0.0125𝛍s（微秒的 1/80）
    
-* 为了帮助创建存储在外部 32 位字数组中的脉冲序列，RFControl 包含宏 *RF_PULSE(highTicks,lowTicks)*，它返回代表单个高/低脉冲的格式正确的 32 位值持续时间 *highTicks* 后跟 *lowTicks*。这基本上类似于 `add()` 函数。例如，以下代码片段显示了创建和传输相同 3 脉冲脉冲串的两种方法 -- 唯一的区别是一种使用 RFControl 的内部存储器结构，第二种使用外部阵列：
+* 为了帮助创建存储在外部 32 位字数组中的脉冲序列，RFControl 包含宏 *RF_PULSE(highTicks,lowTicks)*，它返回代表单个高/低脉冲的格式正确的 32 位值持续时间 *highTicks* 后跟 *lowTicks*。这基本上类似于 `add()` 函数。例如，以下代码片段显示了创建和传输相同 3 脉冲脉冲串的两种方法 —— 唯一的区别是一种使用 RFControl 的内部存储器结构，第二种使用外部阵列：
 
 ```C++
 
