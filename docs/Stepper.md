@@ -8,7 +8,7 @@ HomeSpan 包括专门的类，用于轻松控制通过步进电机驱动器板�
 
 HomeSpan 中当前包含以下驱动程序：
 
-* **[Stepper_TB6612](StepperDrivers/Stepper_TB6612.md)**
+* **[Stepper_TB6612](StepperDrivers%20/Stepper_TB6612.md)**
   * 该类用于操作由 [东芝 TB6612](https://cdn-shop.adafruit.com/datasheets/TB6612FNG_datasheet_en_20121101.pdf) 芯片（或等效芯片）驱动的步进电机
   * 可以与 ESP32 PWM 引脚一起使用，也可以不与 ESP32 PWM 引脚一起使用
   * 例如，[Adafruit TB6612 1.2A DC/步进电机驱动器分线板](https://www.adafruit.com/product/2448) 请参见
