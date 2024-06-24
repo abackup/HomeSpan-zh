@@ -84,7 +84,7 @@ HomeSpan 包括以下文档：
 * [HomeSpan 项目](https://github.com/topics/homespan) - HomePan 库的实际应用
 * [HomeSpan 常见问题解答](docs/FAQ.md) - 常见问题解答
 * [常见问题的解决方案](docs/Solutions.md) - 解决使用/编译 HomeSpan 时的一些常见问题
-* [HomeSpan 推荐草图](https://github.com/HomeSpan/HomeSpanReferenceSketches) - 一系列独立的参考草图，展示了一些更复杂的 HomeKit 服务，如恒温器和灌溉系统
+* [HomeSpan 推荐草图](https://github.com/abackup/HomeSpanReferenceSketches-Chinese) - 一系列独立的参考草图，展示了一些更复杂的 HomeKit 服务，如恒温器和灌溉系统
 
 请注意，所有文档都是受版本控制的，并与每个分支相关联。*master* 分支通常指向最新版本。当可用时，该 *dev* 分支将包含正在开发的代码。
 
