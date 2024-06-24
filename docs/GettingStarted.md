@@ -61,7 +61,7 @@ ESP32 开发板在大多数电子爱好网站上提都供不同配置的 ESP32 �
 1. 一个常开按钮，用作 HomeSpan 的控制按钮，以及
 1. 一个 LED（带有限流电阻）用作表示 HomeSpan 状态的 LED。
 
-控制按钮应安装在接地和 ESP32 上任何可用作输入的引脚之间。要告知 HomeSpan 你选择了哪个引脚，你必须在你的草图顶部附近调用方法 `homeSpan.setControlPin(pin)`，有关详细信息，请参阅 [HomeSpan API 参考](Reference.md)，否则 HomeSpan 将默认**未**安装控制按钮。
+控制按钮应安装在接地和 ESP32 上任何可用作输入的引脚之间。要告知 HomeSpan 你选择了哪个引脚，你必须在你的草图顶部附近调用方法 `homeSpan.setControlPin(pin)`（有关详细信息，请参阅 [HomeSpan API 参考](Reference.md)），否则 HomeSpan 将默认**未**安装控制按钮。
 
 同样，状态指示灯可以连接到 ESP32 上任何可用作输出的引脚（并通过适当大小的限流电阻接地）。要告知 HomeSpan 你选择了哪个引脚，你必须在草图顶部附近调用方法 `homeSpan.setStatusPin(pin)`，否则 HomeSpan 将默认**未**安装状态指示灯。请注意，一些 ESP32 板有一个内置 LED - 如果它**不是**需要特殊驱动器的可寻址全彩 LED，而是一个简单的开关 LED，则可以将其用于状态指示灯。
 
