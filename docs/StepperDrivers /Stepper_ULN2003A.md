@@ -8,7 +8,7 @@ Texas Instruments ULN2003A 芯片包含七个达林顿晶体管对阵列，每�
 
 各个制造商已将该芯片纳入专用的步进电机板中，用于驱动单极电机，例如 [28BYJ&#8209;48 5&#8209;伏步进电机](https://opencircuit.shop/product/28byj-48-5v-stepper-motor-4-phase-5-wire) 和 [28BYJ&#8209;48 12&#8209;伏步进电机](https://opencircuit.shop/product/28byj-48-12v-stepper-motor-4-phase-5-wire)。使用此芯片的 [Opencircuit ULN2003 步进电机驱动板](https://opencircuit.shop/product/uln2003-stepper-motor-driver-module) 接线如下：
 
-#### **电源连接**[^2]
+#### **电源连接** [^2]
   * ➕ - 连接到驱动步进电机的外部直流电源 (5-12V)
   * ➖ - 连接到 ESP32 上的 GND，以及外部直流电源的接地
 #### **电机连接**
@@ -29,7 +29,7 @@ Texas Instruments ULN2003A 芯片包含七个达林顿晶体管对阵列，每�
 > [!TIP]
 > 如果您将电机设置为非常缓慢地移动（例如每步 500 毫秒），您将能够通过观察内置在驱动板上的四个 LED（标记为 *A、B、C、D*）来跟踪电机线圈每个相的电流如何打开和关闭，具体取决于所选的 *步进模式*。另请参阅此 [Last Minute Engineers 教程](https://lastminuteengineers.com/28byj48-stepper-motor-arduino-tutorial)，详细了解 ULN2003A 及其用于驱动 28BYJ&#8209;48 5&#8209;伏步进电机的用途。
 
-[^2]: ULN2003A 是无源芯片——驱动板和 ESP32 之间没有 VCC 电源连接
+[^2]：ULN2003A 是无源芯片——驱动板和 ESP32 之间没有 VCC 电源连接
 
 ---
 
