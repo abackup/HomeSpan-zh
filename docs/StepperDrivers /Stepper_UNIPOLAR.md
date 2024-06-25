@@ -3,7 +3,7 @@
 此类提供通用驱动器，可与任何中心抽头式单极步进电机配合使用。需要使用驱动器板，该驱动器板可将 ESP32 上 4 个引脚的低压/低电流数字信号转换为适合直接连接到步进电机中每个线圈（*1* 和 *2*）的两个相（*A* 和 *B*）的高压/高电流输出。
 
 **Stepper_UNIPOLAR** 类包括以下构造函数：
-  * `Stepper_UNIPOLAR（int 线圈1A，int 线圈1B，int 线圈2A，int 线圈2B）`
+  * `Stepper_UNIPOLAR(int coil1A, int coil1B, int coil2A, int coil2B)`
   *使用ESP32的4个数字引脚控制驱动板，其中参数指定引脚编号
   * 驱动器电路的连接和配置应使得当上述指定的任何 ESP32 引脚设置为高电平时，电流流过相应的线圈/相。类似地，当引脚设置为低电平时，驱动电路应停止电流流过相应的线圈/相位。
   * 支持的模式如下：
@@ -68,3 +68,7 @@
 <tr><th>Step 8</th><td align="center">HIGH</td><td align="center">-</td><td align="center">-</td><td align="center">HIGH</td></td></tr> 
 </table>
 
+
+---
+
+[↩️](../Stepper.md) 返回步进电机控制页面
