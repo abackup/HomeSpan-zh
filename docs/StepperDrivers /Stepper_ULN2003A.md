@@ -18,11 +18,11 @@ Texas Instruments ULN2003A 芯片包含七个达林顿晶体管对阵列，每�
 
 **Stepper_ULN2003A** 类包括以下构造函数：
   * `Stepper_ULN2003A(int IN1, int IN2, int IN3, int IN4)`
-  * 仅使用 ESP32 的 4 个数字引脚控制驱动板，其中参数指定引脚编号。支持以下步骤类型模式：
+    * 仅使用 ESP32 的 4 个数字引脚控制驱动板，其中参数指定引脚编号。支持以下步骤类型模式：
 
-    * FULL_STEP_ONE_PHASE
-    * FULL_STEP_TWO_PHASE
-    * HALF_STEP
+      * FULL_STEP_ONE_PHASE
+      * FULL_STEP_TWO_PHASE
+      * HALF_STEP
 
 ❗注意：ULN2003A 芯片不支持短制动状态。调用 `brake()` 方法以及将 `move()` 和 `moveTo()` 方法中的 *endAction* 参数设置为 **StepperControl::BRAKE** 对电机驱动器没有影响。<br><br>
 
