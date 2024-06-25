@@ -30,4 +30,4 @@ Allegro A3967 是一款专为步进电机设计的驱动器。它包含一个内
 
 ---
 
-[↩️](../Stepper.md) Back to the Stepper Motor Control page
+[↩️](../Stepper.md) 返回步进电机控制页面
