@@ -22,8 +22,8 @@
 //              HomeSpan：ESP32 的 HomeKit 实现           //
 //    ------------------------------------------------    //
 //                                                        //
-// Example 1: A non-functioning on/off light control      //
-//            constructed from basic HomeSpan components  //
+//       Example 1: 由基本 HomeSpan 组件构建的未起         //
+//                  作用的开/关灯控制                      //
 //                                                        //
 ////////////////////////////////////////////////////////////
 
@@ -44,7 +44,7 @@
 // https://developer.apple.com/support/homekit-accessory-protocol。
 
 
-让我们开始吧...
+// 让我们开始吧...
 
 #include "HomeSpan.h"         // HomeSpan 草图总是从包含 HomeSpan 库开始
 
@@ -73,7 +73,7 @@ void setup() {                //您的 HomeSpan 代码应放在标准 Arduino se
   
       new Characteristic::Identify();               // 创建所需的识别特征
       
-  // 配件信息服务还包括以下四个可选特性。它们不执行任何功能，仅供参考 --- 它们的值显示在 HomeKit 的每个配件的设置面板中。
+  // 配件信息服务还包括以下四个可选特性。它们不执行任何功能，仅供参考——它们的值显示在 HomeKit 的每个配件的设置面板中。
   // 您可以随意取消注释这些行并实现它们的任意组合，或者根本不实现它们。
                                                       
   // new Characteristic::Manufacturer("HomeSpan");  // 配件制造商（任意文本字符串，每个配件可以相同）
