@@ -1,4 +1,4 @@
-<!--  原文时间：2023.7.11, 翻译时间：2024.5.10，校对时间：2024.5.29   -->
+<!--  原文时间：2023.7.11, 翻译时间：2024.5.10，校对时间：2024.6.29   -->
 
 # HomeSpan 入门
 
@@ -61,7 +61,7 @@ ESP32 开发板在大多数电子爱好网站上提都供不同配置的 ESP32 �
 1. 一个常开按钮，用作 HomeSpan 的控制按钮，以及
 1. 一个 LED（带有限流电阻）用作表示 HomeSpan 状态的 LED。
 
-控制按钮应安装在接地和 ESP32 上任何可用作输入的引脚之间。要告知 HomeSpan 你选择了哪个引脚，你必须在你的草图顶部附近调用方法 `homeSpan.setControlPin(pin)`（有关详细信息，请参阅 [HomeSpan API 参考](Reference.md)），否则 HomeSpan 将默认**未**安装控制按钮。
+控制按钮应安装在接地和 ESP32 上任何可用作输入的引脚之间。要告知 HomeSpan 你选择了哪个引脚，你必须在你的草图顶部附近调用方法 `homeSpan.setControlPin(pin)`(有关详细信息，请参阅 [HomeSpan API 参考](Reference.md))，否则 HomeSpan 将默认**未**安装控制按钮。
 
 同样，状态指示灯可以连接到 ESP32 上任何可用作输出的引脚（并通过适当大小的限流电阻接地）。要告知 HomeSpan 你选择了哪个引脚，你必须在草图顶部附近调用方法 `homeSpan.setStatusPin(pin)`，否则 HomeSpan 将默认**未**安装状态指示灯。请注意，一些 ESP32 板有一个内置 LED - 如果它**不是**需要特殊驱动器的可寻址全彩 LED，而是一个简单的开关 LED，则可以将其用于状态指示灯。
 
@@ -75,7 +75,7 @@ ESP32 开发板在大多数电子爱好网站上提都供不同配置的 ESP32 �
 
 接下来，探索教程草图，上传几个试试，看看它们是如何工作的。这些示例从简单开始逐渐复杂化，带你了解 HomeSpan 的所有功能和特征。在此过程中，你还将学习很多 HomeKit 提示和技巧。有关所有包含示例的摘要，请参阅 [HomeSpan 教程](Tutorials.md)。在草图中找到你不理解的东西？ 有关所有 HomeSpan 对象、函数和方法的详细信息，请访问 [HomeSpan API 参考](Reference.md)。有更一般的问题吗？ 查看是否已出现在 [HomeSpan 常见问题解答](FAQ.md) 页面或任何 [Disussion](https://github.com/HomeSpan/HomeSpan/discussions) 或 [Issues](https://github.com/HomeSpan/HomeSpan/issues) 页面。如果没有，请随时通过添加新问题来加入讨论。
 
-准备好开始创建自己的 HomeSpan 草图了吗？ 查看 [HomeSpan 服务和特征](ServiceList.md) 以获取 HomeSpan 支持的所有 HomeKit 服务和特征的完整列表，以及 [HomeSpan 配件类别](Categories.md) 以获取所有支持的 HomeKit 类别列表。并且不要忘记使用 [苹果 (HAP-R2)](https://developer.apple.com/homekit/specification/) 作为你对每项服务和详细信息的参考特征。
+准备好开始创建自己的 HomeSpan 草图了吗？ 查看 [HomeSpan 服务和特征](ServiceList.md) 以获取 HomeSpan 支持的所有 HomeKit 服务和特征的完整列表，以及 [HomeSpan 配件类别](Categories.md) 以获取所有支持的 HomeKit 类别列表。并且不要忘记使用 [苹果 (HAP-R2)](../master/docs/HAP-R2.pdf) 作为你对每项服务和详细信息的参考特征。
 
 在开发你的草图时，请记住使用 Arduino 串口监视器。HomeSpan 生成广泛的调试信息，可帮助你调试草图并监控 HomeSpan 设备的各个方面。你还可以使用 [HomeSpan 命令行界面 (CLI)](CLI.md) 从串口监视器控制 HomeSpan 的各个方面，包括配置设备的 WiFi 凭据和 HomeKit 设置代码。
 
