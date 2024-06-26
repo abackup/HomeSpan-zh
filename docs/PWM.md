@@ -1,10 +1,10 @@
-<!-- 原文时间：2024.2.18，翻译时间：2024.5.6，校对时间：2024.5.30 -->
+<!-- 原文时间：2024.2.18，翻译时间：2024.5.6，校对时间：2024.6.26 -->
 
 # 脉宽调制（PWM）
 
 ESP32 具有多达 16 个 PWM 通道，可用于驱动各种器件。HomeSpan 包括一个集成的 PWM 库，其中包含专为控制**可调光 LED** 以及**伺服电机**设计的专用类。
 
-## *LedPin(uint8_t pin [,float level [,uint16_t frequency [,boolean invert]]])*
+## *LedPin(uint8_t pin [,float level [,uint16_t frequency [,boolean invert]]])*<a name="ledpin"></a>
 
 创建此**类**实例可将指定 *pin* 的配置为输出适合控制可调光 LED 的 PWM 信号。参数及其默认值（如果未指定）如下所示：
 
@@ -56,7 +56,7 @@ LedPin 还包括一个静态类函数，可将色调/饱和度/亮度值（通�
    * *g* - 输出绿色值，范围 0-1
    * *b* - 输出蓝色值，范围 0-1
 
-有关使用 LedPin 控制全彩 LED 的示例，请参见教程草图 [#10（RGB_LED）](../examples/10-RGB_LED)。有关使用 ESP32 的内置淡入淡出控件的示例，另请参见 [*文件→示例→HOMESPAN→其他示例→FadingLED*](../examples/Other%20Examples/FadingLED)。
+有关使用 LedPin 控制全彩 LED 的示例，请参见教程草图 [#10（RGB_LED）](../examples/10-RGB_LED/10-RGB_LED.ino)。有关使用 ESP32 的内置淡入淡出控件的示例，另请参见 [*文件→示例→HOMESPAN→其他示例→FadingLED*](../examples/Other%20Examples/FadingLED/FadingLED.ino)。
 
 ## *ServoPin(uint8_t pin [,double initDegrees [,uint16_t minMicros, uint16_t maxMicros, double minDegrees, double maxDegrees]])*<a name="servopin"></a>
 
@@ -79,7 +79,7 @@ LedPin 还包括一个静态类函数，可将色调/饱和度/亮度值（通�
 
    * 返回 pin 编号（如果 ServoPin 未成功初始化，则返回 -1）
 
-在 [*文件→示例→主页→其他示例→伺服控制* ](../examples/Other%20Examples/ServoControl) 的 Arduino IDE 中有一个示例，显示了如何使用 ServoPin 来控制电动窗帘的水平倾斜。
+在 [*文件→示例→主页→其他示例→伺服控制* ](../examples/Other%20Examples/ServoControl/ServoControl.ino) 的 Arduino IDE 中有一个示例，显示了如何使用 ServoPin 来控制电动窗帘的水平倾斜。
 
 ### PWM 资源分配和限制
 
