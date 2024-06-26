@@ -112,25 +112,25 @@ HomeSpan 库包括许多逐渐复杂的教程草图，带你了解 HomeSpan 的�
 
 以下示例展示了 HomeSpan 文档的不同部分中引用的各种 HomeSpan 和 HomeKit 功能。这些草图可以在 Arduino IDE 中的 *文件→示例→HomeSpan→其他示例* 下找到
 
-### [台灯](../Other%20Examples/TableLamp/TableLamp.ino)
+### [台灯](../examples/Other%20Examples/TableLamp/TableLamp.ino)
 台灯配件的基本实现。用作 [HomeSpan API 概述](Overview.md) 中的教程
 
-### [控制远程](../Other%20Examples/RemoteControl/RemoteControl.ino)
+### [控制远程](../examples/Other%20Examples/RemoteControl/RemoteControl.ino)
 一个独立的示例，展示了如何使用 HomeSpan 的 *RFControl* 类来生成自定义脉冲序列。出于说明目的，脉冲宽度非常长，适合输出到 LED，因此你可以“看到”脉冲序列。请参阅 [HomeSpan 射频控制](RMT.md) 了解完整详情
 
-### [控制舵机](../Other%20Examples/ServoControl/ServoControl.ino)
+### [控制舵机](../examples/Other%20Examples/ServoControl/ServoControl.ino)
 窗帘的实现，它使用 HomeSpan 的 *ServoPin* 类来控制窗条的水平倾斜。有关完整详细信息，请参阅 [ServoPin](PWM.md#servopin)
 
-### [电视](../Other%20Examples/Television/Television.ino)
+### [电视](../examples/Other%20Examples/Television/Television.ino)
 HomeKit *未认证*电视服务的示例，展示了如何使用不同的特征来控制电视的电源、输入源和其他一些功能。请参阅 [HomeSpan 电视服务](TVServices.md) 了解完整详情
 
-### [灯带](../Other%20Examples/Pixel/Pixel.ino)
+### [灯带](../examples/Other%20Examples/Pixel/Pixel.ino)
 演示如何使用 HomeSpan 的 *Pixel* 和 *Dot* 类来控制单线和两线可寻址全彩和 RGBW LED。有关完整详细信息，请参阅 [HomeSpan 灯带](Pixels.md) 
 
-### [自定义服务](../Other%20Examples/CustomService/CustomService.ino)
+### [自定义服务](../examples/Other%20Examples/CustomService/CustomService.ino)
 演示如何在 HomeSpan 中创建自定义服务和自定义特征，以实现 *Eve 应用*识别的大气压力传感器。有关完整详细信息，请参阅 [自定义特征和自定义服务宏](Reference.md#custom)
 
-### [可编程集线器](../Other%20Examples/ProgrammableHub/ProgrammableHub.ino)
+### [可编程集线器](../examples/Other%20Examples/ProgrammableHub/ProgrammableHub.ino)
 演示如何实现一个完全可编程的灯光配件集线器，允许用户直接通过设备托管的**网页界面**或通过 HomeSpan 的**命令行界面动态**添加或者删除多达 12 个灯光配件。每个灯都可以配置为可调光/非可调光，没有颜色控制、全彩颜色控制或色温控制。建立在许多使用的技术之上 [示例 20](../examples/20-AdvancedTechniques/20-AdvancedTechniques.ino)
 
 ### [远程传感器](../examples/Other%20Examples/RemoteSensors)
