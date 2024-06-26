@@ -1,5 +1,3 @@
-<!--原文：2024.2.18，翻译时间：2024.5.22，校对时间：2024.5.29 -->
-
 # HomeSpan 服务和特点
 
 下面是 HomeSpan 支持的所有服务的列表，以及每个服务的简要说明。你可以查看该服务支持的所有特征的列表，以及每个特征的说明。[^1]
@@ -20,7 +18,7 @@
 
  [^2]: 虽然很少需要，但你可以使用 `setPerms()`、 `addPerms()` 和 `removePerms()` 更改特征的权限。
  
-HomeSpan 服务和特征实现为 C++ 类，其名称与苹果公司在 HAP-R2 的第 8 节和第 9 节中指定的拼写和大小写完全匹配，但没有任何空格。HomeSpan 服务是在 HomeSpan 的 `Service` 命名空间中定义的。HomeSpan 特征是在 HomeSpan 的`Characteristic` 命名空间中定义的。例如，HomeSpan 将*二氧化碳传感器*服务（HAP 服务 8.7）定义为 `Service::CarbonDioxideSensor`，将*检测到二氧化碳*特征（HAP 特征 9.16）定义为 `Characteristic::CarbonDioxideDetected`。
+HomeSpan 服务和特征实现为 C++ 类，其名称与苹果公司在 [HAP-R2](../master/docs/HAP-R2.pdf) 的第 8 节和第 9 节中指定的拼写和大小写完全匹配，但没有任何空格。HomeSpan 服务是在 HomeSpan 的 `Service` 命名空间中定义的。HomeSpan 特征是在 HomeSpan 的`Characteristic` 命名空间中定义的。例如，HomeSpan 将*二氧化碳传感器*服务（HAP 服务 8.7）定义为 `Service::CarbonDioxideSensor`，将*检测到二氧化碳*特征（HAP 特征 9.16）定义为 `Characteristic::CarbonDioxideDetected`。
 
 枚举特征的预定义常量表达式位于与特征名称匹配的命名空间中。例如，要设置*空气质量传感器*服务的*空气质量*特征，可以使用 `setVal(Characteristic::AirQuality::GOOD)` 或（等效于 `setVal(2)`）。[^3]
 
@@ -456,4 +454,4 @@ HomeSpan 服务和特征实现为 C++ 类，其名称与苹果公司在 HAP-R2 �
 
  - - - 
 
-[↩️](../README.md#resources)返回欢迎页面
+[↩️](../README.md#resources) 返回欢迎页面
