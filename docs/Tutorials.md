@@ -145,7 +145,7 @@ HomeKit *未认证*电视服务的示例，展示了如何使用不同的特征�
 ### [自定义分区](../examples/Other%20Examples/CustomNVSPartition/CustomNVSPartition.ino)
 演示如何通过将 *Partition.csv* 文件添加到草图文件夹来为草图创建自定义分区方案。可用于扩展非易失性存储（NVS）分区的大小，在创建具有许多附件的 HomeSpan 设备时可能需要该分区，当你想将这些附件的特征保存在 NVS 中时
 
-### [外部引用](../examples/Other%20Examples/ExternalReference/ExternalReference.ino)
+### [外部引用](../examples/Other%20Examples/ExternalReference%20/ExternalReference.ino)
 演示如何从这些服务外部访问服务的特征（例如在 Arduino 的 `loop()` 中访问）。在此草图中，我们重新创建了示例 5 中的两个 LED，并在 Arduino `loop()` 部分添加一个新功能，用于检查两个 LED 是否同时打开，如果是，则自动关闭
 
 ---
