@@ -1,4 +1,4 @@
-<!-- 原文时间：2024.2.18，翻译时间：2024.5.7，校对时间：2024.5.30 -->
+<!-- 原文时间：2024.2.18，翻译时间：2024.5.7，校对时间：2024.6.26 -->
 
 # 步进电机控制
 
@@ -8,20 +8,20 @@ HomeSpan 包括专门的类，用于轻松控制通过步进电机驱动器板�
 
 HomeSpan 中当前包含以下驱动程序：
 
-* **[Stepper_TB6612](StepperDrivers%20/Stepper_TB6612.md)**
+* **[Stepper_TB6612](StepperDrivers/Stepper_TB6612.md)**
   * 该类用于操作由 [东芝 TB6612](https://cdn-shop.adafruit.com/datasheets/TB6612FNG_datasheet_en_20121101.pdf) 芯片（或等效芯片）驱动的步进电机
   * 可以与 ESP32 PWM 引脚一起使用，也可以不与 ESP32 PWM 引脚一起使用
   * 例如，[Adafruit TB6612 1.2A DC/步进电机驱动器分线板](https://www.adafruit.com/product/2448) 请参见
    
-* **[Stepper_A3967](StepperDrivers%20/Stepper_A3967.md)**
+* **[Stepper_A3967](StepperDrivers/Stepper_A3967.md)**
   * 该类用于操作由 [Allegro A3967](https://cdn.sparkfun.com/datasheets/Robotics/A3967-Datasheet.pdf) 芯片（或等效芯片）驱动的步进电机
   * 例如，[Sparkfun EasyDriver 步进电机板](https://www.sparkfun.com/products/12779) 请参见
 
-* **[Stepper_ULN2003A](StepperDrivers%20/Stepper_ULN2003A.md)**
+* **[Stepper_ULN2003A](StepperDrivers/Stepper_ULN2003A.md)**
   * 该类用于操作由 [Texas Instruments ULN2003A](https://www.ti.com/lit/ds/symlink/uln2003a.pdf) 芯片（或等效芯片）驱动的步进电机
   * 例如，[Stepper_ULN2003 步进电机驱动板](https://opencircuit.shop/product/uln2003-stepper-motor-driver-module) 请参见
 
-* **[Stepper_UNIPOLAR](StepperDrivers%20/Stepper_UNIPOLAR.md)**
+* **[Stepper_UNIPOLAR](StepperDrivers/Stepper_UNIPOLAR.md)**
   * 此类提供用于任何中心抽头单极步进电机的通用驱动程序
   * 使用要求驱动板能够将来自 ESP32 上 4 个引脚的低电压/低电流数字信号转换为适合操作步进电机的更高电压/更高电流信号
   
@@ -183,7 +183,7 @@ void loop(){
 
 ### 电动窗帘示例
 
-在 [*文件→示例→HomeSpan→其他示例→MotorizedWindowShade*](../examples/Other%20Examples/MotorizedWindowShade) 的 Arduino IDE 中有一个完整的示例，显示了如何在完整的 HomeSpan 草图中使用 *StepperControl* 该类来控制使用 TB6612 和 A3967 驱动板的电动窗帘。
+在 [*文件→示例→HomeSpan→其他示例→MotorizedWindowShade*](../examples/Other%20Examples/MotorizedWindowShade/MotorizedWindowShade.ino) 的 Arduino IDE 中有一个完整的示例，显示了如何在完整的 HomeSpan 草图中使用 *StepperControl* 该类来控制使用 TB6612 和 A3967 驱动板的电动窗帘。
 
 ## 创建自己的 *StepperControl* 驱动程序
 
