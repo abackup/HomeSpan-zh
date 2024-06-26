@@ -1,4 +1,4 @@
-<!--  原文时间：2024.3.9，翻译时间：2024.5.7，校对时间：2024.5.31  -->
+<!--  原文时间：2024.3.9，翻译时间：2024.5.7，校对时间：2024.6.26  -->
 
 # 常见问题和可能的解决方案
 
@@ -52,8 +52,8 @@
 
 * 注意：如果你没有使用 Arduino IDE 来编译和上传 HomeSpan 草图，请查阅 IDE 的文档以了解如何更改分区方案。
 
-* 注意：如果内置分区方案中没有一个包含适合你的草图的分区大小平衡，你可以随时创建自定义分区方案，如 HomeSpan 的 [CustomNVSParititon 示例](../examples/Other%20Examples/CustomNVSPartition) 中所示。即使不使用 Arduino IDE，此技术也应该有效。
+* 注意：如果内置分区方案中没有一个包含适合你的草图的分区大小平衡，你可以随时创建自定义分区方案，如 HomeSpan 的 [CustomNVSParititon 示例](../examples/Other%20Examples/CustomNVSPartition/CustomNVSPartition.ino) 中所示。即使不使用 Arduino IDE，此技术也应该有效。
  
 ---
 
-[↩️](../README.md#resources)返回欢迎页面
+[↩️](../README.md#resources) 返回欢迎页面
