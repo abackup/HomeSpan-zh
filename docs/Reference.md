@@ -1,4 +1,4 @@
-<!-- 原文时间：2024.2.18，翻译时间：2024.6.3，校对时间：2024.6.3  -->
+<!-- 原文时间：2024.2.18，翻译时间：2024.6.3，校对时间：2024.6.26  -->
 
 # HomeSpan API 参考
 
@@ -16,7 +16,7 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
   * 初始化 HomeSpan
   * **必须**在每个草图的开头调用，然后再调用任何其他 HomeSpan 函数，并且通常放置在 Arduino `setup()` 方法的顶部附近，但在 `Serial.begin()` **之后**，以便初始化诊断可以输出到串口监视器
   * 所有参数都是**可选**
-     * *catID* - HAP 类别 HomeSpan 广播用于与 HomeKit 配对。默认为 Category::Lighting。有关完整列表，请参阅 [HomeSpan 附件类别](Categories.md)
+     * *catID* - HAP 类别 HomeSpan 广播用于与 HomeKit 配对。默认为 Category::Lighting。有关完整列表，请参阅 [HomeSpan 配件件类别](Categories.md)
      * *displayName* - HomeSpan 广播的 MDNS 显示名称。默认为 "HomeSpan Server"
      * *hostNameBase* - 完整的 MDNS 主机名由 HomeSpan 作为 *hostNameBase-DeviceID*.local 广播，其中 DeviceID 是 HomeSpan 自动生成的唯一的 6 字节代码。默认为 "HomeSpan"
      * *modelName* - 与 HomeKit 配对的 HomeSpan 广播 HAP 模型名称。默认为 "HomeSpan-ESP32"
@@ -297,7 +297,7 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
 
 * `void autoPoll(uint32_t stackSize, uint32_t priority, uint32_t cpu)`
 
-  * 一种 *可选* 方法，用于创建一个单独的任务，该任务在后台重复调用 `poll()`。这释放了 Ardino `loop()` 方法，以便任何用户定义的代码可以并行运行，否则这些代码会阻塞或被 cal 阻塞在 `loop()` 方法中调用 `poll()`。参数及其默认值（如果未指定）如下：
+  * 一种*可选*方法，用于创建一个单独的任务，该任务在后台重复调用 `poll()`。这释放了 Ardino `loop()` 方法，以便任何用户定义的代码可以并行运行，否则这些代码会阻塞或被 cal 阻塞在 `loop()` 方法中调用 `poll()`。参数及其默认值（如果未指定）如下：
 
     * *stackSize* - 轮询任务使用的堆栈大小（以字节为单位）。如果未指定，则默认值为 8192
     * *priority* - 任务运行的优先级。最小值为 1。最大值通常为 24，但这取决于 ESP32 操作系统的配置方式。如果将其设置为任意高值（例如 999），它将被设置为允许的最大优先级。如果未指定，则默认值为 1
@@ -329,7 +329,7 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
 
 ## *SpanService()*
 
-这是一个 **基类**，所有 HomeSpan 服务都从中派生，不应直接实例化。相反，要创建新服务，请实例化 [HomeSpan 服务和特征](ServiceList.md) 命名空间中定义的 HomeSpan 服务之一。不需要任何参数。
+这是一个**基类**，所有 HomeSpan 服务都从中派生，不应直接实例化。相反，要创建新服务，请实例化 [HomeSpan 服务和特征](ServiceList.md) 命名空间中定义的 HomeSpan 服务之一。不需要任何参数。
 
 * 实例化的服务将添加到 HomeSpan HAP 数据库并与最后实例化的附件相关联
 * 在没有先实例化附件的情况下实例化服务会在初始化期间引发错误
@@ -374,7 +374,7 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
 
 ## *SpanCharacteristic(value [,boolean nvsStore])*
 
-这是一个 **基类**，所有 HomeSpan 特性都从中派生而来，不应直接实例化。相反，要创建新的特性，请实例化 [HomeSpan 服务和特征](ServiceList.md) 命名空间中定义的 HomeSpan 特性之一。
+这是一个**基类**，所有 HomeSpan 特性都从中派生而来，不应直接实例化。相反，要创建新的特性，请实例化 [HomeSpan 服务和特征](ServiceList.md) 命名空间中定义的 HomeSpan 特性之一。
 
 * 实例化的特性将添加到 HomeSpan HAP 数据库并与最后实例化的服务相关联
 * 在没有先实例化服务的情况下实例化特性会在初始化期间引发错误
@@ -483,7 +483,7 @@ HomeSpan 库通过在 Arduino 草图中包含 *HomeSpan.h* 来调用，如下所
 
 ### *SpanButton(int pin, uint16_t longTime, uint16_t singleTime, uint16_t doubleTime, boolean (\*triggerType)(int))*<a name="spanbutton"></a>
 
-创建此 **类** 的实例会将按钮处理程序附加到指定的 ESP32 *pin*。
+创建此**类**的实例会将按钮处理程序附加到指定的 ESP32 *pin*。
 
 * 实例化的按钮与最后实例化的服务相关联
 * 在没有先实例化服务的情况下实例化按钮会在初始化期间引发错误
@@ -538,7 +538,7 @@ HomeSpan 会在与该服务关联的任何 SpanButton 中触发事件时自动�
 
 ### *SpanToggle(int pin, boolean (\*triggerType)(int)=PushButton::TRIGGER_ON_LOW, uint16_32 toggleTime=5)*
 
-创建此 **类** 的实例会将拨动开关处理程序附加到指定的 ESP32 *pin*。这是 *SpanButton* 的子类，因此派生了所有相同的功能。例如，你可以将 *triggerType* 设置为 PushButton::TRIGGER_ON_HIGH，创建自己的触发器函数等。但是，当按钮被“按下”时，HomeSpan 不会调用 `button(int pin, int pressType)`，而是在开关从一个位置“切换”到另一个位置时，HomeSpan 会调用相同的 `button()` 方法。在这种情况下，传递给 `button()` 的参数 *pressType* 具有一组不同的枚举：
+创建此**类**的实例会将拨动开关处理程序附加到指定的 ESP32 *pin*。这是 *SpanButton* 的子类，因此派生了所有相同的功能。例如，你可以将 *triggerType* 设置为 PushButton::TRIGGER_ON_HIGH，创建自己的触发器函数等。但是，当按钮被“按下”时，HomeSpan 不会调用 `button(int pin, int pressType)`，而是在开关从一个位置“切换”到另一个位置时，HomeSpan 会调用相同的 `button()` 方法。在这种情况下，传递给 `button()` 的参数 *pressType* 具有一组不同的枚举：
 * 3=开关已关闭（`SpanToggle::CLOSED`）
 * 4=开关已打开（`SpanToggle::OPEN`）
 
@@ -554,7 +554,7 @@ SpanToggle 还支持以下附加方法：
 
 ### *SpanUserCommand(char c, const char \*desc, void (\*f)(const char \*buf [,void \*obj]) [,void \*userObject])*
 
-创建此 **类** 的实例会将用户定义的命令添加到HomeSpan 命令行界面 (CLI)，其中：
+创建此**类**的实例会将用户定义的命令添加到HomeSpan 命令行界面 (CLI)，其中：
 
 * *c* 是用户定义命令的单字母名称
 * *desc* 是用户定义命令的描述，当用户在 CLI 中键入 "？" 时显示
@@ -634,7 +634,7 @@ new Characteristic::UserTag(); // 添加用户标签特征并保留默认初始�
 
 自定义服务可能包含自定义特性和标准 HAP 特性的混合，但由于服务本身是自定义的，因此即使服务包含一些标准 HAP 特性，“家庭”应用也会忽略整个服务。请注意，必须在调用 `homeSpan.begin()` 之前创建自定义服务
 
-可以在 Arduino IDE 下的 [*文件→示例→HomeSpan→其他示例→CustomService*](../examples/Other%20Examples/CustomService) 下找到一个完整的示例，该示例展示了如何使用 ***CUSTOM_SERV()*** 和 ***CUSTOM_CHAR()*** 宏来创建 *Eve 应用*识别的压力传感器配件。
+可以在 Arduino IDE 下的 [*文件→示例→HomeSpan→其他示例→CustomService*](../examples/Other%20Examples/CustomService/CustomService.ino) 下找到一个完整的示例，该示例展示了如何使用 ***CUSTOM_SERV()*** 和 ***CUSTOM_CHAR()*** 宏来创建 *Eve 应用*识别的压力传感器配件。
 
 ## 其他宏
 
