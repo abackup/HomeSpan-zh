@@ -1,3 +1,5 @@
+<!-- 原文：2023.3.19，翻译时间：2024.5.13，校对时间：2024.6.26-->
+
 # HomeSpan API 概述
 
  HomeSpan 草图的基本结构如下：
@@ -43,7 +45,7 @@ void loop(){
 
 } // 循环结束
 ```
-请注意，作为**替代**方法，你可以指示 HomeSpan 创建单独的任务，在后台重复调用 `HomeSpan.poll()`。为此，<span style="background-color: #E85827;">请将 `loop()` 中对 `HomeSpan.poll()` 的调用替换为 `setup()` 函数末尾对 `HomeSpan.autoPoll()` 的调用：</span>
+请注意，作为**替代**方法，你可以指示 HomeSpan 创建单独的任务，在后台重复调用 `HomeSpan.poll()`。为此，请将 `loop()` 中对 `HomeSpan.poll()` 的调用替换为 `setup()` 函数末尾对 `HomeSpan.autoPoll()` 的调用：
 
 ```C++
 #include " HomeSpan.h"         // 包括 HomeSpan 库
