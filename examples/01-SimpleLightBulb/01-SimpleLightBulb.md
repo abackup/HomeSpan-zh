@@ -28,23 +28,23 @@
 ////////////////////////////////////////////////////////////
 
 
-  // 欢迎来到 HOMESPAN！
+欢迎来到 HOMESPAN！
   
-// 第一个例子介绍了 HomeSpan 库，并演示了如何使用 HomeSpan Accessory、Service 和 Characteristic 对象的组合来实现简单的开/关灯光控制。
-// 一旦将此草图上传到您的 HomeSpan 设备并将设备与您的家配对，一个新的“灯泡”图块将出现在您的 iPhone、iPad 或 Mac 的“家庭”应用中。
+第一个例子介绍了 HomeSpan 库，并演示了如何使用 HomeSpan Accessory、Service 和 Characteristic 对象的组合来实现简单的开/关灯光控制。
+一旦将此草图上传到您的 HomeSpan 设备并将设备与您的家配对，一个新的“灯泡”图块将出现在您的 iPhone、iPad 或 Mac 的“家庭”应用中。
 
-// 虽然图块将完全可操作（即您可以将灯泡的状态从“开”或“关”更改为“关”），但我们尚未将实际的灯或 LED 连接到 HomeSpan 设备，因此不会有任何实际的
-// 东西亮起。相反，在这个和接下来的几个例子中，我们将重点了解可以配置 HomeKit 控件的不同方式。从示例 5 开始，我们将 LED 连接到设备并介绍从 
-// “家庭”应用实际打开和关闭 LED 的方法。
+虽然图块将完全可操作（即您可以将灯泡的状态从“开”或“关”更改为“关”），但我们尚未将实际的灯或 LED 连接到 HomeSpan 设备，因此不会有任何实际的
+东西亮起。相反，在这个和接下来的几个例子中，我们将重点了解可以配置 HomeKit 控件的不同方式。从示例 5 开始，我们将 LED 连接到设备并介绍从 
+“家庭”应用实际打开和关闭 LED 的方法。
 
-// 注意：所有 HomeSpan 示例最好结合 HomeSpan GitHub 页面上提供的文档进行查看。有关详细信息和参考资料，请参阅 https://github.com/HomeSpan/HomeSpan。
-// 特别是，在继续操作之前，您可能需要查看 HomeSpan API 概述页面。
+注意：所有 HomeSpan 示例最好结合 HomeSpan GitHub 页面上提供的文档进行查看。有关详细信息和参考资料，请参阅 https://github.com/HomeSpan/HomeSpan。
+特别是，在继续操作之前，您可能需要查看 HomeSpan API 概述页面。
 
-// 这些示例还经常引用 Apple 的 HomeKit 附件协议规范（称为 HAP）。您可以直接从 Apple 下载此文件，网址为
-// https://developer.apple.com/support/homekit-accessory-protocol。
+这些示例还经常引用 Apple 的 HomeKit 附件协议规范（称为 HAP）。您可以直接从 Apple 下载此文件，网址为
+https://developer.apple.com/support/homekit-accessory-protocol。
 
 
-// 让我们开始吧...
+让我们开始吧...
 ```C++
 #include "HomeSpan.h"         // HomeSpan 草图总是从包含 HomeSpan 库开始
 
