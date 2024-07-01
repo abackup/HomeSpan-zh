@@ -1,4 +1,4 @@
-<!--原文时间：2024.5.31，翻译时间：2024.6.26，校对时间：2024.6.26；文件版本号：1.9.0 -->
+<!--原文时间：2024.5.31，翻译时间：2024.6.26，校对时间：2024.7.1；文件版本号：1.9.0 -->
 
 个人翻译的 [HomeSpan](https://github.com/HomeSpan/HomeSpan)（家庭空间），喜欢的请去 [原地址](https://github.com/HomeSpan/HomeSpan) 查看。
 
@@ -68,7 +68,7 @@ HomeSpan 包括以下文档：
 * [HomeSpan 教程](docs/Tutorials.md) - HomeSpan 的草图指南
 * [HomeSpan 服务和特征](docs/ServiceList.md) - HomeSpan 支持的所有 HAP 服务和特征的列表
 * [HomeSpan 配件类别](docs/Categories.md) - HomeSpan 定义的所有 HAP 配件类别的列表
-* [HomeSpan 命令行界面 (CLI)](docs/CLI.md) - 配置 HomeSpan 设备的 WiFi 凭据，修改其 HomeKit 设置代码，监控和更新其状态，并从 Arduino IDE 串口监视器访问详细的实时设备诊断
+* [HomeSpan命令行界面](docs/CLI.md) - 配置 HomeSpan 设备的 WiFi 凭据，修改其 HomeKit 设置代码，监控和更新其状态，并从 Arduino IDE 串口监视器访问详细的实时设备诊断
 * [HomeSpan 用户指南](docs/UserGuide.md) - 有关如何配置已编程的 HomeSpan 设备的 WiFi 凭据、修改其 HomeKit 设置代码以及将设备与 HomeKit 配对的交钥匙式说明。不需要电脑！
 * [HomeSpan API 参考](docs/Reference.md) - HomeSpan 库 API 的完整指南
 * [HomeSpan 二维码](docs/QRCodes.md) - 创建并使用二维码来配对 HomeSpan 设备
