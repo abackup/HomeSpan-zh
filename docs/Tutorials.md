@@ -1,10 +1,10 @@
-<!--原文时间：2024.2.18，翻译时间：2024.5.7，校对时间：2024.6.26 -->
+<!--原文时间：2024.2.18，翻译时间：2024.5.7，校对时间：2024.7.1   -->
 
 # HomeSpan 教程
 
-HomeSpan 库包括许多逐渐复杂的教程草图，带你了解 HomeSpan 的所有功能和特征。这些草图带有大量注释，你甚至可以通过阅读所有示例来了解很多关于 HomeKit 本身的知识。如果你已经将 HomeSpan 加载到 Arduino IDE 中，则可以在 *文件→示例→HomeSpan* 下找到教程。每个草图都可以编译并上传到你的 ESP32，这样你就可以看到它们的运行情况。或者你可以通过点击下面的任何标题来探索 GitHub 中的代码。注意：在浏览教程之前，你可能需要先通读 [HomeSpan API 概述](Overview.md)。如果你这样做，它们可能会更有意义！
+HomeSpan 库包括许多逐渐复杂的教程草图，带你了解 HomeSpan 的所有功能和特征。这些草图带有大量注释，你甚至可以通过阅读所有示例来了解很多关于 HomeKit 本身的知识。如果你已经将 HomeSpan 加载到 Arduino IDE 中，则可以在 *文件→示例→HomeSpan* 下找到教程。每个草图都可以编译并上传到你的 ESP32，这样你就可以看到它们的运行情况。或者你可以通过点击下面的任何标题来探索 GitHub 中的代码。注意：在浏览教程之前，你可能需要先通读 [API 概述](Overview.md)。如果你这样做，它们可能会更有意义！
 
-> :heavy_check_mark: 每个示例都设计为在将 ESP32 与 HomeKit 配对后进行操作，以便你可以从 iPhone、iPad 或 Mac 上的“家庭”应用控制 HomeSpan。理论上，一旦你配置设备并将其与 HomeKit 配对，你的“家庭”应用应该会在你上传不同的教程时自动更新配置中的所有更改。**然而实际上情况并非总是如此**，因为 HomeKit 有时会缓存有关设备的信息，这意味着你在“家庭”应用中看到的内容可能与你的草图不完全同步。如果发生这种情况，取消配对然后重新配对 ESP32 通常可以解决问题。如果没有，你可能需要重置 ESP32 上的 ID，以便 HomeKit 认为它是新设备并且不会使用任何缓存数据。这很容易做到——请参阅 [HomeSpan 命令行界面 (CLI)](CLI.md) 了解详细信息。
+> :heavy_check_mark: 每个示例都设计为在将 ESP32 与 HomeKit 配对后进行操作，以便你可以从 iPhone、iPad 或 Mac 上的“家庭”应用控制 HomeSpan。理论上，一旦你配置设备并将其与 HomeKit 配对，你的“家庭”应用应该会在你上传不同的教程时自动更新配置中的所有更改。**然而实际上情况并非总是如此**，因为 HomeKit 有时会缓存有关设备的信息，这意味着你在“家庭”应用中看到的内容可能与你的草图不完全同步。如果发生这种情况，取消配对然后重新配对 ESP32 通常可以解决问题。如果没有，你可能需要重置 ESP32 上的 ID，以便 HomeKit 认为它是新设备并且不会使用任何缓存数据。这很容易做到——请参阅 [命令行界面](CLI.md) 了解详细信息。
 
 ### [示例 1 - 简单灯泡](../examples/01-SimpleLightBulb/01-SimpleLightBulb.ino)
 第一个示例介绍了 HomeSpan 库，并演示了如何使用 HomeSpan 附件、服务和特征对象的组合来实现简单的开/关灯控制。将此草图上传到你的 HomeSpan 设备并且与你的“家庭”应用配对后，你的 iPhone、iPad 或 Mac 的“家庭”应用中将出现一个新的“灯泡”图块。虽然图块完全可操作（即你可以将灯泡的状态从“开”或“关”更改），但我们尚未将实际的灯或 LED 连接到 HomeSpan 设备，因此不会亮起任何真实的东西。相反，在这个和接下来的几个示例中，我们将专注于了解配置 HomeKit 控件的不同方式。从示例 5 开始，我们将把 LED 连接到设备，并介绍在“家庭”应用中实际打开和关闭 LED 的方法。此示例中涵盖的 HomeSpan API 主题包括：
@@ -113,19 +113,19 @@ HomeSpan 库包括许多逐渐复杂的教程草图，带你了解 HomeSpan 的�
 以下示例展示了 HomeSpan 文档的不同部分中引用的各种 HomeSpan 和 HomeKit 功能。这些草图可以在 Arduino IDE 中的 *文件→示例→HomeSpan→其他示例* 下找到
 
 ### [台灯](../examples/Other%20Examples/TableLamp/TableLamp.ino)
-台灯配件的基本实现。用作 [HomeSpan API 概述](Overview.md) 中的教程
+台灯配件的基本实现。用作 [API 概述](Overview.md) 中的教程
 
 ### [控制远程](../examples/Other%20Examples/RemoteControl/RemoteControl.ino)
-一个独立的示例，展示了如何使用 HomeSpan 的 *RFControl* 类来生成自定义脉冲序列。出于说明目的，脉冲宽度非常长，适合输出到 LED，因此你可以“看到”脉冲序列。请参阅 [HomeSpan 射频控制](RMT.md) 了解完整详情
+一个独立的示例，展示了如何使用 HomeSpan 的 *RFControl* 类来生成自定义脉冲序列。出于说明目的，脉冲宽度非常长，适合输出到 LED，因此你可以“看到”脉冲序列。请参阅 [射频控制](RMT.md) 了解完整详情
 
 ### [控制舵机](../examples/Other%20Examples/ServoControl/ServoControl.ino)
 窗帘的实现，它使用 HomeSpan 的 *ServoPin* 类来控制窗条的水平倾斜。有关完整详细信息，请参阅 [ServoPin](PWM.md#servopin)
 
 ### [电视](../examples/Other%20Examples/Television/Television.ino)
-HomeKit *未认证*电视服务的示例，展示了如何使用不同的特征来控制电视的电源、输入源和其他一些功能。请参阅 [HomeSpan 电视服务](TVServices.md) 了解完整详情
+HomeKit *未认证*电视服务的示例，展示了如何使用不同的特征来控制电视的电源、输入源和其他一些功能。请参阅 [电视服务](TVServices.md) 了解完整详情
 
 ### [灯带](../examples/Other%20Examples/Pixel/Pixel.ino)
-演示如何使用 HomeSpan 的 *Pixel* 和 *Dot* 类来控制单线和两线可寻址全彩和 RGBW LED。有关完整详细信息，请参阅 [HomeSpan 灯带](Pixels.md) 
+演示如何使用 HomeSpan 的 *Pixel* 和 *Dot* 类来控制单线和两线可寻址全彩和 RGBW LED。有关完整详细信息，请参阅 [灯带](Pixels.md) 
 
 ### [自定义服务](../examples/Other%20Examples/CustomService/CustomService.ino)
 演示如何在 HomeSpan 中创建自定义服务和自定义特征，以实现 *Eve 应用*识别的大气压力传感器。有关完整详细信息，请参阅 [自定义特征和自定义服务宏](Reference.md#custom)
@@ -134,13 +134,13 @@ HomeKit *未认证*电视服务的示例，展示了如何使用不同的特征�
 演示如何实现一个完全可编程的灯光配件集线器，允许用户直接通过设备托管的**网页界面**或通过 HomeSpan 的**命令行界面动态**添加或者删除多达 12 个灯光配件。每个灯都可以配置为可调光/非可调光，没有颜色控制、全彩颜色控制或色温控制。建立在许多使用的技术之上 [示例 20](../examples/20-AdvancedTechniques/20-AdvancedTechniques.ino)
 
 ### [远程传感器](../examples/Other%20Examples/RemoteSensors)
-演示如何使用 SpanPoint 将消息从运行测量本地温度的轻量级草图的电池供电远程从设备传输到运行实现温度传感器附件的完整 HomeSpan 草图的电源供电主设备上。请参阅 [HomeSpan Span 热点](NOW.md) 有关 *SpanPoint* 类及其所有方法的完整详细信息
+演示如何使用 SpanPoint 将消息从运行测量本地温度的轻量级草图的电池供电远程从设备传输到运行实现温度传感器附件的完整 HomeSpan 草图的电源供电主设备上。请参阅 [Span 热点](NOW.md) 有关 *SpanPoint* 类及其所有方法的完整详细信息
 
 ### [呼吸指示灯](../examples/Other%20Examples/FadingLED/FadingLED.ino)
 演示 *LedPin* 类如何使用 ESP32 的内置淡入淡出控件，在指定的时间段内自动将 LED 从一个亮度级别淡入淡出另一个亮度级别。有关完整详细信息，请参阅 [LedPin](PWM.md#ledpin)
 
 ### [电动窗帘](../examples/Other%20Examples/MotorizedWindowShade/MotorizedWindowShade.ino)
-演示如何使用 *StepperControl* 类操作步进电机。实现基于上述 [示例 13](../examples/13-TargetStates/13-TargetStates.ino) 的电动窗帘。有关完整详细信息，请参阅 [HomeSpan 控制步进电机](Stepper.md)
+演示如何使用 *StepperControl* 类操作步进电机。实现基于上述 [示例 13](../examples/13-TargetStates/13-TargetStates.ino) 的电动窗帘。有关完整详细信息，请参阅 [控制步进电机](Stepper.md)
 
 ### [自定义分区](../examples/Other%20Examples/CustomNVSPartition/CustomNVSPartition.ino)
 演示如何通过将 *Partition.csv* 文件添加到草图文件夹来为草图创建自定义分区方案。可用于扩展非易失性存储（NVS）分区的大小，在创建具有许多附件的 HomeSpan 设备时可能需要该分区，当你想将这些附件的特征保存在 NVS 中时
