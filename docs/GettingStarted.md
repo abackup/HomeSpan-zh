@@ -51,12 +51,12 @@ ESP32 开发板在大多数电子爱好网站上提都供不同配置的 ESP32 �
 
 #### 第 7 步：配置和配对 HomeSpan 设备
 
-尽管该设备现在已编程并完全可操作，但需要先配置 WiFi 凭据和 HomeKit 设置代码，然后才能与你的 HomeKit 账户配对。有关如何通过 Arduino 串口监视器配置 HomeSpan 的详细信息，请参阅 [命令行界面 (CLI)](CLI.md)。一旦设备连接到你的家庭 WiFi，HomeSpan 现在就可以通过 iPhone 上的“家庭”应用进行配对了！
+尽管该设备现在已编程并完全可操作，但需要先配置 WiFi 凭据和 HomeKit 设置代码，然后才能与你的 HomeKit 账户配对。有关如何通过 Arduino 串口监视器配置 HomeSpan 的详细信息，请参阅 [命令行界面](CLI.md)。一旦设备连接到你的家庭 WiFi，HomeSpan 现在就可以通过 iPhone 上的“家庭”应用进行配对了！
 
 
 ## 添加控制按钮和状态指示灯（*可选*）
 
-除了能够通过 Arduino 串口监视器使用 [命令行界面 (CLI)](CLI.md) 配置 HomeSpan 设备外，HomeSpan 还为最终用户提供了一种替代方法来配置未连接到电脑的独立 HomeSpan 设备。此方法需要安装两个外部组件：
+除了能够通过 Arduino 串口监视器使用 [命令行界面](CLI.md) 配置 HomeSpan 设备外，HomeSpan 还为最终用户提供了一种替代方法来配置未连接到电脑的独立 HomeSpan 设备。此方法需要安装两个外部组件：
 
 1. 一个常开按钮，用作 HomeSpan 的控制按钮，以及
 1. 一个 LED（带有限流电阻）用作表示 HomeSpan 状态的 LED。
@@ -77,7 +77,7 @@ ESP32 开发板在大多数电子爱好网站上提都供不同配置的 ESP32 �
 
 准备好开始创建自己的 HomeSpan 草图了吗？ 查看 [服务和特征](ServiceList.md) 以获取 HomeSpan 支持的所有 HomeKit 服务和特征的完整列表，以及 [配件类别](Categories.md) 以获取所有支持的 HomeKit 类别列表。并且不要忘记使用 [苹果 (HAP-R2)](../master/docs/HAP-R2.pdf) 作为你对每项服务和详细信息的参考特征。
 
-在开发你的草图时，请记住使用 Arduino 串口监视器。HomeSpan 生成广泛的调试信息，可帮助你调试草图并监控 HomeSpan 设备的各个方面。你还可以使用 [命令行界面 (CLI)](CLI.md) 从串口监视器控制 HomeSpan 的各个方面，包括配置设备的 WiFi 凭据和 HomeKit 设置代码。
+在开发你的草图时，请记住使用 Arduino 串口监视器。HomeSpan 生成广泛的调试信息，可帮助你调试草图并监控 HomeSpan 设备的各个方面。你还可以使用 [命令行界面](CLI.md) 从串口监视器控制 HomeSpan 的各个方面，包括配置设备的 WiFi 凭据和 HomeKit 设置代码。
 
 要访问更高级的功能，请查看 [PWM](PWM.md)、 [射频控制](RMT.md) 和 [灯带](Pixels.md) 以获取关于如何使用 HomeSpan 通过 PWM 信号控制 LED、灯和步进电机；生成射频和红外遥控代码来操作电器和电视；甚至控制全彩 LED 灯带的教程和详细信息。
 
